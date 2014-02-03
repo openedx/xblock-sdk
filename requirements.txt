@@ -1,5 +1,5 @@
 # XBlock
-git+https://github.com/edx/XBlock.git@1d228943#egg=XBlock
+git+https://github.com/edx/XBlock.git@d38ea0517c82ef58fb679d60c62b5424218bafbd#egg=XBlock
 
 # These should get moved to XBlock dependencies
 lxml
@@ -24,13 +24,14 @@ pep8
 diff-cover >= 0.2.1
 
 # For docs
--r doc/requirements.txt
+#-r doc/requirements.txt
 
 # For generating new XBlocks
 cookiecutter
 
 # Our own XBlocks
--e .
--e workbench
--e thumbs
--e demo_xblocks
+#-e .
+#-e workbench
+#-e thumbs
+#-e demo_xblocks
+

@@ -1,6 +1,11 @@
 """Django settings for workbench project."""
 import json
 import os
+import sys
+
+BASE_DIR = os.path.dirname(__file__)
+SRC_DIR = os.path.join(BASE_DIR, "src")
+sys.path.append(SRC_DIR)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -114,8 +119,8 @@ ROOT_URLCONF = 'workbench.urls'
 WSGI_APPLICATION = 'workbench.wsgi.application'
 
 TEMPLATE_DIRS = (
-    'workbench/templates',
-    'demo_xblocks/demo_xblocks/templates',
+    'src/workbench/templates',
+    'src/sample_xblocks/basic/templates',
 )
 
 INSTALLED_APPS = (
