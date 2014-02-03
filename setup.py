@@ -38,6 +38,7 @@ setup(
         'webob',
         'WSGIProxy',
         'simplejson',
+        'lazy',
     ],
     entry_points={
         'xblock.v1': [
