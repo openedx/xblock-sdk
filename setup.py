@@ -1,4 +1,4 @@
-"""Set up for XBlock"""
+"""Set up for XBlock SDK"""
 import os
 import os.path
 from setuptools import setup
@@ -23,6 +23,7 @@ setup(
     version='0.1a0',
     description='XBlock SDK',
     packages=[
+        'sample_xblocks',
         'sample_xblocks.acid',
         'sample_xblocks.basic',
         'sample_xblocks.thumbs',
