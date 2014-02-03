@@ -1,8 +1,14 @@
+# XBlock
+git+https://github.com/edx/XBlock.git@1d228943#egg=XBlock
+
+# These should get moved to XBlock dependencies
+lxml
+webob
+
 # 3rd-party needs
 Django >= 1.4, < 1.5
-lxml
+
 requests
-webob
 WSGIProxy
 simplejson
 

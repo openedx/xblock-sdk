@@ -2,7 +2,7 @@
 from setuptools import setup
 
 setup(
-    name='XBlock',
+    name='XBlock SDK',
     version='0.4a0',
     description='XBlock Core Library',
     packages=[
