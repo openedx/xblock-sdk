@@ -30,12 +30,16 @@ setup(
     ],
     package_dir={'': 'src'},
     install_requires=[
+        'XBlock',
         'Django >= 1.4, < 1.5',
         'lxml',
         'requests',
         'webob',
         'WSGIProxy',
-        'simplejson'
+        'simplejson',
+    ],
+    dependency_links = [
+        'https://github.com/edx/XBlock.git@d38ea0517c82ef58fb679d60c62b5424218bafbd#egg=XBlock',
     ],
     entry_points={
         'xblock.v1': [
