@@ -8,7 +8,7 @@ def find_package_data(pkg, data_paths):
     """Generic function to find package_data for `pkg` under `root`."""
     data = []
     for data_path in data_paths:
-        package_dir = "src/" + pkg.replace(".", "/")
+        package_dir = pkg.replace(".", "/")
         for dirname, _, files in os.walk(package_dir + "/" + data_path):
             for fname in files:
                 data.append(os.path.relpath(os.path.join(dirname, fname), package_dir))
@@ -29,7 +29,6 @@ setup(
         'sample_xblocks.thumbs',
         'workbench',
     ],
-    package_dir={'': 'src'},
     install_requires=[
         # 'XBlock',  # Can put this once XBlock is on PyPI
         'Django >= 1.4, < 1.5',

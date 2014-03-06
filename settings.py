@@ -4,7 +4,7 @@ import os
 import sys
 
 BASE_DIR = os.path.dirname(__file__)
-SRC_DIR = os.path.join(BASE_DIR, "src")
+SRC_DIR = BASE_DIR
 sys.path.append(SRC_DIR)
 
 DEBUG = True
@@ -119,8 +119,8 @@ ROOT_URLCONF = 'workbench.urls'
 WSGI_APPLICATION = 'workbench.wsgi.application'
 
 TEMPLATE_DIRS = (
-    'src/workbench/templates',
-    'src/sample_xblocks/basic/templates',
+    'workbench/templates',
+    'sample_xblocks/basic/templates',
 )
 
 INSTALLED_APPS = (

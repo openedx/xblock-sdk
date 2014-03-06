@@ -4,8 +4,8 @@ XBlock SDK
 This repository consists of three main components to assist in the creation of new XBlocks:
 
     * a template-based generator for new XBlocks (found in `prototype`)
-    * sample XBlocks that can be the basis for new XBlock work (found in `src/sample_xblocks`)
-    * Workbench runtime, a simple runtime for viewing and testing XBlocks in a browser (found in `src/workbench`)
+    * sample XBlocks that can be the basis for new XBlock work (found in `sample_xblocks`)
+    * Workbench runtime, a simple runtime for viewing and testing XBlocks in a browser (found in `workbench`)
 
 
 Installation
@@ -21,6 +21,10 @@ This code runs on Python 2.7.
     need to sudo this if you don't use virtualenv):
 
         $ pip install -r requirements.txt
+
+4. Create and sync the sqllite DB
+
+        $ python manage.py syncdb
 
 4.  Run the Django development server:
 
