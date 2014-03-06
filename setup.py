@@ -15,7 +15,6 @@ def find_package_data(pkg, data_paths):
     return {pkg: data}
 
 package_data = {}
-package_data.update(find_package_data("sample_xblocks.acid", ["static"]))
 package_data.update(find_package_data("sample_xblocks.basic", ["public", "templates"]))
 package_data.update(find_package_data("sample_xblocks.thumbs", ["static"]))
 package_data.update(find_package_data("workbench", ["static", "templates"]))
@@ -26,7 +25,6 @@ setup(
     description='XBlock SDK',
     packages=[
         'sample_xblocks',
-        'sample_xblocks.acid',
         'sample_xblocks.basic',
         'sample_xblocks.thumbs',
         'workbench',
@@ -67,9 +65,6 @@ setup(
 
             # Thumbs example
             'thumbs = sample_xblocks.thumbs:ThumbsBlock',
-
-            # Acid Test Block - exercising functionality
-            'acid = sample_xblocks.acid:AcidBlock',
 
             # Workbench specific
             'debugchild = workbench.blocks:DebuggingChildBlock',

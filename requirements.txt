@@ -1,5 +1,8 @@
 # XBlock
 -e git+https://github.com/edx/XBlock.git@6dd8a9223cae34184ba5e2e1a186f36c4df1e080#egg=XBlock
 
+#acid xblock
+-e git+https://github.com/edx/acid-block.git@459aff7b63db8f2c5decd1755706c1a64fb4ebb1#egg=acid-xblock
+
 # install this locally
 -e .
