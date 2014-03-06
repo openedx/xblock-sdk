@@ -5,7 +5,7 @@ from collections import namedtuple
 from mock import Mock
 
 from xblock.runtime import KvsFieldData, DictKeyValueStore
-from xblock.view_counter import ViewCounter
+from sample_xblocks.basic.view_counter import ViewCounter
 
 from xblock.test.tools import assert_in, assert_equals
 
