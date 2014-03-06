@@ -1,5 +1,5 @@
 # XBlock
-git+https://github.com/edx/XBlock.git@d38ea0517c82ef58fb679d60c62b5424218bafbd#egg=XBlock
+-e git+https://github.com/edx/XBlock.git@6dd8a9223cae34184ba5e2e1a186f36c4df1e080#egg=XBlock
 
 # These should get moved to XBlock dependencies
 lxml
