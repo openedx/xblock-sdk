@@ -3,6 +3,7 @@ import os
 import os.path
 from setuptools import setup
 
+
 def find_package_data(pkg, data_paths):
     """Generic function to find package_data for `pkg` under `root`."""
     data = []
@@ -40,6 +41,14 @@ setup(
         'WSGIProxy',
         'simplejson',
         'lazy',
+        'django_nose',
+        'mock',
+        'coverage',
+        'pylint == 0.28',
+        'selenium',
+        'rednose',
+        'pep8',
+        'diff-cover >= 0.2.1',
     ],
     entry_points={
         'xblock.v1': [
