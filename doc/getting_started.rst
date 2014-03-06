@@ -52,6 +52,46 @@ In the XBlock-SDK directory, install its prerequisite Python packages::
 .. note::
     This will also install the latest version of XBlock.
 
+
+Create a new XBlock
+-------------------
+
+.. highlight: console
+
+The simplest way to get started on a new XBlock is to use the
+script/startnew.py script in the XBlock repo.  Make a directory for your
+development work, outside the XBlock directory, let's call it ``~/edxwork``,
+and run the startnew.py script from there::
+
+    $ cd ~
+    $ mkdir edxwork
+    $ cd edxwork
+    $ /path/to/XBlock/script/startnew.py
+
+The script will need two pieces of information, both related to the name of
+your XBlock:  a short name that can be used for directory names, and a Python
+class name.  You might choose "myxblock" for the short name and "MyXBlock" for
+the class name.  We'll use those names in the rest of these instructions.  Your
+files will be named using the actual name you gave.
+
+When the script is done, you'll have a myxblock directory with a complete
+working XBlock.  Of course, it's just the boilerplate for your XBlock, now you
+have to start writing your code.
+
+.. highlight: python
+
+Most of your work will be in the myxblock/myxblock/myxblock.py file, which
+contains the MyXBlock class.  There are "TO-DO" comments in the file indicating
+where you should make changes::
+
+    # TO-DO: change this view to display your data your own way.
+    def student_view(self, context=None):
+        etc...
+
+
+For more details about the details of writing an XBlock, please refer to the
+XBlock documentation: https://xblock.readthedocs.org/en/latest/getting_started.html#write-your-xblock
+
 Testing your XBlock in the XBlock-SDK 
 --------------------------------------
 

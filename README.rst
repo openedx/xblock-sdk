@@ -64,6 +64,56 @@ See the `coverage.py`_ docs for more info and options.
 
 .. _coverage.py: http://nedbatchelder.com/code/coverage/
 
+Using the workbench
+-------------------
+
+When you open the workbench, you'll see a list of sample XBlock configurations
+(scenarios).  Each will display a page showing the XBlocks composited together,
+along with internal information like the "database" contents.
+
+The workbench doesn't use a real database, it simply stores all data in an
+in-memory dictionary.  The data is all lost and reset when you restart the
+server.
+
+If you want to experiment with different students, you can use a URL parameter
+to set the student ID, which defaults to 1:
+
+    http://127.0.0.1:8000/?student_id=17
+
+Different students will see different student state, for example, while seeing
+the same content.  Student ids are strings, even if they contain only digits
+as the default does.
+
+
+Making your own XBlock
+----------------------
+
+Making an XBlock can be as simple as creating a Python class with a few
+specific methods.  The ``thumbs`` XBlock demonstrates an XBlock with state,
+views, and input handling.
+
+We provide a script to create a new XBlock project to help you get started.
+Run script/startnew.py in a directory where you want to create your XBlock
+project.  startnew.py will prompt you for the name of the XBlock, and will
+create a minimal working XBlock, ready for you to begin development.
+
+You can provide scenarios for the workbench to display, see the thumbs.py
+sample for an example, or the xblock/problem.py file.  The scenarios are
+written in a simple XML language.  Note this is not an XML format we are
+proposing as a standard.
+
+Once you install your XBlock into your virtualenv, the workbench will
+automatically display its scenarios for you to experiment with.
+
+
+External XBlocks
+----------------
+
+We have been moving towards hosting XBlocks in external repositories, some of
+which have been installed and will appear in the workbench:
+
+ACID XBlock: https://github.com/edx/acid-block
+
 
 License
 -------
