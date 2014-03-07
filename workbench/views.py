@@ -20,24 +20,6 @@ from .runtime import WorkbenchRuntime, reset_global_state
 from .scenarios import SCENARIOS
 
 
-LOG_STREAM = None
-
-
-def setup_logging():
-    """Sets up an in-memory logger."""
-    # Allow us to use `global` within this function.
-    # pylint: disable=W0603
-    global LOG_STREAM
-    LOG_STREAM = StringIO()
-
-    root_logger = logging.getLogger()
-    root_logger.setLevel(logging.DEBUG)
-    log_handler = logging.StreamHandler(LOG_STREAM)
-    log_handler.setFormatter(logging.Formatter("%(asctime)s %(name)s %(levelname)s: %(message)s"))
-    root_logger.addHandler(log_handler)
-
-setup_logging()
-
 log = logging.getLogger(__name__)
 
 
@@ -87,7 +69,6 @@ def show_scenario(request, scenario_id, view_name='student_view', template='work
         'body': frag.body_html(),
         'head_html': frag.head_html(),
         'foot_html': frag.foot_html(),
-        'log': LOG_STREAM.getvalue(),
         'student_id': student_id,
     })
 
