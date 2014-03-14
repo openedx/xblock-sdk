@@ -42,7 +42,6 @@ setup(
         'mock',
         'coverage',
         'pylint == 0.28',
-        'django-debug-toolbar',
         'selenium',
         'rednose',
         'pep8',
