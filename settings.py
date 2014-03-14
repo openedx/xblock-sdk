@@ -134,11 +134,19 @@ INSTALLED_APPS = (
 
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
-    'debug_toolbar',
 
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+# Only use django-debug-toolbar if it has been installed.
+# Installing django-debug-toolbar before running syncdb may cause a
+# DatabaseError when trying to run syncdb.
+try:
+    import debug_toolbar  # pylint: disable=unused-import
+    INSTALLED_APPS += ('debug_toolbar',)
+except ImportError:
+    pass
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
