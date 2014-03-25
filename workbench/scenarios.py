@@ -50,18 +50,29 @@ def add_class_scenarios(class_name, cls):
             scname = "%s.%d" % (class_name, i)
             add_xml_scenario(scname, desc, xml)
 
-
 def init_scenarios():
     """
     Create all the scenarios declared in all the XBlock classes.
     """
+    wb_config = settings.WORKBENCH if hasattr(settings, "WORKBENCH") else {}
+
     # Clear any existing scenarios, since this is used repeatedly during testing.
     SCENARIOS.clear()
-    if settings.WORKBENCH['reset_state_on_restart']:
+    if wb_config.get('reset_state_on_restart'):
         WORKBENCH_KVS.clear()
     else:
         WORKBENCH_KVS.prep_for_scenario_loading()
 
-    # Get all the XBlock classes, and add their scenarios.
-    for class_name, cls in sorted(XBlock.load_classes()):
-        add_class_scenarios(class_name, cls)
+    # All the tag names we want to load scenarios for
+    scenarios_to_load = frozenset(wb_config.get('SCENARIOS', []))
+
+    # Get installed XBlock classes, and add their scenarios. By default, we'll
+    # load all scenarios for all XBlock tags. That being said, if you're
+    # embedding the workbench into a project for development purposes, you may
+    # not care about the built-in examples or other random XBlocks installed on
+    # your system. In that case, we allow you to specify a list of tags that
+    # will get loaded in settings.WORKBENCH['SCENARIOS'].
+    for tag_name, cls in sorted(XBlock.load_classes()):
+        # If config says we should load this scenario, or no scenario config exists
+        if (tag_name in scenarios_to_load) or (not scenarios_to_load):
+            add_class_scenarios(tag_name, cls)
