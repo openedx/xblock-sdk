@@ -266,10 +266,16 @@ class WorkbenchRuntime(Runtime):
     def local_resource_url(self, block, uri):
         return reverse("package_resource", args=(block.scope_ids.block_type, uri))
 
-    def publish(self, block, event):
-        log.info("XBlock event for {block_type} (usage_id={usage_id}):".format(
-            block_type=block.scope_ids.block_type, usage_id=block.scope_ids.usage_id))
-        log.info(event)
+    def publish(self, block, event_type, event_data):
+        log.info(
+            "XBlock event {event_type} for {block_type} (usage_id={usage_id}):"
+            .format(
+                event_type=event_type,
+                block_type=block.scope_ids.block_type,
+                usage_id=block.scope_ids.usage_id
+            )
+        )
+        log.info(event_data)
 
     def query(self, block):
         return _BlockSet(self, [block])
