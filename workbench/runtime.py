@@ -53,27 +53,6 @@ class WorkbenchDjangoKeyValueStore(KeyValueStore):
         """Reset any state that's necessary before we load scenarios."""
         XBlockState.prep_for_scenario_loading()
 
-    # Implementation details.
-    def _actual_key(self, key):
-        """
-        Constructs the full key name from the given `key`.
-
-        The actual key consists of the scope, block scope id, and user_id.
-        """
-        key_list = []
-        if key.scope == Scope.children:
-            key_list.append('children')
-        elif key.scope == Scope.parent:
-            key_list.append('parent')
-        else:
-            key_list.append(key.scope.block.attr_name)
-
-        if key.block_scope_id is not None:
-            key_list.append(key.block_scope_id)
-        if key.user_id:
-            key_list.append(key.user_id)
-        return ".".join(key_list)
-
     @staticmethod
     def _to_json_str(data):
         return json.dumps(data, indent=2, sort_keys=True)
