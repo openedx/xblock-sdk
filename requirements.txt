@@ -6,3 +6,5 @@
 
 # install this locally
 -e .
+
+cookiecutter
