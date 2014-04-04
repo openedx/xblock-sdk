@@ -32,10 +32,10 @@ class {{cookiecutter.class_name}}(XBlock):
         The primary view of the {{cookiecutter.class_name}}, shown to students
         when viewing courses.
         """
-        html = self.resource_string("static/html/{{cookiecutter.short_name}}.html")
+        html = self.resource_string("static/html/{{cookiecutter.short_name|lower}}.html")
         frag = Fragment(html.format(self=self))
-        frag.add_css(self.resource_string("static/css/{{cookiecutter.short_name}}.css"))
-        frag.add_javascript(self.resource_string("static/js/src/{{cookiecutter.short_name}}.js"))
+        frag.add_css(self.resource_string("static/css/{{cookiecutter.short_name|lower}}.css"))
+        frag.add_javascript(self.resource_string("static/js/src/{{cookiecutter.short_name|lower}}.js"))
         frag.initialize_js('{{cookiecutter.class_name}}')
         return frag
 
@@ -60,9 +60,9 @@ class {{cookiecutter.class_name}}(XBlock):
         return [
             ("{{cookiecutter.class_name}}",
              """<vertical_demo>
-                <{{cookiecutter.short_name}}/>
-                <{{cookiecutter.short_name}}/>
-                <{{cookiecutter.short_name}}/>
+                <{{cookiecutter.short_name|lower}}/>
+                <{{cookiecutter.short_name|lower}}/>
+                <{{cookiecutter.short_name|lower}}/>
                 </vertical_demo>
              """),
         ]
