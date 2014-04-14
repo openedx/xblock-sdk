@@ -58,3 +58,8 @@ urlpatterns = patterns(
 )
 
 urlpatterns += staticfiles_urlpatterns()
+
+# JavaScript i18n
+urlpatterns += patterns('',
+    (r'^i18n.js$', 'django.views.i18n.javascript_catalog', {'packages': tuple()}),
+)

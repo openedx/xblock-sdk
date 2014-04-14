@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" type="text/css"
               href="{% static 'workbench/css/workbench.css' %}">
+        <script type="text/javascript" src="{% url django.views.i18n.javascript_catalog %}"></script>
         <script>
             // TODO: This should be handled more modularly.
             studentId = '{{student_id}}';

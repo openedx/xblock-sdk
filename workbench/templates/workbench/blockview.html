@@ -5,6 +5,7 @@
             student_id = '{{student_id}}';
             handlerBaseUrl = '{% url workbench_index %}handler/';
         </script>
+        <script type="text/javascript" src="{% url django.views.i18n.javascript_catalog %}"></script>
         {{head_html|safe}}
     </head>
     <body class="view-workbench">
