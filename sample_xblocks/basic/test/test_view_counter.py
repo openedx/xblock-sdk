@@ -1,5 +1,5 @@
 """ Simple test for the view counter that verifies that it is updating properly """
-
+from __future__ import unicode_literals
 from six.moves import range
 
 from mock import Mock

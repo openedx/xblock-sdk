@@ -1,5 +1,5 @@
 """Tests for the thumbs module"""
-
+from __future__ import unicode_literals
 from workbench import scenarios
 from workbench.test.selenium_test import SeleniumTest
 

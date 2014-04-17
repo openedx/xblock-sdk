@@ -1,5 +1,5 @@
 """Structure-oriented XBlocks."""
-
+from __future__ import unicode_literals
 from xblock.core import XBlock
 from xblock.fragment import Fragment
 

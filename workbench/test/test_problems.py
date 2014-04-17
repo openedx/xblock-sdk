@@ -1,5 +1,5 @@
 """Test that problems and problem submission works well."""
-from __future__ import print_function
+from __future__ import unicode_literals, print_function
 from six.moves import range
 import time
 

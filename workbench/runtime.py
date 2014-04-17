@@ -3,6 +3,7 @@
 Code in this file is a mix of Runtime layer and Workbench layer.
 
 """
+from __future__ import unicode_literals
 from collections import defaultdict, OrderedDict
 import itertools
 import logging

@@ -1,5 +1,5 @@
 """Test that all scenarios render successfully."""
-
+from __future__ import unicode_literals
 import lxml.html
 
 from django.test.client import Client

@@ -1,5 +1,5 @@
 """An XBlock providing thumbs-up/thumbs-down voting."""
-
+from __future__ import unicode_literals
 from xblock.core import XBlock
 from xblock.fields import Scope, Integer, Boolean
 from xblock.fragment import Fragment
