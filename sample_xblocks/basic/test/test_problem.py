@@ -3,7 +3,7 @@ Tests of the Problem XBlock, and its components.
 """
 
 import json
-
+import six
 import webob
 
 from xblock.test.tools import assert_equals
@@ -14,6 +14,8 @@ from workbench.runtime import WorkbenchRuntime
 def make_request(body):
     """Mock request method."""
     request = webob.Request({})
+    if isinstance(body, six.text_type):
+        body = body.encode('utf-8')
     request.body = body
     return request
 
