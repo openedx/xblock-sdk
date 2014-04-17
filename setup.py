@@ -35,7 +35,6 @@ setup(
         'lxml',
         'requests',
         'webob',
-        'WSGIProxy',
         'simplejson',
         'lazy',
         'django_nose',
