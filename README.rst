@@ -11,7 +11,7 @@ This repository consists of three main components to assist in the creation of n
 Installation
 ------------
 
-This code runs on Python 2.7.
+This code runs on Python 2.7 or Python 3.3+.
 
 1.  Get a local copy of this repo.
 
