@@ -53,12 +53,13 @@ def try_scenario(url, name):
     client = Client()
     response = client.get(url, follow=True)
     assert response.status_code == 200, name
+    content = response.content.decode('utf-8')
 
     # Be sure we got the whole scenario.  Again, we can't know what to expect
     # here, but at the very least, if there are verticals, they should not be
     # empty.  That would be a sign that some data wasn't loaded properly while
     # rendering the scenario.
-    html = lxml.html.fromstring(response.content)
+    html = lxml.html.fromstring(content)
     for vertical_tag in html.xpath('//div[@class="vertical"]'):
         # No vertical tag should be empty.
         assert list(vertical_tag), "Empty <vertical> shouldn't happen!"
