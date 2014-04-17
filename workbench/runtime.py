@@ -162,7 +162,11 @@ class ScenarioIdManager(IdReader, IdGenerator):
         """Sometimes you create a usage for testing and just want to grab it
         back. This gives an easy hook to do that.
         """
-        return self._usages.keys()[-1] if self._usages else None
+        if self._usages:
+            keys = list(self._usages.keys())
+            return keys[-1]
+        else:
+            return None
 
 
 class WorkbenchRuntime(Runtime):

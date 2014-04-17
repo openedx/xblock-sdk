@@ -1,4 +1,6 @@
 """Test that problems and problem submission works well."""
+from __future__ import print_function
+from six.moves import range
 import time
 
 from selenium.common.exceptions import StaleElementReferenceException
@@ -63,7 +65,7 @@ class ProblemInteractionTest(SeleniumTest):
                     else:
                         time.sleep(.25)
                 except StaleElementReferenceException as exc:
-                    print exc
+                    print(exc)
             self.assertIn(expected_icon, src)
 
         for i in range(self.num_problems):
