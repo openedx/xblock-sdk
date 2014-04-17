@@ -62,15 +62,18 @@ def test_multiple_views():
 
     # The default view is student_view
     response = client.get("/view/multiview/")
-    assert_in("This is student view!", response.content)
+    content = response.content.decode('utf-8')
+    assert_in("This is student view!", content)
 
     # We can ask for student_view directly
     response = client.get("/view/multiview/student_view/")
-    assert_in("This is student view!", response.content)
+    content = response.content.decode('utf-8')
+    assert_in("This is student view!", content)
 
     # We can also ask for another view.
     response = client.get("/view/multiview/another_view/")
-    assert_in("This is another view!", response.content)
+    content = response.content.decode('utf-8')
+    assert_in("This is another view!", content)
 
 
 class XBlockWithHandlerAndStudentState(XBlock):
@@ -98,19 +101,22 @@ def test_xblock_with_handler():
 
     # Initially, the data is the default.
     response = client.get("/view/testit/")
-    assert_true("The data: 'def'." in response.content)
-    parsed = response.content.split(':::')
+    content = response.content.decode('utf-8')
+    assert_in("The data: 'def'.", content)
+    parsed = content.split(':::')
     assert_equals(len(parsed), 3)
     handler_url = parsed[1]
 
     # Now change the data.
     response = client.post(handler_url, "{}", "text/json")
-    the_data = json.loads(response.content)['the_data']
+    content = response.content.decode('utf-8')
+    the_data = json.loads(content)['the_data']
     assert_equals(the_data, "defx")
 
     # Change it again.
     response = client.post(handler_url, "{}", "text/json")
-    the_data = json.loads(response.content)['the_data']
+    content = response.content.decode('utf-8')
+    the_data = json.loads(content)['the_data']
     assert_equals(the_data, "defxx")
 
 
@@ -216,7 +222,8 @@ def test_xblock_with_handlers():
 
     # The view sends a list of URLs to try.
     response = client.get("/view/with-handlers/")
-    parsed = response.content.split(':::')
+    content = response.content.decode('utf-8')
+    parsed = content.split(':::')
     assert_equals(len(parsed), 3)
     urls = json.loads(parsed[1])
 
@@ -238,7 +245,8 @@ def test_xblock_with_handlers():
         print(url)   # so we can see which one failed, if any.
         response = client.get(url)
         assert_equals(response.status_code, 200)
-        actual = json.loads(response.content)
+        content = response.content.decode('utf-8')
+        actual = json.loads(content)
         assert_equals(actual, expected)
 
 
@@ -248,7 +256,8 @@ def test_bad_handler_urls():
 
     response = client.get("/view/with-handlers/try_bad_handler_urls/")
     assert_equals(response.status_code, 200)
-    assert_in("Everything is Fine!", response.content)
+    content = response.content.decode('utf-8')
+    assert_in("Everything is Fine!", content)
 
 
 class XBlockWithoutStudentView(XBlock):
@@ -265,7 +274,8 @@ def test_xblock_no_student_view():
     # indicates there is no view available.
     client = Client()
     response = client.get("/view/xblockwithoutstudentview/")
-    assert_true('No such view' in response.content)
+    content = response.content.decode('utf-8')
+    assert_in('No such view', content)
 
 
 def test_local_resources():
