@@ -13,13 +13,13 @@
                 </header>
                 <section class="main">
                     {% for scname, desc in scenarios %}
-                        <p><a href="{% url workbench_show_scenario scname %}">{{desc}}</a></p>
+                        <p><a href="{% url 'workbench_show_scenario' scname %}">{{desc}}</a></p>
                     {% endfor %}
                 </section>
             </div>
         </div>
         <div>
-            <form method="POST" action="{% url workbench.views.reset_state %}">
+            <form method="POST" action="{% url 'workbench.views.reset_state' %}">
                 <input type="submit" value="Reset State"/>
             </form>
         </div>
