@@ -20,11 +20,6 @@ def make_request(body):
     return request
 
 
-def text_of_response(response):
-    """Return the text of response."""
-    return "".join(response.app_iter)
-
-
 def test_problem_submission():
     runtime = WorkbenchRuntime()
 
@@ -46,5 +41,5 @@ def test_problem_submission():
     problem = runtime.get_block(problem_usage_id)
     json_data = json.dumps({"vote_count": [{"name": "input", "value": "4"}]})
     resp = runtime.handle(problem, 'check', make_request(json_data))
-    resp_data = json.loads(text_of_response(resp))
+    resp_data = json.loads(resp.text)
     assert_equals(resp_data['checkResults']['votes_named'], True)
