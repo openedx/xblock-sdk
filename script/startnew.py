@@ -2,9 +2,8 @@
 """
 Use cookiecutter to create a new XBlock project.
 """
-
+from __future__ import print_function
 import os
-import textwrap
 
 from cookiecutter.main import cookiecutter
 
@@ -31,7 +30,7 @@ just delete the directory it created.
 
 
 def main():
-    print EXPLANATION
+    print(EXPLANATION)
 
     # Find the prototype.
     proto_dir = os.path.abspath(os.path.join(__file__, "../../prototype"))
