@@ -35,16 +35,19 @@ class ThumbsBlock(XBlock):
         """
 
         # Load the HTML fragment from within the package and fill in the template
-        html_str = pkg_resources.resource_string(__name__, "static/html/thumbs.html")
-        frag = Fragment(six.text_type(html_str).format(self=self))
+        html_bytes = pkg_resources.resource_string(__name__, "static/html/thumbs.html")
+        html_str = html_bytes.decode('utf-8')
+        frag = Fragment(html_str.format(self=self))
 
         # Load the CSS and JavaScript fragments from within the package
-        css_str = pkg_resources.resource_string(__name__, "static/css/thumbs.css")
-        frag.add_css(six.text_type(css_str))
+        css_bytes = pkg_resources.resource_string(__name__, "static/css/thumbs.css")
+        css_str = css_bytes.decode('utf-8')
+        frag.add_css(css_str)
 
-        js_str = pkg_resources.resource_string(__name__,
-                                               "static/js/src/thumbs.js")
-        frag.add_javascript(six.text_type(js_str))
+        js_bytes = pkg_resources.resource_string(__name__,
+                                                 "static/js/src/thumbs.js")
+        js_str = js_bytes.decode('utf-8')
+        frag.add_javascript(js_str)
 
         frag.initialize_js('ThumbsBlock')
         return frag
