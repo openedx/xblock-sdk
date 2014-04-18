@@ -82,8 +82,10 @@ class XBlockWithHandlerAndStudentState(XBlock):
 
     def student_view(self, context=None):  # pylint: disable=W0613
         """Provide the default view."""
-        body = u"The data: %r." % self.the_data
-        body += u":::%s:::" % self.runtime.handler_url(self, "update_the_data")
+        body = "The data: {data}.".format(data=self.the_data)
+        body += ":::{url}:::".format(
+            url=self.runtime.handler_url(self, "update_the_data")
+        )
         return Fragment(body)
 
     @XBlock.json_handler
@@ -102,7 +104,7 @@ def test_xblock_with_handler():
     # Initially, the data is the default.
     response = client.get("/view/testit/")
     content = response.content.decode('utf-8')
-    assert_in("The data: 'def'.", content)
+    assert_in("The data: def.", content)
     parsed = content.split(':::')
     assert_equals(len(parsed), 3)
     handler_url = parsed[1]
