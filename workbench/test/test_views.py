@@ -8,7 +8,7 @@ from webob import Response
 from django.test.client import Client
 from django.core.urlresolvers import reverse
 
-from xblock.test.tools import assert_equals, assert_in, assert_true
+from xblock.test.tools import assert_equals, assert_in
 from xblock.test.tools import assert_raises, assert_raises_regexp
 
 from xblock.core import XBlock, String, Scope
