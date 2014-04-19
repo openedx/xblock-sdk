@@ -31,7 +31,7 @@ setup(
     ],
     install_requires=[
         # 'XBlock',  # Can put this once XBlock is on PyPI
-        'Django >= 1.4, < 1.5',
+        'Django >= 1.4, < 1.7',
         'lxml',
         'requests',
         'webob',

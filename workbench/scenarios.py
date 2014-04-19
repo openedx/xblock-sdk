@@ -3,6 +3,7 @@
 This code is in the Workbench layer.
 
 """
+from __future__ import unicode_literals
 from collections import namedtuple
 
 from django.conf import settings

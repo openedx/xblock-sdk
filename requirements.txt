@@ -1,5 +1,5 @@
 # XBlock
--e git+https://github.com/edx/XBlock.git@3b6e4218bd326f84dbeb0baed7b2b7813ffea3dd#egg=XBlock
+-e git+https://github.com/singingwolfboy/XBlock.git@py3#egg=XBlock
 
 #acid xblock
 -e git+https://github.com/edx/acid-block.git@459aff7b63db8f2c5decd1755706c1a64fb4ebb1#egg=acid-xblock
@@ -8,3 +8,4 @@
 -e .
 
 cookiecutter
+six

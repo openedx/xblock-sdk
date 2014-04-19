@@ -3,10 +3,9 @@
 This code is in the Workbench layer.
 
 """
-
+from __future__ import unicode_literals
 import logging
 import mimetypes
-from StringIO import StringIO
 
 from django.http import HttpResponse, Http404
 from django.shortcuts import redirect, render_to_response

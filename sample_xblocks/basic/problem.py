@@ -29,7 +29,7 @@ A rough sequence diagram::
        |         |          |                |         |         |
 
 """
-
+from __future__ import unicode_literals
 import inspect
 import random
 import string  # pylint: disable=W0402

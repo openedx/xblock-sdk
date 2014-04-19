@@ -2,7 +2,7 @@
 
 WARNING: This is an experimental module, subject to future change or removal.
 """
-
+from __future__ import unicode_literals
 import json
 from webob import Response
 

@@ -1,5 +1,5 @@
 """Test Workbench Runtime"""
-
+from __future__ import unicode_literals
 from xblock.test.tools import assert_equals, assert_false, assert_is_none, assert_true
 
 from xblock.fields import Scope

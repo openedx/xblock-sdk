@@ -1,5 +1,5 @@
 """Utilities available to workbench applications."""
-
+from __future__ import unicode_literals
 
 def make_safe_for_html(html):
     """Turn the text `html` into a real HTML string."""
