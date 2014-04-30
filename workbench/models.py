@@ -79,7 +79,12 @@ class XBlockState(models.Model):
         scope_id = key.block_scope_id
 
         # Ask our ID Manager for how this scope_id maps to scenario and XML tag
-        scenario, tag, _ = scope_id.split(".", 2)
+        # The following line throws an error for fields with Scope.preferences
+        #scenario, tag, _ = scope_id.split(".", 2)
+        scope_id = split('.')
+        scenario = scope_id[0]
+        tag = scope_id[1] if len(scope_id) > 1 else None
+        
         record, _ = cls.objects.get_or_create(
             scope=block_scope_name,
             scope_id=key.block_scope_id,
