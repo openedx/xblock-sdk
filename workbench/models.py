@@ -78,8 +78,22 @@ class XBlockState(models.Model):
         block_scope_name = shorten_scope_name(block_scope_full_name)
         scope_id = key.block_scope_id
 
-        # Ask our ID Manager for how this scope_id maps to scenario and XML tag
-        scenario, tag, _ = scope_id.split(".", 2)
+        # A block_scope_name of "type" is special -- this means that it's a
+        # preferences scoped var that is global to the XBlock class (and not to
+        # any particular scenario, definition, or usage). As such, it doesn't
+        # abide by the {scenario}.{tag}.{def}.{usage} convention as our other
+        # keys do, and is always simply {tag}
+        #
+        # A block_scope_name of "all" means user_info -- data that is
+        # specific to a user, but crosses all scenarios and blocks (e.g.
+        # user timezone, language). In this case, we also set our scenario to
+        # be None.
+        if block_scope_name in ["type", "all"]:
+            scenario = None
+            tag = scope_id
+        else:
+            scenario, tag, _ = scope_id.split(".", 2)
+
         record, _ = cls.objects.get_or_create(
             scope=block_scope_name,
             scope_id=key.block_scope_id,

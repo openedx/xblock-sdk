@@ -50,6 +50,7 @@ setup(
         'xblock.v1': [
             # Basic XBlocks
             'helloworld_demo = sample_xblocks.basic.content:HelloWorldBlock',
+            'allscopes_demo = sample_xblocks.basic.content:AllScopesBlock',
             'html_demo = sample_xblocks.basic.content:HtmlBlock',
             'sequence_demo = sample_xblocks.basic.structure:Sequence',
             'vertical_demo = sample_xblocks.basic.structure:VerticalBlock',
