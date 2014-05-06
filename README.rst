@@ -11,7 +11,9 @@ This repository consists of three main components to assist in the creation of n
 Installation
 ------------
 
-This code runs on Python 2.7.
+This code runs on Python 2.7. If you prefer to use Python 3, there is `a fork
+of xblock-sdk that provides Python 3 support`_, but this fork is not yet
+supported by edX.
 
 1.  Get a local copy of this repo.
 
@@ -31,6 +33,8 @@ This code runs on Python 2.7.
         $ python manage.py runserver
 
 5.  Open a web browser to: http://127.0.0.1:8000
+
+.. _a fork of xblock-sdk that provides Python 3 support: https://github.com/singingwolfboy/xblock-sdk/tree/py3
 
 Testing
 --------
