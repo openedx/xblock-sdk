@@ -7,17 +7,11 @@ from collections import defaultdict, OrderedDict
 import itertools
 import logging
 
-try:
-    import simplejson as json
-except ImportError:
-    import json
-
 from django.core.urlresolvers import reverse
 from django.templatetags.static import static
 from django.template import loader as django_template_loader, \
     Context as DjangoContext
 
-from xblock.fields import Scope
 from xblock.runtime import (
     KvsFieldData, KeyValueStore, Runtime, NoSuchViewError, IdReader, IdGenerator
 )
@@ -53,38 +47,31 @@ class WorkbenchDjangoKeyValueStore(KeyValueStore):
         """Reset any state that's necessary before we load scenarios."""
         XBlockState.prep_for_scenario_loading()
 
-    @staticmethod
-    def _to_json_str(data):
-        return json.dumps(data, indent=2, sort_keys=True)
-
     # KeyValueStore methods.
     def get(self, key):
         """Get state for a given `KeyValueStore.Key`."""
         record = XBlockState.get_for_key(key)
-        return json.loads(record.state)[key.field_name]
+        if record is not None:
+            return record.get_value()
+        else:
+            return None
 
     def set(self, key, value):
         """Set state for a given `KeyValueStore.Key` to `value`."""
         record = XBlockState.get_for_key(key)
-        state_dict = json.loads(record.state)
-        state_dict[key.field_name] = value
-
-        record.state = self._to_json_str(state_dict)
-        record.save()
+        if record is None:
+            record = XBlockState.create_for_key(key)
+        record.set_value(value)
 
     def delete(self, key):
         """Delete state for a given `KeyValueStore.Key`."""
         record = XBlockState.get_for_key(key)
-        state_dict = json.loads(record.state)
-        del state_dict[key.field_name]
-        record.state = self._to_json_str(state_dict)
-        record.save()
+        if record is not None:
+            record.delete()
 
     def has(self, key):
         """Check if an entry exists for `KeyValueStore.Key`."""
-        record = XBlockState.get_for_key(key)
-        state_dict = json.loads(record.state)
-        return key.field_name in state_dict
+        return XBlockState.get_for_key(key) is not None
 
 
 class ScenarioIdManager(IdReader, IdGenerator):

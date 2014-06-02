@@ -7,6 +7,11 @@ mostly use Django because we already have it as a dependency and because Django
 Admin gives us a lot of basic search/filtering for free.
 
 """
+try:
+    import simplejson as json
+except ImportError:
+    import json
+
 from django.db import models
 from django.utils.timezone import now
 
@@ -65,12 +70,19 @@ class XBlockState(models.Model):
         null=True,
         db_index=True,
     )
+    field = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        db_index=True
+    )
+    value = models.TextField(default='')
     created = models.DateTimeField(default=now, db_index=True)
-    state = models.TextField(default="{}")
+    modified = models.DateTimeField(default=now, db_index=True)
 
     @classmethod
-    def get_for_key(cls, key):
-        """Get or create the model row for a given `KeyValueStore.Key` `key`."""
+    def _db_fields_for_key(cls, key):
+        """Return a dictionary with the database fields to search for the given `key`."""
         if key.scope in [Scope.parent, Scope.children]:
             block_scope_full_name = key.scope.attr_name
         else:
@@ -94,14 +106,31 @@ class XBlockState(models.Model):
         else:
             scenario, tag, _ = scope_id.split(".", 2)
 
-        record, _ = cls.objects.get_or_create(
-            scope=block_scope_name,
-            scope_id=key.block_scope_id,
-            user_id=key.user_id,
-            scenario=scenario,
-            tag=tag,
-        )
-        return record
+        return {
+            'scope': block_scope_name,
+            'scope_id': key.block_scope_id,
+            'user_id': key.user_id,
+            'scenario': scenario,
+            'tag': tag,
+            'field': key.field_name
+        }
+
+    @classmethod
+    def get_for_key(cls, key):
+        """Get the model row for a given `KeyValueStore.Key` `key`."""
+        db_fields = cls._db_fields_for_key(key)
+
+        # It's possible for multiple records to be created for the same
+        # key when running workbench under gunicorn and MySQL with repeatable-read.
+        # If this happens, we return the most recently modified record.
+        records = cls.objects.filter(**db_fields)[:1]
+        return None if len(records) == 0 else records[0]
+
+    @classmethod
+    def create_for_key(cls, key):
+        """Create a row for the given `KeyValueStore.Key` `key`."""
+        db_fields = cls._db_fields_for_key(key)
+        return cls.objects.create(**db_fields)
 
     @classmethod
     def prep_for_scenario_loading(cls):
@@ -116,7 +145,17 @@ class XBlockState(models.Model):
         """
         cls.objects.filter(scope="children").delete()
 
+    def get_value(self):
+        """Return the deserialized value of this key."""
+        return json.loads(self.value)
+
+    def set_value(self, value):
+        """Serialize the `value` (must be JSON-serializable) and save it."""
+        self.value = json.dumps(value, indent=2, sort_keys=True)
+        self.modified = now()
+        self.save()
+
     class Meta:  # pylint:disable=C0111
         verbose_name = "XBlock State"
         verbose_name_plural = "XBlock State"
-        ordering = ['scope_id', 'scope', 'user_id']
+        ordering = ['scope_id', 'scope', 'user_id', '-modified']
