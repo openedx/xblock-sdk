@@ -14,9 +14,9 @@ class XBlockStateAdmin(admin.ModelAdmin):
     categories. Since things like `tag` and `scenario` are set on write, weird
     things could happen if you muck with them later on.
     """
-    list_display = ['scope_id', 'scope', 'user_id', 'state']
+    list_display = ['scope_id', 'scope', 'user_id', 'field', 'value']
     list_filter = ['scope', 'user_id', 'scenario', 'tag']
-    search_fields = ['user_id', 'scope_id', 'state']
+    search_fields = ['user_id', 'scope_id', 'field']
     readonly_fields = [
         'scope', 'scope_id', 'scenario', 'tag', 'user_id', 'created'
     ]
