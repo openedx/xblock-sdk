@@ -7,7 +7,7 @@ mostly use Django because we already have it as a dependency and because Django
 Admin gives us a lot of basic search/filtering for free.
 
 """
-from django.db import models
+from django.db import models, transaction, IntegrityError
 from django.utils.timezone import now
 
 from xblock.fields import BlockScope, Scope
@@ -69,6 +69,7 @@ class XBlockState(models.Model):
     state = models.TextField(default="{}")
 
     @classmethod
+    @transaction.commit_on_success
     def get_for_key(cls, key):
         """Get or create the model row for a given `KeyValueStore.Key` `key`."""
         if key.scope in [Scope.parent, Scope.children]:
@@ -94,13 +95,30 @@ class XBlockState(models.Model):
         else:
             scenario, tag, _ = scope_id.split(".", 2)
 
-        record, _ = cls.objects.get_or_create(
-            scope=block_scope_name,
-            scope_id=key.block_scope_id,
-            user_id=key.user_id,
-            scenario=scenario,
-            tag=tag,
-        )
+        try:
+            record, _ = cls.objects.get_or_create(
+                scope=block_scope_name,
+                scope_id=key.block_scope_id,
+                user_id=key.user_id,
+                scenario=scenario,
+                tag=tag,
+            )
+        # It's possible for `get_or_create` to raise an
+        # integrity error when two processes are simultaneously
+        # trying to update the same record.
+        # If we're running MySQL with the isolation level set
+        # to repeatable read, we'll continue to see the old
+        # state of the database (no record) until we manually
+        # commit the transaction.
+        except IntegrityError:
+            transaction.commit()
+            record = cls.objects.get(
+                scope=block_scope_name,
+                scope_id=key.block_scope_id,
+                user_id=key.user_id,
+                scenario=scenario,
+                tag=tag,
+            )
         return record
 
     @classmethod
@@ -120,3 +138,4 @@ class XBlockState(models.Model):
         verbose_name = "XBlock State"
         verbose_name_plural = "XBlock State"
         ordering = ['scope_id', 'scope', 'user_id']
+        unique_together = ['scope_id', 'scope', 'user_id', 'scenario', 'tag']
