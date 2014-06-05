@@ -4,12 +4,18 @@ import os
 from setuptools import setup
 
 
-def package_data(pkg, root):
-    """Generic function to find package_data for `pkg` under `root`."""
+def package_data(pkg, roots):
+    """Generic function to find package_data.
+
+    All of the files under each of the `roots` will be declared as package
+    data for package `pkg`.
+
+    """
     data = []
-    for dirname, _, files in os.walk(os.path.join(pkg, root)):
-        for fname in files:
-            data.append(os.path.relpath(os.path.join(dirname, fname), pkg))
+    for root in roots:
+        for dirname, _, files in os.walk(os.path.join(pkg, root)):
+            for fname in files:
+                data.append(os.path.relpath(os.path.join(dirname, fname), pkg))
 
     return {pkg: data}
 
@@ -29,5 +35,5 @@ setup(
             '{{cookiecutter.short_name|lower}} = {{cookiecutter.short_name|lower}}:{{cookiecutter.class_name}}',
         ]
     },
-    package_data=package_data("{{cookiecutter.short_name|lower}}", "static"),
+    package_data=package_data("{{cookiecutter.short_name|lower}}", ["static", "public"]),
 )
