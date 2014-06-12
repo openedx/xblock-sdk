@@ -1,5 +1,5 @@
-XBlock SDK
-==========
+XBlock SDK |build-status| |coverage-status|
+===========================================
 
 This repository consists of three main components to assist in the creation of new XBlocks:
 
@@ -149,3 +149,8 @@ You can discuss this code on the `edx-code Google Group`__ or in the
 ``#edx-code`` IRC channel on Freenode.
 
 __ https://groups.google.com/group/edx-code
+
+.. |build-status| image:: https://travis-ci.org/edx/xblock-sdk.svg?branch=master
+   :target: https://travis-ci.org/edx/xblock-sdk
+.. |coverage-status| image:: https://coveralls.io/repos/edx/xblock-sdk/badge.png
+   :target: https://coveralls.io/r/edx/xblock-sdk
