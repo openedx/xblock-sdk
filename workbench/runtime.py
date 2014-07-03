@@ -209,11 +209,23 @@ class WorkbenchRuntime(Runtime):
         if block.name:
             data['name'] = block.name
 
-        html = u"<div class='xblock'%s>%s</div>" % (
-            "".join(" data-%s='%s'" % item for item in data.items()),
-            frag.body_html(),
-        )
+        json_init = ""
+        # TODO/Note: We eventually want to remove: hasattr(frag, 'json_init_args')
+        # However, I'd like to maintain backwards-compatibility with older XBlock 
+        # for at least a little while so as not to adversely effect developers. 
+        # pmitros/Jun 28, 2014. 
+        if hasattr(frag, 'json_init_args') and frag.json_init_args is not None: 
+            json_init = u'<script type="json/xblock-args" class="xblock_json_init_args">' + \
+                u'{data}</script>'.format(data=json.dumps(frag.json_init_args))
+
+        html = u"<div class='xblock'{properties}>{body}{js}</div>".format(
+            properties="".join(" data-%s='%s'" % item for item in data.items() ),
+            body=frag.body_html(),
+            js=json_init
+            )
+
         wrapped.add_content(html)
+        
         wrapped.add_frag_resources(frag)
         return wrapped
 

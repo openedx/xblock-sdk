@@ -58,7 +58,14 @@ var XBlock = (function () {
 
         var runtime = RuntimeProvider.getRuntime(version);
         var initFn = window[$(element).data('init')];
-        var jsBlock = initFn(runtime, element) || {};
+        var jsBlock;
+        if(initFn.length == 2) {
+            jsBlock = initFn(runtime, element) || {};
+        } else if (initFn.length == 3) {
+            data = JSON.parse($(".xblock_json_init_args", element).text());
+            jsBlock = initFn(runtime, element, data) || {};
+        }
+            
         jsBlock.element = element;
         jsBlock.name = $(element).data('name');
         return jsBlock;
