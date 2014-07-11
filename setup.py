@@ -17,6 +17,7 @@ def find_package_data(pkg, data_paths):
 package_data = {}
 package_data.update(find_package_data("sample_xblocks.basic", ["public", "templates"]))
 package_data.update(find_package_data("sample_xblocks.thumbs", ["static"]))
+package_data.update(find_package_data("sample_xblocks.filethumbs", ["static"]))
 package_data.update(find_package_data("workbench", ["static", "templates"]))
 
 setup(
@@ -27,6 +28,7 @@ setup(
         'sample_xblocks',
         'sample_xblocks.basic',
         'sample_xblocks.thumbs',
+        'sample_xblocks.filethumbs',
         'workbench',
     ],
     install_requires=[
@@ -64,6 +66,7 @@ setup(
 
             # Thumbs example
             'thumbs = sample_xblocks.thumbs:ThumbsBlock',
+            'filethumbs = sample_xblocks.filethumbs:FileThumbsBlock',
 
             # Workbench specific
             'debugchild = workbench.blocks:DebuggingChildBlock',
