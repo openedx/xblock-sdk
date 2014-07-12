@@ -14,6 +14,39 @@ def find_package_data(pkg, data_paths):
                 data.append(os.path.relpath(os.path.join(dirname, fname), package_dir))
     return {pkg: data}
 
+
+def is_requirement(line):
+    """
+    Return True if the requirement line is a package requirement;
+    that is, it is not blank, a comment, or editable.
+    """
+    # Remove whitespace at the start/end of the line
+    line = line.strip()
+
+    # Skip blank lines, comments, and editable installs
+    return not (
+        line == '' or
+        line.startswith('-r') or
+        line.startswith('#') or
+        line.startswith('-e') or
+        line.startswith('git+')
+    )
+
+
+def load_requirements(*requirements_paths):
+    """
+    Load all requirements from the specified requirements files.
+    Returns a list of requirement strings.
+    """
+    requirements = set()
+    for path in requirements_paths:
+        requirements.update(
+            line.strip() for line in open(path).readlines()
+            if is_requirement(line)
+        )
+    return list(requirements)
+
+
 package_data = {}
 package_data.update(find_package_data("sample_xblocks.basic", ["public", "templates"]))
 package_data.update(find_package_data("sample_xblocks.thumbs", ["static"]))
@@ -29,23 +62,8 @@ setup(
         'sample_xblocks.thumbs',
         'workbench',
     ],
-    install_requires=[
-        # 'XBlock',  # Can put this once XBlock is on PyPI
-        'Django >= 1.4, < 1.5',
-        'lxml',
-        'requests',
-        'webob',
-        'simplejson',
-        'lazy',
-        'django_nose',
-        'mock',
-        'coverage',
-        'pylint == 0.28',
-        'selenium',
-        'rednose',
-        'pep8',
-        'diff-cover >= 0.2.1',
-    ],
+    install_requires=load_requirements('requirements.txt'),
+    tests_require=load_requirements('test-requirements.txt'),
     entry_points={
         'xblock.v1': [
             # Basic XBlocks

@@ -22,7 +22,7 @@ supported by edX.
 3.  Install the requirements and register the XBlock entry points with (you may
     need to sudo this if you don't use virtualenv):
 
-        $ pip install -r requirements.txt
+        $ make install
 
 4. Create and sync the sqllite DB
 
@@ -39,9 +39,9 @@ supported by edX.
 Testing
 --------
 
-To run the test suite:
+To install all requirements and run the test suite:
 
-    $ python manage.py test
+    $ make
 
 This will run:
 

@@ -1,0 +1,8 @@
+coverage
+diff-cover >= 0.2.1
+django_nose
+mock
+pylint==0.28
+pep8
+rednose
+selenium
