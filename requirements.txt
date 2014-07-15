@@ -9,3 +9,4 @@
 
 cookiecutter==0.7.1
 fs
+pypng
