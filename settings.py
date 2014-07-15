@@ -129,7 +129,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'fs',
+    'modulefs',
     'workbench',
     'django_nose',
 
