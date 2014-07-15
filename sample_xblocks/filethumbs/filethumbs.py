@@ -41,7 +41,7 @@ class FileThumbsBlock(XBlock):
     upvotes = 0 
     downvotes = 0 
     voted = Boolean(help="Has this student voted?", default=False, scope=Scope.user_state)
-    fs = Filesystem(help="File system", scope=Scope.user_state)
+    fs = Filesystem(help="File system", scope=Scope.user_state_summary)
 
     def student_view(self, context=None):  # pylint: disable=W0613
         """
@@ -56,12 +56,12 @@ class FileThumbsBlock(XBlock):
         html_str = pkg_resources.resource_string(__name__, "static/html/thumbs.html")
         frag = Fragment(unicode(html_str))
 
-        if not self.fs.exists("votes.json"):
-            f = self.fs.open("votes.json", "wb")
+        if not self.fs.exists("thumbsvotes.json"):
+            f = self.fs.open("thumbsvotes.json", "wb")
             json.dump({'up':0, 'down':0}, f)
             f.close()
 
-        votes = json.load(self.fs.open("votes.json"))
+        votes = json.load(self.fs.open("thumbsvotes.json"))
         self.upvotes = votes['up']
         self.downvotes = votes['down']
             
@@ -101,7 +101,7 @@ class FileThumbsBlock(XBlock):
         #         log.error("cheater!")
         #         return
 
-        votes = json.load(self.fs.open("votes.json"))
+        votes = json.load(self.fs.open("thumbsvotes.json"))
         self.upvotes = votes['up']
         self.downvotes = votes['down']
 
@@ -114,7 +114,7 @@ class FileThumbsBlock(XBlock):
         else:
             self.downvotes += 1
 
-        f = self.fs.open("votes.json", "wb")
+        f = self.fs.open("thumbsvotes.json", "wb")
         json.dump({'up':self.upvotes, 'down':self.downvotes}, f)
         f.close()
 
