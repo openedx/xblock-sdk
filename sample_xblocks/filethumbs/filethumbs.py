@@ -1,4 +1,9 @@
-"""An XBlock providing thumbs-up/thumbs-down voting."""
+"""An XBlock providing thumbs-up/thumbs-down voting.
+
+This is a completely artifical test case for the filesystem field type. 
+
+Votes are stored in a JSON object in the file system, and up/down arrow PNGs are constructed as files on-the-fly. 
+"""
 
 import json
 import png
