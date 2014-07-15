@@ -20,15 +20,23 @@ from django.conf import settings
 
 from models import FSExpirations
 
-if settings.DJFS['type'] == 'osfs':
+
+if hasattr(settings, 'DJFS'):
+    djfs_settings = settings.DJFS
+else:
+    djfs_settings = {'type' : 'osfs',
+                     'directory_root' : 'modulefs/static/modulefs', 
+                     'url_root' : '/static/modulefs'}
+
+if djfs_settings['type'] == 'osfs':
     from fs.osfs import OSFS
-elif settings.DJFS['type'] == 's3fs':
+elif djfs_settings['type'] == 's3fs':
     from fs.s3fs import S3FS
     from boto.s3.connection import S3Connection
     from boto.s3.key import Key
     s3conn = S3Connection()
 else: 
-    raise AttributeError("Bad filesystem: "+str(settings.DJFS['type']))
+    raise AttributeError("Bad filesystem: "+str(djfs_settings['type']))
 
 def get_filesystem(namespace):
     ''' Returns a pyfilesystem for static module storage. 
@@ -37,12 +45,12 @@ def get_filesystem(namespace):
     1) get_url: A way to get a URL for a static file download
     2) expire: A way to expire files (so they are automatically destroyed)
     '''
-    if settings.DJFS['type'] == 'osfs':
+    if djfs_settings['type'] == 'osfs':
         return get_osfs( namespace )
-    elif settings.DJFS['type'] == 's3fs':
+    elif djfs_settings['type'] == 's3fs':
         return get_s3fs( namespace )
     else:
-        raise AttributeError("Bad filesystem: "+str(settings.DJFS['type']))
+        raise AttributeError("Bad filesystem: "+str(djfs_settings['type']))
 
 def expire_objects():
     ''' Remove all obsolete objects from the file systems. Untested. '''
@@ -84,27 +92,27 @@ def patch_fs(fs, namespace, url_method):
 
 def get_osfs(namespace):
     ''' Helper method to get_filesystem for a file system on disk '''
-    full_path = os.path.join(settings.DJFS['directory_root'], namespace)
+    full_path = os.path.join(djfs_settings['directory_root'], namespace)
     if not os.path.exists(full_path):
         os.makedirs(full_path)
     osfs = OSFS(full_path)
-    osfs = patch_fs(osfs, namespace, lambda self, filename, timeout=0:os.path.join(settings.DJFS['url_root'], namespace, filename))
+    osfs = patch_fs(osfs, namespace, lambda self, filename, timeout=0:os.path.join(djfs_settings['url_root'], namespace, filename))
     return osfs
 
 def get_s3fs(namespace):
     ''' Helper method to get_filesystem for a file system on S3 '''
     fullpath = namespace
-    if 'prefix' in settings.DJFS: 
-        fullpath = os.path.join(settings.DJFS['prefix'], fullpath)
-    s3fs = S3FS(settings.DJFS['bucket'], fullpath)
+    if 'prefix' in djfs_settings: 
+        fullpath = os.path.join(djfs_settings['prefix'], fullpath)
+    s3fs = S3FS(djfs_settings['bucket'], fullpath)
 
     def get_s3_url(self, filename, timeout=60):
         global s3conn
         try: 
-            return s3conn.generate_s3_url(timeout, 'GET', bucket = settings.DJFS['bucket'], key = filename)
+            return s3conn.generate_s3_url(timeout, 'GET', bucket = djfs_settings['bucket'], key = filename)
         except: # If connection has timed out
             s3conn = S3Connection()
-            return s3conn.generate_s3_url(timeout, 'GET', bucket = settings.DJFS['bucket'], key = filename)
+            return s3conn.generate_s3_url(timeout, 'GET', bucket = djfs_settings['bucket'], key = filename)
 
     s3fs = patch_fs(s3fs, namespace, get_s3_url)
     return s3fs

@@ -6,6 +6,7 @@ Code in this file is a mix of Runtime layer and Workbench layer.
 from collections import defaultdict, OrderedDict
 import itertools
 import logging
+import urllib
 
 try:
     import simplejson as json
@@ -17,12 +18,14 @@ from django.templatetags.static import static
 from django.template import loader as django_template_loader, \
     Context as DjangoContext
 
-from xblock.fields import Scope
+from xblock.fields import Scope, UserScope, BlockScope
 from xblock.runtime import (
     KvsFieldData, KeyValueStore, Runtime, NoSuchViewError, IdReader, IdGenerator
 )
 from xblock.exceptions import NoSuchDefinition, NoSuchUsage
 from xblock.fragment import Fragment
+
+import modulefs.modulefs
 
 from .models import XBlockState
 from .util import make_safe_for_html
@@ -165,13 +168,42 @@ class ScenarioIdManager(IdReader, IdGenerator):
         return self._usages.keys()[-1] if self._usages else None
 
 
+def scope_key(instance, xblock):
+    dict = {}
+    if instance.scope.user == UserScope.NONE or instance.scope.user == UserScope.ALL:
+        pass
+    elif instance.scope.user == UserScope.ONE:
+        dict['user'] = xblock.scope_ids.user_id
+    else:
+        raise NotImplementedError()
+
+    if instance.scope.block == BlockScope.TYPE:
+        dict['block'] = xblock.scope_ids.usage_id 
+    elif instance.scope.block == BlockScope.USAGE:
+        dict['block'] = xblock.scope_ids.def_id # Seems to be the same as usage? 
+    elif instance.scope.block == BlockScope.DEFINITION:
+        dict['block'] = xblock.scope_ids.def_id
+    elif instance.scope.block == BlockScope.ALL:
+        pass
+    else: 
+        raise NotImplementedError()
+
+    basekey = json.dumps(dict, sort_keys = True, separators=(',',':'))
+    def encode(s):
+        if s.isalnum():
+            return s
+        else:
+            return "_"+str(ord(s))+"_"
+    encodedkey = "".join(encode(a) for a in basekey)
+
+    return encodedkey
+
 class FSService(object):
     def load(self, instance, xblock):
-        print instance
-        print xblock
-        import fs.osfs
-        return fs.osfs('/tmp')
-        return "Failed"
+        return modulefs.modulefs.get_filesystem(scope_key(instance, xblock))
+
+    def __repr__(self):
+        return "File system object"
 
 
 class WorkbenchRuntime(Runtime):

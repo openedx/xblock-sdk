@@ -46,7 +46,9 @@ class FileThumbsBlock(XBlock):
                                                "static/js/src/thumbs.js")
         frag.add_javascript(unicode(js_str))
 
-        self.fs.open("hello.txt")
+        f = self.fs.open("hello.txt", "w")
+        f.write(u"Hello")
+        f.close()
 
         frag.initialize_js('FileThumbsBlock')
         return frag
