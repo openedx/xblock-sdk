@@ -38,8 +38,8 @@ class FileThumbsBlock(XBlock):
 
     """
 
-    upvotes = 0 #Integer(help="Number of up votes", default=0, scope=Scope.user_state_summary)
-    downvotes = 0 # Integer(help="Number of down votes", default=0, scope=Scope.user_state_summary)
+    upvotes = 0 
+    downvotes = 0 
     voted = Boolean(help="Has this student voted?", default=False, scope=Scope.user_state)
     fs = Filesystem(help="File system", scope=Scope.user_state)
 
@@ -54,7 +54,7 @@ class FileThumbsBlock(XBlock):
 
         # Load the HTML fragment from within the package and fill in the template
         html_str = pkg_resources.resource_string(__name__, "static/html/thumbs.html")
-        frag = Fragment(unicode(html_str).format(self=self))
+        frag = Fragment(unicode(html_str))
 
         if not self.fs.exists("votes.json"):
             f = self.fs.open("votes.json", "wb")
