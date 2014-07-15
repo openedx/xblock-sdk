@@ -165,6 +165,15 @@ class ScenarioIdManager(IdReader, IdGenerator):
         return self._usages.keys()[-1] if self._usages else None
 
 
+class FSService(object):
+    def load(self, instance, xblock):
+        print instance
+        print xblock
+        import fs.osfs
+        return fs.osfs('/tmp')
+        return "Failed"
+
+
 class WorkbenchRuntime(Runtime):
     """
     Access to the workbench runtime environment for XBlocks.
@@ -175,7 +184,8 @@ class WorkbenchRuntime(Runtime):
     """
 
     def __init__(self, user_id=None):
-        super(WorkbenchRuntime, self).__init__(ID_MANAGER, KvsFieldData(WORKBENCH_KVS))
+        super(WorkbenchRuntime, self).__init__(ID_MANAGER, KvsFieldData(WORKBENCH_KVS), 
+                                               services={'fs':FSService()})
         self.id_generator = ID_MANAGER
         self.user_id = user_id
 

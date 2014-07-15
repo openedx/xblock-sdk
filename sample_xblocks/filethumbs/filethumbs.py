@@ -8,7 +8,7 @@ import pkg_resources
 import logging
 log = logging.getLogger(__name__)
 
-
+@XBlock.needs('fs')
 class FileThumbsBlock(XBlock):
     """
     An XBlock with thumbs-up/thumbs-down voting.
