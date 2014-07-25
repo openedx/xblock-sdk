@@ -24,6 +24,8 @@ from xblock.runtime import (
 from xblock.exceptions import NoSuchDefinition, NoSuchUsage
 from xblock.fragment import Fragment
 
+import xblock.reference.plugins
+
 from .models import XBlockState
 from .util import make_safe_for_html
 
@@ -175,7 +177,8 @@ class WorkbenchRuntime(Runtime):
     """
 
     def __init__(self, user_id=None):
-        super(WorkbenchRuntime, self).__init__(ID_MANAGER, KvsFieldData(WORKBENCH_KVS))
+        super(WorkbenchRuntime, self).__init__(ID_MANAGER, KvsFieldData(WORKBENCH_KVS), 
+                                               services={'fs':xblock.reference.plugins.FSService()}) # TODO: Add params for user, runtime, etc. 
         self.id_generator = ID_MANAGER
         self.user_id = user_id
 

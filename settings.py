@@ -7,6 +7,10 @@ BASE_DIR = os.path.dirname(__file__)
 SRC_DIR = BASE_DIR
 sys.path.append(SRC_DIR)
 
+DJFS = {'type' : 'osfs',
+        'directory_root' : 'workbench/static/djpyfs', 
+        'url_root' : '/static/djpyfs'}
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -129,6 +133,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djpyfs',
     'workbench',
     'django_nose',
 

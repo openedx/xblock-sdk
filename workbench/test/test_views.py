@@ -12,6 +12,7 @@ from xblock.test.tools import assert_equals, assert_in, assert_true
 from xblock.test.tools import assert_raises, assert_raises_regexp
 
 from xblock.core import XBlock, String, Scope
+from xblock.exceptions import DisallowedFileError
 from xblock.fragment import Fragment
 from xblock.runtime import NoSuchHandlerError
 
@@ -277,5 +278,12 @@ def test_local_resources():
     assert_equals(result['Content-Type'], 'image/png')
 
     # The Equality block defends against malicious resource URIs
-    result = client.get('/resource/equality_demo/core.py')
-    assert_equals(result.status_code, 404)
+    try:
+        result = client.get('/resource/equality_demo/core.py')
+        assert_equals(result.status_code, 404)
+    except DisallowedFileError:
+        # Test passes. A suspicious exception should also be a proper block.
+        # In XBlock master, this codepath does not happen right now, since there's
+        # a global except Exception/raise 404. This is almost always disabled
+        # on dev environments, and this allows tests to work then too.
+        pass
