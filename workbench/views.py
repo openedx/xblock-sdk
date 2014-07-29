@@ -4,6 +4,7 @@ This code is in the Workbench layer.
 
 """
 
+import json
 import logging
 import mimetypes
 from StringIO import StringIO
@@ -16,6 +17,7 @@ from xblock.core import XBlock
 from xblock.django.request import webob_to_django_response, django_to_webob_request
 from xblock.exceptions import NoSuchUsage
 
+from .models import XBlockState
 from .runtime import WorkbenchRuntime, reset_global_state
 from .scenarios import SCENARIOS
 
@@ -71,6 +73,16 @@ def show_scenario(request, scenario_id, view_name='student_view', template='work
         'foot_html': frag.foot_html(),
         'student_id': student_id,
     })
+
+
+def user_list(request):
+    """
+    This will return a list of all users in the database
+    """
+    # We'd really like to do .distinct, but sqlite does not support this; 
+    # hence the hack with sorted(set(...))
+    user_list = sorted(x[0] for x in set(XBlockState.objects.values_list('user_id')))
+    return HttpResponse(json.dumps(user_list, indent=2), content_type="application/json")
 
 
 def handler(request, usage_id, handler_slug, suffix='', authenticated=True):
