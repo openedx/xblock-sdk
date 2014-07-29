@@ -68,6 +68,14 @@ class XBlockState(models.Model):
     created = models.DateTimeField(default=now, db_index=True)
     state = models.TextField(default="{}")
 
+    def __repr__(self):
+        return u"<XBlockState id={self.id} " \
+            "scope={self.scope} " \
+            "scope_id={self.scope_id} " \
+            "user_id={self.user_id} " \
+            "scenario={self.scenario} " \
+            "tag={self.tag}>".format(self=self)
+
     @classmethod
     def get_for_key(cls, key):
         """Get or create the model row for a given `KeyValueStore.Key` `key`."""
