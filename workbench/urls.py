@@ -18,13 +18,28 @@ urlpatterns = patterns(
         'show_scenario',
         name='scenario'
     ),
+    url(
+        r'^justscenario/(?P<scenario_id>[^/]+)/(?P<view_name>[^/]+)/$',
+        'show_just_scenario',
+        name='justscenario'
+    ),
     url(r'^userlist/$', 
         'user_list',
         name='userlist'),
     url(
+        r'^scenario_list/$',
+        'scenario_list',
+        name='scenario_list'
+    ),
+    url(
         r'^scenario/(?P<scenario_id>[^/]+)/$',
         'show_scenario',
         name='workbench_show_scenario'
+    ),
+    url(
+        r'^justscenario/(?P<scenario_id>[^/]+)/$',
+        'show_just_scenario',
+        name='workbench_show_just_scenario'
     ),
     url(
         r'^view/(?P<scenario_id>[^/]+)/(?P<view_name>[^/]+)/$',

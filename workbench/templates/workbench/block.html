@@ -30,8 +30,7 @@
                     <div class="data">
                         <span class="label">Database</span>
                         <div align="left" style="float:left">
-                            <a href="{% url admin:workbench_xblockstate_changelist %}?scenario={{scenario.description|slugify}}"
-                            >Scenario State</a>
+                            <a href="{% url admin:workbench_xblockstate_changelist %}?scenario={{scenario.description|slugify}}">Scenario State</a>
                         </div>
                         <div align="right">
                             <form method="POST" action="{% url workbench.views.reset_state %}">
