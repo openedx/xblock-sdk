@@ -74,6 +74,7 @@ def show_scenario(request, scenario_id, view_name='student_view', template='work
     log.info("End show_scenario %s", scenario_id)
     return render_to_response(template, {
         'scenario': scenario,
+        'scenario_id': scenario_id,
         'block': block,
         'body': frag.body_html(),
         'head_html': frag.head_html(),

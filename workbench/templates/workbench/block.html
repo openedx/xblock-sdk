@@ -2,8 +2,8 @@
 {% load staticfiles %}
 <html>
     <head>
-        <link rel="stylesheet" type="text/css"
-              href="{% static 'workbench/css/workbench.css' %}">
+        <!--link rel="stylesheet" type="text/css"
+              href="{% static 'workbench/css/workbench.css' %}"-->
         <script>
             // TODO: This should be handled more modularly.
             studentId = '{{student_id}}';
@@ -18,12 +18,18 @@
                     <h1 class="title" >XBlock: {{scenario.description}}</h1>
                 </header>
 
-                <section class="main">
-                    <div class="preview student_view">
-                        {{body|safe}}
-                    </div>
+		<div>
+		<select id="scenario_list" name="scenarios">
+		</select>
 
-                    {{foot_html|safe}}
+		<select id="user_list" name="users">
+		</select>
+		</div>
+
+                <section class="main">
+		  <!-- We could also load this as a div --> 
+		  <iframe src="/justscenario/{{scenario_id}}/" sandbox="allow-same-origin allow-top-navigation allow-forms allow-scripts" frameborder="0" seamless id="xblock_iframe" height="720" width="100%" onLoad="calcHeight();">
+		  </iframe>
                 </section>
 
                 <section class="debug">
@@ -50,4 +56,38 @@
             </div>
         </div>
     </body>
+    <script src='/static/workbench/js/vendor/jquery.min.js' type='application/javascript'></script>
+<script src='/static/workbench/js/vendor/jquery.cookie.js' type='application/javascript'></script>
+<script>
+function calcHeight() {
+   // This works under Firefox, but not Chrome. 
+   document.getElementById('xblock_iframe').height = document.getElementById('xblock_iframe').contentWindow.document.body.scrollHeight;
+}
+$(function() {
+     $.ajax({url:"/userlist/"
+            }).done(function(result) {
+	      //result=JSON.parse(result);
+              console.log(result);
+              var options = $("#user_list");
+              for(i=0; i<result.length; i++) {
+                if(result[i]) {
+                  console.log(result[i]);
+                  options.append($("<option/>").val(result[i]).text(result[i]));
+                }
+              }
+            });
+     $.ajax({url:"/scenario_list/"
+            }).done(function(result) {
+	      result=JSON.parse(result);
+              console.log(result);
+              var options = $("#scenario_list");
+              for(i=0; i<result.length; i++) {
+                if(result[i]) {
+                  console.log(result[i]);
+                  options.append($("<option/>").val(result[i][1]).text(result[i][0]));
+                }
+              }
+            });
+});
+</script>
 </html>
