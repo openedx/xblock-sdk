@@ -15,7 +15,7 @@
         <div class="wrapper-workbench">
             <div class="workbench">
                 <header class="banner" role="banner">
-                    <h1 class="title" >XBlock: {{scenario.description}}</h1>
+                    <h1 class="title" >XBlock Workbench</h1>
                 </header>
 
 		<div>
@@ -25,6 +25,9 @@
 		<select id="user_list" name="users">
 		</select>
 		</div>
+
+		<!--select id="resolutions" name="resolutions">
+		</select-->
 
                 <section class="main">
 		  <!-- We could also load this as a div --> 
@@ -63,6 +66,13 @@ function calcHeight() {
    // This works under Firefox, but not Chrome. 
    document.getElementById('xblock_iframe').height = document.getElementById('xblock_iframe').contentWindow.document.body.scrollHeight;
 }
+
+function refresh_iframe() {
+  var scenario = $("#scenario_list").val();
+  var user = $("#user_list").val();
+  $("#xblock_iframe").attr("src", "/justscenario/"+scenario+"/"+"?student_id="+user);
+}
+
 $(function() {
      $.ajax({url:"/userlist/"
             }).done(function(result) {
@@ -87,7 +97,10 @@ $(function() {
                   options.append($("<option/>").val(result[i][1]).text(result[i][0]));
                 }
               }
+              refresh_iframe();
             });
+    $("#scenario_list").change(refresh_iframe);
+    $("#user_list").change(refresh_iframe);
 });
 </script>
 </html>

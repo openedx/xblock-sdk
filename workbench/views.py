@@ -117,7 +117,9 @@ def user_list(request):
     """
     # We'd really like to do .distinct, but sqlite does not support this; 
     # hence the hack with sorted(set(...))
-    user_list = sorted(x[0] for x in set(XBlockState.objects.values_list('user_id')))
+    user_list = [x[0] for x in set(XBlockState.objects.values_list('user_id')) if x[0]]
+    user_list = user_list + ['student_1', 'student_2', 'student_3']
+    user_list = sorted(set(user_list))
     return HttpResponse(json.dumps(user_list, indent=2), content_type="application/json")
 
 
