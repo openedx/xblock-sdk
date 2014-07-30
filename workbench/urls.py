@@ -22,6 +22,11 @@ urlpatterns = patterns(
         'user_list',
         name='userlist'),
     url(
+        r'^scenario_list/$',
+        'scenario_list',
+        name='scenario_list'
+    ),
+    url(
         r'^scenario/(?P<scenario_id>[^/]+)/$',
         'show_scenario',
         name='workbench_show_scenario'

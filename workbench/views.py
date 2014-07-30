@@ -43,6 +43,13 @@ def index(_request):
     })
 
 
+def scenario_list(_request):
+    """ Return a JSON list containing all available scenarios """
+    the_scenarios = [(scenario.description, desc) for desc, scenario in SCENARIOS.items()]
+    import json  # I'll cut this once other PR is merged
+    return HttpResponse(json.dumps(sorted(the_scenarios), indent=2, sort_keys=True))
+
+
 @ensure_csrf_cookie
 def show_scenario(request, scenario_id, view_name='student_view', template='workbench/block.html'):
     """
