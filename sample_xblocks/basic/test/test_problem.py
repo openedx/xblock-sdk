@@ -46,9 +46,6 @@ def test_problem_submission():
     resp = runtime.handle(problem, 'check', make_request(json_data))
     resp_data = json.loads(text_of_response(resp))
 
-    import sys
-    print >>sys.stderr, "Skipping test! Test is buggy"
-    print >>sys.stderr, resp_data
-
-    if False:
-        assert_equals(resp_data['checkResults']['votes_named'], True)
+    # TODO: Figure out why this test fails in some configurations, or go
+    # a few months without failing. Ask Ned or Piotr for details. 
+    assert_equals(resp_data['checkResults']['votes_named'], True)
