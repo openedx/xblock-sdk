@@ -82,6 +82,34 @@ def show_scenario(request, scenario_id, view_name='student_view', template='work
     })
 
 
+def show_just_scenario(request, scenario_id, view_name='student_view', template='workbench/chromelessblock.html'):
+    """
+    Render the given `scenario_id` for the given `view_name`, on the provided `template`.
+
+    `view_name` defaults to 'student_view'.
+    `template` defaults to 'block.html'.
+
+    """
+    student_id = get_student_id(request)
+    log.info("Start show_scenario %r for student %s", scenario_id, student_id)
+
+    try:
+        scenario = SCENARIOS[scenario_id]
+    except KeyError:
+        raise Http404
+
+    usage_id = scenario.usage_id
+    runtime = WorkbenchRuntime(student_id)
+    block = runtime.get_block(usage_id)
+    frag = block.render(view_name)
+    log.info("End show_scenario %s", scenario_id)
+    return render_to_response(template, {
+        'body': frag.body_html(),
+        'head_html': frag.head_html(),
+        'foot_html': frag.foot_html(),
+    })
+
+
 def user_list(request):
     """
     This will return a list of all users in the database
