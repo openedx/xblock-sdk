@@ -1,8 +1,8 @@
 """An XBlock providing thumbs-up/thumbs-down voting.
 
-This is a completely artifical test case for the filesystem field type. 
+This is a completely artifical test case for the filesystem field type.
 
-Votes are stored in a JSON object in the file system, and up/down arrow PNGs are constructed as files on-the-fly. 
+Votes are stored in a JSON object in the file system, and up/down arrow PNGs are constructed as files on-the-fly.
 """
 
 import json
@@ -18,14 +18,15 @@ import logging
 
 log = logging.getLogger(__name__)
 
-arrow = ["11011", 
-         "10001", 
-         "00000", 
-         "11011", 
-         "11011", 
-         "11011", 
+arrow = ["11011",
+         "10001",
+         "00000",
+         "11011",
+         "11011",
+         "11011",
          "10001"]
 arrow = [map(int, x) for x in arrow]
+
 
 @XBlock.needs('fs')
 class FileThumbsBlock(XBlock):
@@ -39,8 +40,8 @@ class FileThumbsBlock(XBlock):
 
     """
 
-    upvotes = 0 
-    downvotes = 0 
+    upvotes = 0
+    downvotes = 0
     voted = Boolean(help="Has this student voted?", default=False, scope=Scope.user_state)
     fs = Filesystem(help="File system", scope=Scope.user_state_summary)
 
@@ -59,13 +60,13 @@ class FileThumbsBlock(XBlock):
 
         if not self.fs.exists("thumbsvotes.json"):
             f = self.fs.open("thumbsvotes.json", "wb")
-            json.dump({'up':0, 'down':0}, f)
+            json.dump({'up': 0, 'down': 0}, f)
             f.close()
 
         votes = json.load(self.fs.open("thumbsvotes.json"))
         self.upvotes = votes['up']
         self.downvotes = votes['down']
-            
+
         # Load the CSS and JavaScript fragments from within the package
         css_str = pkg_resources.resource_string(__name__, "static/css/thumbs.css")
         frag.add_css(unicode(css_str))
@@ -75,17 +76,17 @@ class FileThumbsBlock(XBlock):
         frag.add_javascript(unicode(js_str))
 
         f = self.fs.open("uparrow.png", "wb")
-        png.Writer(len(arrow[0]), len(arrow), greyscale = True, bitdepth = 1).write(f, arrow)
+        png.Writer(len(arrow[0]), len(arrow), greyscale=True, bitdepth=1).write(f, arrow)
         f.close()
         f = self.fs.open("downarrow.png", "wb")
-        png.Writer(len(arrow[0]), len(arrow), greyscale = True, bitdepth = 1).write(f, arrow[::-1])
+        png.Writer(len(arrow[0]), len(arrow), greyscale=True, bitdepth=1).write(f, arrow[::-1])
         f.close()
 
-        frag.initialize_js('FileThumbsBlock', {'up' : self.upvotes, 
-                                               'down' : self.downvotes, 
-                                               'voted': self.voted, 
-                                               'uparrow' : self.fs.get_url('uparrow.png'), 
-                                               'downarrow' : self.fs.get_url('downarrow.png')})
+        frag.initialize_js('FileThumbsBlock', {'up': self.upvotes,
+                                               'down': self.downvotes,
+                                               'voted': self.voted,
+                                               'uparrow': self.fs.get_url('uparrow.png'),
+                                               'downarrow': self.fs.get_url('downarrow.png')})
         return frag
 
     problem_view = student_view
@@ -116,7 +117,7 @@ class FileThumbsBlock(XBlock):
             self.downvotes += 1
 
         f = self.fs.open("thumbsvotes.json", "wb")
-        json.dump({'up':self.upvotes, 'down':self.downvotes}, f)
+        json.dump({'up': self.upvotes, 'down': self.downvotes}, f)
         f.close()
 
         self.voted = True

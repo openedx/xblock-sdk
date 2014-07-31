@@ -31,7 +31,7 @@ def get_student_id(request):
     return student_id
 
 
-#---- Views -----
+# ---- Views -----
 
 def index(_request):
     """Render `index.html`"""

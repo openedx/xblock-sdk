@@ -54,9 +54,8 @@ class ThreeThumbsTest(SeleniumTest):
             initial_up = int(up_count.text)
             initial_down = int(down_count.text)
             thumb.find_element_by_css_selector('span.upvote').click()
-            self.assertEqual(initial_up+1, int(thumb.find_element_by_css_selector(up_count_css).text))
+            self.assertEqual(initial_up + 1, int(thumb.find_element_by_css_selector(up_count_css).text))
             self.assertEqual(initial_down, int(thumb.find_element_by_css_selector(down_count_css).text))
             thumb.find_element_by_css_selector('span.downvote').click()
-            self.assertEqual(initial_up+1, int(thumb.find_element_by_css_selector(up_count_css).text))
-            self.assertEqual(initial_down+1, int(thumb.find_element_by_css_selector(down_count_css).text))
-
+            self.assertEqual(initial_up + 1, int(thumb.find_element_by_css_selector(up_count_css).text))
+            self.assertEqual(initial_down + 1, int(thumb.find_element_by_css_selector(down_count_css).text))

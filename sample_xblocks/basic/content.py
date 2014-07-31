@@ -124,14 +124,12 @@ class AllScopesBlock(XBlock):
                     {}
                 </table>
 
-            """.format(u"\n".join(entries))
-        )
+            """.format(u"\n".join(entries)))
         frag.add_css("""
             table { border-collapse:collapse; }
             table, th, td { border: 1px solid black; }
             td { vertical-align:top; }
-            """
-        )
+            """)
 
         return frag
 

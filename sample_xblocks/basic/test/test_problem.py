@@ -46,6 +46,4 @@ def test_problem_submission():
     resp = runtime.handle(problem, 'check', make_request(json_data))
     resp_data = json.loads(text_of_response(resp))
 
-    # TODO: Figure out why this test fails in some configurations, or go
-    # a few months without failing. Ask Ned or Piotr for details. 
     assert_equals(resp_data['checkResults']['votes_named'], True)
