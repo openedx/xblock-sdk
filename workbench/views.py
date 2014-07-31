@@ -33,7 +33,7 @@ def get_student_id(request):
     return student_id
 
 
-#---- Views -----
+# ---- Views -----
 
 def index(_request):
     """Render `index.html`"""
@@ -79,7 +79,7 @@ def user_list(request):
     """
     This will return a list of all users in the database
     """
-    # We'd really like to do .distinct, but sqlite does not support this; 
+    # We'd really like to do .distinct, but sqlite+django does not support this;
     # hence the hack with sorted(set(...))
     user_list = sorted(x[0] for x in set(XBlockState.objects.values_list('user_id')))
     return HttpResponse(json.dumps(user_list, indent=2), content_type="application/json")

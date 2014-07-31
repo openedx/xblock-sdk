@@ -24,6 +24,8 @@ from xblock.runtime import (
 from xblock.exceptions import NoSuchDefinition, NoSuchUsage
 from xblock.fragment import Fragment
 
+import xblock.reference.plugins
+
 from .models import XBlockState
 from .util import make_safe_for_html
 
@@ -175,7 +177,10 @@ class WorkbenchRuntime(Runtime):
     """
 
     def __init__(self, user_id=None):
-        super(WorkbenchRuntime, self).__init__(ID_MANAGER, KvsFieldData(WORKBENCH_KVS))
+        #  TODO: Add params for user, runtime, etc. to service initialization
+        #  Move to stevedor
+        super(WorkbenchRuntime, self).__init__(ID_MANAGER, KvsFieldData(WORKBENCH_KVS),
+                                               services={'fs': xblock.reference.plugins.FSService()})
         self.id_generator = ID_MANAGER
         self.user_id = user_id
 
@@ -211,21 +216,19 @@ class WorkbenchRuntime(Runtime):
 
         json_init = ""
         # TODO/Note: We eventually want to remove: hasattr(frag, 'json_init_args')
-        # However, I'd like to maintain backwards-compatibility with older XBlock 
-        # for at least a little while so as not to adversely effect developers. 
-        # pmitros/Jun 28, 2014. 
-        if hasattr(frag, 'json_init_args') and frag.json_init_args is not None: 
+        # However, I'd like to maintain backwards-compatibility with older XBlock
+        # for at least a little while so as not to adversely effect developers.
+        # pmitros/Jun 28, 2014.
+        if hasattr(frag, 'json_init_args') and frag.json_init_args is not None:
             json_init = u'<script type="json/xblock-args" class="xblock_json_init_args">' + \
                 u'{data}</script>'.format(data=json.dumps(frag.json_init_args))
 
         html = u"<div class='xblock'{properties}>{body}{js}</div>".format(
-            properties="".join(" data-%s='%s'" % item for item in data.items() ),
+            properties="".join(" data-%s='%s'" % item for item in data.items()),
             body=frag.body_html(),
-            js=json_init
-            )
+            js=json_init)
 
         wrapped.add_content(html)
-        
         wrapped.add_frag_resources(frag)
         return wrapped
 

@@ -15,6 +15,7 @@ def make_request(body):
     """Mock request method."""
     request = webob.Request({})
     request.body = body
+    request.method = "POST"
     return request
 
 
