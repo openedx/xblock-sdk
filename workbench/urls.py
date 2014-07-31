@@ -18,7 +18,7 @@ urlpatterns = patterns(
         'show_scenario',
         name='scenario'
     ),
-    url(r'^userlist/$', 
+    url(r'^userlist/$',
         'user_list',
         name='userlist'),
     url(

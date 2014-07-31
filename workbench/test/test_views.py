@@ -12,6 +12,7 @@ from xblock.test.tools import assert_equals, assert_in, assert_true
 from xblock.test.tools import assert_raises, assert_raises_regexp
 
 from xblock.core import XBlock, String, Scope
+from xblock.exceptions import DisallowedFileError
 from xblock.fragment import Fragment
 from xblock.runtime import NoSuchHandlerError
 
@@ -277,5 +278,17 @@ def test_local_resources():
     assert_equals(result['Content-Type'], 'image/png')
 
     # The Equality block defends against malicious resource URIs
-    result = client.get('/resource/equality_demo/core.py')
-    assert_equals(result.status_code, 404)
+    # This test has two possible ways of passing
+    # 1. We return a 404.
+    # 2. We raise a DisallowedFileError.
+    # The code currently uses path #1 (through an overly broad
+    # try/except clause). This is the right behavior in prod,
+    # but horrible for debugging. It is convenient to modify
+    # dev versions of xblocks to give behavior #2, since it
+    # provides meaningful errors. The code below is setup to
+    # support both prod and dev configurations.
+    try:
+        result = client.get('/resource/equality_demo/core.py')
+        assert_equals(result.status_code, 404)
+    except DisallowedFileError:
+        pass
