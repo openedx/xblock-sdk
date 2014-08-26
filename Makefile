@@ -1,3 +1,5 @@
+#!/usr/bin/make -f
+
 SQLITE_DB=workbench.db
 
 all: install test
