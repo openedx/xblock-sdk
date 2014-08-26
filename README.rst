@@ -24,10 +24,6 @@ supported by edX.
 
         $ make install
 
-4. Create and sync the sqllite DB
-
-        $ python manage.py syncdb
-
 4.  Run the Django development server:
 
         $ python manage.py runserver
