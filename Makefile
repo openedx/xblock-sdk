@@ -10,3 +10,7 @@ install:
 
 test:
 	python manage.py test
+
+cover:
+	coverage run manage.py test
+	coverage report

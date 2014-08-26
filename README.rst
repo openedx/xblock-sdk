@@ -56,13 +56,9 @@ have Firefox installed for this test case to run successfully.
 .. _Selenium: http://docs.seleniumhq.org/
 .. _LiveServerTestCase: https://docs.djangoproject.com/en/1.4/topics/testing/#django.test.LiveServerTestCase
 
-To run the test suite under coverage:
+To update and view test coverage:
 
-    $ coverage run manage.py test
-
-to execute the tests. Then to view the coverage report:
-
-    $ coverage report
+    $ make cover
 
 See the `coverage.py`_ docs for more info and options.
 
