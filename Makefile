@@ -5,7 +5,10 @@ SQLITE_DB=workbench.db
 all: install test
 
 .PHONY: install
-install: $(SQLITE_DB)
+install: pip $(SQLITE_DB)
+
+.PHONY: pip
+pip:
 	# TODO: we need to install requirements.txt so XBlock is installed
 	# from a GitHub repo.  Once XBlock is available through PyPi,
 	# we can install all requirements using setup.py
@@ -14,7 +17,8 @@ install: $(SQLITE_DB)
 	pip install -r test-requirements.txt
 
 $(SQLITE_DB):
-	python manage.py syncdb
+	# The --noinput flag is for non-interactive runs, e.g. TravisCI.
+	python manage.py syncdb --noinput
 
 test:
 	python manage.py test
