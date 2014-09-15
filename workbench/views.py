@@ -19,7 +19,7 @@ from xblock.exceptions import NoSuchUsage
 
 from .models import XBlockState
 from .runtime import WorkbenchRuntime, reset_global_state
-from .scenarios import SCENARIOS
+from .scenarios import SCENARIOS, FAILURES
 
 
 log = logging.getLogger(__name__)
@@ -39,7 +39,15 @@ def index(_request):
     """Render `index.html`"""
     the_scenarios = sorted(SCENARIOS.items())
     return render_to_response('workbench/index.html', {
-        'scenarios': [(desc, scenario.description) for desc, scenario in the_scenarios]
+        'scenarios': [(desc, scenario.description) for desc, scenario in the_scenarios],
+        'failures': [(
+            failure["name"],
+            failure["exception"].args[0],
+            failure["exception"].args[1][0],
+            failure["exception"].args[1][1],
+            failure["exception"].args[1][2],
+            failure["exception"].args[1][3]
+        ) for failure in FAILURES]
     })
 
 

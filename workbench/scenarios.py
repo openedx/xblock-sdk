@@ -16,6 +16,7 @@ from .runtime import WorkbenchRuntime, WORKBENCH_KVS
 Scenario = namedtuple("Scenario", "description usage_id xml")  # pylint: disable=C0103
 
 SCENARIOS = {}
+FAILURES = []
 
 
 def add_xml_scenario(scname, description, xml):
@@ -28,9 +29,15 @@ def add_xml_scenario(scname, description, xml):
     # WorkbenchRuntime has an id_generator, but most runtimes won't
     # (because the generator will be contextual), so we
     # pass it explicitly to parse_xml_string.
-    runtime.id_generator.set_scenario(slugify(description))
-    usage_id = runtime.parse_xml_string(xml, runtime.id_generator)
-    SCENARIOS[scname] = Scenario(description, usage_id, xml)
+    try:
+        runtime.id_generator.set_scenario(slugify(description))
+        usage_id = runtime.parse_xml_string(xml, runtime.id_generator)
+        SCENARIOS[scname] = Scenario(description, usage_id, xml)
+    except Exception as exc:
+        FAILURES.append({
+            "name": scname,
+            "exception": exc
+        })
 
 
 def remove_scenario(scname):
@@ -65,3 +72,6 @@ def init_scenarios():
     # Get all the XBlock classes, and add their scenarios.
     for class_name, cls in sorted(XBlock.load_classes()):
         add_class_scenarios(class_name, cls)
+
+    for failure in XBlock.failed_classes():
+        FAILURES.append(failure)

@@ -16,6 +16,14 @@
                         <p><a href="{% url workbench_show_scenario scname %}">{{desc}}</a></p>
                     {% endfor %}
                 </section>
+                <section class="failures">
+                    {% for fname, exception, file, line, column, snippet in failures %}
+						<fieldset class="failure">
+                        	<h2>EXCEPTION in {{fname}}</h2><p>{{exception}} in {{file}} on line {{line}}, column {{column}}:</p>
+							<p>{{snippet}}</p>
+						</fieldset>
+                    {% endfor %}
+                </section>
             </div>
         </div>
         <div>
