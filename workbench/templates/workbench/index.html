@@ -17,10 +17,15 @@
                     {% endfor %}
                 </section>
                 <section class="failures">
-                    {% for fname, exception, file, line, column, snippet in failures %}
+                    {% for fname, exception, description, hasMore, file, line, column, snippet in failures %}
 						<fieldset class="failure">
-                        	<h2>EXCEPTION in {{fname}}</h2><p>{{exception}} in {{file}} on line {{line}}, column {{column}}:</p>
-							<p>{{snippet}}</p>
+							<h2>EXCEPTION in {{fname}}: {{exception}}</h2>
+							{% if hasMore %}
+								<p>{{description}} in {{file}} on line {{line}}, column {{column}}:</p>
+								<p>{{snippet}}</p>
+                        	{% else %}
+								<p>{{description}}</p>
+							{% endif %}
 						</fieldset>
                     {% endfor %}
                 </section>
