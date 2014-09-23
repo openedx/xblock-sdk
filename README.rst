@@ -74,7 +74,7 @@ server.
 If you want to experiment with different students, you can use a URL parameter
 to set the student ID, which defaults to 1:
 
-    http://127.0.0.1:8000/?student_id=17
+    http://127.0.0.1:8000/?student=17
 
 Different students will see different student state, for example, while seeing
 the same content.  Student ids are strings, even if they contain only digits
