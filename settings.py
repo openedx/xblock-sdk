@@ -123,8 +123,8 @@ ROOT_URLCONF = 'workbench.urls'
 WSGI_APPLICATION = 'workbench.wsgi.application'
 
 TEMPLATE_DIRS = (
-    'workbench/templates',
-    'sample_xblocks/basic/templates',
+    os.path.join(BASE_DIR, 'workbench/templates'),
+    os.path.join(BASE_DIR, 'sample_xblocks/basic/templates'),
 )
 
 INSTALLED_APPS = (
