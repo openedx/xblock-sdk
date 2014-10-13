@@ -1,7 +1,7 @@
 """An XBlock providing thumbs-up/thumbs-down voting."""
 
 from xblock.core import XBlock
-from xblock.fields import Scope, Integer, Boolean
+from xblock.fields import Scope, Integer, Boolean, String
 from xblock.fragment import Fragment
 import pkg_resources
 
@@ -23,6 +23,7 @@ class ThumbsBlock(XBlock):
     upvotes = Integer(help="Number of up votes", default=0, scope=Scope.user_state_summary)
     downvotes = Integer(help="Number of down votes", default=0, scope=Scope.user_state_summary)
     voted = Boolean(help="Has this student voted?", default=False, scope=Scope.user_state)
+    test_config = String(help="Hah! Will this work?", scope=Scope.configuration)
 
     def student_view(self, context=None):  # pylint: disable=W0613
         """
@@ -46,6 +47,8 @@ class ThumbsBlock(XBlock):
         frag.add_javascript(unicode(js_str))
 
         frag.initialize_js('ThumbsBlock')
+        print(self.test_config)
+        print("I'm alive!")
         return frag
 
     problem_view = student_view

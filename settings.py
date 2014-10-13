@@ -199,3 +199,12 @@ WORKBENCH = {
         os.environ.get('WORKBENCH_RESET_STATE_ON_RESTART', "false").lower() == "true"
     )
 }
+
+XBLOCK_CONFIGURATION = {
+    "_default": {
+        "test_config": "the config",
+    },
+    "thumbs": {
+        "test_config": "the better config",
+    },
+}

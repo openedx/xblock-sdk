@@ -12,12 +12,14 @@ try:
 except ImportError:
     import json
 
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.templatetags.static import static
 from django.template import loader as django_template_loader, \
     Context as DjangoContext
 
 from xblock.fields import Scope
+from xblock.field_data import SplitFieldData, OrderedLookupWithDefaultDictReadOnlyFieldData
 from xblock.runtime import (
     KvsFieldData, KeyValueStore, Runtime, NoSuchViewError, IdReader, IdGenerator
 )
@@ -87,6 +89,23 @@ class WorkbenchDjangoKeyValueStore(KeyValueStore):
         record = XBlockState.get_for_key(key)
         state_dict = json.loads(record.state)
         return key.field_name in state_dict
+
+
+class WorkbenchSplitFieldData(SplitFieldData):
+    """
+    A split field data for splitting out Scope.configurations to read from workbench's django settings
+    """
+    def __init__(self):
+        """
+        All other scopes default to the WORKBENCH_DEFAULT_FIELD_DATA, except Scope.configuration
+
+        This uses closures over module variables to maintain compat with reset_global_state
+        """
+        scope_mappings = {}
+        for scope in itertools.chain(Scope.named_scopes(), (Scope.parent, Scope.children)):
+            scope_mappings[scope] = WORKBENCH_DEFAULT_FIELD_DATA
+        scope_mappings[Scope.configuration] = WORKBENCH_CONFIG_FIELD_DATA  # This is the one exception
+        super(WorkbenchSplitFieldData, self).__init__(scope_mappings=scope_mappings)
 
 
 class ScenarioIdManager(IdReader, IdGenerator):
@@ -179,7 +198,7 @@ class WorkbenchRuntime(Runtime):
     def __init__(self, user_id=None):
         #  TODO: Add params for user, runtime, etc. to service initialization
         #  Move to stevedor
-        super(WorkbenchRuntime, self).__init__(ID_MANAGER, KvsFieldData(WORKBENCH_KVS),
+        super(WorkbenchRuntime, self).__init__(ID_MANAGER, WORKBENCH_SPLIT_FIELD_DATA,
                                                services={'fs': xblock.reference.plugins.FSService()})
         self.id_generator = ID_MANAGER
         self.user_id = user_id
@@ -336,6 +355,13 @@ WORKBENCH_KVS = WorkbenchDjangoKeyValueStore()
 
 # Our global id manager
 ID_MANAGER = ScenarioIdManager()
+
+WORKBENCH_DEFAULT_FIELD_DATA = KvsFieldData(WORKBENCH_KVS)
+
+# Our global configuration field_data
+WORKBENCH_CONFIG_FIELD_DATA = OrderedLookupWithDefaultDictReadOnlyFieldData(settings.XBLOCK_CONFIGURATION)
+
+WORKBENCH_SPLIT_FIELD_DATA = WorkbenchSplitFieldData()
 
 
 def reset_global_state():
