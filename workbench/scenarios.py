@@ -3,6 +3,7 @@
 This code is in the Workbench layer.
 
 """
+import traceback
 from collections import namedtuple
 
 from django.conf import settings
@@ -36,7 +37,8 @@ def add_xml_scenario(scname, description, xml):
     except Exception as exc:
         FAILURES.append({
             "name": scname,
-            "exception": exc
+            "exc": exc,
+            "tb": traceback.format_exc(exc)
         })
 
 
@@ -74,4 +76,8 @@ def init_scenarios():
         add_class_scenarios(class_name, cls)
 
     for failure in XBlock.failed_classes():
-        FAILURES.append(failure)
+        FAILURES.append({
+            "name": failure["name"],
+            "exc": failure["exception"],
+            "tb": traceback.format_exc(failure["exception"])
+        })

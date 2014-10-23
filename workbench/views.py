@@ -42,22 +42,8 @@ def index(_request):
     for failure in FAILURES:
         failures.append([
             failure["name"],
-            type(failure["exception"]).__name__,
+            failure["tb"].replace("<", "&lt;").replace(">", "&gt;")
         ])
-        try:
-            failures[-1].extend([failure["exception"].args[0]])
-        except:
-            failures[-1].extend([None])
-        try:
-            failures[-1].extend([
-                True,
-                failure["exception"].args[1][0],
-                failure["exception"].args[1][1],
-                failure["exception"].args[1][2],
-                failure["exception"].args[1][3]
-            ])
-        except:
-            failures[-1].extend([False, None, None, None, None])
     return render_to_response('workbench/index.html', {
         'scenarios': [(desc, scenario.description) for desc, scenario in the_scenarios],
         'failures': failures
