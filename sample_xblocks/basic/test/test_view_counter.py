@@ -7,7 +7,7 @@ from mock import Mock
 from xblock.runtime import KvsFieldData, DictKeyValueStore
 from sample_xblocks.basic.view_counter import ViewCounter
 
-from xblock.test.tools import assert_in, assert_equals
+from xblock.test.tools import assert_in, assert_equals, TestRuntime
 
 
 TestUsage = namedtuple('TestUsage', 'id, def_id')  # pylint: disable=C0103
@@ -15,8 +15,9 @@ TestUsage = namedtuple('TestUsage', 'id, def_id')  # pylint: disable=C0103
 
 def test_view_counter_state():
     key_store = DictKeyValueStore()
-    db_model = KvsFieldData(key_store)
-    tester = ViewCounter(Mock(), db_model, Mock())
+    field_data = KvsFieldData(key_store)
+    runtime = TestRuntime(services={'field-data': field_data})
+    tester = ViewCounter(runtime, scope_ids=Mock())
 
     assert_equals(tester.views, 0)
 
