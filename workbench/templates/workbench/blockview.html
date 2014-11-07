@@ -1,10 +1,12 @@
+{% load url from future %}
+
 <!DOCTYPE html>
 <html>
     <head>
         <script>
             // TODO: This should be handled more modularly.
             student_id = '{{student_id}}';
-            handlerBaseUrl = '{% url workbench_index %}handler/';
+            handlerBaseUrl = '{% url "workbench_index" %}handler/';
         </script>
         {{head_html|safe}}
     </head>
