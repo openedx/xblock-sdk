@@ -5,4 +5,4 @@ mock
 pylint==0.28
 pep8
 rednose
-selenium
+bok_choy==0.3.2

@@ -179,8 +179,13 @@ class WorkbenchRuntime(Runtime):
     def __init__(self, user_id=None):
         #  TODO: Add params for user, runtime, etc. to service initialization
         #  Move to stevedor
-        super(WorkbenchRuntime, self).__init__(ID_MANAGER, KvsFieldData(WORKBENCH_KVS),
-                                               services={'fs': xblock.reference.plugins.FSService()})
+        super(WorkbenchRuntime, self).__init__(
+            ID_MANAGER,
+            services={
+                'fs': xblock.reference.plugins.FSService(),
+                'field-data': KvsFieldData(WORKBENCH_KVS),
+            }
+        )
         self.id_generator = ID_MANAGER
         self.user_id = user_id
 

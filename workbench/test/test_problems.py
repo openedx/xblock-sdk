@@ -5,6 +5,7 @@ from selenium.common.exceptions import StaleElementReferenceException
 
 from workbench import scenarios
 from workbench.test.selenium_test import SeleniumTest
+from bok_choy.query import BrowserQuery
 
 
 class ProblemInteractionTest(SeleniumTest):
@@ -38,8 +39,8 @@ class ProblemInteractionTest(SeleniumTest):
     def test_many_problems(self):
         # Test that problems work properly.
         self.browser.get(self.live_server_url + "/scenario/test_many_problems")
-        header1 = self.browser.find_element_by_css_selector("h1")
-        self.assertEqual(header1.text, "XBlock: Many problems")
+        header1 = BrowserQuery(self.browser, css="h1")
+        self.assertEqual(header1.text[0], "XBlock: Many problems")
 
         # Find the numbers on the page.
         nums = self.browser.find_elements_by_css_selector("p.the_numbers")
@@ -49,26 +50,25 @@ class ProblemInteractionTest(SeleniumTest):
 
         text_ctrls_xpath = '//div[@data-block-type="textinput_demo"][@data-name="sum_input"]/input'
         text_ctrls = self.browser.find_elements_by_xpath(text_ctrls_xpath)
-        check_btns = self.browser.find_elements_by_css_selector('input.check')
-        right_wrongs = self.browser.find_elements_by_css_selector('span.indicator')
+        check_btns = BrowserQuery(self.browser, css='input.check')
+        check_indicators = 'span.indicator'
 
         def assert_image(right_wrong_idx, expected_icon):
             """Assert that the img src text includes `expected_icon`"""
             for _ in range(3):
                 try:
-                    img = right_wrongs[right_wrong_idx].find_element_by_tag_name("img")
-                    src = img.get_attribute("src")
-                    if expected_icon in src:
+                    sources = BrowserQuery(self.browser, css='{} img'.format(check_indicators)).nth(right_wrong_idx).attrs('src')
+                    if sources and expected_icon in sources[0]:
                         break
                     else:
                         time.sleep(.25)
                 except StaleElementReferenceException as exc:
                     print exc
-            self.assertIn(expected_icon, src)
+            self.assertIn(expected_icon, sources[0])
 
         for i in range(self.num_problems):
             # Before answering, the indicator says Not Attempted.
-            self.assertIn("Not attempted", right_wrongs[i].text)
+            self.assertIn("Not attempted", BrowserQuery(self.browser, css=check_indicators).nth(i).text[0])
 
             answer = sum(num_pairs[i])
 
