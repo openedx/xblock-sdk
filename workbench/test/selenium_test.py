@@ -1,7 +1,7 @@
 """Helpers for Selenium tests."""
 
 from django.test import LiveServerTestCase
-from selenium import webdriver
+from bok_choy.web_app_test import WebAppTest
 
 from nose.plugins.attrib import attr
 
@@ -9,20 +9,9 @@ from workbench.runtime import reset_global_state
 
 
 @attr('selenium')
-class SeleniumTest(LiveServerTestCase):
+class SeleniumTest(WebAppTest, LiveServerTestCase):
     """Base test class that provides setUpClass and tearDownClass
     methods necessary for selenium testing."""
-
-    @classmethod
-    def setUpClass(cls):
-        super(SeleniumTest, cls).setUpClass()
-        cls.browser = webdriver.Firefox()
-        cls.browser.implicitly_wait(1)
-
-    @classmethod
-    def tearDownClass(cls):
-        cls.browser.quit()
-        super(SeleniumTest, cls).tearDownClass()
 
     def setUp(self):
         super(SeleniumTest, self).setUp()
