@@ -6,6 +6,7 @@ from django.test.client import Client
 
 from xblock.core import XBlock
 from xblock.test.tools import assert_equals
+from workbench import scenarios
 
 
 def test_all_scenarios():
@@ -18,25 +19,21 @@ def test_all_scenarios():
     for a_tag in a_tags:
         yield try_scenario, a_tag.get('href'), a_tag.text
 
-    # Load the scenarios from the classes.
-    scenarios = []
-    for _, cls in XBlock.load_classes():
-        if hasattr(cls, "workbench_scenarios"):
-            for _, xml in cls.workbench_scenarios():
-                scenarios.append(xml)
+    # Load the loaded_scenarios from the classes.
+    loaded_scenarios = scenarios.SCENARIOS.values()
 
     # We should have an <a> tag for each scenario.
-    assert_equals(len(a_tags), len(scenarios))
+    assert_equals(len(a_tags), len(loaded_scenarios))
 
     # We should have at least one scenario with a vertical tag, since we use
     # empty verticals as our canary in the coal mine that something has gone
-    # horribly wrong with loading the scenarios.
-    assert any("<vertical_demo>" in xml for xml in scenarios)
+    # horribly wrong with loading the loaded_scenarios.
+    assert any("<vertical_demo>" in scen.xml for scen in loaded_scenarios)
 
     # Since we are claiming in try_scenario that no vertical is empty, let's
     # eliminate the possibility that a scenario has an actual empty vertical.
-    assert all("<vertical_demo></vertical_demo>" not in xml for xml in scenarios)
-    assert all("<vertical_demo/>" not in xml for xml in scenarios)
+    assert all("<vertical_demo></vertical_demo>" not in scen.xml for scen in loaded_scenarios)
+    assert all("<vertical_demo/>" not in scen.xml for scen in loaded_scenarios)
 
 
 def try_scenario(url, name):

@@ -13,13 +13,14 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import redirect, render_to_response
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 
-from xblock.core import XBlock
+from xblock.core import XBlock, XBlockAside
 from xblock.django.request import webob_to_django_response, django_to_webob_request
 from xblock.exceptions import NoSuchUsage
 
 from .models import XBlockState
 from .runtime import WorkbenchRuntime, reset_global_state
 from .scenarios import SCENARIOS
+from xblock.plugin import PluginMissingError
 
 
 log = logging.getLogger(__name__)
@@ -109,6 +110,30 @@ def handler(request, usage_id, handler_slug, suffix='', authenticated=True):
     return webob_to_django_response(result)
 
 
+def aside_handler(request, aside_id, handler_slug, suffix='', authenticated=True):
+    """The view function for authenticated handler requests."""
+    if authenticated:
+        student_id = get_student_id(request)
+        log.info("Start handler %s/%s for student %s", aside_id, handler_slug, student_id)
+    else:
+        student_id = "none"
+        log.info("Start handler %s/%s", aside_id, handler_slug)
+
+    runtime = WorkbenchRuntime(student_id)
+
+    try:
+        block = runtime.get_aside(aside_id)
+    except NoSuchUsage:
+        raise Http404
+
+    request = django_to_webob_request(request)
+    request.path_info_pop()
+    request.path_info_pop()
+    result = block.runtime.handle(block, handler_slug, request, suffix)
+    log.info("End handler %s/%s", aside_id, handler_slug)
+    return webob_to_django_response(result)
+
+
 def package_resource(_request, block_type, resource):
     """
     Wrapper for `pkg_resources` that tries to access a resource and, if it
@@ -116,6 +141,12 @@ def package_resource(_request, block_type, resource):
     """
     try:
         xblock_class = XBlock.load_class(block_type)
+    except PluginMissingError:
+        try:
+            xblock_class = XBlockAside.load_class(block_type)
+        except PluginMissingError:
+            raise Http404
+    try:
         content = xblock_class.open_local_resource(resource)
     except Exception:  # pylint: disable-msg=broad-except
         raise Http404

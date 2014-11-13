@@ -6,6 +6,8 @@ Code in this file is a mix of Runtime layer and Workbench layer.
 from collections import defaultdict, OrderedDict
 import itertools
 import logging
+import re
+from xblock.core import XBlockAside
 
 try:
     import simplejson as json
@@ -17,7 +19,6 @@ from django.templatetags.static import static
 from django.template import loader as django_template_loader, \
     Context as DjangoContext
 
-from xblock.fields import Scope
 from xblock.runtime import (
     KvsFieldData, KeyValueStore, Runtime, NoSuchViewError, IdReader, IdGenerator
 )
@@ -145,12 +146,21 @@ class ScenarioIdManager(IdReader, IdGenerator):
 
         return def_id
 
+    # foo_aside-def-id_ending.in.d1234.u9
+    ASIDE_RE = re.compile(u"(?P<block_type>[^-]+)-(?P<def_id>.+\.d\d+)(\.(?P<usage_affix>u\d+))?")
+
     def get_block_type(self, def_id):
         """Get a block_type by its definition id."""
         try:
             return self._definitions[def_id]
         except KeyError:
             raise NoSuchDefinition(repr(def_id))
+
+    def get_aside_type(self, def_id):
+        parsed = self.ASIDE_RE.match(def_id)
+        if not parsed:
+            raise NoSuchDefinition(repr(def_id))
+        return parsed.group('block_type')
 
     # Workbench specific functionality
     def set_scenario(self, scenario):
@@ -165,6 +175,25 @@ class ScenarioIdManager(IdReader, IdGenerator):
         back. This gives an easy hook to do that.
         """
         return self._usages.keys()[-1] if self._usages else None
+
+    def create_aside(self, definition_id, usage_id, aside_type):
+        aside_def_id = u"{}-{}".format(aside_type, definition_id)
+        aside_usage_id = u"{}-{}".format(aside_type, usage_id)
+        return aside_def_id, aside_usage_id
+
+    def get_usage_id_from_aside(self, aside_id):
+        """Extract the usage_id from the aside_id."""
+        parsed = self.ASIDE_RE.match(aside_id)
+        if not parsed:
+            raise NoSuchUsage(repr(aside_id))
+        return ur"{}.{}".format(parsed.group('def_id'), parsed.group('usage_affix'))
+
+    def get_definition_id_from_aside(self, aside_id):
+        """Extract the definition_id from an aside id."""
+        parsed = self.ASIDE_RE.match(aside_id)
+        if not parsed:
+            raise NoSuchUsage(repr(aside_id))
+        return ur"{}-{}".format(parsed.group('block_type'), parsed.group('def_id'))
 
 
 class WorkbenchRuntime(Runtime):
@@ -203,38 +232,17 @@ class WorkbenchRuntime(Runtime):
         template = django_template_loader.get_template(template_name)
         return template.render(DjangoContext(kwargs))
 
-    def wrap_child(self, block, view, frag, context):  # pylint: disable=W0613
-        wrapped = Fragment()
-        wrapped.add_javascript_url(self.resource_url("js/vendor/jquery.min.js"))
+    def _wrap_ele(self, block, frag, extra_data=None):
+        """
+        Add javascript to the wrapped element
+        """
+        wrapped = super(WorkbenchRuntime, self)._wrap_ele(block, frag, extra_data)
+        wrapped.add_resource_url(self.resource_url("js/vendor/jquery.min.js"), 'application/javascript', placement="head")
         wrapped.add_javascript_url(self.resource_url("js/vendor/jquery.cookie.js"))
 
-        data = {}
         if frag.js_init_fn:
             wrapped.add_javascript_url(self.resource_url("js/runtime/%s.js" % frag.js_init_version))
-            data['init'] = frag.js_init_fn
-            data['runtime-version'] = frag.js_init_version
-            data['usage'] = block.scope_ids.usage_id
-            data['block-type'] = block.scope_ids.block_type
 
-        if block.name:
-            data['name'] = block.name
-
-        json_init = ""
-        # TODO/Note: We eventually want to remove: hasattr(frag, 'json_init_args')
-        # However, I'd like to maintain backwards-compatibility with older XBlock
-        # for at least a little while so as not to adversely effect developers.
-        # pmitros/Jun 28, 2014.
-        if hasattr(frag, 'json_init_args') and frag.json_init_args is not None:
-            json_init = u'<script type="json/xblock-args" class="xblock_json_init_args">' + \
-                u'{data}</script>'.format(data=json.dumps(frag.json_init_args))
-
-        html = u"<div class='xblock'{properties}>{body}{js}</div>".format(
-            properties="".join(" data-%s='%s'" % item for item in data.items()),
-            body=frag.body_html(),
-            js=json_init)
-
-        wrapped.add_content(html)
-        wrapped.add_frag_resources(frag)
         return wrapped
 
     def handler_url(self, block, handler_name, suffix='', query='', thirdparty=False):
@@ -245,8 +253,14 @@ class WorkbenchRuntime(Runtime):
         if not getattr(func, "_is_xblock_handler", False):
             raise ValueError("{!r} is not a handler name".format(handler_name))
 
+        if thirdparty:
+            url_base = "unauth_handler"
+        elif isinstance(block, XBlockAside):
+            url_base = "aside_handler"
+        else:
+            url_base = "handler"
         url = reverse(
-            "unauth_handler" if thirdparty else "handler",
+            url_base,
             args=(block.scope_ids.usage_id, handler_name, suffix)
         )
 
