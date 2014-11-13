@@ -1,6 +1,6 @@
 """An XBlock providing thumbs-up/thumbs-down voting."""
 
-from xblock.core import XBlock
+from xblock.core import XBlock, XBlockAside
 from xblock.fields import Scope, Integer, Boolean
 from xblock.fragment import Fragment
 import pkg_resources
@@ -9,7 +9,7 @@ import logging
 log = logging.getLogger(__name__)
 
 
-class ThumbsBlock(XBlock):
+class ThumbsBlockBase(object):
     """
     An XBlock with thumbs-up/thumbs-down voting.
 
@@ -19,10 +19,10 @@ class ThumbsBlock(XBlock):
     This demonstrates multiple data scopes and ajax handlers.
 
     """
-
     upvotes = Integer(help="Number of up votes", default=0, scope=Scope.user_state_summary)
     downvotes = Integer(help="Number of down votes", default=0, scope=Scope.user_state_summary)
     voted = Boolean(help="Has this student voted?", default=False, scope=Scope.user_state)
+
 
     def student_view(self, context=None):  # pylint: disable=W0613
         """
@@ -88,3 +88,33 @@ class ThumbsBlock(XBlock):
                 </vertical_demo>
              """)
         ]
+
+class ThumbsBlock(ThumbsBlockBase, XBlock):
+    """
+    An XBlock with thumbs-up/thumbs-down voting.
+
+    Vote totals are stored for all students to see.  Each student is recorded
+    as has-voted or not.
+
+    This demonstrates multiple data scopes and ajax handlers.
+    """
+    pass
+
+class ThumbsAside(ThumbsBlockBase, XBlockAside):
+    """
+    An XBlockAside with thumbs-up/thumbs-down voting.
+
+    Vote totals are stored for all students to see.  Each student is recorded
+    as has-voted or not.
+
+    This demonstrates multiple data scopes and ajax handlers.
+    """
+
+    @XBlockAside.aside_for('student_view')
+    def student_view_aside(self, block, context=None): #pylint: disable=unused-argument
+        """
+        Allow the thumbs up/down-voting to work as an Aside as well as an XBlock.
+        """
+        fragment = self.student_view(context)
+        fragment.initialize_js('ThumbsAside')
+        return fragment

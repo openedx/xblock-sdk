@@ -1,4 +1,8 @@
-function ThumbsBlock(runtime, element) {
+function ThumbsAside(runtime, element, block_element, init_args) {
+    return new ThumbsBlock(runtime, element, init_args);
+}
+
+function ThumbsBlock(runtime, element, init_args) {
     function updateVotes(votes) {
         $('.upvote .count', element).text(votes.up);
         $('.downvote .count', element).text(votes.down);
@@ -23,4 +27,6 @@ function ThumbsBlock(runtime, element) {
             success: updateVotes
         });
     });
+
+    return {};
 };
