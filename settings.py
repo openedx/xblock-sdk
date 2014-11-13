@@ -199,3 +199,9 @@ WORKBENCH = {
         os.environ.get('WORKBENCH_RESET_STATE_ON_RESTART', "false").lower() == "true"
     )
 }
+
+XBLOCK_DIRECTORY = os.path.join(
+    os.path.sep,
+    'root',
+    'xblocks',
+)

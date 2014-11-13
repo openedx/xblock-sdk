@@ -102,7 +102,7 @@ class ThreeThumbsTest(SeleniumTest):
         down_count_css = 'span.downvote span.count'
 
         # Up vote for the first thumb
-        thumbs[0].find_element_by_css_selector('span.downvote').click()
+        thumbs[0].find_element_by_css_selector(down_count_css).click()
 
         # Only the first thumb's downcount should increase
         self.assertEqual('1', thumbs[0].find_element_by_css_selector(down_count_css).text)
