@@ -10,6 +10,8 @@ from django.template.defaultfilters import slugify
 
 from xblock.core import XBlock
 from .runtime import WorkbenchRuntime, WORKBENCH_KVS
+import logging
+log = logging.getLogger(__name__)
 
 # Build the scenarios, which are named trees of usages.
 
@@ -48,7 +50,11 @@ def add_class_scenarios(class_name, cls):
     if hasattr(cls, "workbench_scenarios"):
         for i, (desc, xml) in enumerate(cls.workbench_scenarios()):
             scname = "%s.%d" % (class_name, i)
-            add_xml_scenario(scname, desc, xml)
+            try:
+                add_xml_scenario(scname, desc, xml)
+            except Exception as e:
+                # don't allow a single bad scenario to block the whole workbench
+                log.warning(u"Cannot load %s: %s", desc, e)
 
 
 def init_scenarios():
