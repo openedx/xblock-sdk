@@ -6,5 +6,8 @@ before_install:
     - "sh -e /etc/init.d/xvfb start"
 install:
     - "make install"
+    - "pip install coveralls"
 script:
-    - "make test"
+    - "make cover"
+after_success:
+    - "coveralls"
