@@ -11,6 +11,7 @@ htmlcov
 
 *.DS_Store
 workbench/static/djpyfs/
+workbench.test.*
 
 # Documentation
 doc/_build
