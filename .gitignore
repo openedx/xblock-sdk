@@ -10,6 +10,7 @@ local_settings.py
 htmlcov
 
 *.DS_Store
+workbench/static/djpyfs/
 
 # Documentation
 doc/_build

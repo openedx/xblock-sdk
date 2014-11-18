@@ -11,7 +11,7 @@ lazy
 -e git+https://github.com/edx/XBlock.git@fdd4b2bb9aa15aa7c217a8cfca6c5c7d5b602688#egg=XBlock
 
 # Acid xblock
--e git+https://github.com/edx/acid-block.git@459aff7b63db8f2c5decd1755706c1a64fb4ebb1#egg=acid-xblock
+-e git+https://github.com/edx/acid-block.git@bba23fd32206ccdf9553db7325eee3196119e1e7#egg=acid-xblock
 
 fs
 pypng
