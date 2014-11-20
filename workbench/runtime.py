@@ -25,6 +25,7 @@ from xblock.exceptions import NoSuchDefinition, NoSuchUsage
 from xblock.fragment import Fragment
 
 import xblock.reference.plugins
+from xblock.reference.user_service import UserService, XBlockUser
 
 from .models import XBlockState
 from .util import make_safe_for_html
@@ -243,6 +244,7 @@ class WorkbenchRuntime(Runtime):
             services={
                 'fs': xblock.reference.plugins.FSService(),
                 'field-data': KvsFieldData(WORKBENCH_KVS),
+                'user': WorkBenchUserService(user_id),
             }
         )
         self.id_generator = ID_MANAGER
@@ -385,6 +387,29 @@ WORKBENCH_KVS = WorkbenchDjangoKeyValueStore()
 
 # Our global id manager
 ID_MANAGER = ScenarioIdManager()
+
+
+class WorkBenchUserService(UserService):
+    """
+    An implementation of xblock.reference.user_service.UserService
+    """
+
+    def __init__(self, uid):
+        """
+        Initialize user
+        """
+        self._user = XBlockUser(
+            is_current_user=True,
+            emails=["user@example.com"],
+            full_name="XBlock User ({})".format(uid),
+        )
+        self._user.opt_attrs['xblock-workbench.user_id'] = uid
+
+    def get_current_user(self):
+        """
+        Returns user created by init
+        """
+        return self._user
 
 
 def reset_global_state():
