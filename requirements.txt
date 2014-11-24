@@ -8,11 +8,11 @@ lazy
 
 # XBlock
 # This is not in/from PyPi, since it moves fast
--e git+https://github.com/edx/XBlock.git@a786c65#egg=XBlock
+-e git+https://github.com/edx/XBlock.git@f265243c0c14eb5d633c33603c527ac2d252a23f#egg=XBlock
 #-e ../XBlock
 
 # Acid xblock
--e git+https://github.com/edx/acid-block.git@f8faad694e02a02181708e709abb222787415d56#egg=acid-xblock
+-e git+https://github.com/edx/acid-block.git@5bbb4a2252967314d9385c7a37a6a8d52ec7ab67#egg=acid-xblock
 
 fs
 pypng

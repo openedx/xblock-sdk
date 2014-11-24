@@ -65,10 +65,11 @@ var XBlock = (function () {
         var initFn = window[$(element).data('init')];
         var jsBlock;
         if(initFn.length == 2) {
-            jsBlock = initFn(runtime, element) || {};
+            jsBlock = new initFn(runtime, element) || {};
         } else if (initFn.length == 3) {
-            data = JSON.parse($(".xblock_json_init_args", element).text());
-            jsBlock = initFn(runtime, element, data) || {};
+            var data = $(".xblock_json_init_args", element).text();
+            if (data) data = JSON.parse(data); else data = {};
+            jsBlock = new initFn(runtime, element, data) || {};
         }
             
         jsBlock.element = element;
@@ -102,7 +103,7 @@ var XBlockAsides = (function () {
         var block_element = $(element).siblings('[data-usage="'+$(element).data('block_id')+'"]')
         var data = $(".xblock_json_init_args", element).text();
         if (data) data = JSON.parse(data); else data = {};
-        jsBlock = initFn(runtime, element, block_element, data) || {};
+        jsBlock = new initFn(runtime, element, block_element, data) || {};
         
         jsBlock.element = element;
         return jsBlock;
