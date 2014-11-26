@@ -67,9 +67,8 @@ When you open the workbench, you'll see a list of sample XBlock configurations
 (scenarios).  Each will display a page showing the XBlocks composited together,
 along with internal information like the "database" contents.
 
-The workbench doesn't use a real database, it simply stores all data in an
-in-memory dictionary.  The data is all lost and reset when you restart the
-server.
+The workbench database defaults to a sqlite3 database. If you're using devstack,
+you may want to set `WORKBENCH_DATABASES` to point to your mysql db.
 
 If you want to experiment with different students, you can use a URL parameter
 to set the student ID, which defaults to 1:

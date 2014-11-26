@@ -42,6 +42,11 @@ urlpatterns = patterns(
         name='handler'
     ),
     url(
+        r'^aside_handler/(?P<aside_id>[^/]+)/(?P<handler_slug>[^/]*)(?:/(?P<suffix>.*))?$',
+        'aside_handler', {'authenticated': True},
+        name='aside_handler'
+    ),
+    url(
         r'^unauth_handler/(?P<usage_id>[^/]+)/(?P<handler_slug>[^/]*)(?:/(?P<suffix>.*))?$',
         'handler', {'authenticated': False},
         name='unauth_handler'

@@ -33,14 +33,14 @@ class ThreeThumbsTest(SeleniumTest):
         self.assertEqual(header1.text, 'XBlock: three thumbs test')
 
         # She sees that there are 3 sets of thumbs
-        vertical_css = 'div.student_view > div.xblock > div.vertical'
+        vertical_css = 'div.student_view > div.xblock-v1 > div.vertical'
 
         # The following will give a NoSuchElementException error
         # if it is not there
         vertical = self.browser.find_element_by_css_selector(vertical_css)
 
         # Make sure there are three thumbs blocks
-        thumb_css = 'div.xblock[data-block-type="thumbs"]'
+        thumb_css = 'div.xblock-v1[data-block-type="thumbs"]'
         thumbs = vertical.find_elements_by_css_selector(thumb_css)
         self.assertEqual(3, len(thumbs))
 
@@ -60,11 +60,11 @@ class ThreeThumbsTest(SeleniumTest):
         link.click()
 
         # The vertical that contains the thumbs
-        vertical_css = 'div.student_view > div.xblock > div.vertical'
+        vertical_css = 'div.student_view > div.xblock-v1 > div.vertical'
         vertical = self.browser.find_element_by_css_selector(vertical_css)
 
         # The three thumbs blocks
-        thumb_css = 'div.xblock[data-block-type="thumbs"]'
+        thumb_css = 'div.xblock-v1[data-block-type="thumbs"]'
         thumbs = vertical.find_elements_by_css_selector(thumb_css)
 
         # Up and down counts
@@ -90,11 +90,11 @@ class ThreeThumbsTest(SeleniumTest):
         link.click()
 
         # The vertical that contains the thumbs
-        vertical_css = 'div.student_view > div.xblock > div.vertical'
+        vertical_css = 'div.student_view > div.xblock-v1 > div.vertical'
         vertical = self.browser.find_element_by_css_selector(vertical_css)
 
         # The three thumbs blocks
-        thumb_css = 'div.xblock[data-block-type="thumbs"]'
+        thumb_css = 'div.xblock-v1[data-block-type="thumbs"]'
         thumbs = vertical.find_elements_by_css_selector(thumb_css)
 
         # Up and down counts

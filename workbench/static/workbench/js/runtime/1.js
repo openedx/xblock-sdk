@@ -16,9 +16,14 @@ var RuntimeProvider = (function() {
         suffix = typeof suffix !== 'undefined' ? suffix : '';
         query = typeof query !== 'undefined' ? query : '';
         var usage = $(block).data('usage');
+        var url_selector = $(block).data('url_selector');
+        if (url_selector !== undefined) {
+            baseUrl = window[url_selector];
+        }
+        else {baseUrl = handlerBaseUrl;}
 
         // studentId and handlerBaseUrl are both defined in block.html
-        return (handlerBaseUrl + usage +
+        return (baseUrl + usage +
                            "/" + handlerName +
                            "/" + suffix +
                    "?student=" + studentId +
@@ -60,10 +65,11 @@ var XBlock = (function () {
         var initFn = window[$(element).data('init')];
         var jsBlock;
         if(initFn.length == 2) {
-            jsBlock = initFn(runtime, element) || {};
+            jsBlock = new initFn(runtime, element) || {};
         } else if (initFn.length == 3) {
-            data = JSON.parse($(".xblock_json_init_args", element).text());
-            jsBlock = initFn(runtime, element, data) || {};
+            var data = $(".xblock_json_init_args", element).text();
+            if (data) data = JSON.parse(data); else data = {};
+            jsBlock = new initFn(runtime, element, data) || {};
         }
             
         jsBlock.element = element;
@@ -72,13 +78,45 @@ var XBlock = (function () {
     };
 
     var initializeBlocks = function (element) {
-        return $(element).immediateDescendents('.xblock').map(function(idx, elem) {
+        return $(element).immediateDescendents('.xblock-v1').map(function(idx, elem) {
             return initializeBlock(elem);
         }).toArray();
     };
 
     return {
         initializeBlocks: initializeBlocks
+    };
+}());
+
+var XBlockAsides = (function () {
+    
+    var initializeAside = function (element) {
+        var version = $(element).data('runtime-version');
+        if (version === undefined) {
+            return null;
+        }
+
+        var runtime = RuntimeProvider.getRuntime(version);
+        var initFn = window[$(element).data('init')];
+        var jsBlock;
+        // $(element).siblings('div.xblock-v1')[0]
+        var block_element = $(element).siblings('[data-usage="'+$(element).data('block_id')+'"]')
+        var data = $(".xblock_json_init_args", element).text();
+        if (data) data = JSON.parse(data); else data = {};
+        jsBlock = new initFn(runtime, element, block_element, data) || {};
+        
+        jsBlock.element = element;
+        return jsBlock;
+    };
+    
+    var initializeAsides = function (elements) {
+        return elements.map(function(idx, elem) {
+            return initializeAside(elem);
+        }).toArray();
+    };
+
+    return {
+        initializeAsides: initializeAsides
     };
 }());
 
@@ -104,4 +142,5 @@ $(function() {
     });
 
     XBlock.initializeBlocks($('body'));
+    XBlockAsides.initializeAsides($('.xblock_asides-v1'))
 });
