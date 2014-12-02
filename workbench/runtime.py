@@ -3,7 +3,7 @@
 Code in this file is a mix of Runtime layer and Workbench layer.
 
 """
-from collections import defaultdict, OrderedDict
+from collections import defaultdict
 import itertools
 import logging
 import re
@@ -95,7 +95,7 @@ class ScenarioIdManager(IdReader, IdGenerator):
 
     This will create IDs in the form of::
 
-      {scenario-slug}.{block_type}.d{def #}(.u{usage #})
+      {scenario-slug}.{block_type}.d{def #}(.u{usage #})(.{aside_type})
 
     So an example: a-little-html.html.d0.u0
 
@@ -107,8 +107,10 @@ class ScenarioIdManager(IdReader, IdGenerator):
     def __init__(self):
         self._block_types_to_id_seq = defaultdict(itertools.count)
         self._def_ids_to_id_seq = defaultdict(itertools.count)
-        self._usages = OrderedDict()
-        self._definitions = OrderedDict()
+        self._usages = {}
+        self._definitions = {}
+        self._aside_defs = {}
+        self._aside_usages = {}
         self.scenario = ""
 
     def clear(self):
@@ -117,6 +119,8 @@ class ScenarioIdManager(IdReader, IdGenerator):
         self._def_ids_to_id_seq.clear()
         self._usages.clear()
         self._definitions.clear()
+        self._aside_defs.clear()
+        self._aside_usages.clear()
         self.scenario = ""
 
     def create_usage(self, def_id):
@@ -146,9 +150,6 @@ class ScenarioIdManager(IdReader, IdGenerator):
 
         return def_id
 
-    # foo_aside-def-id_ending.in.d1234.u9
-    ASIDE_RE = re.compile(u"(?P<block_type>[^-]+)-(?P<def_id>.+\.d\d+)(\.(?P<usage_affix>u\d+))?")
-
     def get_block_type(self, def_id):
         """Get a block_type by its definition id."""
         try:
@@ -156,11 +157,60 @@ class ScenarioIdManager(IdReader, IdGenerator):
         except KeyError:
             raise NoSuchDefinition(repr(def_id))
 
-    def get_aside_type(self, def_id):
-        parsed = self.ASIDE_RE.match(def_id)
-        if not parsed:
-            raise NoSuchDefinition(repr(def_id))
-        return parsed.group('block_type')
+    def create_aside(self, definition_id, usage_id, aside_type):
+        aside_def_id = u"{}.{}".format(definition_id, aside_type)
+        aside_usage_id = u"{}.{}".format(usage_id, aside_type)
+        self._aside_defs[aside_def_id] = (definition_id, aside_type)
+        self._aside_usages[aside_usage_id] = (usage_id, aside_type)
+        return aside_def_id, aside_usage_id
+
+    def get_aside_type_from_definition(self, def_id):
+        """
+        Parse the type of the aside from an XBlockAside definition_id.
+
+        Arguments:
+            def_id: An XBlockAside definition_id.
+        """
+        try:
+            return self._aside_defs[def_id][1]
+        except KeyError:
+            raise NoSuchDefinition(def_id)
+
+    def get_aside_type_from_usage(self, usage_id):
+        """
+        Parse the type of the aside from an XBlockAside usage_id.
+
+        Arguments:
+            usage_id: An XBlockAside usage_id.
+        """
+        try:
+            return self._aside_usages[usage_id][1]
+        except KeyError:
+            raise NoSuchUsage(usage_id)
+
+    def get_usage_id_from_aside(self, aside_id):
+        """
+        Extract the usage_id from the aside_id.
+
+        Arguments:
+            aside_id: An XBlockAside usage_id
+        """
+        try:
+            return self._aside_usages[aside_id][0]
+        except KeyError:
+            raise NoSuchUsage(usage_id)
+
+    def get_definition_id_from_aside(self, aside_id):
+        """
+        Extract the definition_id from an aside id.
+
+        Arguments:
+            aside_id: An XBlockAside definition_id
+        """
+        try:
+            return self._aside_defs[aside_id][0]
+        except KeyError:
+            raise NoSuchDefinition(def_id)
 
     # Workbench specific functionality
     def set_scenario(self, scenario):
@@ -175,25 +225,6 @@ class ScenarioIdManager(IdReader, IdGenerator):
         back. This gives an easy hook to do that.
         """
         return self._usages.keys()[-1] if self._usages else None
-
-    def create_aside(self, definition_id, usage_id, aside_type):
-        aside_def_id = u"{}-{}".format(aside_type, definition_id)
-        aside_usage_id = u"{}-{}".format(aside_type, usage_id)
-        return aside_def_id, aside_usage_id
-
-    def get_usage_id_from_aside(self, aside_id):
-        """Extract the usage_id from the aside_id."""
-        parsed = self.ASIDE_RE.match(aside_id)
-        if not parsed:
-            raise NoSuchUsage(repr(aside_id))
-        return ur"{}.{}".format(parsed.group('def_id'), parsed.group('usage_affix'))
-
-    def get_definition_id_from_aside(self, aside_id):
-        """Extract the definition_id from an aside id."""
-        parsed = self.ASIDE_RE.match(aside_id)
-        if not parsed:
-            raise NoSuchUsage(repr(aside_id))
-        return ur"{}-{}".format(parsed.group('block_type'), parsed.group('def_id'))
 
 
 class WorkbenchRuntime(Runtime):
