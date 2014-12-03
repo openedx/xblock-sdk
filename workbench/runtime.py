@@ -193,6 +193,13 @@ class ScenarioIdManager(IdReader, IdGenerator):
         parsed = self.ASIDE_RE.match(aside_id)
         if not parsed:
             raise NoSuchUsage(repr(aside_id))
+        return ur"{}".format(parsed.group('def_id'))
+
+    def get_aside_definition_id_from_aside_usage(self, aside_id):
+        """Extract the aside's definition_id from an aside id."""
+        parsed = self.ASIDE_RE.match(aside_id)
+        if not parsed:
+            raise NoSuchUsage(repr(aside_id))
         return ur"{}-{}".format(parsed.group('block_type'), parsed.group('def_id'))
 
 
