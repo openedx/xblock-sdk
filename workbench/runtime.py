@@ -156,10 +156,16 @@ class ScenarioIdManager(IdReader, IdGenerator):
         except KeyError:
             raise NoSuchDefinition(repr(def_id))
 
-    def get_aside_type(self, def_id):
+    def get_aside_type_from_definition(self, def_id):
         parsed = self.ASIDE_RE.match(def_id)
         if not parsed:
             raise NoSuchDefinition(repr(def_id))
+        return parsed.group('block_type')
+
+    def get_aside_type_from_usage(self, usage_id):
+        parsed = self.ASIDE_RE.match(usage_id)
+        if not parsed:
+            raise NoSuchDefinition(repr(usage_id))
         return parsed.group('block_type')
 
     # Workbench specific functionality
@@ -190,6 +196,13 @@ class ScenarioIdManager(IdReader, IdGenerator):
 
     def get_definition_id_from_aside(self, aside_id):
         """Extract the definition_id from an aside id."""
+        parsed = self.ASIDE_RE.match(aside_id)
+        if not parsed:
+            raise NoSuchUsage(repr(aside_id))
+        return ur"{}".format(parsed.group('def_id'))
+
+    def get_aside_definition_id_from_aside_usage(self, aside_id):
+        """Extract the aside's definition_id from an aside id."""
         parsed = self.ASIDE_RE.match(aside_id)
         if not parsed:
             raise NoSuchUsage(repr(aside_id))
