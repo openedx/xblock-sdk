@@ -6,7 +6,6 @@ Code in this file is a mix of Runtime layer and Workbench layer.
 from collections import defaultdict
 import itertools
 import logging
-import re
 from xblock.core import XBlockAside
 
 try:
@@ -263,11 +262,11 @@ class WorkbenchRuntime(Runtime):
         template = django_template_loader.get_template(template_name)
         return template.render(DjangoContext(kwargs))
 
-    def _wrap_ele(self, block, frag, extra_data=None):
+    def _wrap_ele(self, block, view, frag, extra_data=None):
         """
         Add javascript to the wrapped element
         """
-        wrapped = super(WorkbenchRuntime, self)._wrap_ele(block, frag, extra_data)
+        wrapped = super(WorkbenchRuntime, self)._wrap_ele(block, view, frag, extra_data)
         wrapped.add_resource_url(self.resource_url("js/vendor/jquery.min.js"), 'application/javascript', placement="head")
         wrapped.add_javascript_url(self.resource_url("js/vendor/jquery.cookie.js"))
 
