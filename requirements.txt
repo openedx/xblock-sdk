@@ -17,3 +17,7 @@ lazy
 fs
 pypng
 -e git+https://github.com/pmitros/django-pyfs.git@514607d78535fd80bfd23184cd292ee5799b500d#egg=djpyfs
+
+# Strictly speaking, this is only for testing, but is in the INSTALLED_APPS,
+# and it's easier just to install it.
+django_nose
