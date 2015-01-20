@@ -42,7 +42,7 @@ def remove_scenario(scname):
     del SCENARIOS[scname]
 
 
-def add_class_scenarios(class_name, cls):
+def add_class_scenarios(class_name, cls, fail_silently=True):
     """
     Add scenarios from a class to the global collection of scenarios.
     """
@@ -54,8 +54,10 @@ def add_class_scenarios(class_name, cls):
                 add_xml_scenario(scname, desc, xml)
             except Exception:
                 # don't allow a single bad scenario to block the whole workbench
-                log.warning(u"Cannot load %s", desc, exc_info=True)
-
+                if fail_silently:
+                    log.warning(u"Cannot load %s", desc, exc_info=True)
+                else:
+                    raise
 
 def init_scenarios():
     """
@@ -69,5 +71,5 @@ def init_scenarios():
         WORKBENCH_KVS.prep_for_scenario_loading()
 
     # Get all the XBlock classes, and add their scenarios.
-    for class_name, cls in sorted(XBlock.load_classes()):
-        add_class_scenarios(class_name, cls)
+    for class_name, cls in sorted(XBlock.load_classes(fail_silently=False)):
+        add_class_scenarios(class_name, cls, fail_silently=False)
