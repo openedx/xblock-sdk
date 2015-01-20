@@ -4,6 +4,7 @@ Use cookiecutter to create a new XBlock project.
 """
 
 import os
+import re
 import textwrap
 
 from cookiecutter.main import cookiecutter
@@ -14,10 +15,10 @@ This script will create a new XBlock project.
 
 You will be prompted for two pieces of information:
 
-* short_name: a single word, all lower-case, for directory and file names.
+* Short name: a single word, all lower-case, for directory and file names.
   For a hologram 3-D XBlock, you might choose "holo3d".
 
-* class_name: a valid Python class name.  It's best if this ends with "XBlock",
+* Class name: a valid Python class name.  It's best if this ends with "XBlock",
   so for our hologram XBlock, you might choose "Hologram3dXBlock".
 
 Once you specify those two words, a directory will be created in the current
@@ -33,10 +34,34 @@ just delete the directory it created.
 def main():
     print EXPLANATION
 
+    # Get the values.
+    try:
+        while True:
+            short_name = raw_input("Short name: ")
+            if re.match(r"^[a-z][a-z0-9_]+$", short_name):
+                break
+            print "The short name must be a valid Python identifier, all lower-case."
+
+        while True:
+            class_name = raw_input("Class name: ")
+            if re.match(r"[A-Z][a-zA-Z0-9]+XBlock$", class_name):
+                break
+            print "The class name must be a valid Python class name, ending with XBlock."
+    except KeyboardInterrupt:
+        print "\n** Cancelled **"
+        return
+
     # Find the prototype.
     proto_dir = os.path.abspath(os.path.join(__file__, "../../prototype"))
 
-    cookiecutter(proto_dir)
+    cookiecutter(
+        proto_dir,
+        no_input=True,
+        extra_context={
+            'short_name': short_name,
+            'class_name': class_name,
+        },
+    )
 
 
 if __name__ == "__main__":
