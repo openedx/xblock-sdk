@@ -242,7 +242,7 @@ class WorkbenchRuntime(Runtime):
         super(WorkbenchRuntime, self).__init__(
             ID_MANAGER,
             services={
-                'fs': xblock.reference.plugins.FSService(),
+                'fs': xblock.reference.plugins.Filesystem(),
                 'field-data': KvsFieldData(WORKBENCH_KVS),
                 'user': WorkBenchUserService(user_id),
             }
