@@ -1,5 +1,6 @@
 """Test that problems and problem submission works well."""
 import time
+import unittest
 
 from selenium.common.exceptions import StaleElementReferenceException
 
@@ -36,6 +37,7 @@ class ProblemInteractionTest(SeleniumTest):
         )
         self.addCleanup(scenarios.remove_scenario, "test_many_problems")
 
+    @unittest.skip("Flaky test: PLAT-614")
     def test_many_problems(self):
         # Test that problems work properly.
         self.browser.get(self.live_server_url + "/scenario/test_many_problems")
@@ -45,6 +47,7 @@ class ProblemInteractionTest(SeleniumTest):
         # Find the numbers on the page.
         nums = self.browser.find_elements_by_css_selector("p.the_numbers")
         num_pairs = [tuple(int(n) for n in num.text.split()) for num in nums]
+
         # They should be all different.
         self.assertEqual(len(set(num_pairs)), self.num_problems)
 

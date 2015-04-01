@@ -194,5 +194,9 @@ LOGGING = {
 WORKBENCH = {
     'reset_state_on_restart': (
         os.environ.get('WORKBENCH_RESET_STATE_ON_RESTART', "false").lower() == "true"
-    )
+    ),
+
+    'services': {
+        'fs': 'xblock.reference.plugins.FSService'
+    }
 }
