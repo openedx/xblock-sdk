@@ -5,6 +5,7 @@ Code in this file is a mix of Runtime layer and Workbench layer.
 """
 from collections import defaultdict
 import itertools
+import importlib
 import logging
 from xblock.core import XBlockAside
 
@@ -13,6 +14,7 @@ try:
 except ImportError:
     import json
 
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.templatetags.static import static
 from django.template import loader as django_template_loader, \
@@ -239,13 +241,19 @@ class WorkbenchRuntime(Runtime):
     def __init__(self, user_id=None):
         #  TODO: Add params for user, runtime, etc. to service initialization
         #  Move to stevedor
-        services={
+        services = {
             'field-data': KvsFieldData(WORKBENCH_KVS),
             'user': WorkBenchUserService(user_id),
         }
 
-        if hasattr(xblock.reference.plugins, 'FSService'):
-            services['fs'] = xblock.reference.plugins.FSService()
+        # Load additional services defined by Django settings
+        # This is useful for instances of workbench used to develop
+        # XBlocks that require services that may be too specific
+        # to include in the default workbench configuration.
+        for service_name, service_path in settings.WORKBENCH.get('services', {}).iteritems():
+            service = self._load_service(service_path)
+            if service is not None:
+                services[service_name] = service
 
         super(WorkbenchRuntime, self).__init__(ID_MANAGER, services=services)
         self.id_generator = ID_MANAGER
@@ -325,6 +333,27 @@ class WorkbenchRuntime(Runtime):
 
     def query(self, block):
         return _BlockSet(self, [block])
+
+    def _load_service(self, service_path):
+        """Load and and initialize a service instance.
+
+        `service_path` is a Python module path of the form
+        "package.subpackage.module.class", where `class`
+        is the class defining the service.
+
+        Returns an instance of the service, or `None` if the
+        service could not be initialized.
+        """
+        module_path, _, name = service_path.rpartition('.')
+        try:
+            cls = getattr(importlib.import_module(module_path), name)
+            service_instance = cls()
+            service_instance.runtime = self
+            return service_instance
+        except (ImportError, ValueError, AttributeError):
+            log.info('Could not find service class defined at "%s"', service_path)
+        except:
+            log.exception('Could not initialize service defined at "%s"', service_path)
 
 
 class _BlockSet(object):

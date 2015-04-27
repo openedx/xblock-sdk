@@ -2,9 +2,15 @@
 
 from unittest import TestCase
 
+import mock
+
+from django.conf import settings
+
 from xblock.fields import Scope
 from xblock.runtime import KeyValueStore
-from ..runtime import ScenarioIdManager, WorkbenchDjangoKeyValueStore
+from xblock.runtime import KvsFieldData
+from xblock.reference.user_service import UserService
+from ..runtime import WorkbenchRuntime, ScenarioIdManager, WorkbenchDjangoKeyValueStore
 
 
 class TestScenarioIds(TestCase):
@@ -83,3 +89,75 @@ class TestKVStore(TestCase):
         self.assertEqual(self.kvs.get(self.key), 7)
         self.kvs.delete(self.key)
         self.assertFalse(self.kvs.has(self.key))
+
+
+class StubService(object):
+    """Empty service to test loading additional services. """
+    pass
+
+
+class ExceptionService(object):
+    """Stub service that raises an exception on init. """
+    def __init__(self):
+        raise Exception("Kaboom!")
+
+
+class TestServices(TestCase):
+
+    def setUp(self):
+        super(TestServices, self).setUp()
+        self.xblock = mock.Mock()
+
+    def test_default_services(self):
+        runtime = WorkbenchRuntime('test_user')
+        self._assert_default_services(runtime)
+
+    @mock.patch.dict(settings.WORKBENCH['services'], {
+        'stub': 'workbench.test.test_runtime.StubService'
+    })
+    def test_settings_adds_services(self):
+        runtime = WorkbenchRuntime('test_user')
+
+        # Default services should still be available
+        self._assert_default_services(runtime)
+
+        # An additional service should be provided
+        self._assert_service(runtime, 'stub', StubService)
+
+        # Check that the service has the runtime attribute set
+        service = runtime.service(self.xblock, 'stub')
+        self.assertIs(service.runtime, runtime)
+
+    @mock.patch.dict(settings.WORKBENCH['services'], {
+        'not_found': 'workbench.test.test_runtime.NotFoundService'
+    })
+    def test_could_not_find_service(self):
+        runtime = WorkbenchRuntime('test_user')
+
+        # Default services should still be available
+        self._assert_default_services(runtime)
+
+        # The additional service should NOT be available
+        self.assertIs(runtime.service(self.xblock, 'not_found'), None)
+
+    @mock.patch.dict(settings.WORKBENCH['services'], {
+        'exception': 'workbench.test.test_runtime.ExceptionService'
+    })
+    def test_runtime_service_initialization_failed(self):
+        runtime = WorkbenchRuntime('test_user')
+
+        # Default services should still be available
+        self._assert_default_services(runtime)
+
+        # The additional service should NOT be available
+        self.assertIs(runtime.service(self.xblock, 'exception'), None)
+
+    def _assert_default_services(self, runtime):
+        """Check that the default services are available. """
+        self._assert_service(runtime, 'field-data', KvsFieldData)
+        self._assert_service(runtime, 'user', UserService)
+
+    def _assert_service(self, runtime, service_name, service_class):
+        """Check that a service is loaded. """
+        service_instance = runtime.service(self.xblock, service_name)
+        self.assertIsInstance(service_instance, service_class)

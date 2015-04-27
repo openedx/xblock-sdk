@@ -4,4 +4,4 @@ mock
 pylint==0.28
 pep8
 rednose
-bok_choy==0.3.2
+bok_choy==0.3.3
