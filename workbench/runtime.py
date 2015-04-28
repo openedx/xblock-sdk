@@ -15,6 +15,7 @@ except ImportError:
     import json
 
 from django.conf import settings
+import django.utils.translation
 from django.core.urlresolvers import reverse
 from django.templatetags.static import static
 from django.template import loader as django_template_loader, \
@@ -26,8 +27,8 @@ from xblock.runtime import (
 from xblock.exceptions import NoSuchDefinition, NoSuchUsage
 from xblock.fragment import Fragment
 
-import xblock.reference.plugins
 from xblock.reference.user_service import UserService, XBlockUser
+from xblock.runtime import NullI18nService
 
 from .models import XBlockState
 from .util import make_safe_for_html
@@ -244,6 +245,7 @@ class WorkbenchRuntime(Runtime):
         services = {
             'field-data': KvsFieldData(WORKBENCH_KVS),
             'user': WorkBenchUserService(user_id),
+            'i18n': WorkbenchI18NService(),
         }
 
         # Load additional services defined by Django settings
@@ -454,3 +456,15 @@ def reset_global_state():
     WORKBENCH_KVS.clear()
     ID_MANAGER.clear()
     init_scenarios()
+
+
+class WorkbenchI18NService(NullI18nService):
+    """Version of the I18N service for the workbench.
+
+    Like the version in edx-platform, this simply
+    exposes functions defined in Django's translation
+    module.
+    """
+
+    def __getattr__(self, name):
+        return getattr(django.utils.translation, name)
