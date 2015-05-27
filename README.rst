@@ -100,6 +100,14 @@ proposing as a standard.
 Once you install your XBlock into your virtualenv, the workbench will
 automatically display its scenarios for you to experiment with.
 
+If you are interested in making an XBlock to run for your course on edx.org,
+please get in touch with us as soon as possible - in the ideation and design
+phase is ideal. See our `XBlock review guidelines`_
+for more information (note that this is not needed for XBlocks running on your
+own instance of Open edX, or released to the wider community).
+
+.. _XBlock review guidelines: https://openedx.atlassian.net/wiki/display/OPEN/XBlock+review+guidelines
+
 
 External XBlocks
 ----------------
@@ -124,7 +132,11 @@ How to Contribute
 
 Contributions are very welcome. The easiest way is to fork this repo, and then
 make a pull request from your fork. The first time you make a pull request, you
-may be asked to sign a Contributor Agreement.
+will be asked to sign a Contributor Agreement.
+
+Please see our `contributor's guide`_ for more information on contributing.
+
+.. _contributor's guide: http://edx.readthedocs.org/projects/edx-developer-guide/en/latest/process/overview.html
 
 
 Reporting Security Issues
