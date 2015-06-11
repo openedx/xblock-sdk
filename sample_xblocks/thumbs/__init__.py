@@ -1,1 +1,1 @@
-from .thumbs import ThumbsBlock
+from .thumbs import ThumbsAside, ThumbsBlock
