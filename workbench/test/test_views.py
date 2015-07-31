@@ -292,3 +292,36 @@ def test_local_resources():
         assert_equals(result.status_code, 404)
     except DisallowedFileError:
         pass
+
+
+class XBlockWithContextTracking(XBlock):
+    registered_contexts = []
+
+    @classmethod
+    def register_context(cls, context):
+        cls.registered_contexts.append(context)
+
+    @classmethod
+    def clear_contexts(cls):
+        cls.registered_contexts = []
+
+    def student_view(self, context):
+        self.register_context(context)
+        return Fragment()
+
+
+@temp_scenario(XBlockWithContextTracking, 'context_tracking')
+def test_activate_id():
+    client = Client()
+    assert_equals(XBlockWithContextTracking.registered_contexts, [])  # precondition check
+    client.get("/view/context_tracking/")
+    assert_equals(XBlockWithContextTracking.registered_contexts, [{'activate_block_id': None}])
+
+    client.get("/view/context_tracking/?activate_block_id=123")
+    assert_equals(XBlockWithContextTracking.registered_contexts, [
+        {'activate_block_id': None}, {'activate_block_id': '123'}
+    ])
+
+    XBlockWithContextTracking.clear_contexts()
+    client.get("/view/context_tracking/?activate_block_id=456")
+    assert_equals(XBlockWithContextTracking.registered_contexts, [{'activate_block_id': '456'}])
