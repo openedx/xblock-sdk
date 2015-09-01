@@ -64,7 +64,11 @@ def show_scenario(request, scenario_id, view_name='student_view', template='work
     usage_id = scenario.usage_id
     runtime = WorkbenchRuntime(student_id)
     block = runtime.get_block(usage_id)
-    frag = block.render(view_name)
+    render_context = {
+        'activate_block_id': request.GET.get('activate_block_id', None)
+    }
+
+    frag = block.render(view_name, render_context)
     log.info("End show_scenario %s", scenario_id)
     return render_to_response(template, {
         'scenario': scenario,
