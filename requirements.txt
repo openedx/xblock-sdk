@@ -20,7 +20,7 @@ pypng
 
 # Strictly speaking, this is only for testing, but is in the INSTALLED_APPS,
 # and it's easier just to install it.
-django_nose
+django_nose==1.4.1
 
 #install all sample xblocks
 -e .
