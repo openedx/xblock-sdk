@@ -160,7 +160,7 @@ def package_resource(_request, block_type, resource):
     except Exception:  # pylint: disable-msg=broad-except
         raise Http404
     mimetype, _ = mimetypes.guess_type(resource)
-    return HttpResponse(content, mimetype=mimetype)
+    return HttpResponse(content, content_type=mimetype)
 
 
 @csrf_exempt

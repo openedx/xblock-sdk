@@ -1,5 +1,5 @@
 cookiecutter==0.9.0
-Django >= 1.4, < 1.5
+Django==1.8.4
 lxml
 requests
 webob
