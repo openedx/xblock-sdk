@@ -8,8 +8,6 @@ from workbench.scenarios import init_scenarios
 
 admin.autodiscover()
 
-init_scenarios()
-
 urlpatterns = patterns(
     'workbench.views',
     url(r'^$', 'index', name='workbench_index'),

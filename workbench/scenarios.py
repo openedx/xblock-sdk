@@ -74,3 +74,5 @@ def init_scenarios():
     # Get all the XBlock classes, and add their scenarios.
     for class_name, cls in sorted(XBlock.load_classes(fail_silently=False)):
         add_class_scenarios(class_name, cls, fail_silently=False)
+
+init_scenarios()
