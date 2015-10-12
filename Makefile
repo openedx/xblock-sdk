@@ -1,8 +1,33 @@
 #!/usr/bin/make -f
 
+# Commands
+APT_GET=apt-get -y
+HOSTNAME=hostname
+INSTALL_PACKAGE=$(APT_GET) install
+# Files
 SQLITE_DB=var/workbench.db
+# Packages
+LIBS_BUILD=build-essential
+LIBS_PYTHON=python python-dev python-distribute python-pip
+LIBS_LIBXML=libxml2-dev libxslt1-dev zlib1g-dev
+LIBS_SOURCE_CONTROL=git
+# Variables
+HOSTNAME_VALUE=workbench
 
 all: install test
+
+.PHONY: provision
+provision:
+	$(HOSTNAME) "$(HOSTNAME_VALUE)"
+	echo "$(HOSTNAME_VALUE)" > /etc/hostname
+	$(APT_GET) update
+	$(APT_GET) upgrade
+	$(INSTALL_PACKAGE) apt-transport-https
+	$(INSTALL_PACKAGE) $(LIBS_SOURCE_CONTROL)
+	$(INSTALL_PACKAGE) $(LIBS_BUILD)
+	$(INSTALL_PACKAGE) $(LIBS_PYTHON)
+	$(INSTALL_PACKAGE) $(LIBS_LIBXML)
+	$(MAKE) install
 
 .PHONY: install
 install: pip $(SQLITE_DB)
