@@ -1,5 +1,7 @@
 var require = {
-    baseUrl: "/resource",
-    paths: {},
+    baseUrl: "/static",
+    paths: {
+        'xblock_resource': '../resource'
+    },
     waitSeconds: 15
 };
