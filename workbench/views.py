@@ -102,11 +102,11 @@ def package_resource(_request, block_type, resource):
     Wrapper for `pkg_resources` that tries to access a resource and, if it
     is not found, raises an Http404 error.
     """
-    try:
-        xblock_class = XBlock.load_class(block_type)
-        content = xblock_class.open_local_resource(resource)
-    except Exception:  # pylint: disable-msg=broad-except
-        raise Http404
+    # try:
+    xblock_class = XBlock.load_class(block_type)
+    content = xblock_class.open_local_resource(resource)
+    # except Exception:  # pylint: disable-msg=broad-except
+    #     raise Http404
     mimetype, _ = mimetypes.guess_type(resource)
     return HttpResponse(content, mimetype=mimetype)
 

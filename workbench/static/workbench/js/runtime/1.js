@@ -57,15 +57,27 @@ var XBlock = (function () {
         }
 
         var runtime = RuntimeProvider.getRuntime(version);
-        var initFn = window[$(element).data('init')];
+        var init = $(element).data('init');
+        if (!$(element).data('use-require')) {
+            var initFn = window[$(element).data('init')];
+            doInitializeBlock(runtime, element, initFn);
+        }
+        else {
+            require([init], function(initFn){
+                doInitializeBlock(runtime, element, initFn);
+            });
+        }
+    };
+
+    var doInitializeBlock = function(runtime, element, initFn){
         var jsBlock;
         if(initFn.length == 2) {
             jsBlock = initFn(runtime, element) || {};
         } else if (initFn.length == 3) {
-            data = JSON.parse($(".xblock_json_init_args", element).text());
+            var data = JSON.parse($(".xblock_json_init_args", element).text());
             jsBlock = initFn(runtime, element, data) || {};
         }
-            
+
         jsBlock.element = element;
         jsBlock.name = $(element).data('name');
         return jsBlock;

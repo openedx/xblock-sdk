@@ -17,12 +17,13 @@ from django.templatetags.static import static
 from django.template import loader as django_template_loader, \
     Context as DjangoContext
 
-from xblock.fields import Scope
 from xblock.runtime import (
     KvsFieldData, KeyValueStore, Runtime, NoSuchViewError, IdReader, IdGenerator
 )
 from xblock.exceptions import NoSuchDefinition, NoSuchUsage
 from xblock.fragment import Fragment
+
+from opaque_keys.edx.asides import AsideUsageKeyV1, AsideDefinitionKeyV1
 
 from .models import XBlockState
 from .util import make_safe_for_html
@@ -131,6 +132,18 @@ class ScenarioIdManager(IdReader, IdGenerator):
         except KeyError:
             raise NoSuchUsage(repr(usage_id))
 
+    def create_aside(self, definition_id, usage_id, aside_type):
+        """
+        Make a new aside definition and usage ids, indicating an :class:`.XBlockAside` of type `aside_type`
+        commenting on an :class:`.XBlock` usage `usage_id`
+
+        Returns:
+            (aside_definition_id, aside_usage_id)
+        """
+        def_key = AsideDefinitionKeyV1(definition_id, aside_type)
+        usage_key = AsideUsageKeyV1(usage_id, aside_type)
+        return (def_key, usage_key)
+
     def create_definition(self, block_type, slug=None):
         """Make a definition_id, storing its block type."""
         prefix = "{}.{}".format(self.scenario, block_type)
@@ -163,6 +176,56 @@ class ScenarioIdManager(IdReader, IdGenerator):
         back. This gives an easy hook to do that.
         """
         return self._usages.keys()[-1] if self._usages else None
+
+    def get_usage_id_from_aside(self, aside_id):
+        """
+        Retrieve the XBlock `usage_id` associated with this aside usage id.
+
+        Args:
+            aside_id: The usage id of the XBlockAside.
+
+        Returns:
+            The `usage_id` of the usage the aside is commenting on.
+        """
+        raise NotImplementedError()
+
+    def get_definition_id_from_aside(self, aside_id):
+        """
+        Retrieve the XBlock `definition_id` associated with this aside definition id.
+
+        Args:
+            aside_id: The definition id of the XBlockAside.
+
+        Returns:
+            The `definition_id` of the xblock the aside is commenting on.
+        """
+        raise NotImplementedError()
+
+    def get_aside_type_from_usage(self, aside_id):
+        """
+        Retrieve the XBlockAside `aside_type` associated with this aside
+        usage id.
+
+        Args:
+            aside_id: The usage id of the XBlockAside.
+
+        Returns:
+            The `aside_type` of the aside.
+        """
+        raise NotImplementedError()
+
+    def get_aside_type_from_definition(self, aside_id):
+        """
+        Retrieve the XBlockAside `aside_type` associated with this aside
+        definition id.
+
+        Args:
+            aside_id: The definition id of the XBlockAside.
+
+        Returns:
+            The `aside_type` of the aside.
+        """
+        raise NotImplementedError()
 
 
 class WorkbenchRuntime(Runtime):
@@ -201,8 +264,11 @@ class WorkbenchRuntime(Runtime):
         data = {}
         if frag.js_init_fn:
             wrapped.add_javascript_url(self.resource_url("js/runtime/%s.js" % frag.js_init_version))
+            wrapped.add_javascript_url(self.resource_url("js/require_config.js"))
+            wrapped.add_javascript_url(self.resource_url("js/vendor/require.js"))
             data['init'] = frag.js_init_fn
             data['runtime-version'] = frag.js_init_version
+            data['use-require'] = frag.use_require_js
             data['usage'] = block.scope_ids.usage_id
             data['block-type'] = block.scope_ids.block_type
 
