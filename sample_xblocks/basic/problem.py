@@ -117,13 +117,29 @@ class ProblemBlock(XBlock):
                     }
                 }
 
-                function handleCheckResults(results) {
-                    $.each(results.submitResults || {}, function(input, result) {
-                        callIfExists(runtime.childMap(element, input), 'handleSubmit', result);
-                    });
-                    $.each(results.checkResults || {}, function(checker, result) {
-                        callIfExists(runtime.childMap(element, checker), 'handleCheck', result);
-                    });
+                function handleCheckResults(data) {
+                    return function(results) {
+                        $.each(results.submitResults || {}, function(input, result) {
+                            callIfExists(runtime.childMap(element, input), 'handleSubmit', result);
+                        });
+                        answers = {};
+                        correct_map = {};
+                        $.each(results.checkResults || {}, function(checker, result) {
+                            for(key in JSON.parse(JSON.stringify(data))) {
+                               answers[checker] = data[key][0]['value'];
+                            }
+                            if(result) {
+                              correct_map[checker] = {"correctness": "correct"};
+                            } else {
+                              correct_map[checker] = {"correctness": "incorrect"};
+                            }
+                            callIfExists(runtime.childMap(element, checker), 'handleCheck', result);
+                        });
+                        event = {"answers":answers,
+                                 "correct_map":correct_map};
+                        Logger.log("problem_check", event);
+
+                    }
                 }
 
                 // To submit a problem, call all the named children's submit()
@@ -139,7 +155,7 @@ class ProblemBlock(XBlock):
                         }
                     }
                     var handlerUrl = runtime.handlerUrl(element, 'check')
-                    $.post(handlerUrl, JSON.stringify(data)).success(handleCheckResults);
+                    $.post(handlerUrl, JSON.stringify(data)).success(handleCheckResults(data));
                 });
 
                 $(element).find('.rerandomize').bind('click', function() {
