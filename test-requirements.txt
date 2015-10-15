@@ -5,3 +5,6 @@ pylint==0.28
 pep8
 rednose
 bok_choy==0.3.3
+
+# Acid xblock
+-e git+https://github.com/edx/acid-block.git@e46f9cda8a03e121a00c7e347084d142d22ebfb7#egg=acid-xblock
