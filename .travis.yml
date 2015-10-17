@@ -5,6 +5,9 @@ python:
 branches:
     only:
       - master
+cache:
+    directories:
+        - $HOME/.cache/pip
 before_install:
     - "export DISPLAY=:99"
     - "sh -e /etc/init.d/xvfb start"
