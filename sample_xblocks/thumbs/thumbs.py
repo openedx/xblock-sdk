@@ -112,7 +112,7 @@ class ThumbsAside(ThumbsBlockBase, XBlockAside):
     """
 
     @XBlockAside.aside_for('student_view')
-    def student_view_aside(self, block, context=None): #pylint: disable=unused-argument
+    def student_view_aside(self, block, context=None):  # pylint: disable=unused-argument
         """
         Allow the thumbs up/down-voting to work as an Aside as well as an XBlock.
         """
