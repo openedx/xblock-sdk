@@ -59,6 +59,7 @@ def add_class_scenarios(class_name, cls, fail_silently=True):
                 else:
                     raise
 
+
 def init_scenarios():
     """
     Create all the scenarios declared in all the XBlock classes.

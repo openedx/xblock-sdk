@@ -89,6 +89,7 @@ class ThumbsBlockBase(object):
              """)
         ]
 
+
 class ThumbsBlock(ThumbsBlockBase, XBlock):
     """
     An XBlock with thumbs-up/thumbs-down voting.
@@ -99,6 +100,7 @@ class ThumbsBlock(ThumbsBlockBase, XBlock):
     This demonstrates multiple data scopes and ajax handlers.
     """
     pass
+
 
 class ThumbsAside(ThumbsBlockBase, XBlockAside):
     """
