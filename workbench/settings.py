@@ -26,7 +26,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'workbench.db'
+            'NAME': 'var/workbench.db'
         }
     }
 
@@ -173,7 +173,7 @@ LOGGING = {
         'logfile': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': 'workbench.log',
+            'filename': 'var/workbench.log',
             'maxBytes': 50000,
             'backupCount': 2,
         }

@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-SQLITE_DB=workbench.db
+SQLITE_DB=var/workbench.db
 
 all: install test
 
@@ -16,7 +16,10 @@ pip:
 	pip install -e .
 	pip install -r test-requirements.txt
 
-$(SQLITE_DB):
+var:
+	mkdir var || true
+
+$(SQLITE_DB): var
 	# The --noinput flag is for non-interactive runs, e.g. TravisCI.
 	python manage.py syncdb --noinput
 
