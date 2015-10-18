@@ -26,6 +26,11 @@ $(SQLITE_DB): var
 test:
 	python manage.py test
 
+.PHONY: quality
+quality:
+	pep8
+	pylint workbench/ sample_xblocks/ setup.py
+
 cover:
 	coverage run manage.py test
 	coverage report
