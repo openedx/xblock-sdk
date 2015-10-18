@@ -36,6 +36,7 @@ load-plugins=
 disable=
     missing-docstring,
     fixme,
+    duplicate-code,
 # Never going to use these
 # I0011: Locally disabling W0232
 # W0141: Used builtin function 'map'
