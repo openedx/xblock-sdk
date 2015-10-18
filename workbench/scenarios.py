@@ -52,7 +52,7 @@ def add_class_scenarios(class_name, cls, fail_silently=True):
             scname = "%s.%d" % (class_name, i)
             try:
                 add_xml_scenario(scname, desc, xml)
-            except Exception:
+            except Exception:  # pylint:disable=broad-except
                 # don't allow a single bad scenario to block the whole workbench
                 if fail_silently:
                     log.warning(u"Cannot load %s", desc, exc_info=True)
