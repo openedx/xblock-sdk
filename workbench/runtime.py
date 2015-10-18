@@ -201,7 +201,7 @@ class ScenarioIdManager(IdReader, IdGenerator):
         try:
             return self._aside_usages[aside_id][0]
         except KeyError:
-            raise NoSuchUsage(usage_id)
+            raise NoSuchUsage(aside_id)
 
     def get_definition_id_from_aside(self, aside_id):
         """
@@ -213,7 +213,7 @@ class ScenarioIdManager(IdReader, IdGenerator):
         try:
             return self._aside_defs[aside_id][0]
         except KeyError:
-            raise NoSuchDefinition(def_id)
+            raise NoSuchDefinition(aside_id)
 
     # Workbench specific functionality
     def set_scenario(self, scenario):
