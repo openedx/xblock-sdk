@@ -16,6 +16,3 @@ doc/_build
 .pip_cache
 nosetests.xml
 coverage.xml
-diff_cover.html
-diff_quality_pep8.html
-diff_quality_pylint.html
