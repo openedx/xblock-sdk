@@ -19,14 +19,18 @@ import logging
 
 log = logging.getLogger(__name__)
 
-arrow = ["11011",
-         "10001",
-         "00000",
-         "11011",
-         "11011",
-         "11011",
-         "10001"]
-arrow = [map(int, x) for x in arrow]
+ARROW = [
+    map(int, value)
+    for value in [
+        '11011',
+        '10001',
+        '00000',
+        '11011',
+        '11011',
+        '11011',
+        '10001',
+    ]
+]
 
 
 @XBlock.needs('fs')
@@ -60,9 +64,9 @@ class FileThumbsBlock(XBlock):
         frag = Fragment(unicode(html_str))
 
         if not self.fs.exists("thumbsvotes.json"):
-            with self.fs.open("thumbsvotes.json", "wb") as f:
-                json.dump({'up': 0, 'down': 0}, f)
-                f.close()
+            with self.fs.open('thumbsvotes.json', 'wb') as file_output:
+                json.dump({'up': 0, 'down': 0}, file_output)
+                file_output.close()
 
         votes = json.load(self.fs.open("thumbsvotes.json"))
         self.upvotes = votes['up']
@@ -76,11 +80,11 @@ class FileThumbsBlock(XBlock):
                                                "static/js/src/thumbs.js")
         frag.add_javascript(unicode(js_str))
 
-        with self.fs.open("uparrow.png", "wb") as f:
-            png.Writer(len(arrow[0]), len(arrow), greyscale=True, bitdepth=1).write(f, arrow)
+        with self.fs.open('uparrow.png', 'wb') as file_output:
+            png.Writer(len(ARROW[0]), len(ARROW), greyscale=True, bitdepth=1).write(file_output, ARROW)
 
-        with self.fs.open("downarrow.png", "wb") as f:
-            png.Writer(len(arrow[0]), len(arrow), greyscale=True, bitdepth=1).write(f, arrow[::-1])
+        with self.fs.open('downarrow.png', 'wb') as file_output:
+            png.Writer(len(ARROW[0]), len(ARROW), greyscale=True, bitdepth=1).write(file_output, ARROW[::-1])
 
         frag.initialize_js('FileThumbsBlock', {'up': self.upvotes,
                                                'down': self.downvotes,
@@ -116,9 +120,8 @@ class FileThumbsBlock(XBlock):
         else:
             self.downvotes += 1
 
-        f = self.fs.open("thumbsvotes.json", "wb")
-        json.dump({'up': self.upvotes, 'down': self.downvotes}, f)
-        f.close()
+        with self.fs.open('thumbsvotes.json', 'wb') as file_output:
+            json.dump({'up': self.upvotes, 'down': self.downvotes}, file_output)
 
         self.voted = True
 
