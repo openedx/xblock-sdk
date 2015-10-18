@@ -434,12 +434,13 @@ class WorkBenchUserService(UserService):
         """
         Initialize user
         """
-        self._user = XBlockUser(
+        user = XBlockUser(
             is_current_user=True,
             emails=["user@example.com"],
             full_name="XBlock User ({})".format(uid),
         )
-        self._user.opt_attrs['xblock-workbench.user_id'] = uid
+        user.opt_attrs['xblock-workbench.user_id'] = uid
+        super(WorkBenchUserService, self).__init__(user=user)
 
     def get_current_user(self):
         """
