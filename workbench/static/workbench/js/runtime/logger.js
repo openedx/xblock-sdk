@@ -40,6 +40,10 @@ XBlock generated them and other XBlock-local metadata.
             sendRequest, has;
 
         sendRequest = function(data, options) {
+	    // Log to console, rather than AJAX. We may want to bring
+	    // back AJAX for logging in XBlock SDK. If we do so, we
+	    // will want to make sure we handle JSON.stringify
+	    // consistently with edX (e.g. stringify the event)
 	    console.log(JSON.stringify(data));
         };
 
@@ -81,7 +85,7 @@ XBlock generated them and other XBlock-local metadata.
                 // Regardless of whether any callbacks were made, log this event.
                 return sendRequest({
                     'event_type': eventType,
-                    'event': JSON.stringify(data),
+                    'event': data,
                     'page': window.location.href
                 }, requestOptions);
             },
