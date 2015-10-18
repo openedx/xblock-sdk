@@ -79,7 +79,7 @@ def show_scenario(request, scenario_id, view_name='student_view', template='work
     })
 
 
-def user_list(request):
+def user_list(_request):
     """
     This will return a list of all users in the database
     """

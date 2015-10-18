@@ -151,7 +151,7 @@ class HtmlBlock(XBlock):
 
     content = String(help="The HTML to display", scope=Scope.content, default=u"<b>DEFAULT</b>")
 
-    def fallback_view(self, view_name, context=None):
+    def fallback_view(self, _view_name, context=None):
         """Provide a fallback view handler"""
         context = context or {}
         return Fragment(Template(self.content).substitute(**context))
