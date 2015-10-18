@@ -9,7 +9,8 @@ import json
 import png
 
 from xblock.core import XBlock
-from xblock.fields import Scope, Integer, Boolean
+from xblock.fields import Boolean
+from xblock.fields import Scope
 from xblock.reference.plugins import Filesystem
 from xblock.fragment import Fragment
 import pkg_resources
