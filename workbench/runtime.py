@@ -280,7 +280,11 @@ class WorkbenchRuntime(Runtime):
         Add javascript to the wrapped element
         """
         wrapped = super(WorkbenchRuntime, self)._wrap_ele(block, view, frag, extra_data)
-        wrapped.add_resource_url(self.resource_url("js/vendor/jquery.min.js"), 'application/javascript', placement="head")
+        wrapped.add_resource_url(
+            self.resource_url('js/vendor/jquery.min.js'),
+            'application/javascript',
+            placement='head',
+        )
         wrapped.add_javascript_url(self.resource_url("js/vendor/jquery.cookie.js"))
 
         if frag.js_init_fn:
