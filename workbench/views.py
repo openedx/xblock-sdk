@@ -85,8 +85,14 @@ def user_list(_request):
     """
     # We'd really like to do .distinct, but sqlite+django does not support this;
     # hence the hack with sorted(set(...))
-    user_list = sorted(x[0] for x in set(XBlockState.objects.values_list('user_id')))
-    return HttpResponse(json.dumps(user_list, indent=2), content_type="application/json")
+    users = sorted(
+        user_id[0]
+        for user_id in set(XBlockState.objects.values_list('user_id'))
+    )
+    return HttpResponse(
+        json.dumps(users, indent=2),
+        content_type='application/json',
+    )
 
 
 def handler(request, usage_id, handler_slug, suffix='', authenticated=True):
