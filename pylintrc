@@ -34,7 +34,6 @@ load-plugins=
 # multiple time (only on the command line, not in the configuration file where
 # it should appear only once).
 disable=
-    missing-docstring,
     fixme,
     duplicate-code,
 # Never going to use these

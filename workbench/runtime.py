@@ -61,6 +61,9 @@ class WorkbenchDjangoKeyValueStore(KeyValueStore):
 
     @staticmethod
     def _to_json_str(data):
+        """
+        Serialize data as a JSON string
+        """
         return json.dumps(data, indent=2, sort_keys=True)
 
     # KeyValueStore methods.
@@ -363,14 +366,23 @@ class WorkbenchRuntime(Runtime):
 
 
 class _BlockSet(object):
+    """
+    Provide a collection of blocks
+    """
     def __init__(self, runtime, blocks):
         self.runtime = runtime
         self.blocks = blocks
 
     def __iter__(self):
+        """
+        Iterate over all blocks
+        """
         return iter(self.blocks)
 
     def parent(self):
+        """
+        Create a `BlockSet` of all blocks' parents
+        """
         them = set()
         for block in self.blocks:
             if block.parent:
@@ -379,6 +391,9 @@ class _BlockSet(object):
         return _BlockSet(self.runtime, them)
 
     def children(self):
+        """
+        Create a `BlockSet` of all blocks' children
+        """
         them = set()
         for block in self.blocks:
             for child_id in getattr(block, "children", ()):
@@ -387,9 +402,15 @@ class _BlockSet(object):
         return _BlockSet(self.runtime, them)
 
     def descendants(self):
+        """
+        Create a `BlockSet` of all blocks and their children
+        """
         them = set()
 
         def recur(block):
+            """
+            Descend into block children, recursively
+            """
             for child_id in getattr(block, "children", ()):
                 child = self.runtime.get_block(child_id)
                 them.add(child)
@@ -401,6 +422,9 @@ class _BlockSet(object):
         return _BlockSet(self.runtime, them)
 
     def tagged(self, tag):
+        """
+        Create a `BlockSet` of all blocks matching the corresponding tag
+        """
         # Allow this method to access _class_tags for each block
         # pylint: disable=W0212
         them = set()
@@ -414,6 +438,9 @@ class _BlockSet(object):
         return _BlockSet(self.runtime, them)
 
     def attr(self, attr_name):
+        """
+        Yield attributes from child blocks
+        """
         for block in self.blocks:
             if hasattr(block, attr_name):
                 yield getattr(block, attr_name)

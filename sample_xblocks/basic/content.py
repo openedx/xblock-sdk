@@ -18,6 +18,9 @@ class HelloWorldBlock(XBlock):
 
     @staticmethod
     def workbench_scenarios():
+        """
+        Define default workbench scenarios
+        """
         return [
             ("Hello World", "<helloworld_demo/>")
         ]
@@ -190,6 +193,9 @@ class HtmlBlock(XBlock):
 
     @staticmethod
     def workbench_scenarios():
+        """
+        Define default workbench scenarios
+        """
         return [
             ("A little HTML", """
                 <vertical_demo>
