@@ -17,7 +17,11 @@ This code runs on Python 2.7.
 
 2.  (Optional)  Create and activate a virtualenv to work in.
         
-        A virtualenv allows you to isolate your development dependencies for this project from any other dependencies that you might have for other projects. If you do any tinkering at all, it will save you a lot of headaches to install a virtualenv to work in. Read more about it here: http://docs.python-guide.org/en/latest/dev/virtualenvs/
+        A virtualenv allows you to isolate your development dependencies for 
+        this project from any other dependencies that you might have for 
+        other projects. If you do any tinkering at all, it will save you a 
+        lot of headaches to install a virtualenv to work in. Read more about 
+        it here: http://docs.python-guide.org/en/latest/dev/virtualenvs/
 
 3.  Install the requirements and register the XBlock entry points with (you may
     need to sudo this if you don't use virtualenv):
@@ -96,7 +100,8 @@ written in a simple XML language.  Note this is not an XML format we are
 proposing as a standard.
 
 Once you install your XBlock into your virtualenv, the workbench will
-automatically display its scenarios for you to experiment with. You don't have to use anything more complicated than pip to install the package:
+automatically display its scenarios for you to experiment with. You don't 
+have to use anything more complicated than pip to install the package::
     $ pip install -e path/to/Custom_XBlock
 
 If you are interested in making an XBlock to run for your course on edx.org,
