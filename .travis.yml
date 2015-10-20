@@ -15,6 +15,7 @@ install:
     - "make install"
     - "pip install coveralls"
 script:
+    - "make quality"
     - "make cover"
 after_success:
     - "coveralls"

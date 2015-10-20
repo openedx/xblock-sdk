@@ -32,8 +32,14 @@ def scenario(scenario_path, user_id=None):
             self.assertTrue('Success' in response)
     """
     def _decorator(func):
+        """
+        Decorate function to wrap the scenario
+        """
         @wraps(func)
         def _wrapped(*args, **kwargs):
+            """
+            Load a scenario and pass it along to the method invocation
+            """
 
             # Retrieve the object (self)
             # if this is a function, not a method, then do nothing.

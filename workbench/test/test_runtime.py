@@ -14,6 +14,9 @@ from ..runtime import WorkbenchRuntime, ScenarioIdManager, WorkbenchDjangoKeyVal
 
 
 class TestScenarioIds(TestCase):
+    """
+    Test XBlock Scenario IDs
+    """
 
     def setUp(self):
         # Test basic ID generation meets our expectations
@@ -73,6 +76,9 @@ class TestScenarioIds(TestCase):
 
 
 class TestKVStore(TestCase):
+    """
+    Test the Workbench KVP Store
+    """
     def setUp(self):
         self.kvs = WorkbenchDjangoKeyValueStore()
         self.key = KeyValueStore.Key(
@@ -103,6 +109,9 @@ class ExceptionService(object):
 
 
 class TestServices(TestCase):
+    """
+    Test XBlock runtime services
+    """
 
     def setUp(self):
         super(TestServices, self).setUp()

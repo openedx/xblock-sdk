@@ -4,7 +4,6 @@ import lxml.html
 
 from django.test.client import Client
 
-from xblock.core import XBlock
 from xblock.test.tools import assert_equals
 from workbench import scenarios
 

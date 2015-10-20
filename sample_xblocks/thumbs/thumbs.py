@@ -23,7 +23,6 @@ class ThumbsBlockBase(object):
     downvotes = Integer(help="Number of down votes", default=0, scope=Scope.user_state_summary)
     voted = Boolean(help="Has this student voted?", default=False, scope=Scope.user_state)
 
-
     def student_view(self, context=None):  # pylint: disable=W0613
         """
         Create a fragment used to display the XBlock to a student.
@@ -89,6 +88,7 @@ class ThumbsBlockBase(object):
              """)
         ]
 
+
 class ThumbsBlock(ThumbsBlockBase, XBlock):
     """
     An XBlock with thumbs-up/thumbs-down voting.
@@ -99,6 +99,7 @@ class ThumbsBlock(ThumbsBlockBase, XBlock):
     This demonstrates multiple data scopes and ajax handlers.
     """
     pass
+
 
 class ThumbsAside(ThumbsBlockBase, XBlockAside):
     """
@@ -111,7 +112,7 @@ class ThumbsAside(ThumbsBlockBase, XBlockAside):
     """
 
     @XBlockAside.aside_for('student_view')
-    def student_view_aside(self, block, context=None): #pylint: disable=unused-argument
+    def student_view_aside(self, block, context=None):  # pylint: disable=unused-argument
         """
         Allow the thumbs up/down-voting to work as an Aside as well as an XBlock.
         """
