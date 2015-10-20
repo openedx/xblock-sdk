@@ -59,10 +59,5 @@ class {{cookiecutter.class_name}}(XBlock):
         """A canned scenario for display in the workbench."""
         return [
             ("{{cookiecutter.class_name}}",
-             """<vertical_demo>
-                <{{cookiecutter.short_name|lower}}/>
-                <{{cookiecutter.short_name|lower}}/>
-                <{{cookiecutter.short_name|lower}}/>
-                </vertical_demo>
-             """),
+            """<{{cookiecutter.short_name|lower}}/>"""),
         ]
