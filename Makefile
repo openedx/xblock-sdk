@@ -2,6 +2,7 @@
 
 # Commands
 APT_GET=apt-get -y
+CP=cp
 HOSTNAME=hostname
 INSTALL_PACKAGE=$(APT_GET) install
 # Files
@@ -15,6 +16,8 @@ LIBS_SOURCE_CONTROL=git
 HOST_PORT=8008
 HOST_ADDRESS=0
 HOSTNAME_VALUE=workbench
+SUPERVISOR_CONF=supervisor.conf  # Comment-out to disable
+SUPERVISOR_CTL=supervisorctl
 
 all: install
 	$(MAKE) run
@@ -30,6 +33,12 @@ provision:
 	$(INSTALL_PACKAGE) $(LIBS_BUILD)
 	$(INSTALL_PACKAGE) $(LIBS_PYTHON)
 	$(INSTALL_PACKAGE) $(LIBS_LIBXML)
+ifdef SUPERVISOR_CONF
+	$(INSTALL_PACKAGE) supervisor
+	$(CP) $(SUPERVISOR_CONF) /etc/supervisor/conf.d/workbench.conf
+	$(SUPERVISOR_CTL) reread
+	$(SUPERVISOR_CTL) update
+endif
 	$(MAKE) install
 
 .PHONY: install
