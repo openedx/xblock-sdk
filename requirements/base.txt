@@ -11,9 +11,6 @@ lazy
 -e git+https://github.com/edx/XBlock.git@tag-master-2015-05-22#egg=XBlock
 #-e ../XBlock
 
-# Acid xblock
--e git+https://github.com/edx/acid-block.git@e46f9cda8a03e121a00c7e347084d142d22ebfb7#egg=acid-xblock
-
 fs
 pypng
 -e git+https://github.com/pmitros/django-pyfs.git@514607d78535fd80bfd23184cd292ee5799b500d#egg=djpyfs
