@@ -12,9 +12,12 @@ LIBS_PYTHON=python python-dev python-distribute python-pip
 LIBS_LIBXML=libxml2-dev libxslt1-dev zlib1g-dev
 LIBS_SOURCE_CONTROL=git
 # Variables
+HOST_PORT=8008
+HOST_ADDRESS=0
 HOSTNAME_VALUE=workbench
 
-all: install test
+all: install
+	$(MAKE) run
 
 .PHONY: provision
 provision:
@@ -49,7 +52,7 @@ $(SQLITE_DB): var
 	python manage.py syncdb --noinput
 
 .PHONY: test
-test:
+test: install
 	python manage.py test
 
 .PHONY: quality
@@ -61,3 +64,6 @@ quality:
 cover:
 	coverage run manage.py test
 	coverage report
+
+run:
+	python ./manage.py runserver $(HOST_ADDRESS):$(HOST_PORT)
