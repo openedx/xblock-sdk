@@ -3,6 +3,7 @@ var/
 *.pyc
 local_settings.py
 *.egg-info
+*.egg
 .treerc
 .coverage
 htmlcov
@@ -17,3 +18,4 @@ doc/_build
 nosetests.xml
 coverage.xml
 .vagrant
+.*
