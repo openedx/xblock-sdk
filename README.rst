@@ -13,20 +13,25 @@ Installation
 
 This code runs on Python 2.7.
 
-1.  Get a local copy of this repo.
+1.  Install standard development libraries. 
+    (ubuntu/debian):
 
-2.  (Optional)  Create and activate a virtualenv to work in.
+    $ sudo apt-get install python-dev libxml2-dev libxslt-dev lib32z1-dev  
 
-3.  Install the requirements and register the XBlock entry points with (you may
+2.  Get a local copy of this repo.
+
+3.  (Optional)  Create and activate a virtualenv to work in.
+
+4.  Install the requirements and register the XBlock entry points with (you may
     need to sudo this if you don't use virtualenv):
 
         $ make install
 
-4.  Run the Django development server:
+5.  Run the Django development server:
 
         $ python manage.py runserver
 
-5.  Open a web browser to: http://127.0.0.1:8000
+6.  Open a web browser to: http://127.0.0.1:8000
 
 Testing
 --------
