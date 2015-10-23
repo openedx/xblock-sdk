@@ -47,7 +47,7 @@ def load_requirements(*requirements_paths):
     return list(requirements)
 
 
-package_data = {}
+package_data = {}  # pylint: disable=invalid-name
 package_data.update(find_package_data("sample_xblocks.basic", ["public", "templates"]))
 package_data.update(find_package_data("sample_xblocks.thumbs", ["static"]))
 package_data.update(find_package_data("sample_xblocks.filethumbs", ["static"]))
@@ -64,8 +64,8 @@ setup(
         'sample_xblocks.filethumbs',
         'workbench',
     ],
-    install_requires=load_requirements('requirements.txt'),
-    tests_require=load_requirements('test-requirements.txt'),
+    install_requires=load_requirements('requirements/base.txt'),
+    tests_require=load_requirements('requirements/test.txt'),
     entry_points={
         'xblock.v1': [
             # Basic XBlocks

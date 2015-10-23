@@ -61,6 +61,9 @@ class WorkbenchDjangoKeyValueStore(KeyValueStore):
 
     @staticmethod
     def _to_json_str(data):
+        """
+        Serialize data as a JSON string
+        """
         return json.dumps(data, indent=2, sort_keys=True)
 
     # KeyValueStore methods.
@@ -201,7 +204,7 @@ class ScenarioIdManager(IdReader, IdGenerator):
         try:
             return self._aside_usages[aside_id][0]
         except KeyError:
-            raise NoSuchUsage(usage_id)
+            raise NoSuchUsage(aside_id)
 
     def get_definition_id_from_aside(self, aside_id):
         """
@@ -213,7 +216,7 @@ class ScenarioIdManager(IdReader, IdGenerator):
         try:
             return self._aside_defs[aside_id][0]
         except KeyError:
-            raise NoSuchDefinition(def_id)
+            raise NoSuchDefinition(aside_id)
 
     # Workbench specific functionality
     def set_scenario(self, scenario):
@@ -280,7 +283,11 @@ class WorkbenchRuntime(Runtime):
         Add javascript to the wrapped element
         """
         wrapped = super(WorkbenchRuntime, self)._wrap_ele(block, view, frag, extra_data)
-        wrapped.add_resource_url(self.resource_url("js/vendor/jquery.min.js"), 'application/javascript', placement="head")
+        wrapped.add_resource_url(
+            self.resource_url('js/vendor/jquery.min.js'),
+            'application/javascript',
+            placement='head',
+        )
         wrapped.add_javascript_url(self.resource_url("js/vendor/jquery.cookie.js"))
 
         if frag.js_init_fn:
@@ -359,14 +366,23 @@ class WorkbenchRuntime(Runtime):
 
 
 class _BlockSet(object):
+    """
+    Provide a collection of blocks
+    """
     def __init__(self, runtime, blocks):
         self.runtime = runtime
         self.blocks = blocks
 
     def __iter__(self):
+        """
+        Iterate over all blocks
+        """
         return iter(self.blocks)
 
     def parent(self):
+        """
+        Create a `BlockSet` of all blocks' parents
+        """
         them = set()
         for block in self.blocks:
             if block.parent:
@@ -375,6 +391,9 @@ class _BlockSet(object):
         return _BlockSet(self.runtime, them)
 
     def children(self):
+        """
+        Create a `BlockSet` of all blocks' children
+        """
         them = set()
         for block in self.blocks:
             for child_id in getattr(block, "children", ()):
@@ -383,9 +402,15 @@ class _BlockSet(object):
         return _BlockSet(self.runtime, them)
 
     def descendants(self):
+        """
+        Create a `BlockSet` of all blocks and their children
+        """
         them = set()
 
         def recur(block):
+            """
+            Descend into block children, recursively
+            """
             for child_id in getattr(block, "children", ()):
                 child = self.runtime.get_block(child_id)
                 them.add(child)
@@ -397,6 +422,9 @@ class _BlockSet(object):
         return _BlockSet(self.runtime, them)
 
     def tagged(self, tag):
+        """
+        Create a `BlockSet` of all blocks matching the corresponding tag
+        """
         # Allow this method to access _class_tags for each block
         # pylint: disable=W0212
         them = set()
@@ -410,6 +438,9 @@ class _BlockSet(object):
         return _BlockSet(self.runtime, them)
 
     def attr(self, attr_name):
+        """
+        Yield attributes from child blocks
+        """
         for block in self.blocks:
             if hasattr(block, attr_name):
                 yield getattr(block, attr_name)
@@ -430,12 +461,13 @@ class WorkBenchUserService(UserService):
         """
         Initialize user
         """
-        self._user = XBlockUser(
+        user = XBlockUser(
             is_current_user=True,
             emails=["user@example.com"],
             full_name="XBlock User ({})".format(uid),
         )
-        self._user.opt_attrs['xblock-workbench.user_id'] = uid
+        user.opt_attrs['xblock-workbench.user_id'] = uid
+        super(WorkBenchUserService, self).__init__(user=user)
 
     def get_current_user(self):
         """

@@ -7,7 +7,6 @@ This code is in the Workbench layer.
 import json
 import logging
 import mimetypes
-from StringIO import StringIO
 
 from django.http import HttpResponse, Http404
 from django.shortcuts import redirect, render_to_response
@@ -80,14 +79,20 @@ def show_scenario(request, scenario_id, view_name='student_view', template='work
     })
 
 
-def user_list(request):
+def user_list(_request):
     """
     This will return a list of all users in the database
     """
     # We'd really like to do .distinct, but sqlite+django does not support this;
     # hence the hack with sorted(set(...))
-    user_list = sorted(x[0] for x in set(XBlockState.objects.values_list('user_id')))
-    return HttpResponse(json.dumps(user_list, indent=2), content_type="application/json")
+    users = sorted(
+        user_id[0]
+        for user_id in set(XBlockState.objects.values_list('user_id'))
+    )
+    return HttpResponse(
+        json.dumps(users, indent=2),
+        content_type='application/json',
+    )
 
 
 def handler(request, usage_id, handler_slug, suffix='', authenticated=True):

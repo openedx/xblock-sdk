@@ -60,7 +60,12 @@ class ProblemInteractionTest(SeleniumTest):
             """Assert that the img src text includes `expected_icon`"""
             for _ in range(3):
                 try:
-                    sources = BrowserQuery(self.browser, css='{} img'.format(check_indicators)).nth(right_wrong_idx).attrs('src')
+                    sources = BrowserQuery(
+                        self.browser,
+                        css='{} img'.format(
+                            check_indicators,
+                        ),
+                    ).nth(right_wrong_idx).attrs('src')
                     if sources and expected_icon in sources[0]:
                         break
                     else:

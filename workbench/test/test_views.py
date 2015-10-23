@@ -295,17 +295,29 @@ def test_local_resources():
 
 
 class XBlockWithContextTracking(XBlock):
+    """
+    Provide a test XBlock with context tracking
+    """
     registered_contexts = []
 
     @classmethod
     def register_context(cls, context):
+        """
+        Register a class-level context
+        """
         cls.registered_contexts.append(context)
 
     @classmethod
     def clear_contexts(cls):
+        """
+        Clear class-level contexts
+        """
         cls.registered_contexts = []
 
     def student_view(self, context):
+        """
+        Render a student view with context
+        """
         self.register_context(context)
         return Fragment()
 
