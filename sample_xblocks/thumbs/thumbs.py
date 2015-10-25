@@ -111,11 +111,11 @@ class ThumbsAside(ThumbsBlockBase, XBlockAside):
     This demonstrates multiple data scopes and ajax handlers.
     """
 
-    @XBlockAside.aside_for('student_view')
-    def student_view_aside(self, block, context=None):  # pylint: disable=unused-argument
-        """
-        Allow the thumbs up/down-voting to work as an Aside as well as an XBlock.
-        """
-        fragment = self.student_view(context)
-        fragment.initialize_js('ThumbsAside')
-        return fragment
+    # @XBlockAside.aside_for('student_view')
+    # def student_view_aside(self, block, context=None):  # pylint: disable=unused-argument
+    #     """
+    #     Allow the thumbs up/down-voting to work as an Aside as well as an XBlock.
+    #     """
+    #     fragment = self.student_view(context)
+    #     fragment.initialize_js('ThumbsAside')
+    #     return fragment
