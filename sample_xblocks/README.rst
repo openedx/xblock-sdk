@@ -4,19 +4,32 @@ Demo XBlocks
 This package contains some sample XBlocks to illustrate the capabilities of
 the XBlock specification. The following blocks are included:
 
-  * **helloworld_demo:** A block which simply displays the text "Hello World"
+  * **basic.content:HelloWorldBlock** A block which simply displays the text "Hello World"
 
-  * **html_demo:** A block which displays a specified block of HTML text
+  * **basic.content:AllScopesBlock** A block which demonstrates the scopes that come built in with XBlock
 
-  * **sequence_demo:** A container block which displays its children in a tabbed layout
+  * **basic.content:HtmlBlock** A block which displays a specified block of HTML text
 
-  * **vertical_demo:** A container block which displays its children in a vertical list
+  * **basic.structure:Sequence** A container block which displays its children in a tabbed layout
 
-  * **sidebar_demo:** A variant of the vertical block
+  * **basic.structure:VerticalBlock** A container block which displays its children in a vertical list
 
-  * **problem_demo:** A block which presents a problem and grades student responses
+  * **basic.structure:SidebarBlock** A variant of the vertical block
 
-  * **slider_demo:** A block which presents a slider and remembers the student's setting
+  * **basic.problem:ProblemBlock** A block which presents a problem and grades student responses
 
-  * **view_counter:** A block which shows the total number of times it has been viewed
+  * **basic.problem:TextInputBlock** 
 
+  * **basic.problem:EqualityCheckerBlock** 
+
+  * **basic.problem:AttemptScoreboardBlock** 
+
+  * **basic.slider:Slider** A block which presents a slider and remembers the student's setting
+
+  * **basic.view_counter:ViewCounter** 
+
+  * **basic.thumbs:ThumbsBlock** A block which shows the total number of times it has been viewed
+
+  * **basic.filethumbs:FileThumbsBlock** 
+
+Each of these blocks can be referenced in scenarios using a keyword in XML that is specified in the "entry_points" attribute of the setup tuple. 
