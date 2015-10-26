@@ -1,7 +1,3 @@
-function ThumbsAside(runtime, element, block_element, init_args) {
-    return new ThumbsBlock(runtime, element, init_args);
-}
-
 function ThumbsBlock(runtime, element, init_args) {
     function updateVotes(votes) {
         $('.upvote .count', element).text(votes.up);

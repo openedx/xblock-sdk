@@ -100,22 +100,3 @@ class ThumbsBlock(ThumbsBlockBase, XBlock):
     """
     pass
 
-
-class ThumbsAside(ThumbsBlockBase, XBlockAside):
-    """
-    An XBlockAside with thumbs-up/thumbs-down voting.
-
-    Vote totals are stored for all students to see.  Each student is recorded
-    as has-voted or not.
-
-    This demonstrates multiple data scopes and ajax handlers.
-    """
-
-    # @XBlockAside.aside_for('student_view')
-    # def student_view_aside(self, block, context=None):  # pylint: disable=unused-argument
-    #     """
-    #     Allow the thumbs up/down-voting to work as an Aside as well as an XBlock.
-    #     """
-    #     fragment = self.student_view(context)
-    #     fragment.initialize_js('ThumbsAside')
-    #     return fragment
