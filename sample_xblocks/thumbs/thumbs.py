@@ -9,7 +9,7 @@ import logging
 log = logging.getLogger(__name__)
 
 
-class ThumbsBlockBase(object):
+class ThumbsBlock(XBlock):
     """
     An XBlock with thumbs-up/thumbs-down voting.
 
@@ -87,16 +87,4 @@ class ThumbsBlockBase(object):
                 </vertical_demo>
              """)
         ]
-
-
-class ThumbsBlock(ThumbsBlockBase, XBlock):
-    """
-    An XBlock with thumbs-up/thumbs-down voting.
-
-    Vote totals are stored for all students to see.  Each student is recorded
-    as has-voted or not.
-
-    This demonstrates multiple data scopes and ajax handlers.
-    """
-    pass
 
