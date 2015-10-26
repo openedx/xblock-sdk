@@ -84,9 +84,9 @@ as the default does.
 Making your own XBlock
 ----------------------
 
-Making an XBlock can be as simple as creating a Python class with a few
-specific methods.  The ``thumbs`` XBlock demonstrates an XBlock with state,
-views, and input handling.
+Making an XBlock involves creating a Python class that conforms to the XBlock 
+specification. See the sample_xblocks directory for examples and the 
+XBlock tutorial for a full walk-through: http://edx.readthedocs.org/projects/xblock-tutorial/en/latest/index.html
 
 We provide a script to create a new XBlock project to help you get started.
 Run bin/workbench-make-xblock in a directory where you want to create your XBlock
@@ -110,13 +110,17 @@ own instance of Open edX, or released to the wider community).
 .. _XBlock review guidelines: https://openedx.atlassian.net/wiki/display/OPEN/XBlock+review+guidelines
 
 
-External XBlocks
+Example XBlocks
 ----------------
 
-We have been moving towards hosting XBlocks in external repositories, some of
-which have been installed and will appear in the workbench:
+Included in this repository are some example XBlocks that demonstrate how to use 
+various aspects of the XBlock SDK. You can see a more detailed description of 
+those examples in the readme located in that repository: https://github.com/edx/xblock-sdk/blob/master/sample_xblocks/README.rst
 
-ACID XBlock: https://github.com/edx/acid-block
+There is a rich community of XBlock developers that have put together a large 
+number of XBlocks that have been used in various contexts, mostly on the edx-platform. 
+You can see examples of what that community has done in the edx-platform wiki: 
+https://github.com/edx/edx-platform/wiki/List-of-XBlocks
 
 
 License
