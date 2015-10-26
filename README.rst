@@ -84,7 +84,7 @@ specific methods.  The ``thumbs`` XBlock demonstrates an XBlock with state,
 views, and input handling.
 
 We provide a script to create a new XBlock project to help you get started.
-Run script/startnew.py in a directory where you want to create your XBlock
+Run bin/workbench-make-xblock in a directory where you want to create your XBlock
 project.  startnew.py will prompt you for the name of the XBlock, and will
 create a minimal working XBlock, ready for you to begin development.
 
