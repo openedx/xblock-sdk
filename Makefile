@@ -1,8 +1,45 @@
 #!/usr/bin/make -f
 
+# Commands
+APT_GET=apt-get -y
+CP=cp
+HOSTNAME=hostname
+INSTALL_PACKAGE=$(APT_GET) install
+# Files
 SQLITE_DB=var/workbench.db
+# Packages
+LIBS_BUILD=build-essential
+LIBS_PYTHON=python python-dev python-distribute python-pip
+LIBS_LIBXML=libxml2-dev libxslt1-dev zlib1g-dev
+LIBS_SOURCE_CONTROL=git
+# Variables
+HOST_PORT=8008
+HOST_ADDRESS=0
+HOSTNAME_VALUE=workbench
+SUPERVISOR_CONF=supervisor.conf  # Comment-out to disable
+SUPERVISOR_CTL=supervisorctl
 
-all: install test
+all: install
+	$(MAKE) run
+
+.PHONY: provision
+provision:
+	$(HOSTNAME) "$(HOSTNAME_VALUE)"
+	echo "$(HOSTNAME_VALUE)" > /etc/hostname
+	$(APT_GET) update
+	$(APT_GET) upgrade
+	$(INSTALL_PACKAGE) apt-transport-https
+	$(INSTALL_PACKAGE) $(LIBS_SOURCE_CONTROL)
+	$(INSTALL_PACKAGE) $(LIBS_BUILD)
+	$(INSTALL_PACKAGE) $(LIBS_PYTHON)
+	$(INSTALL_PACKAGE) $(LIBS_LIBXML)
+ifdef SUPERVISOR_CONF
+	$(INSTALL_PACKAGE) supervisor
+	$(CP) $(SUPERVISOR_CONF) /etc/supervisor/conf.d/workbench.conf
+	$(SUPERVISOR_CTL) reread
+	$(SUPERVISOR_CTL) update
+endif
+	$(MAKE) install
 
 .PHONY: install
 install: pip $(SQLITE_DB)
@@ -24,7 +61,7 @@ $(SQLITE_DB): var
 	python manage.py syncdb --noinput
 
 .PHONY: test
-test:
+test: install
 	python manage.py test
 
 .PHONY: quality
@@ -36,3 +73,6 @@ quality:
 cover:
 	coverage run manage.py test
 	coverage report
+
+run:
+	python ./manage.py runserver $(HOST_ADDRESS):$(HOST_PORT)

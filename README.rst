@@ -15,25 +15,25 @@ This code runs on Python 2.7.
 
 1.  Get a local copy of this repo.
 
-2.  (Optional)  Create and activate a virtualenv to work in.
+        $ git clone https://github.com/edx/xblock-sdk.git
 
-3.  Install the requirements and register the XBlock entry points with (you may
-    need to sudo this if you don't use virtualenv):
+2. Enter the project directory.
 
-        $ make install
+        $ cd xblock-sdk
 
-4.  Run the Django development server:
+3.  Start the development server.
 
-        $ python manage.py runserver
+        $ vagrant up
 
-5.  Open a web browser to: http://127.0.0.1:8000
+4.  Open a web browser to: http://127.0.0.1:8008
+
 
 Testing
 --------
 
 To install all requirements and run the test suite:
 
-    $ make
+    $ make test
 
 This will run:
 
@@ -112,6 +112,32 @@ We have been moving towards hosting XBlocks in external repositories, some of
 which have been installed and will appear in the workbench:
 
 ACID XBlock: https://github.com/edx/acid-block
+
+
+Advanced Installation
+---------------------
+
+In order to lower the barrier to entry in developing XBlocks, we aim to
+ship with "batteries included" as much as possible, keeping
+configuration and installation steps to a minimum. Hence, the default,
+recommended use case is to run the development server from within a
+preconfigured virtual machine.
+
+However, as this is still a djangoapp, it supports a number of
+use-cases:
+
+1. Run via virtualenv
+
+        $ mkvirtualenv sdk
+        $ workon sdk
+        $ make install  # pip install -r requirements/{base,test}.txt; pip install -e .
+        $ make run  # python manage.py runserver 0:8008
+        $ deactivate
+
+2. Provision "Bare metal" on Debian/Ubuntu
+
+        $ make provision  # may need to be run with `sudo`
+        # Installs both system and Python packages
 
 
 License
