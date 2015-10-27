@@ -3,9 +3,11 @@ XBlock SDK |build-status| |coverage-status|
 
 This repository consists of three main components to assist in the creation of new XBlocks:
 
-    * a template-based generator for new XBlocks (found in `prototype`)
-    * sample XBlocks that can be the basis for new XBlock work (found in `sample_xblocks`)
-    * Workbench runtime, a simple runtime for viewing and testing XBlocks in a browser (found in `workbench`)
+* a template-based generator for new XBlocks (found in `prototype`)
+
+* sample XBlocks that can be the basis for new XBlock work (found in `sample_xblocks`)
+
+* Workbench runtime, a simple runtime for viewing and testing XBlocks in a browser (found in `workbench`)
 
 
 Installation
@@ -13,37 +15,35 @@ Installation
 
 This code runs on Python 2.7.
 
-1.  Install standard development libraries. 
-    (ubuntu/debian):
+#.  Install standard development libraries. Here's how you do it on Ubuntu or Debian::
 
-    $ sudo apt-get install python-dev libxml2-dev libxslt-dev lib32z1-dev  
+        $ sudo apt-get install python-dev libxml2-dev libxslt-dev lib32z1-dev
 
-2.  Get a local copy of this repo.
+#.  Get a local copy of this repo.
 
-3.  (Optional)  Create and activate a virtualenv to work in.
+#.  Create and activate a virtualenv to work in.
 
-4.  Install the requirements and register the XBlock entry points with (you may
-    need to sudo this if you don't use virtualenv):
+#.  Install the requirements and register the XBlock entry points::
 
         $ make install
 
-5.  Run the Django development server:
+#.  Run the Django development server::
 
         $ python manage.py runserver
 
-6.  Open a web browser to: http://127.0.0.1:8000
+#.  Open a web browser to: http://127.0.0.1:8000
 
 Testing
 --------
 
-To install all requirements and run the test suite:
+To install all requirements and run the test suite::
 
     $ make
 
 This will run:
 
-    * Integration tests of XBlocks running within the workbench.
-    * Individual tests written for the demo XBlocks
+* Integration tests of XBlocks running within the workbench.
+* Individual tests written for the demo XBlocks
 
 You can test XBlocks through a browser using `Selenium`_. We have included an
 example Selenium test for ``thumbs`` that uses Django's `LiveServerTestCase`_.
@@ -53,7 +53,7 @@ have Firefox installed for this test case to run successfully.
 .. _Selenium: http://docs.seleniumhq.org/
 .. _LiveServerTestCase: https://docs.djangoproject.com/en/1.4/topics/testing/#django.test.LiveServerTestCase
 
-To update and view test coverage:
+To update and view test coverage::
 
     $ make cover
 
@@ -72,7 +72,7 @@ The workbench database defaults to a sqlite3 database. If you're using devstack,
 you may want to set `WORKBENCH_DATABASES` to point to your mysql db.
 
 If you want to experiment with different students, you can use a URL parameter
-to set the student ID, which defaults to 1:
+to set the student ID, which defaults to 1::
 
     http://127.0.0.1:8000/?student=17
 
