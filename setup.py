@@ -89,10 +89,6 @@ setup(
             # Workbench specific
             'debugchild = workbench.blocks:DebuggingChildBlock',
         ],
-        'xblock_asides.v1': [
-            # Thumbs example
-            'thumbs_aside = sample_xblocks.thumbs:ThumbsAside',
-        ]
     },
     package_data=package_data,
 )
