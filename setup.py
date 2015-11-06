@@ -55,7 +55,7 @@ package_data.update(find_package_data("workbench", ["static", "templates"]))
 
 setup(
     name='xblock-sdk',
-    version='1.0',
+    version='0.1.1',
     description='XBlock SDK',
     packages=[
         'sample_xblocks',
