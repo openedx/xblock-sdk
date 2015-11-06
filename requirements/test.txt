@@ -1,7 +1,7 @@
 coverage
 ddt
 mock
-pylint==1.4.4
+pylint==0.28
 pep8
 rednose
 bok_choy==0.4.3

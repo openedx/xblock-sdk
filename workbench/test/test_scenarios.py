@@ -56,7 +56,7 @@ class ScenarioTest(unittest.TestCase):
         url = reverse('workbench_show_scenario', kwargs={'scenario_id': scenario_id})
         client = Client()
         response = client.get(url, follow=True)
-        assert response.status_code == 200, name
+        assert response.status_code == 200, scenario_id
 
         # Be sure we got the whole scenario.  Again, we can't know what to expect
         # here, but at the very least, if there are verticals, they should not be
