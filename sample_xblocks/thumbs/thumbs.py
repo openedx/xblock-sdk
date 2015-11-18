@@ -100,7 +100,7 @@ class ThumbsBlock(ThumbsBlockBase, XBlock):
     """
     pass
 
-
+# Commenting out the guts of ThumbsAside because that is currently the only obvious way to uninstall it. 
 class ThumbsAside(ThumbsBlockBase, XBlockAside):
     """
     An XBlockAside with thumbs-up/thumbs-down voting.
@@ -109,13 +109,17 @@ class ThumbsAside(ThumbsBlockBase, XBlockAside):
     as has-voted or not.
 
     This demonstrates multiple data scopes and ajax handlers.
+
+    In order to ease the ramp-up knowledge of new XBlock developers, the guts
+    of this class have been removed until Asides have finer-grained controls
+    over when an Aside displays.
     """
 
-    @XBlockAside.aside_for('student_view')
-    def student_view_aside(self, block, context=None):  # pylint: disable=unused-argument
-        """
-        Allow the thumbs up/down-voting to work as an Aside as well as an XBlock.
-        """
-        fragment = self.student_view(context)
-        fragment.initialize_js('ThumbsAside')
-        return fragment
+#     @XBlockAside.aside_for('student_view')
+#     def student_view_aside(self, block, context=None):  # pylint: disable=unused-argument
+#         """
+#         Allow the thumbs up/down-voting to work as an Aside as well as an XBlock.
+#         """
+#         fragment = self.student_view(context)
+#         fragment.initialize_js('ThumbsAside')
+#         return fragment
