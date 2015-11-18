@@ -4,11 +4,8 @@ from django.conf.urls import include, patterns, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
 
-from workbench.scenarios import init_scenarios
 
 admin.autodiscover()
-
-init_scenarios()
 
 urlpatterns = patterns(
     'workbench.views',

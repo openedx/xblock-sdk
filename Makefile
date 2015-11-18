@@ -36,3 +36,10 @@ quality:
 cover:
 	coverage run manage.py test
 	coverage report
+
+clean:
+	rm -f workbench.log* workbench.test.*
+	rm -rf workbench/static/djpyfs
+	rm -rf *.egg-info
+	rm -f .coverage
+	find . -name '.git' -prune -o -name '*.pyc' -exec rm {} \;
