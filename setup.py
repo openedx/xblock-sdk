@@ -50,7 +50,6 @@ def load_requirements(*requirements_paths):
 package_data = {}  # pylint: disable=invalid-name
 package_data.update(find_package_data("sample_xblocks.basic", ["public", "templates"]))
 package_data.update(find_package_data("sample_xblocks.thumbs", ["static"]))
-package_data.update(find_package_data("sample_xblocks.filethumbs", ["static"]))
 package_data.update(find_package_data("workbench", ["static", "templates"]))
 
 setup(
@@ -61,7 +60,6 @@ setup(
         'sample_xblocks',
         'sample_xblocks.basic',
         'sample_xblocks.thumbs',
-        'sample_xblocks.filethumbs',
         'workbench',
     ],
     install_requires=load_requirements('requirements/base.txt'),
@@ -84,14 +82,13 @@ setup(
 
             # Thumbs example
             'thumbs = sample_xblocks.thumbs:ThumbsBlock',
-            'filethumbs = sample_xblocks.filethumbs:FileThumbsBlock',
 
             # Workbench specific
             'debugchild = workbench.blocks:DebuggingChildBlock',
         ],
         'xblock_asides.v1': [
             # Thumbs example
-            'thumbs_aside = sample_xblocks.thumbs:ThumbsAside',
+            #'thumbs_aside = sample_xblocks.thumbs:ThumbsAside',
         ]
     },
     package_data=package_data,
