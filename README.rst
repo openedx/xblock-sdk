@@ -17,7 +17,7 @@ This code runs on Python 2.7.
 
 #.  Install standard development libraries. Here's how you do it on Ubuntu or Debian::
 
-        $ sudo apt-get install python-dev libxml2-dev libxslt-dev lib32z1-dev
+        $ sudo apt-get install python-dev libxml2-dev libxslt-dev lib32z1-dev libjpeg62-dev
 
 #.  Get a local copy of this repo.
 
