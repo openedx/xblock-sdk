@@ -85,8 +85,10 @@ Making your own XBlock
 ----------------------
 
 Making an XBlock involves creating a Python class that conforms to the XBlock 
-specification. See the sample_xblocks directory for examples and the 
-XBlock tutorial for a full walk-through: http://edx.readthedocs.org/projects/xblock-tutorial/en/latest/index.html
+specification. See the sample_xblocks directory for examples and 
+`the XBlock tutorial`_ for a full walk-through.
+
+.. _the XBlock tutorial: http://edx.readthedocs.org/projects/xblock-tutorial
 
 We provide a script to create a new XBlock project to help you get started.
 Run bin/workbench-make-xblock in a directory where you want to create your XBlock
@@ -111,16 +113,20 @@ own instance of Open edX, or released to the wider community).
 
 
 Example XBlocks
-----------------
+---------------
 
 Included in this repository are some example XBlocks that demonstrate how to use 
 various aspects of the XBlock SDK. You can see a more detailed description of 
-those examples in the readme located in that repository: https://github.com/edx/xblock-sdk/blob/master/sample_xblocks/README.rst
+those examples in `the readme`_ located in that repository: 
+
 
 There is a rich community of XBlock developers that have put together a large 
 number of XBlocks that have been used in various contexts, mostly on the edx-platform. 
-You can see examples of what that community has done in the edx-platform wiki: 
-https://github.com/edx/edx-platform/wiki/List-of-XBlocks
+You can see examples of what that community has done in the `edx-platform wiki`_.
+
+
+.. _the readme: https://github.com/edx/xblock-sdk/blob/master/sample_xblocks/README.rst
+.. _edx-platform wiki: https://github.com/edx/edx-platform/wiki/List-of-XBlocks
 
 
 License
