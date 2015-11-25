@@ -1,5 +1,9 @@
 """Problem XBlock, and friends.
 
+Please note that this is a demonstrative implementation of how XBlocks can
+be used, and is not an example of how problems are implemented in the 
+edx-platform runtime. 
+
 These implement a general mechanism for problems containing input fields
 and checkers, wired together in interesting ways.
 
