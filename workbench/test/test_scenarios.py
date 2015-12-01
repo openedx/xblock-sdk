@@ -29,7 +29,7 @@ class ScenarioTest(unittest.TestCase):
         a_tags = list(html.xpath('//a'))
 
         # Load the loaded_scenarios from the classes.
-        loaded_scenarios = scenarios.SCENARIOS.values()
+        loaded_scenarios = scenarios.get_scenarios().values()
 
         # We should have an <a> tag for each scenario.
         assert_equals(len(a_tags), len(loaded_scenarios))
@@ -44,7 +44,7 @@ class ScenarioTest(unittest.TestCase):
         assert all("<vertical_demo></vertical_demo>" not in scen.xml for scen in loaded_scenarios)
         assert all("<vertical_demo/>" not in scen.xml for scen in loaded_scenarios)
 
-    @ddt.data(*scenarios.SCENARIOS.keys())
+    @ddt.data(*scenarios.get_scenarios().keys())
     def test_scenario(self, scenario_id):
         """A very shallow test, just to see if the scenario loads all its blocks.
 

@@ -75,4 +75,13 @@ def init_scenarios():
     for class_name, cls in sorted(XBlock.load_classes(fail_silently=False)):
         add_class_scenarios(class_name, cls, fail_silently=False)
 
-init_scenarios()
+def get_scenarios():
+    """
+    Return SCENARIOS, initializing it if required.
+    """
+    if not SCENARIOS and not get_scenarios.initialized:
+        init_scenarios()
+        get_scenarios.initialized = True
+    return SCENARIOS
+
+get_scenarios.initialized = False
