@@ -109,8 +109,13 @@ class ThumbsAside(ThumbsBlockBase, XBlockAside):
     as has-voted or not.
 
     This demonstrates multiple data scopes and ajax handlers.
-    """
 
+    NOTE: Asides aren't ready yet, so this is currently not being installed in
+    setup.py.  When we get back to working on asides, we'll come up with a more
+    sophisticated mechanism to enable this for the developers that want to see
+    it.
+
+    """
     @XBlockAside.aside_for('student_view')
     def student_view_aside(self, block, context=None):  # pylint: disable=unused-argument
         """

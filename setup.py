@@ -90,8 +90,11 @@ setup(
             'debugchild = workbench.blocks:DebuggingChildBlock',
         ],
         'xblock_asides.v1': [
-            # Thumbs example
-            'thumbs_aside = sample_xblocks.thumbs:ThumbsAside',
+            # ThumbsAside example. Asides aren't ready yet, so we'll disable
+            # this for now.  When we get back to working on asides, we'll come
+            # up with a more sophisticated mechanism to enable this for the
+            # developers that want to see it.
+            #   'thumbs_aside = sample_xblocks.thumbs:ThumbsAside',
         ]
     },
     package_data=package_data,
