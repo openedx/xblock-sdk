@@ -18,7 +18,7 @@ from xblock.exceptions import NoSuchUsage
 
 from .models import XBlockState
 from .runtime import WorkbenchRuntime, reset_global_state
-from .scenarios import SCENARIOS
+from .scenarios import get_scenarios
 from xblock.plugin import PluginMissingError
 
 
@@ -37,7 +37,7 @@ def get_student_id(request):
 
 def index(_request):
     """Render `index.html`"""
-    the_scenarios = sorted(SCENARIOS.items())
+    the_scenarios = sorted(get_scenarios().items())
     return render_to_response('workbench/index.html', {
         'scenarios': [(desc, scenario.description) for desc, scenario in the_scenarios]
     })
@@ -56,7 +56,7 @@ def show_scenario(request, scenario_id, view_name='student_view', template='work
     log.info("Start show_scenario %r for student %s", scenario_id, student_id)
 
     try:
-        scenario = SCENARIOS[scenario_id]
+        scenario = get_scenarios()[scenario_id]
     except KeyError:
         raise Http404
 
