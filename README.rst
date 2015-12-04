@@ -1,13 +1,14 @@
+===========================================
 XBlock SDK |build-status| |coverage-status|
 ===========================================
 
 This repository consists of three main components to assist in the creation of new XBlocks:
 
-* a template-based generator for new XBlocks (found in `prototype`)
+* a template-based generator for new XBlocks (found in the ``prototype`` directory)
 
-* sample XBlocks that can be the basis for new XBlock work (found in `sample_xblocks`)
+* sample XBlocks that can be the basis for new XBlock work (found in the ``sample_xblocks`` directory)
 
-* Workbench runtime, a simple runtime for viewing and testing XBlocks in a browser (found in `workbench`)
+* Workbench runtime, a simple runtime for viewing and testing XBlocks in a browser (found in the ``workbench`` directory)
 
 
 Installation
@@ -32,6 +33,7 @@ This code runs on Python 2.7.
         $ python manage.py runserver
 
 #.  Open a web browser to: http://127.0.0.1:8000
+
 
 Testing
 --------
@@ -59,7 +61,8 @@ To update and view test coverage::
 
 See the `coverage.py`_ docs for more info and options.
 
-.. _coverage.py: http://nedbatchelder.com/code/coverage/
+.. _coverage.py: http://coverage.readthedocs.org/
+
 
 Using the workbench
 -------------------
@@ -69,7 +72,7 @@ When you open the workbench, you'll see a list of sample XBlock configurations
 along with internal information like the "database" contents.
 
 The workbench database defaults to a sqlite3 database. If you're using devstack,
-you may want to set `WORKBENCH_DATABASES` to point to your mysql db.
+you may want to set ``WORKBENCH_DATABASES`` to point to your MySQL db.
 
 If you want to experiment with different students, you can use a URL parameter
 to set the student ID, which defaults to 1::
@@ -77,26 +80,27 @@ to set the student ID, which defaults to 1::
     http://127.0.0.1:8000/?student=17
 
 Different students will see different student state, for example, while seeing
-the same content.  Student ids are strings, even if they contain only digits
-as the default does.
+the same content.  The default student ID contains only digits but it is not
+necessary to limit student IDs to digits. Student IDs are represented as
+strings.
 
 
 Making your own XBlock
 ----------------------
 
 Making an XBlock involves creating a Python class that conforms to the XBlock 
-specification. See the sample_xblocks directory for examples and 
+specification. See the ``sample_xblocks`` directory for examples and
 `the XBlock tutorial`_ for a full walk-through.
 
 .. _the XBlock tutorial: http://edx.readthedocs.org/projects/xblock-tutorial
 
 We provide a script to create a new XBlock project to help you get started.
-Run bin/workbench-make-xblock in a directory where you want to create your XBlock
-project.  workbench-make-xblock will prompt you for the name of the XBlock, and will
+Run ``bin/workbench-make-xblock`` in a directory where you want to create your XBlock
+project.  The script will prompt you for the name of the XBlock, and will
 create a minimal working XBlock, ready for you to begin development.
 
-You can provide scenarios for the workbench to display, see the thumbs.py
-sample for an example, or the xblock/problem.py file.  The scenarios are
+You can provide scenarios for the workbench to display: see the ``thumbs.py``
+sample for an example, or the ``xblock/problem.py`` file.  The scenarios are
 written in a simple XML language.  Note this is not an XML format we are
 proposing as a standard.
 
@@ -104,7 +108,7 @@ Once you install your XBlock into your virtualenv, the workbench will
 automatically display its scenarios for you to experiment with.
 
 If you are interested in making an XBlock to run for your course on edx.org,
-please get in touch with us as soon as possible - in the ideation and design
+please get in touch with us as soon as possible -- in the ideation and design
 phase is ideal. See our `XBlock review guidelines`_
 for more information (note that this is not needed for XBlocks running on your
 own instance of Open edX, or released to the wider community).
@@ -117,15 +121,13 @@ Example XBlocks
 
 Included in this repository are some example XBlocks that demonstrate how to use 
 various aspects of the XBlock SDK. You can see a more detailed description of 
-those examples in `the readme`_ located in that repository: 
-
+those examples in `the README`_ located in that repository:
 
 There is a rich community of XBlock developers that have put together a large 
 number of XBlocks that have been used in various contexts, mostly on the edx-platform. 
 You can see examples of what that community has done in the `edx-platform wiki`_.
 
-
-.. _the readme: https://github.com/edx/xblock-sdk/blob/master/sample_xblocks/README.rst
+.. _the README: https://github.com/edx/xblock-sdk/blob/master/sample_xblocks/README.rst
 .. _edx-platform wiki: https://github.com/edx/edx-platform/wiki/List-of-XBlocks
 
 

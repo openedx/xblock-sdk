@@ -1,12 +1,12 @@
 Demo XBlocks
 ============
 
-This package contains some sample XBlocks to illustrate the capabilities of
-the XBlock specification. Please note that although basic.problem is included as an illustrative example, 
-it does NOT demonstrate how problems are implemented in the edx-platform runtime. 
+This package contains some sample XBlocks to illustrate the capabilities of the
+XBlock specification. Please note that although ``basic.problem`` is included
+as an illustrative example, it does NOT demonstrate how problems are
+implemented in the edx-platform runtime.
 
 The following blocks have workbench scenarios displayed by default:
-
 
   * **basic.content:AllScopesBlock** A block which demonstrates the scopes that come built in with XBlock
 
@@ -18,8 +18,7 @@ The following blocks have workbench scenarios displayed by default:
 
   * **thumbs.thumbs:ThumbsBlock** A block which shows the total number of times it has been viewed
 
-
-The following problems are included in the sdk as illustration of the possibilities of XBlock:
+The following blocks are included in the SDK as illustration of the possibilities of XBlock:
 
   * **basic.structure:Sequence** A container block which displays its children in a tabbed layout
 
