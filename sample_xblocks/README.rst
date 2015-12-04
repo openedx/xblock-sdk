@@ -2,21 +2,46 @@ Demo XBlocks
 ============
 
 This package contains some sample XBlocks to illustrate the capabilities of
-the XBlock specification. The following blocks are included:
+the XBlock specification. Please note that although basic.problem is included as an illustrative example, 
+it does NOT demonstrate how problems are implemented in the edx-platform runtime. 
 
-  * **helloworld_demo:** A block which simply displays the text "Hello World"
+The following blocks have workbench scenarios displayed by default:
 
-  * **html_demo:** A block which displays a specified block of HTML text
 
-  * **sequence_demo:** A container block which displays its children in a tabbed layout
+  * **basic.content:AllScopesBlock** A block which demonstrates the scopes that come built in with XBlock
 
-  * **vertical_demo:** A container block which displays its children in a vertical list
+  * **basic.content:HelloWorldBlock** A block which simply displays the text "Hello World"
 
-  * **sidebar_demo:** A variant of the vertical block
+  * **basic.content:HtmlBlock** A block which displays a specified block of HTML text
 
-  * **problem_demo:** A block which presents a problem and grades student responses
+  * **basic.problem:ProblemBlock** A block which presents a problem and grades student responses
 
-  * **slider_demo:** A block which presents a slider and remembers the student's setting
+  * **thumbs.thumbs:ThumbsBlock** A block which shows the total number of times it has been viewed
 
-  * **view_counter:** A block which shows the total number of times it has been viewed
+
+The following problems are included in the sdk as illustration of the possibilities of XBlock:
+
+  * **basic.structure:Sequence** A container block which displays its children in a tabbed layout
+
+  * **basic.structure:VerticalBlock** A container block which displays its children in a vertical list
+
+  * **basic.structure:SidebarBlock** A variant of the vertical block
+
+  * **basic.problem:TextInputBlock** 
+
+  * **basic.problem:InputBlock**
+
+  * **basic.problem:EqualityCheckerBlock** 
+
+  * **basic.problem:CheckerBlock** 
+
+  * **basic.problem:AttemptScoreboardBlock** 
+
+  * **basic.slider:Slider** A block which presents a slider and remembers the student's setting
+
+  * **basic.view_counter:ViewCounter** 
+
+  * **filethumbs.filethumbs:FileThumbsBlock** 
+
+Each of these blocks can be referenced in scenarios using a keyword in XML that is specified in the "entry_points" attribute of the setup tuple. 
 
