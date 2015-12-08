@@ -53,6 +53,36 @@ var RuntimeProvider = (function() {
 
 var XBlock = (function () {
 
+
+    function isolateJQuery(f, element) {
+        /* This is a decorator that takes a function and an DOM element 
+        that the function can operate on and executes the function after 
+        setting the default jquery context to be the provided element. */
+
+        function isolatedFunction(args) {
+            originalJQuery = $;
+            jQuery.noConflict();
+            $ = function(selector,context){ return new jQuery.fn.init(selector,context||element); };
+            $.fn = $.prototype = jQuery.fn;
+            jQuery.extend($, jQuery); // copy's trim, extend etc to $
+
+            retVal = f.apply(this, args);
+
+            $ = originalJQuery;
+
+            return retVal;
+        }
+
+        // Setting the prototype of the decorating function allows it to return 
+        // an appropriate object when called with "new"
+        isolatedFunction.prototype = f.prototype;
+
+
+        return function() {
+            return new isolatedFunction(arguments);
+        }
+    }
+
     var initializeBlock = function (element) {
         $(element).prop('xblock_children', initializeBlocks($(element)));
 
@@ -63,13 +93,15 @@ var XBlock = (function () {
 
         var runtime = RuntimeProvider.getRuntime(version);
         var initFn = window[$(element).data('init')];
+        var isolatedInitFn = isolateJQuery(initFn, element);
+
         var jsBlock;
         if(initFn.length == 2) {
-            jsBlock = new initFn(runtime, element) || {};
+            jsBlock = new isolatedInitFn(runtime, element) || {};
         } else if (initFn.length == 3) {
             var data = $(".xblock_json_init_args", element).text();
             if (data) data = JSON.parse(data); else data = {};
-            jsBlock = new initFn(runtime, element, data) || {};
+            jsBlock = new isolatedInitFn(runtime, element, data) || {};
         }
             
         jsBlock.element = element;
