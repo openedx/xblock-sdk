@@ -1,8 +1,20 @@
 """An XBlock providing thumbs-up/thumbs-down voting.
 
-This is a completely artifical test case for the filesystem field type.
+This is a completely artifical test case for the filesystem field type. It
+behaves just like the sample_xblocks/thumbs example, except it uses filesystem
+fields.
 
-Votes are stored in a JSON object in the file system, and up/down arrow PNGs are constructed as files on-the-fly.
+Votes are stored in a JSON object in the file system, and up/down arrow PNGs
+are constructed as files on-the-fly.
+
+These uses are not great demonstrations of what you can do with a filesystem
+field.  They should be used for storage of file-like data, usually with
+varying file names.
+
+This code is duplicative of much of the thumbs example.  If you are interested
+in filesystem fields, examining the differences between this block and the
+thumbs block will be instructive.
+
 """
 
 import json
