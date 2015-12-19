@@ -77,6 +77,20 @@ class XBlockState(models.Model):
             "tag={self.tag}>".format(self=self)
 
     @classmethod
+    def full_scenario_state(cls, scenario):
+        """ Return the full state of a scenario for debugging. This can be
+        in-lined with the view, which is a little bit nicer than the admin
+        interface.
+        """
+        field_state = cls.objects.filter(scenario=scenario)
+        columns = ["scope", "scope_id", "user_id", "tag", "state"]
+        json_state = dict((x, []) for x in columns)
+        for obj in field_state:
+            for column in columns:
+                json_state[column].append(attr(obj, column))
+        return json_state
+
+    @classmethod
     def get_for_key(cls, key):
         """Get or create the model row for a given `KeyValueStore.Key` `key`."""
         if key.scope in [Scope.parent, Scope.children]:
