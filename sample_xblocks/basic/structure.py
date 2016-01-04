@@ -4,7 +4,23 @@ from xblock.core import XBlock
 from xblock.fragment import Fragment
 
 
-class Sequence(XBlock):
+class ExtraViewsMixin(object):
+    '''
+    This is a mixin which will redirect all functions ending with
+    `_view` to `view()` if not implemented otherwise.
+
+    This allows us to test other views in structural elements. For
+    example, if we have a `<vertical_demo>` with a few blocks we are
+    testing, we can test `student_view`, `studio_view` (if developing
+    for edx-platform) and others.
+    '''
+    def __getattr__(self, key):
+        if key.endswith('_view'):
+            return self.view
+        raise AttributeError(key)
+
+
+class Sequence(XBlock, ExtraViewsMixin):
     """
     XBlock that models edx-platform style sequentials.
 
@@ -12,7 +28,7 @@ class Sequence(XBlock):
     """
     has_children = True
 
-    def student_view(self, context=None):
+    def view(self, context=None):
         """Provide default student view."""
         frag = Fragment()
         child_frags = self.runtime.render_children(self, context=context)
@@ -33,11 +49,11 @@ class Sequence(XBlock):
         return frag
 
 
-class VerticalBlock(XBlock):
+class VerticalBlock(XBlock, ExtraViewsMixin):
     """A simple container."""
     has_children = True
 
-    def student_view(self, context=None):
+    def view(self, context=None):
         """Provide default student view."""
         result = Fragment()
         child_frags = self.runtime.render_children(self, context=context)
@@ -51,11 +67,11 @@ class VerticalBlock(XBlock):
         return result
 
 
-class SidebarBlock(XBlock):
+class SidebarBlock(XBlock, ExtraViewsMixin):
     """A slightly-different vertical."""
     has_children = True
 
-    def student_view(self, context=None):
+    def view(self, context=None):
         """Provide default student view."""
         result = Fragment()
         child_frags = self.runtime.render_children(self, context=context)
