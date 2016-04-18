@@ -1,0 +1,26 @@
+sudo: false
+language: python
+cache: pip
+python:
+    - '2.7'
+before_install:
+    - 'uname -a'
+    - 'python --version'
+install:
+    - 'pip install tox'
+    - 'virtualenv --version'
+    - 'easy_install --version'
+    - 'pip --version'
+    - 'tox --version'
+script:
+    - 'tox -v'
+branches:
+    only:
+      - 'master'
+env:
+    - TOXENV=py27-dj14
+    - TOXENV=py27-dj18
+    - TOXENV=coveralls
+    - TOXENV=pep8
+    - TOXENV=pyflakes
+    - TOXENV=pylint
