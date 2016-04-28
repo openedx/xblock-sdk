@@ -288,6 +288,7 @@ class WorkbenchRuntime(Runtime):
             'application/javascript',
             placement='head',
         )
+        wrapped.add_javascript_url(self.resource_url("js/vendor/jquery-migrate.min.js"))
         wrapped.add_javascript_url(self.resource_url("js/vendor/jquery.cookie.js"))
 
         if frag.js_init_fn:
