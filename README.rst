@@ -34,6 +34,20 @@ This code runs on Python 2.7.
 
 #.  Open a web browser to: http://127.0.0.1:8000
 
+Docker
+------
+
+Alternatively, you can build and run the xblock-sdk in Docker.
+
+After cloning this repository locally, go into the repository directory and build the Docker image::
+
+        $ docker build -t xblock-sdk .
+
+You can then run the locally-built version using the following command::
+
+        $ docker run -d -p 8000:8000 --name xblock-sdk xblock-sdk
+
+You should now be able to access the XBlock SDK environment in your browser at http://localhost:8000
 
 Testing
 --------
