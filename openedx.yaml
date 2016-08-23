@@ -3,6 +3,6 @@
 
 nick: xbsd
 oeps: {}
-owner: MUST FILL IN OWNER
+owner: edx/platform-team
 tags: [xblock]
 track-pulls: true
