@@ -75,12 +75,12 @@ class FileThumbsBlock(XBlock):
         html_str = pkg_resources.resource_string(__name__, "static/html/thumbs.html")
         frag = Fragment(unicode(html_str))
 
-        if not self.fs.exists("thumbsvotes.json"):
-            with self.fs.open('thumbsvotes.json', 'wb') as file_output:
+        if not self.fs.exists(u"thumbsvotes.json"):
+            with self.fs.open(u'thumbsvotes.json', 'wb') as file_output:
                 json.dump({'up': 0, 'down': 0}, file_output)
                 file_output.close()
 
-        votes = json.load(self.fs.open("thumbsvotes.json"))
+        votes = json.load(self.fs.open(u"thumbsvotes.json"))
         self.upvotes = votes['up']
         self.downvotes = votes['down']
 
@@ -92,10 +92,10 @@ class FileThumbsBlock(XBlock):
                                                "static/js/src/thumbs.js")
         frag.add_javascript(unicode(js_str))
 
-        with self.fs.open('uparrow.png', 'wb') as file_output:
+        with self.fs.open(u'uparrow.png', 'wb') as file_output:
             png.Writer(len(ARROW[0]), len(ARROW), greyscale=True, bitdepth=1).write(file_output, ARROW)
 
-        with self.fs.open('downarrow.png', 'wb') as file_output:
+        with self.fs.open(u'downarrow.png', 'wb') as file_output:
             png.Writer(len(ARROW[0]), len(ARROW), greyscale=True, bitdepth=1).write(file_output, ARROW[::-1])
 
         frag.initialize_js('FileThumbsBlock', {'up': self.upvotes,
@@ -119,7 +119,7 @@ class FileThumbsBlock(XBlock):
         #         log.error("cheater!")
         #         return
 
-        votes = json.load(self.fs.open("thumbsvotes.json"))
+        votes = json.load(self.fs.open(u"thumbsvotes.json"))
         self.upvotes = votes['up']
         self.downvotes = votes['down']
 
@@ -132,7 +132,7 @@ class FileThumbsBlock(XBlock):
         else:
             self.downvotes += 1
 
-        with self.fs.open('thumbsvotes.json', 'wb') as file_output:
+        with self.fs.open(u'thumbsvotes.json', 'wb') as file_output:
             json.dump({'up': self.upvotes, 'down': self.downvotes}, file_output)
 
         self.voted = True
