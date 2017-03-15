@@ -5,12 +5,7 @@ requests
 webob
 simplejson
 lazy
-
-# XBlock
-# This is not in/from PyPi, since it moves fast
--e git+https://github.com/edx/XBlock.git@xblock-0.4.7#egg=XBlock==0.4.7
-#-e ../XBlock
-
+XBlock>=0.5.0
 fs
 pypng
 -e git+https://github.com/edx/django-pyfs.git@1.0.3#egg=django-pyfs==1.0.3

@@ -27,6 +27,7 @@ class ThreeThumbsTest(SeleniumTest):
         # She clicks on the three thumbs at once scenario
         link = self.browser.find_element_by_link_text('three thumbs test')
         link.click()
+        self.wait_for_page_load(link, timeout=10)
 
         # The header reflects the XBlock
         header1 = self.browser.find_element_by_css_selector('h1')
@@ -58,6 +59,7 @@ class ThreeThumbsTest(SeleniumTest):
         # She clicks on the three thumbs at once scenario
         link = self.browser.find_element_by_link_text('three thumbs test')
         link.click()
+        self.wait_for_page_load(link, timeout=10)
 
         # The vertical that contains the thumbs
         vertical_css = 'div.student_view > div.xblock-v1 > div.vertical'
@@ -88,6 +90,7 @@ class ThreeThumbsTest(SeleniumTest):
         # She clicks on the three thumbs at once scenario
         link = self.browser.find_element_by_link_text('three thumbs test')
         link.click()
+        self.wait_for_page_load(link, timeout=10)
 
         # The vertical that contains the thumbs
         vertical_css = 'div.student_view > div.xblock-v1 > div.vertical'
