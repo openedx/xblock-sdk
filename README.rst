@@ -144,6 +144,58 @@ You can see examples of what that community has done in the `edx-platform wiki`_
 .. _the README: https://github.com/edx/xblock-sdk/blob/master/sample_xblocks/README.rst
 .. _edx-platform wiki: https://github.com/edx/edx-platform/wiki/List-of-XBlocks
 
+Testing an XBlock
+-----------------
+
+Most of the external XBlocks have a similar way of installing and testing them.
+The below example outlines a general way of doing it.
+When using an XBlock, be sure to read it's readme for differences.
+
+These steps can safely be done outside the devstack,
+although it is recommended to work in a ``virtualenv`` in this case.
+
+(The below example uses ``{{ double curly braces }}`` to mark
+names dependent on the XBlock in question.)
+
+* Check out the necessary repos::
+
+    git clone https://github.com/edx/xblock-sdk
+    git clone https://github.com/{{organizazion}}/{{xblock-dir}}
+
+* Install the requirements,
+  this usually also installs the XBlock in a way that it can be edited in-place::
+
+    cd xblock-sdk
+    make install
+
+    cd {{xblock-dir}}
+    pip install -r requirements.txt
+
+Currently a custom setup file is needed so that the workbench finds the installed XBlocks.
+It can be placed and named anything, as long as it's importable by python.
+(Example uses the recommended ``xblock-sdk/workbench/settings_local.py``,
+you have to supply the input path in the ``DJANGO_SETTINGS_MODULE`` environment variable later.)::
+
+    from settings import *
+    INSTALLED_APPS += ('{{name-one}}', '{{name-two}}',)
+
+(The block names can be found in ``{{xblock-dir}}/setup.py`` under ``entry_points['xblock.v1']``.)
+
+Note that by default the database file name is interpreted relative to the current directory.
+If this behaviour disturbs you, you can also add a line with an absolute path for the database::
+
+    DATABASES['default']['NAME'] = '{{full-path-to-sdk}}/xblock-sdk/workbench.db'
+
+For some XBlocks such as `xblock-mentoring`, the database has to be updated::
+
+    cd xblock-sdk
+    ./manage.py syncdb --settings=workbench.settings_local
+
+Finally, the tests can be run with the following command::
+
+    cd {{xblock-dir}}
+    DJANGO_SETTINGS_MODULE="workbench.settings_local" nosetests --with-django
+
 
 License
 -------
