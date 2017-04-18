@@ -39,8 +39,8 @@ class {{cookiecutter.class_name}}(XBlock):
         frag.initialize_js('{{cookiecutter.class_name}}')
         return frag
 
-    # TO-DO: change this handler to perform your own actions.  You may need more
-    # than one handler, or you may not need any handlers at all.
+    # TO-DO: change this handler to perform your own actions.  You may need
+    # more than one handler, or you may not need any handlers at all.
     @XBlock.json_handler
     def increment_count(self, data, suffix=''):
         """
