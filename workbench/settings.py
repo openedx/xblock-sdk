@@ -11,8 +11,27 @@ DJFS = {'type': 'osfs',
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-# The variable doesn't seem to actually get interpolated in
-TEMPLATE_STRING_IF_INVALID = "<MISSING VARIABLE '%s'>"
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE_DIR, 'workbench', 'templates'),
+            os.path.join(BASE_DIR, 'sample_xblocks' ,'basic', 'templates'),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -97,13 +116,6 @@ STATICFILES_FINDERS = (
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '5ftdd9(@p)tg&amp;bqv$(^d!63psz9+g+_i5om_e%!32%po2_+%l7'
 
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-    # 'django.template.loaders.eggs.Loader',
-)
-
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -120,8 +132,6 @@ ROOT_URLCONF = 'workbench.urls'
 WSGI_APPLICATION = 'workbench.wsgi.application'
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'workbench/templates'),
-    os.path.join(BASE_DIR, 'sample_xblocks/basic/templates'),
 )
 
 INSTALLED_APPS = (

@@ -99,7 +99,7 @@ def test_xblock_with_handler():
 
     # Initially, the data is the default.
     response = client.get("/view/testit/")
-    assert_true("The data: 'def'." in response.content)
+    assert_true("The data: u'def'." in response.content)
     parsed = response.content.split(':::')
     assert_equals(len(parsed), 3)
     handler_url = parsed[1]

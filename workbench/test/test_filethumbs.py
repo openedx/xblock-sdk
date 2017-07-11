@@ -1,4 +1,5 @@
 """Tests for the thumbs module"""
+from bok_choy.promise import EmptyPromise
 
 from workbench import scenarios
 from workbench.test.selenium_test import SeleniumTest
@@ -54,9 +55,19 @@ class ThreeThumbsTest(SeleniumTest):
             down_count = thumb.find_element_by_css_selector(down_count_css)
             initial_up = int(up_count.text)
             initial_down = int(down_count.text)
+
+            # upvote
             thumb.find_element_by_css_selector('span.upvote').click()
-            self.assertEqual(initial_up + 1, int(thumb.find_element_by_css_selector(up_count_css).text))
+            _ = EmptyPromise(
+                lambda: int(thumb.find_element_by_css_selector(up_count_css).text) == initial_up +1,
+                "upvote action succeeded"
+            ).fulfill()
             self.assertEqual(initial_down, int(thumb.find_element_by_css_selector(down_count_css).text))
+
+            # downvote
             thumb.find_element_by_css_selector('span.downvote').click()
+            _ = EmptyPromise(
+                lambda: int(thumb.find_element_by_css_selector(down_count_css).text) == initial_down +1,
+                "downvote action succeeded"
+            ).fulfill()
             self.assertEqual(initial_up + 1, int(thumb.find_element_by_css_selector(up_count_css).text))
-            self.assertEqual(initial_down + 1, int(thumb.find_element_by_css_selector(down_count_css).text))
