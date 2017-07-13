@@ -18,9 +18,7 @@ from django.conf import settings
 import django.utils.translation
 from django.core.urlresolvers import reverse
 from django.templatetags.static import static
-from django.template import loader as django_template_loader, \
-    Context as DjangoContext
-
+from django.template import loader as django_template_loader
 from xblock.runtime import (
     KvsFieldData, KeyValueStore, Runtime, NoSuchViewError, IdReader, IdGenerator
 )
@@ -164,6 +162,7 @@ class ScenarioIdManager(IdReader, IdGenerator):
             raise NoSuchDefinition(repr(def_id))
 
     def create_aside(self, definition_id, usage_id, aside_type):
+        """Create asides"""
         aside_def_id = u"{}.{}".format(definition_id, aside_type)
         aside_usage_id = u"{}.{}".format(usage_id, aside_type)
         self._aside_defs[aside_def_id] = (definition_id, aside_type)
@@ -242,7 +241,7 @@ class WorkbenchRuntime(Runtime):
 
     """
 
-    def __init__(self, user_id=None):
+    def __init__(self, user_id=None):  # pylint: disable=super-on-old-class
         #  TODO: Add params for user, runtime, etc. to service initialization
         #  Move to stevedor
         services = {
@@ -264,7 +263,8 @@ class WorkbenchRuntime(Runtime):
         self.id_generator = ID_MANAGER
         self.user_id = user_id
 
-    def render(self, block, view_name, context=None):
+    def render(self, block, view_name, context=None):  # pylint: disable=super-on-old-class
+        """Renders using parent class render() method"""
         try:
             return super(WorkbenchRuntime, self).render(block, view_name, context)
         except NoSuchViewError:
@@ -276,9 +276,9 @@ class WorkbenchRuntime(Runtime):
     def render_template(self, template_name, **kwargs):
         """Loads the django template for `template_name`"""
         template = django_template_loader.get_template(template_name)
-        return template.render(DjangoContext(kwargs))
+        return template.render(kwargs)
 
-    def _wrap_ele(self, block, view, frag, extra_data=None):
+    def _wrap_ele(self, block, view, frag, extra_data=None):  # pylint: disable=super-on-old-class
         """
         Add javascript to the wrapped element
         """
@@ -297,6 +297,7 @@ class WorkbenchRuntime(Runtime):
         return wrapped
 
     def handler_url(self, block, handler_name, suffix='', query='', thirdparty=False):
+        """Helper to get the correct url for the given handler"""
         # Be sure this really is a handler.
         func = getattr(block, handler_name, None)
         if not func:
@@ -325,23 +326,25 @@ class WorkbenchRuntime(Runtime):
         return url
 
     def resource_url(self, resource):
+        """The url of the resource"""
         return static("workbench/" + resource)
 
     def local_resource_url(self, block, uri):
+        """The url of the local resource"""
         return reverse("package_resource", args=(block.scope_ids.block_type, uri))
 
     def publish(self, block, event_type, event_data):
+        """Mocks a publish event by logging args"""
         log.info(
-            "XBlock event {event_type} for {block_type} (usage_id={usage_id}):"
-            .format(
-                event_type=event_type,
-                block_type=block.scope_ids.block_type,
-                usage_id=block.scope_ids.usage_id
-            )
+            "XBlock event %s for %s (usage_id=%s):",
+            event_type,
+            block.scope_ids.block_type,
+            block.scope_ids.usage_id
         )
         log.info(event_data)
 
     def query(self, block):
+        """Return a BlockSet query on block"""
         return _BlockSet(self, [block])
 
     def _load_service(self, service_path):
@@ -362,7 +365,7 @@ class WorkbenchRuntime(Runtime):
             return service_instance
         except (ImportError, ValueError, AttributeError):
             log.info('Could not find service class defined at "%s"', service_path)
-        except:
+        except:  # pylint: disable=bare-except
             log.exception('Could not initialize service defined at "%s"', service_path)
 
 
@@ -458,7 +461,7 @@ class WorkBenchUserService(UserService):
     An implementation of xblock.reference.user_service.UserService
     """
 
-    def __init__(self, uid):
+    def __init__(self, uid):  # pylint: disable=super-on-old-class
         """
         Initialize user
         """
@@ -474,7 +477,7 @@ class WorkBenchUserService(UserService):
         """
         Returns user created by init
         """
-        return self._user
+        return self._user  # pylint: disable=no-member
 
 
 def reset_global_state():

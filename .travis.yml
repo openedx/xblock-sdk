@@ -22,6 +22,7 @@ before_install:
     - "mkdir geckodriver"
     - "tar -xzf geckodriver-v0.15.0-linux64.tar.gz -C geckodriver"
     - "export PATH=$PATH:$PWD/geckodriver"
+    - "pip install -U pip"
 
 install:
     - "make install"

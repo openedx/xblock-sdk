@@ -1,5 +1,5 @@
 cookiecutter==0.9.0
-Django>=1.8,<1.9
+Django>=1.8,<2.0
 lxml
 requests
 webob
@@ -12,7 +12,7 @@ pypng
 
 # Strictly speaking, this is only for testing, but is in the INSTALLED_APPS,
 # and it's easier just to install it.
-django_nose==1.4.1
+django_nose>=1.4.4
 
 #install all sample xblocks
 -e .

@@ -21,7 +21,7 @@ var:
 
 $(SQLITE_DB): var
 	# The --noinput flag is for non-interactive runs, e.g. TravisCI.
-	python manage.py syncdb --noinput
+	python manage.py migrate --noinput
 
 .PHONY: test
 test:
