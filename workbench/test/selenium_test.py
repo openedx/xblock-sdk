@@ -5,7 +5,7 @@ from bok_choy.web_app_test import WebAppTest
 
 from nose.plugins.attrib import attr
 
-from workbench.runtime import reset_global_state
+from workbench.runtime_util import reset_global_state
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.expected_conditions import staleness_of

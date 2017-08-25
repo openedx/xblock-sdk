@@ -17,7 +17,8 @@ from xblock.django.request import webob_to_django_response, django_to_webob_requ
 from xblock.exceptions import NoSuchUsage
 
 from .models import XBlockState
-from .runtime import WorkbenchRuntime, reset_global_state
+from .runtime import WorkbenchRuntime
+from .runtime_util import reset_global_state
 from .scenarios import get_scenarios
 from xblock.plugin import PluginMissingError
 

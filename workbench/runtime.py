@@ -480,20 +480,6 @@ class WorkBenchUserService(UserService):
         return self._user  # pylint: disable=no-member
 
 
-def reset_global_state():
-    """
-    Reset any global state in the workbench.
-
-    This allows us to write properly isolated tests.
-
-    """
-    from .scenarios import init_scenarios       # avoid circularity.
-
-    WORKBENCH_KVS.clear()
-    ID_MANAGER.clear()
-    init_scenarios()
-
-
 class WorkbenchI18NService(NullI18nService):
     """Version of the I18N service for the workbench.
 
