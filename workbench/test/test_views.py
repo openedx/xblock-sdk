@@ -121,7 +121,7 @@ def test_xblock_without_handler():
     # when we try to hit a handler on it
     client = Client()
 
-    # Pick the most usage ID we just made in the temp_scenario setup...
+    # Pick the most-recent usage ID just made in the temp_scenario setup...
     usage_id = ID_MANAGER.last_created_usage_id()
 
     # Plug that usage_id into a mock handler URL
