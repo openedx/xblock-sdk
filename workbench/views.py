@@ -8,18 +8,18 @@ import json
 import logging
 import mimetypes
 
-from django.http import HttpResponse, Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render_to_response
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
-
 from xblock.core import XBlock, XBlockAside
-from xblock.django.request import webob_to_django_response, django_to_webob_request
+from xblock.django.request import django_to_webob_request, webob_to_django_response
 from xblock.exceptions import NoSuchUsage
+from xblock.plugin import PluginMissingError
 
 from .models import XBlockState
-from .runtime import WorkbenchRuntime, reset_global_state
+from .runtime import WorkbenchRuntime
+from .runtime_util import reset_global_state
 from .scenarios import get_scenarios
-from xblock.plugin import PluginMissingError
 
 
 log = logging.getLogger(__name__)

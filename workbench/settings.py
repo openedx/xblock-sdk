@@ -9,14 +9,13 @@ DJFS = {'type': 'osfs',
         'url_root': '/static/djpyfs'}
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'workbench', 'templates'),
-            os.path.join(BASE_DIR, 'sample_xblocks' ,'basic', 'templates'),
+            os.path.join(BASE_DIR, 'sample_xblocks', 'basic', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -29,6 +28,7 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'debug': DEBUG,
         },
     },
 ]

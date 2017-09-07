@@ -1,8 +1,8 @@
 """Problem XBlock, and friends.
 
 Please note that this is a demonstrative implementation of how XBlocks can
-be used, and is not an example of how problems are implemented in the 
-edx-platform runtime. 
+be used, and is not an example of how problems are implemented in the
+edx-platform runtime.
 
 These implement a general mechanism for problems containing input fields
 and checkers, wired together in interesting ways.
@@ -40,9 +40,9 @@ import string  # pylint: disable=W0402
 import time
 
 from xblock.core import XBlock
-from xblock.fields import Integer, Scope, String, Any, Boolean, Dict
-from xblock.run_script import run_script
+from xblock.fields import Any, Boolean, Dict, Integer, Scope, String
 from xblock.fragment import Fragment
+from xblock.run_script import run_script
 
 
 class ProblemBlock(XBlock):
@@ -419,19 +419,21 @@ class EqualityCheckerBlock(CheckerBlock):
         # TODO: Should we have a way to spit out JSON islands full of data?
         # Note the horror of mixed Python-Javascript data below...
         content = string.Template(self.content).substitute(**context)
-        result = Fragment(u"""
-            <span class="mydata" data-attempted='{self.attempted}' data-correct='{correct}'>
+        result = Fragment(
+            u"""
+            <span class="mydata" data-attempted='{ecb.attempted}' data-correct='{correct}'>
                 {content}
                 <span class='indicator'></span>
             </span>
-            """.format(self=self, content=content, correct=correct)
+            """.format(ecb=self, content=content, correct=correct)
         )
         # TODO: This is a runtime-specific URL.  But if each XBlock ships their
         # own copy of underscore.js, we won't be able to uniquify them.
         # Perhaps runtimes can offer a palette of popular libraries so that
         # XBlocks can refer to them in XBlock-standard ways?
         result.add_javascript_url(
-            self.runtime.resource_url("js/vendor/underscore-min.js"))
+            self.runtime.resource_url("js/vendor/underscore-min.js")
+        )
 
         # TODO: The image tag here needs a magic URL, not a hard-coded one.
         format_data = {
@@ -440,7 +442,8 @@ class EqualityCheckerBlock(CheckerBlock):
             'incorrect': self.runtime.local_resource_url(
                 self, 'public/images/incorrect-icon.png'),
         }
-        result.add_resource(u"""
+        result.add_resource(
+            u"""
             <script type="text/template" id="xblock-equality-template">
                 <% if (attempted !== "True") {{ %>
                     (Not attempted)
@@ -451,9 +454,11 @@ class EqualityCheckerBlock(CheckerBlock):
                 <% }} %>
             </script>
             """.format(**format_data),
-            "text/html")
+            "text/html"
+        )
 
-        result.add_javascript("""
+        result.add_javascript(
+            """
             function EqualityCheckerBlock(runtime, element) {
                 var template = _.template($("#xblock-equality-template").html());
                 function render() {
@@ -470,7 +475,8 @@ class EqualityCheckerBlock(CheckerBlock):
                     }
                 }
             }
-            """)
+            """
+        )
 
         result.initialize_js('EqualityCheckerBlock')
         return result

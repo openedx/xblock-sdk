@@ -4,8 +4,7 @@
 from string import Template  # pylint: disable=W0402
 
 from lxml import etree
-
-from xblock.core import XBlock, String, Scope
+from xblock.core import Scope, String, XBlock
 from xblock.fragment import Fragment
 
 
@@ -112,7 +111,7 @@ class AllScopesBlock(XBlock):
                 value=getattr(self, field_name),
                 help=field.help
             )
-            for field_name, field in self.fields.items()
+            for field_name, field in self.fields.items()  # pylint: disable=no-member
             if field_name not in ["name", "parent", "tags"]
         ]
 
@@ -172,7 +171,7 @@ class HtmlBlock(XBlock):
 
         block.content = unicode(node.text or u"")
         for child in node:
-            block.content += etree.tostring(child, encoding='unicode')
+            block.content += etree.tostring(child, encoding='unicode')  # pylint: disable=no-member
 
         return block
 
@@ -184,7 +183,7 @@ class HtmlBlock(XBlock):
 
         """
         xml = "<html_demo>" + self.content + "</html_demo>"
-        html_node = etree.fromstring(xml)
+        html_node = etree.fromstring(xml)  # pylint: disable=no-member
 
         node.tag = html_node.tag
         node.text = html_node.text

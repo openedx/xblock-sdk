@@ -9,7 +9,6 @@ Admin gives us a lot of basic search/filtering for free.
 """
 from django.db import models
 from django.utils.timezone import now
-
 from xblock.fields import BlockScope, Scope
 
 
@@ -26,6 +25,12 @@ class XBlockState(models.Model):
     will break otherwise.
 
     """
+    class Meta(object):
+        """Class metadata"""
+        verbose_name = "XBlock State"
+        verbose_name_plural = "XBlock State"
+        ordering = ['scope_id', 'scope', 'user_id']
+
     BLOCK_SCOPE_NAMES = [
         (shorten_scope_name(sentinel.attr_name), shorten_scope_name(sentinel.attr_name))
         for sentinel in BlockScope.scopes() + [Scope.parent, Scope.children]
@@ -69,12 +74,13 @@ class XBlockState(models.Model):
     state = models.TextField(default="{}")
 
     def __repr__(self):
-        return u"<XBlockState id={self.id} " \
-            "scope={self.scope} " \
-            "scope_id={self.scope_id} " \
-            "user_id={self.user_id} " \
-            "scenario={self.scenario} " \
-            "tag={self.tag}>".format(self=self)
+        # pylint: disable=missing-format-attribute
+        return u"<XBlockState id={xb_state.id} " \
+            "scope={xb_state.scope} " \
+            "scope_id={xb_state.scope_id} " \
+            "user_id={xb_state.user_id} " \
+            "scenario={xb_state.scenario} " \
+            "tag={xb_state.tag}>".format(xb_state=self)
 
     @classmethod
     def get_for_key(cls, key):
@@ -123,8 +129,3 @@ class XBlockState(models.Model):
         happens. It should *not* be called before each scenario.
         """
         cls.objects.filter(scope="children").delete()
-
-    class Meta:  # pylint:disable=C0111
-        verbose_name = "XBlock State"
-        verbose_name_plural = "XBlock State"
-        ordering = ['scope_id', 'scope', 'user_id']

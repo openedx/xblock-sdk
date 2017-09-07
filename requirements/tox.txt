@@ -1,0 +1,10 @@
+# Packages needed in order to run tox.
+# Installed by Travis and dev environments.
+
+# tox dependencies
+pluggy==0.3.1
+py==1.4.31
+virtualenv==15.0.2
+
+# For managing test environments
+tox==2.3.1

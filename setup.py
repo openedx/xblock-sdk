@@ -1,6 +1,7 @@
 """Set up for XBlock SDK"""
 import os
 import os.path
+
 from setuptools import setup
 
 
@@ -55,7 +56,7 @@ package_data.update(find_package_data("workbench", ["static", "templates"]))
 
 setup(
     name='xblock-sdk',
-    version='0.1.4',
+    version='0.1.5',
     description='XBlock SDK',
     packages=[
         'sample_xblocks',
@@ -64,8 +65,11 @@ setup(
         'sample_xblocks.filethumbs',
         'workbench',
     ],
-    install_requires=load_requirements('requirements/base.txt'),
-    tests_require=load_requirements('requirements/test.txt'),
+    install_requires=load_requirements(
+        '{}/requirements/base.txt'.format(os.getcwd()),
+        '{}/requirements/django.txt'.format(os.getcwd()),
+    ),
+    tests_require=load_requirements('{}/requirements/test.txt'.format(os.getcwd())),
     entry_points={
         'xblock.v1': [
             # Basic XBlocks

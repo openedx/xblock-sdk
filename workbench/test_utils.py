@@ -2,8 +2,9 @@
 
 These utilities use the workbench runtime to load XML scenarios.
 """
-from functools import wraps
 import json
+from functools import wraps
+
 import webob
 
 from workbench.runtime import WorkbenchRuntime
@@ -134,7 +135,7 @@ class XBlockHandlerTestCaseMixin(object):
         elif response_format == 'json':
             return json.loads(response.body)
         else:
-            raise NotImplementedError("Response format '{format}' not supported".format(response_format))
+            raise NotImplementedError("Response format '{}' not supported".format(response_format))
 
     @staticmethod
     def load_fixture_str(path):

@@ -3,14 +3,12 @@
 from unittest import TestCase
 
 import mock
-
 from django.conf import settings
-
 from xblock.fields import Scope
-from xblock.runtime import KeyValueStore
-from xblock.runtime import KvsFieldData
 from xblock.reference.user_service import UserService
-from ..runtime import WorkbenchRuntime, ScenarioIdManager, WorkbenchDjangoKeyValueStore
+from xblock.runtime import KeyValueStore, KvsFieldData
+
+from ..runtime import ScenarioIdManager, WorkbenchDjangoKeyValueStore, WorkbenchRuntime
 
 
 class TestScenarioIds(TestCase):

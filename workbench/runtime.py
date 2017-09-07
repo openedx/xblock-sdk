@@ -3,33 +3,29 @@
 Code in this file is a mix of Runtime layer and Workbench layer.
 
 """
-from collections import defaultdict
-import itertools
 import importlib
+import itertools
 import logging
+from collections import defaultdict
+
+import django.utils.translation
+from django.conf import settings
+from django.core.urlresolvers import reverse
+from django.template import loader as django_template_loader
+from django.templatetags.static import static
 from xblock.core import XBlockAside
+from xblock.exceptions import NoSuchDefinition, NoSuchUsage
+from xblock.fragment import Fragment
+from xblock.reference.user_service import UserService, XBlockUser
+from xblock.runtime import IdGenerator, IdReader, KeyValueStore, KvsFieldData, NoSuchViewError, NullI18nService, Runtime
+
+from .models import XBlockState  # pylint: disable=import-error
+from .util import make_safe_for_html
 
 try:
     import simplejson as json
 except ImportError:
     import json
-
-from django.conf import settings
-import django.utils.translation
-from django.core.urlresolvers import reverse
-from django.templatetags.static import static
-from django.template import loader as django_template_loader
-from xblock.runtime import (
-    KvsFieldData, KeyValueStore, Runtime, NoSuchViewError, IdReader, IdGenerator
-)
-from xblock.exceptions import NoSuchDefinition, NoSuchUsage
-from xblock.fragment import Fragment
-
-from xblock.reference.user_service import UserService, XBlockUser
-from xblock.runtime import NullI18nService
-
-from .models import XBlockState
-from .util import make_safe_for_html
 
 log = logging.getLogger(__name__)
 
@@ -169,29 +165,29 @@ class ScenarioIdManager(IdReader, IdGenerator):
         self._aside_usages[aside_usage_id] = (usage_id, aside_type)
         return aside_def_id, aside_usage_id
 
-    def get_aside_type_from_definition(self, def_id):
+    def get_aside_type_from_definition(self, aside_id):
         """
         Parse the type of the aside from an XBlockAside definition_id.
 
         Arguments:
-            def_id: An XBlockAside definition_id.
+            aside_id: An XBlockAside definition_id.
         """
         try:
-            return self._aside_defs[def_id][1]
+            return self._aside_defs[aside_id][1]
         except KeyError:
-            raise NoSuchDefinition(def_id)
+            raise NoSuchDefinition(aside_id)
 
-    def get_aside_type_from_usage(self, usage_id):
+    def get_aside_type_from_usage(self, aside_id):
         """
-        Parse the type of the aside from an XBlockAside usage_id.
+        Parse the type of the aside from an XBlockAside aside_id.
 
         Arguments:
-            usage_id: An XBlockAside usage_id.
+            aside_id: An XBlockAside aside_id.
         """
         try:
-            return self._aside_usages[usage_id][1]
+            return self._aside_usages[aside_id][1]
         except KeyError:
-            raise NoSuchUsage(usage_id)
+            raise NoSuchUsage(aside_id)
 
     def get_usage_id_from_aside(self, aside_id):
         """
@@ -229,7 +225,7 @@ class ScenarioIdManager(IdReader, IdGenerator):
         """Sometimes you create a usage for testing and just want to grab it
         back. This gives an easy hook to do that.
         """
-        return self._usages.keys()[-1] if self._usages else None
+        return sorted(self._usages.keys())[-1] if self._usages else None
 
 
 class WorkbenchRuntime(Runtime):
@@ -478,20 +474,6 @@ class WorkBenchUserService(UserService):
         Returns user created by init
         """
         return self._user  # pylint: disable=no-member
-
-
-def reset_global_state():
-    """
-    Reset any global state in the workbench.
-
-    This allows us to write properly isolated tests.
-
-    """
-    from .scenarios import init_scenarios       # avoid circularity.
-
-    WORKBENCH_KVS.clear()
-    ID_MANAGER.clear()
-    init_scenarios()
 
 
 class WorkbenchI18NService(NullI18nService):

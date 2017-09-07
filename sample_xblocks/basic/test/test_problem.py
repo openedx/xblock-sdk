@@ -5,7 +5,6 @@ Tests of the Problem XBlock, and its components.
 import json
 
 import webob
-
 from xblock.test.tools import assert_equals
 
 from workbench.runtime import WorkbenchRuntime

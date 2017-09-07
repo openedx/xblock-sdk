@@ -1,11 +1,12 @@
 """An XBlock providing thumbs-up/thumbs-down voting."""
 
-from xblock.core import XBlock, XBlockAside
-from xblock.fields import Scope, Integer, Boolean
-from xblock.fragment import Fragment
-import pkg_resources
-
 import logging
+
+import pkg_resources
+from xblock.core import XBlock, XBlockAside
+from xblock.fields import Boolean, Integer, Scope
+from xblock.fragment import Fragment
+
 log = logging.getLogger(__name__)
 
 
@@ -34,7 +35,7 @@ class ThumbsBlockBase(object):
 
         # Load the HTML fragment from within the package and fill in the template
         html_str = pkg_resources.resource_string(__name__, "static/html/thumbs.html")
-        frag = Fragment(unicode(html_str).format(self=self))
+        frag = Fragment(unicode(html_str).format(block=self))
 
         # Load the CSS and JavaScript fragments from within the package
         css_str = pkg_resources.resource_string(__name__, "static/css/thumbs.css")

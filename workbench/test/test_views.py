@@ -3,18 +3,14 @@
 import functools
 import json
 
-from webob import Response
-
-from django.test.client import Client
 from django.core.urlresolvers import reverse
-
-from xblock.test.tools import assert_equals, assert_in, assert_true
-from xblock.test.tools import assert_raises, assert_raises_regexp
-
-from xblock.core import XBlock, String, Scope
+from django.test.client import Client
+from webob import Response
+from xblock.core import Scope, String, XBlock
 from xblock.exceptions import DisallowedFileError
 from xblock.fragment import Fragment
 from xblock.runtime import NoSuchHandlerError
+from xblock.test.tools import assert_equals, assert_in, assert_raises, assert_raises_regexp, assert_true
 
 from workbench import scenarios
 from workbench.runtime import ID_MANAGER
@@ -121,7 +117,7 @@ def test_xblock_without_handler():
     # when we try to hit a handler on it
     client = Client()
 
-    # Pick the most usage ID we just made in the temp_scenario setup...
+    # Pick the most-recent usage ID just made in the temp_scenario setup...
     usage_id = ID_MANAGER.last_created_usage_id()
 
     # Plug that usage_id into a mock handler URL

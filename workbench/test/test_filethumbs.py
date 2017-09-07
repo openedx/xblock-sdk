@@ -51,6 +51,7 @@ class ThreeThumbsTest(SeleniumTest):
         down_count_css = 'span.downvote span.count'
 
         for thumb in thumbs:
+            # pylint: disable=cell-var-from-loop
             up_count = thumb.find_element_by_css_selector(up_count_css)
             down_count = thumb.find_element_by_css_selector(down_count_css)
             initial_up = int(up_count.text)
@@ -59,7 +60,7 @@ class ThreeThumbsTest(SeleniumTest):
             # upvote
             thumb.find_element_by_css_selector('span.upvote').click()
             _ = EmptyPromise(
-                lambda: int(thumb.find_element_by_css_selector(up_count_css).text) == initial_up +1,
+                lambda: int(thumb.find_element_by_css_selector(up_count_css).text) == initial_up + 1,
                 "upvote action succeeded"
             ).fulfill()
             self.assertEqual(initial_down, int(thumb.find_element_by_css_selector(down_count_css).text))
@@ -67,7 +68,7 @@ class ThreeThumbsTest(SeleniumTest):
             # downvote
             thumb.find_element_by_css_selector('span.downvote').click()
             _ = EmptyPromise(
-                lambda: int(thumb.find_element_by_css_selector(down_count_css).text) == initial_down +1,
+                lambda: int(thumb.find_element_by_css_selector(down_count_css).text) == initial_down + 1,
                 "downvote action succeeded"
             ).fulfill()
             self.assertEqual(initial_up + 1, int(thumb.find_element_by_css_selector(up_count_css).text))

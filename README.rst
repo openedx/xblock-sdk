@@ -52,9 +52,17 @@ You should now be able to access the XBlock SDK environment in your browser at h
 Testing
 --------
 
-To install all requirements and run the test suite::
+Testing is done via tox to test all supported versions:
 
-    $ make
+#.  Create and activate a virtualenv to work in.
+
+#.  Install the tox testing requirements::
+
+    $ pip install -r requirements/tox.txt
+
+#.  Run tests via tox::
+
+    $ tox
 
 This will run:
 
@@ -63,14 +71,14 @@ This will run:
 
 You can test XBlocks through a browser using `Selenium`_. We have included an
 example Selenium test for ``thumbs`` that uses Django's `LiveServerTestCase`_.
-It runs as part of the test suite as executed by the above command. You need to
-have Firefox installed for this test case to run successfully.
+It runs as part of the test suite as executed by the above command.
 
 .. _Selenium: http://docs.seleniumhq.org/
 .. _LiveServerTestCase: https://docs.djangoproject.com/en/1.4/topics/testing/#django.test.LiveServerTestCase
 
 To update and view test coverage::
 
+    $ make install
     $ make cover
 
 See the `coverage.py`_ docs for more info and options.
@@ -102,7 +110,7 @@ strings.
 Making your own XBlock
 ----------------------
 
-Making an XBlock involves creating a Python class that conforms to the XBlock 
+Making an XBlock involves creating a Python class that conforms to the XBlock
 specification. See the ``sample_xblocks`` directory for examples and
 `the XBlock tutorial`_ for a full walk-through.
 
@@ -133,12 +141,12 @@ own instance of Open edX, or released to the wider community).
 Example XBlocks
 ---------------
 
-Included in this repository are some example XBlocks that demonstrate how to use 
-various aspects of the XBlock SDK. You can see a more detailed description of 
+Included in this repository are some example XBlocks that demonstrate how to use
+various aspects of the XBlock SDK. You can see a more detailed description of
 those examples in `the README`_ located in that repository:
 
-There is a rich community of XBlock developers that have put together a large 
-number of XBlocks that have been used in various contexts, mostly on the edx-platform. 
+There is a rich community of XBlock developers that have put together a large
+number of XBlocks that have been used in various contexts, mostly on the edx-platform.
 You can see examples of what that community has done in the `edx-platform wiki`_.
 
 .. _the README: https://github.com/edx/xblock-sdk/blob/master/sample_xblocks/README.rst

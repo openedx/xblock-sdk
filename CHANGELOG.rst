@@ -4,6 +4,12 @@ Change history for XBlock SDK
 
 These are notable changes in XBlock.
 
+0.1.5
+-----
+* Use tox to test against Django 1.8 and 1.11.
+
+* Add quality testing via tox and pylint.
+
 0.1 - In Progress
 -----------------
 
