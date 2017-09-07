@@ -13,6 +13,7 @@ pip:
 	# from a GitHub repo.  Once XBlock is available through PyPi,
 	# we can install all requirements using setup.py
 	pip install -r requirements/base.txt
+	pip install -r requirements/django.txt
 	pip install -e .
 	pip install -r requirements/test.txt
 

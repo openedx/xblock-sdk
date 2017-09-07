@@ -1,0 +1,7 @@
+include AUTHORS
+include CHANGELOG.rst
+include LICENSE.txt
+include README.rst
+include requirements/base.txt
+include requirements/django.txt
+include requirements/test.txt

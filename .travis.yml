@@ -3,10 +3,20 @@ sudo: false
 language: python
 
 addons:
-    firefox: "52.0esr"
+    firefox: "52.0.1"
 
 python:
     - "2.7"
+
+env:
+  - TOXENV=py27-django18
+  - TOXENV=py27-django110
+  - TOXENV=py27-django111
+
+matrix:
+  include:
+    - python: 2.7
+      env: TOXENV=quality
 
 branches:
     only:
@@ -15,9 +25,12 @@ cache:
     directories:
         - $HOME/.cache/pip
 
-before_install:
-    - "export DISPLAY=:99"
+before_script:
+    - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
+    - "sleep 3" # give xvfb some time to start
+
+before_install:
     - "wget https://github.com/mozilla/geckodriver/releases/download/v0.15.0/geckodriver-v0.15.0-linux64.tar.gz"
     - "mkdir geckodriver"
     - "tar -xzf geckodriver-v0.15.0-linux64.tar.gz -C geckodriver"
@@ -25,12 +38,11 @@ before_install:
     - "pip install -U pip"
 
 install:
-    - "make install"
-    - "pip install coveralls"
+    - "pip install tox-travis"
 
 script:
-    - "make quality"
-    - "make cover"
+    - tox
 
 after_success:
+    - "pip install coveralls"
     - "coveralls"

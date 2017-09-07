@@ -64,8 +64,11 @@ setup(
         'sample_xblocks.filethumbs',
         'workbench',
     ],
-    install_requires=load_requirements('requirements/base.txt'),
-    tests_require=load_requirements('requirements/test.txt'),
+    install_requires=load_requirements(
+        '{}/requirements/base.txt'.format(os.getcwd()),
+        '{}/requirements/django.txt'.format(os.getcwd()),
+    ),
+    tests_require=load_requirements('{}/requirements/test.txt'.format(os.getcwd())),
     entry_points={
         'xblock.v1': [
             # Basic XBlocks
