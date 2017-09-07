@@ -9,7 +9,6 @@ DJFS = {'type': 'osfs',
         'url_root': '/static/djpyfs'}
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 TEMPLATES = [
     {
@@ -29,6 +28,7 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'debug': DEBUG,
         },
     },
 ]
