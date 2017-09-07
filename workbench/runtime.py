@@ -27,9 +27,6 @@ try:
 except ImportError:
     import json
 
-
-
-
 log = logging.getLogger(__name__)
 
 
