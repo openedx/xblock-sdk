@@ -4,13 +4,14 @@ This code is in the Workbench layer.
 
 """
 from collections import namedtuple
+import logging
 
 from django.conf import settings
 from django.template.defaultfilters import slugify
 
 from xblock.core import XBlock
 from .runtime import WorkbenchRuntime, WORKBENCH_KVS
-import logging
+
 log = logging.getLogger(__name__)
 
 # Build the scenarios, which are named trees of usages.

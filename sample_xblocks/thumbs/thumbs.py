@@ -34,7 +34,7 @@ class ThumbsBlockBase(object):
 
         # Load the HTML fragment from within the package and fill in the template
         html_str = pkg_resources.resource_string(__name__, "static/html/thumbs.html")
-        frag = Fragment(unicode(html_str).format(self=self))
+        frag = Fragment(unicode(html_str).format(block=self))
 
         # Load the CSS and JavaScript fragments from within the package
         css_str = pkg_resources.resource_string(__name__, "static/css/thumbs.css")

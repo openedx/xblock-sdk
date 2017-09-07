@@ -28,7 +28,7 @@ from xblock.fragment import Fragment
 from xblock.reference.user_service import UserService, XBlockUser
 from xblock.runtime import NullI18nService
 
-from .models import XBlockState
+from .models import XBlockState  # pylint: disable=import-error
 from .util import make_safe_for_html
 
 log = logging.getLogger(__name__)
@@ -169,29 +169,29 @@ class ScenarioIdManager(IdReader, IdGenerator):
         self._aside_usages[aside_usage_id] = (usage_id, aside_type)
         return aside_def_id, aside_usage_id
 
-    def get_aside_type_from_definition(self, def_id):
+    def get_aside_type_from_definition(self, aside_id):
         """
         Parse the type of the aside from an XBlockAside definition_id.
 
         Arguments:
-            def_id: An XBlockAside definition_id.
+            aside_id: An XBlockAside definition_id.
         """
         try:
-            return self._aside_defs[def_id][1]
+            return self._aside_defs[aside_id][1]
         except KeyError:
-            raise NoSuchDefinition(def_id)
+            raise NoSuchDefinition(aside_id)
 
-    def get_aside_type_from_usage(self, usage_id):
+    def get_aside_type_from_usage(self, aside_id):
         """
-        Parse the type of the aside from an XBlockAside usage_id.
+        Parse the type of the aside from an XBlockAside aside_id.
 
         Arguments:
-            usage_id: An XBlockAside usage_id.
+            aside_id: An XBlockAside aside_id.
         """
         try:
-            return self._aside_usages[usage_id][1]
+            return self._aside_usages[aside_id][1]
         except KeyError:
-            raise NoSuchUsage(usage_id)
+            raise NoSuchUsage(aside_id)
 
     def get_usage_id_from_aside(self, aside_id):
         """

@@ -134,7 +134,7 @@ class XBlockHandlerTestCaseMixin(object):
         elif response_format == 'json':
             return json.loads(response.body)
         else:
-            raise NotImplementedError("Response format '{format}' not supported".format(response_format))
+            raise NotImplementedError("Response format '{}' not supported".format(response_format))
 
     @staticmethod
     def load_fixture_str(path):

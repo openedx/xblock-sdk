@@ -60,7 +60,7 @@ class FileThumbsBlock(XBlock):
     upvotes = 0
     downvotes = 0
     voted = Boolean(help="Has this student voted?", default=False, scope=Scope.user_state)
-    fs = Filesystem(help="File system", scope=Scope.user_state_summary)
+    fs = Filesystem(help="File system", scope=Scope.user_state_summary)  # pylint: disable=invalid-name
 
     def student_view(self, context=None):  # pylint: disable=W0613
         """
