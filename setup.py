@@ -1,6 +1,7 @@
 """Set up for XBlock SDK"""
 import os
 import os.path
+
 from setuptools import setup
 
 

@@ -18,16 +18,14 @@ thumbs block will be instructive.
 """
 
 import json
-import png
-
-from xblock.core import XBlock
-from xblock.fields import Boolean
-from xblock.fields import Scope
-from xblock.reference.plugins import Filesystem
-from xblock.fragment import Fragment
-import pkg_resources
-
 import logging
+
+import pkg_resources
+import png
+from xblock.core import XBlock
+from xblock.fields import Boolean, Scope
+from xblock.fragment import Fragment
+from xblock.reference.plugins import Filesystem
 
 log = logging.getLogger(__name__)
 

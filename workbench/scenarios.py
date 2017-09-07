@@ -3,14 +3,12 @@
 This code is in the Workbench layer.
 
 """
-from collections import namedtuple
 import logging
+from collections import namedtuple
 
 from django.conf import settings
 from django.template.defaultfilters import slugify
-
 from xblock.core import XBlock
-from .runtime import WorkbenchRuntime, WORKBENCH_KVS
 
 log = logging.getLogger(__name__)
 
@@ -25,6 +23,7 @@ def add_xml_scenario(scname, description, xml):
     """
     Add a scenario defined in XML.
     """
+    from .runtime import WorkbenchRuntime
     assert scname not in SCENARIOS, "Already have a %r scenario" % scname
     runtime = WorkbenchRuntime()
 
@@ -67,6 +66,7 @@ def init_scenarios():
     """
     # Clear any existing scenarios, since this is used repeatedly during testing.
     SCENARIOS.clear()
+    from .runtime import WORKBENCH_KVS
     if settings.WORKBENCH['reset_state_on_restart']:
         WORKBENCH_KVS.clear()
     else:

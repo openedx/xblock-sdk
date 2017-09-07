@@ -3,6 +3,7 @@ Basic admin screens for displaying XBlock state and filtering/searching on the
 fields.
 """
 from django.contrib import admin
+
 from .models import XBlockState  # pylint: disable=import-error
 
 

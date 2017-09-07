@@ -3,33 +3,32 @@
 Code in this file is a mix of Runtime layer and Workbench layer.
 
 """
-from collections import defaultdict
-import itertools
 import importlib
+import itertools
 import logging
+from collections import defaultdict
+
+import django.utils.translation
+from django.conf import settings
+from django.core.urlresolvers import reverse
+from django.template import loader as django_template_loader
+from django.templatetags.static import static
 from xblock.core import XBlockAside
+from xblock.exceptions import NoSuchDefinition, NoSuchUsage
+from xblock.fragment import Fragment
+from xblock.reference.user_service import UserService, XBlockUser
+from xblock.runtime import IdGenerator, IdReader, KeyValueStore, KvsFieldData, NoSuchViewError, NullI18nService, Runtime
+
+from .models import XBlockState  # pylint: disable=import-error
+from .util import make_safe_for_html
 
 try:
     import simplejson as json
 except ImportError:
     import json
 
-from django.conf import settings
-import django.utils.translation
-from django.core.urlresolvers import reverse
-from django.templatetags.static import static
-from django.template import loader as django_template_loader
-from xblock.runtime import (
-    KvsFieldData, KeyValueStore, Runtime, NoSuchViewError, IdReader, IdGenerator
-)
-from xblock.exceptions import NoSuchDefinition, NoSuchUsage
-from xblock.fragment import Fragment
 
-from xblock.reference.user_service import UserService, XBlockUser
-from xblock.runtime import NullI18nService
 
-from .models import XBlockState  # pylint: disable=import-error
-from .util import make_safe_for_html
 
 log = logging.getLogger(__name__)
 

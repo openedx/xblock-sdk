@@ -3,10 +3,9 @@
 import unittest
 
 import ddt
-from django.test.client import Client
 import lxml.html
 from django.core.urlresolvers import reverse
-
+from django.test.client import Client
 from xblock.test.tools import assert_equals
 
 from workbench import scenarios

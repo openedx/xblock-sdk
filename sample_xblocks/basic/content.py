@@ -4,8 +4,7 @@
 from string import Template  # pylint: disable=W0402
 
 from lxml import etree
-
-from xblock.core import XBlock, String, Scope
+from xblock.core import Scope, String, XBlock
 from xblock.fragment import Fragment
 
 

@@ -2,11 +2,11 @@
 import time
 import unittest
 
+from bok_choy.query import BrowserQuery
 from selenium.common.exceptions import StaleElementReferenceException
 
 from workbench import scenarios
 from workbench.test.selenium_test import SeleniumTest
-from bok_choy.query import BrowserQuery
 
 
 class ProblemInteractionTest(SeleniumTest):

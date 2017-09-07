@@ -3,12 +3,10 @@
 from collections import namedtuple
 
 from mock import Mock
+from xblock.runtime import DictKeyValueStore, KvsFieldData
+from xblock.test.tools import TestRuntime, assert_equals, assert_in
 
-from xblock.runtime import KvsFieldData, DictKeyValueStore
 from sample_xblocks.basic.view_counter import ViewCounter
-
-from xblock.test.tools import assert_in, assert_equals, TestRuntime
-
 
 TestUsage = namedtuple('TestUsage', 'id, def_id')  # pylint: disable=C0103
 

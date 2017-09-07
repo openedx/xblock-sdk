@@ -4,10 +4,10 @@ WARNING: This is an experimental module, subject to future change or removal.
 """
 
 import json
-from webob import Response
 
+from webob import Response
 from xblock.core import XBlock
-from xblock.fields import Scope, Integer
+from xblock.fields import Integer, Scope
 from xblock.fragment import Fragment
 
 

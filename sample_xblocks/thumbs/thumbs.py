@@ -1,11 +1,12 @@
 """An XBlock providing thumbs-up/thumbs-down voting."""
 
-from xblock.core import XBlock, XBlockAside
-from xblock.fields import Scope, Integer, Boolean
-from xblock.fragment import Fragment
-import pkg_resources
-
 import logging
+
+import pkg_resources
+from xblock.core import XBlock, XBlockAside
+from xblock.fields import Boolean, Integer, Scope
+from xblock.fragment import Fragment
+
 log = logging.getLogger(__name__)
 
 

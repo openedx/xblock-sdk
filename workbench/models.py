@@ -9,7 +9,6 @@ Admin gives us a lot of basic search/filtering for free.
 """
 from django.db import models
 from django.utils.timezone import now
-
 from xblock.fields import BlockScope, Scope
 
 
