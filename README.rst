@@ -150,7 +150,7 @@ number of XBlocks that have been used in various contexts, mostly on the edx-pla
 You can see examples of what that community has done in the `edx-platform wiki`_.
 
 .. _the README: https://github.com/edx/xblock-sdk/blob/master/sample_xblocks/README.rst
-.. _edx-platform wiki: https://github.com/edx/edx-platform/wiki/List-of-XBlocks
+.. _edx-platform wiki: https://openedx.atlassian.net/wiki/spaces/COMM/pages/43385346/XBlocks+Directory
 
 
 License
