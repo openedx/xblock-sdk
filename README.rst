@@ -74,7 +74,7 @@ example Selenium test for ``thumbs`` that uses Django's `LiveServerTestCase`_.
 It runs as part of the test suite as executed by the above command.
 
 .. _Selenium: http://docs.seleniumhq.org/
-.. _LiveServerTestCase: https://docs.djangoproject.com/en/1.4/topics/testing/#django.test.LiveServerTestCase
+.. _LiveServerTestCase: https://docs.djangoproject.com/en/1.11/topics/testing/tools/#django.test.LiveServerTestCase
 
 To update and view test coverage::
 
