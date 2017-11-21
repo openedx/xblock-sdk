@@ -2,7 +2,10 @@
 This implements functionality for XBlocks to be able to log
 events. Any XBlock can use:
   Logger.log(event_name, event_json)
-to place an event in the student event data store. 
+to place an event in the student event data store. In most cases, this
+is used to collect data which can later be used for learner
+analytics. A good guide to developing edX events can be found at:
+   http://edx.readthedocs.org/projects/edx-developer-guide/en/latest/analytics.html
 
 Client-side code can also monitor what other client-side code is doing
 with Logger.listen.
@@ -37,7 +40,11 @@ XBlock generated them and other XBlock-local metadata.
             sendRequest, has;
 
         sendRequest = function(data, options) {
-	    console.log(data);
+	    // Log to console, rather than AJAX. We may want to bring
+	    // back AJAX for logging in XBlock SDK. If we do so, we
+	    // will want to make sure we handle JSON.stringify
+	    // consistently with edX (e.g. stringify the event)
+	    console.log(JSON.stringify(data));
         };
 
         has = function(object, propertyName) {
@@ -78,7 +85,7 @@ XBlock generated them and other XBlock-local metadata.
                 // Regardless of whether any callbacks were made, log this event.
                 return sendRequest({
                     'event_type': eventType,
-                    'event': JSON.stringify(data),
+                    'event': data,
                     'page': window.location.href
                 }, requestOptions);
             },

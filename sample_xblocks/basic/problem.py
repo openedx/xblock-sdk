@@ -35,6 +35,7 @@ A rough sequence diagram::
 """
 
 import inspect
+import pkg_resources
 import random
 import string  # pylint: disable=W0402
 import time
@@ -110,48 +111,9 @@ class ProblemBlock(XBlock):
             "problem.html",
             named_children=named_child_frags
         ))
-        result.add_javascript("""
-            function ProblemBlock(runtime, element) {
-
-                function callIfExists(obj, fn) {
-                    if (typeof obj[fn] == 'function') {
-                        return obj[fn].apply(obj, Array.prototype.slice.call(arguments, 2));
-                    } else {
-                        return undefined;
-                    }
-                }
-
-                function handleCheckResults(results) {
-                    $.each(results.submitResults || {}, function(input, result) {
-                        callIfExists(runtime.childMap(element, input), 'handleSubmit', result);
-                    });
-                    $.each(results.checkResults || {}, function(checker, result) {
-                        callIfExists(runtime.childMap(element, checker), 'handleCheck', result);
-                    });
-                }
-
-                // To submit a problem, call all the named children's submit()
-                // function, collect their return values, and post that object
-                // to the check handler.
-                $(element).find('.check').bind('click', function() {
-                    var data = {};
-                    var children = runtime.children(element);
-                    for (var i = 0; i < children.length; i++) {
-                        var child = children[i];
-                        if (child.name !== undefined) {
-                            data[child.name] = callIfExists(child, 'submit');
-                        }
-                    }
-                    var handlerUrl = runtime.handlerUrl(element, 'check')
-                    $.post(handlerUrl, JSON.stringify(data)).success(handleCheckResults);
-                });
-
-                $(element).find('.rerandomize').bind('click', function() {
-                    var handlerUrl = runtime.handlerUrl(element, 'rerandomize');
-                    $.post(handlerUrl, JSON.stringify({}));
-                });
-            }
-            """)
+        js_src = pkg_resources.resource_string(__name__,
+                                               "static/js/problem.js")
+        result.add_javascript(js_src)
         result.initialize_js('ProblemBlock')
         return result
 
