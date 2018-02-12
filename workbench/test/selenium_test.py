@@ -1,6 +1,6 @@
 """Helpers for Selenium tests."""
 
-from bok_choy import browser
+from bok_choy.browser import browser
 from bok_choy.web_app_test import WebAppTest
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from nose.plugins.attrib import attr
