@@ -6,6 +6,7 @@ rednose
 bok_choy==0.7.1
 pylint-django==0.7.2
 pylint==1.7.1
+selenium==3.4.1
 
 # Acid xblock
 -e git+https://github.com/edx/acid-block.git@e46f9cda8a03e121a00c7e347084d142d22ebfb7#egg=acid-xblock
