@@ -28,7 +28,7 @@ class SeleniumTest(WebAppTest, StaticLiveServerTestCase):
         # Needle uses these attributes for taking the screenshots
         self.driver = self.get_web_driver()
         # self.driver.set_window_position(0, 0)
-        self.set_viewport_size(self.viewport_width, self.viewport_height)
+        # self.set_viewport_size(self.viewport_width, self.viewport_height)
 
         # Cleanups are executed in LIFO order.
         # This ensures that the screenshot is taken and the driver logs are saved
