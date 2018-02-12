@@ -3,7 +3,7 @@ sudo: false
 language: python
 
 addons:
-    firefox: "52.0.1"
+    firefox: latest
 
 python:
     - "2.7"
@@ -31,10 +31,6 @@ before_script:
     - "sleep 3" # give xvfb some time to start
 
 before_install:
-    - "wget https://github.com/mozilla/geckodriver/releases/download/v0.15.0/geckodriver-v0.15.0-linux64.tar.gz"
-    - "mkdir geckodriver"
-    - "tar -xzf geckodriver-v0.15.0-linux64.tar.gz -C geckodriver"
-    - "export PATH=$PATH:$PWD/geckodriver"
     - "pip install -U pip"
 
 install:
