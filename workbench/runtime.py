@@ -8,16 +8,18 @@ import itertools
 import logging
 from collections import defaultdict
 
-import django.utils.translation
-from django.conf import settings
-from django.core.urlresolvers import reverse
-from django.template import loader as django_template_loader
-from django.templatetags.static import static
+from six import iteritems
 from xblock.core import XBlockAside
 from xblock.exceptions import NoSuchDefinition, NoSuchUsage
 from xblock.fragment import Fragment
 from xblock.reference.user_service import UserService, XBlockUser
 from xblock.runtime import IdGenerator, IdReader, KeyValueStore, KvsFieldData, NoSuchViewError, NullI18nService, Runtime
+
+import django.utils.translation
+from django.conf import settings
+from django.core.urlresolvers import reverse
+from django.template import loader as django_template_loader
+from django.templatetags.static import static
 
 from .models import XBlockState  # pylint: disable=import-error
 from .util import make_safe_for_html
@@ -250,7 +252,7 @@ class WorkbenchRuntime(Runtime):
         # This is useful for instances of workbench used to develop
         # XBlocks that require services that may be too specific
         # to include in the default workbench configuration.
-        for service_name, service_path in settings.WORKBENCH.get('services', {}).iteritems():
+        for service_name, service_path in iteritems(settings.WORKBENCH.get('services', {})):
             service = self._load_service(service_path)
             if service is not None:
                 services[service_name] = service

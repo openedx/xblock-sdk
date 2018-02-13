@@ -10,7 +10,6 @@ python:
 
 env:
   - TOXENV=py27-django18
-  - TOXENV=py27-django110
   - TOXENV=py27-django111
 
 matrix:
@@ -39,6 +38,7 @@ before_install:
 
 install:
     - pip install tox-travis
+    - pip install -r requirements/tox.txt
 
 script:
     - tox

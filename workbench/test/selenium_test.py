@@ -1,10 +1,11 @@
 """Helpers for Selenium tests."""
 
 from bok_choy.web_app_test import WebAppTest
-from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from nose.plugins.attrib import attr
 from selenium.webdriver.support.expected_conditions import staleness_of
 from selenium.webdriver.support.ui import WebDriverWait
+
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
 from workbench.runtime_util import reset_global_state
 

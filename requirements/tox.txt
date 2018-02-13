@@ -1,6 +1,9 @@
 # Packages needed in order to run tox.
 # Installed by Travis and dev environments.
 
+# Coverage reporting
+codecov==2.0.15
+
 # tox dependencies
 pluggy==0.3.1
 py==1.4.31

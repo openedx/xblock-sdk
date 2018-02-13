@@ -6,13 +6,13 @@ import unittest
 
 import lxml.html
 import pytest
+from xblock.test.tools import assert_equals
+
 from django.core.urlresolvers import reverse
 from django.test.client import Client
-from xblock.test.tools import assert_equals
 
 from workbench import scenarios
 from workbench.runtime_util import reset_global_state
-
 
 pytestmark = pytest.mark.django_db  # pylint: disable=invalid-name
 

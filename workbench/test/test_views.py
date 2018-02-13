@@ -1,19 +1,19 @@
 """Test the workbench views."""
 from __future__ import print_function
 
-
 import functools
 import json
 
-from django.core.urlresolvers import reverse
-from django.test.client import Client
+import pytest
 from webob import Response
 from xblock.core import Scope, String, XBlock
 from xblock.exceptions import DisallowedFileError
 from xblock.fragment import Fragment
 from xblock.runtime import NoSuchHandlerError
 from xblock.test.tools import assert_equals, assert_in, assert_raises, assert_raises_regexp, assert_true
-import pytest
+
+from django.core.urlresolvers import reverse
+from django.test.client import Client
 
 from workbench import scenarios
 from workbench.runtime import ID_MANAGER
