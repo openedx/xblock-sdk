@@ -1,4 +1,6 @@
 """Test the workbench views."""
+from __future__ import print_function
+
 
 import functools
 import json
@@ -11,9 +13,12 @@ from xblock.exceptions import DisallowedFileError
 from xblock.fragment import Fragment
 from xblock.runtime import NoSuchHandlerError
 from xblock.test.tools import assert_equals, assert_in, assert_raises, assert_raises_regexp, assert_true
+import pytest
 
 from workbench import scenarios
 from workbench.runtime import ID_MANAGER
+
+pytestmark = pytest.mark.django_db  # pylint: disable=invalid-name
 
 
 def temp_scenario(temp_class, scenario_name='test_scenario'):
@@ -232,7 +237,7 @@ def test_xblock_with_handlers():
     ]
 
     for url, expected in zip(urls, expecteds):
-        print url   # so we can see which one failed, if any.
+        print(url)   # so we can see which one failed, if any.
         response = client.get(url)
         assert_equals(response.status_code, 200)
         actual = json.loads(response.content)

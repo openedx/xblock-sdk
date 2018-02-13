@@ -445,6 +445,7 @@ class _BlockSet(object):
             if hasattr(block, attr_name):
                 yield getattr(block, attr_name)
 
+
 # Our global state (the "database").
 WORKBENCH_KVS = WorkbenchDjangoKeyValueStore()
 

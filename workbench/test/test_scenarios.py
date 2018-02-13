@@ -1,9 +1,11 @@
-"""Test that all scenarios render successfully."""
+"""
+Test that all scenarios render successfully.
+"""
 
 import unittest
 
-import ddt
 import lxml.html
+import pytest
 from django.core.urlresolvers import reverse
 from django.test.client import Client
 from xblock.test.tools import assert_equals
@@ -12,15 +14,20 @@ from workbench import scenarios
 from workbench.runtime_util import reset_global_state
 
 
-@ddt.ddt
+pytestmark = pytest.mark.django_db  # pylint: disable=invalid-name
+
+
 class ScenarioTest(unittest.TestCase):
-    """Test the scenario support."""
+    """
+    Test the scenario support.
+    """
     def setUp(self):
-        super(ScenarioTest, self).setUp()
         reset_global_state()
 
     def test_all_scenarios(self):
-        """Load the home page, examine the scenarios displayed."""
+        """
+        Load the home page, examine the scenarios displayed.
+        """
         client = Client()
         response = client.get("/")
         assert response.status_code == 200
@@ -43,25 +50,28 @@ class ScenarioTest(unittest.TestCase):
         assert all("<vertical_demo></vertical_demo>" not in scen.xml for scen in loaded_scenarios)
         assert all("<vertical_demo/>" not in scen.xml for scen in loaded_scenarios)
 
-    @ddt.data(*scenarios.get_scenarios().keys())
-    def test_scenario(self, scenario_id):
-        """A very shallow test, just to see if the scenario loads all its blocks.
+    def test_scenario(self):
+        """
+        A very shallow test, just to see if the scenario loads all its blocks.
 
         We don't know enough about each scenario to know what each should do.
         So we load the scenario to see that the workbench could successfully
-        serve it.
-
+        serve it. Normally we would get scenario_ids through a fixture, but
+        it forces database access, which pytest_django doesn't like.
         """
-        url = reverse('workbench_show_scenario', kwargs={'scenario_id': scenario_id})
-        client = Client()
-        response = client.get(url, follow=True)
-        assert response.status_code == 200, scenario_id
+        scenario_ids = scenarios.get_scenarios().keys()
 
-        # Be sure we got the whole scenario.  Again, we can't know what to expect
-        # here, but at the very least, if there are verticals, they should not be
-        # empty.  That would be a sign that some data wasn't loaded properly while
-        # rendering the scenario.
-        html = lxml.html.fromstring(response.content)
-        for vertical_tag in html.xpath('//div[@class="vertical"]'):
-            # No vertical tag should be empty.
-            assert list(vertical_tag), "Empty <vertical> shouldn't happen!"
+        for scenario_id in scenario_ids:
+            url = reverse('workbench_show_scenario', kwargs={'scenario_id': scenario_id})
+            client = Client()
+            response = client.get(url, follow=True)
+            assert response.status_code == 200, scenario_id
+
+            # Be sure we got the whole scenario.  Again, we can't know what to expect
+            # here, but at the very least, if there are verticals, they should not be
+            # empty.  That would be a sign that some data wasn't loaded properly while
+            # rendering the scenario.
+            html = lxml.html.fromstring(response.content)
+            for vertical_tag in html.xpath('//div[@class="vertical"]'):
+                # No vertical tag should be empty.
+                assert list(vertical_tag), "Scenario {}: Empty <vertical> shouldn't happen!".format(scenario_id)

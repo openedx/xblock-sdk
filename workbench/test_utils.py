@@ -2,6 +2,8 @@
 
 These utilities use the workbench runtime to load XML scenarios.
 """
+from __future__ import print_function
+
 import json
 from functools import wraps
 
@@ -48,9 +50,8 @@ def scenario(scenario_path, user_id=None):
             if args:
                 self = args[0]
                 if isinstance(self, XBlockHandlerTestCaseMixin):
-
                     # Print a debug message
-                    print "Loading scenario from {path}".format(path=scenario_path)
+                    print("Loading scenario from {path}".format(path=scenario_path))
 
                     # Configure the runtime with our user id
                     self.set_user(user_id)

@@ -1,4 +1,6 @@
 """Test that problems and problem submission works well."""
+from __future__ import print_function
+
 import time
 import unittest
 
@@ -71,7 +73,7 @@ class ProblemInteractionTest(SeleniumTest):
                     else:
                         time.sleep(.25)
                 except StaleElementReferenceException as exc:
-                    print exc
+                    print(exc)
             self.assertIn(expected_icon, sources[0])
 
         for i in range(self.num_problems):

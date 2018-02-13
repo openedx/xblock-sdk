@@ -4,6 +4,7 @@
 from string import Template  # pylint: disable=W0402
 
 from lxml import etree
+from six import text_type
 from xblock.core import Scope, String, XBlock
 from xblock.fragment import Fragment
 
@@ -169,7 +170,7 @@ class HtmlBlock(XBlock):
         """
         block = runtime.construct_xblock_from_class(cls, keys)
 
-        block.content = unicode(node.text or u"")
+        block.content = text_type(node.text or u"")
         for child in node:
             block.content += etree.tostring(child, encoding='unicode')  # pylint: disable=no-member
 

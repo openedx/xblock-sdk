@@ -22,4 +22,5 @@ class XBlockStateAdmin(admin.ModelAdmin):
         'scope', 'scope_id', 'scenario', 'tag', 'user_id', 'created'
     ]
 
+
 admin.site.register(XBlockState, XBlockStateAdmin)

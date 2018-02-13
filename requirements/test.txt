@@ -1,7 +1,13 @@
+caniusepython3            # Additional Python 3 compatibility pylint checks
 coverage
 ddt
+edx-lint                  # edX pylint rules and plugins
+isort
 mock
-pep8
+pycodestyle
+pytest
+pytest-cov==2.5.1
+pytest-django==3.1.2
 rednose
 bok_choy==0.7.1
 pylint-django==0.7.2

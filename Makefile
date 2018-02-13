@@ -30,7 +30,7 @@ test:
 
 .PHONY: quality
 quality:
-	pep8
+	pycodestyle
 	pylint workbench/ sample_xblocks/ setup.py
 
 .PHONY: cover
