@@ -15,7 +15,7 @@ log = logging.getLogger(__name__)
 
 # Build the scenarios, which are named trees of usages.
 
-Scenario = namedtuple("Scenario", "description usage_id xml")  # pylint: disable=C0103
+Scenario = namedtuple("Scenario", "description usage_id xml")
 
 SCENARIOS = {}
 

@@ -4,7 +4,7 @@ fields.
 """
 from django.contrib import admin
 
-from .models import XBlockState  # pylint: disable=import-error
+from .models import XBlockState
 
 
 class XBlockStateAdmin(admin.ModelAdmin):

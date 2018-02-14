@@ -36,7 +36,7 @@ A rough sequence diagram::
 
 import inspect
 import random
-import string  # pylint: disable=W0402
+import string
 import time
 
 from xblock.core import XBlock
@@ -329,7 +329,7 @@ class CheckerBlock(XBlock):
         Set the `arguments` field from XML attributes based on `check` arguments.
         """
         # Introspect the .check() method, and collect arguments it expects.
-        argspec = inspect.getargspec(self.check)  # pylint: disable=deprecated-method
+        argspec = inspect.getargspec(self.check)
         arguments = {}
         for arg in argspec.args[1:]:
             arguments[arg] = node.attrib.pop(arg)

@@ -19,6 +19,7 @@ def shorten_scope_name(scope_name):
     return rest
 
 
+# pylint: disable=model-missing-unicode
 class XBlockState(models.Model):
     """State storage for XBlock.
 
@@ -75,7 +76,6 @@ class XBlockState(models.Model):
     state = models.TextField(default="{}")
 
     def __repr__(self):
-        # pylint: disable=missing-format-attribute
         return u"<XBlockState id={xb_state.id} " \
             "scope={xb_state.scope} " \
             "scope_id={xb_state.scope_id} " \

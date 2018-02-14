@@ -1,4 +1,3 @@
-caniusepython3            # Additional Python 3 compatibility pylint checks
 coverage
 ddt
 edx-lint                  # edX pylint rules and plugins

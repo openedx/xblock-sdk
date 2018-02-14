@@ -155,7 +155,7 @@ INSTALLED_APPS = (
 # Installing django-debug-toolbar before running syncdb may cause a
 # DatabaseError when trying to run syncdb.
 try:
-    import debug_toolbar  # pylint: disable=unused-import, import-error
+    import debug_toolbar  # pylint: disable=unused-import
     INSTALLED_APPS += ('debug_toolbar',)
 except ImportError:
     pass

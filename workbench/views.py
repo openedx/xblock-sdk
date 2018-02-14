@@ -157,7 +157,7 @@ def package_resource(_request, block_type, resource):
             raise Http404
     try:
         content = xblock_class.open_local_resource(resource)
-    except Exception:  # pylint: disable-msg=broad-except
+    except Exception:
         raise Http404
     mimetype, _ = mimetypes.guess_type(resource)
     return HttpResponse(content, content_type=mimetype)
