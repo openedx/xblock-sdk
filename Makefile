@@ -26,17 +26,11 @@ $(SQLITE_DB): var
 
 .PHONY: test
 test:
-	python manage.py test
+	tox
 
 .PHONY: quality
 quality:
-	pep8
-	pylint workbench/ sample_xblocks/ setup.py
-
-.PHONY: cover
-cover:
-	coverage run manage.py test
-	coverage report
+	tox -e quality
 
 clean:
 	rm -f workbench.log* workbench.test.*

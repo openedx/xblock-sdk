@@ -2,7 +2,7 @@
 Runtime utilities
 """
 
-from .runtime import WORKBENCH_KVS, ID_MANAGER
+from .runtime import ID_MANAGER, WORKBENCH_KVS
 from .scenarios import init_scenarios
 
 

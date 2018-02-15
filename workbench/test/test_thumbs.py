@@ -1,8 +1,11 @@
 """Tests for the thumbs module"""
+import pytest
 from bok_choy.promise import EmptyPromise
 
 from workbench import scenarios
 from workbench.test.selenium_test import SeleniumTest
+
+pytestmark = pytest.mark.django_db  # pylint: disable=invalid-name
 
 
 class ThreeThumbsTest(SeleniumTest):

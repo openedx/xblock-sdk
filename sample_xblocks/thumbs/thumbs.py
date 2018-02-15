@@ -3,6 +3,7 @@
 import logging
 
 import pkg_resources
+from six import text_type
 from xblock.core import XBlock, XBlockAside
 from xblock.fields import Boolean, Integer, Scope
 from xblock.fragment import Fragment
@@ -35,15 +36,15 @@ class ThumbsBlockBase(object):
 
         # Load the HTML fragment from within the package and fill in the template
         html_str = pkg_resources.resource_string(__name__, "static/html/thumbs.html")
-        frag = Fragment(unicode(html_str).format(block=self))
+        frag = Fragment(text_type(html_str).format(block=self))
 
         # Load the CSS and JavaScript fragments from within the package
         css_str = pkg_resources.resource_string(__name__, "static/css/thumbs.css")
-        frag.add_css(unicode(css_str))
+        frag.add_css(text_type(css_str))
 
         js_str = pkg_resources.resource_string(__name__,
                                                "static/js/src/thumbs.js")
-        frag.add_javascript(unicode(js_str))
+        frag.add_javascript(text_type(js_str))
 
         frag.initialize_js('ThumbsBlock')
         return frag

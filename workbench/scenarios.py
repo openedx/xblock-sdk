@@ -6,15 +6,16 @@ This code is in the Workbench layer.
 import logging
 from collections import namedtuple
 
+from xblock.core import XBlock
+
 from django.conf import settings
 from django.template.defaultfilters import slugify
-from xblock.core import XBlock
 
 log = logging.getLogger(__name__)
 
 # Build the scenarios, which are named trees of usages.
 
-Scenario = namedtuple("Scenario", "description usage_id xml")  # pylint: disable=C0103
+Scenario = namedtuple("Scenario", "description usage_id xml")
 
 SCENARIOS = {}
 
@@ -76,6 +77,7 @@ def init_scenarios():
     for class_name, cls in sorted(XBlock.load_classes(fail_silently=False)):
         add_class_scenarios(class_name, cls, fail_silently=False)
 
+
 def get_scenarios():
     """
     Return SCENARIOS, initializing it if required.
@@ -84,5 +86,6 @@ def get_scenarios():
         init_scenarios()
         get_scenarios.initialized = True
     return SCENARIOS
+
 
 get_scenarios.initialized = False

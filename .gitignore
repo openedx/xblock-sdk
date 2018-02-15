@@ -5,7 +5,9 @@ local_settings.py
 *.egg-info
 .treerc
 .coverage
+.idea
 .tox
+.pytest_cache
 htmlcov
 geckodriver.log
 

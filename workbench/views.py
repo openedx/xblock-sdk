@@ -8,19 +8,19 @@ import json
 import logging
 import mimetypes
 
-from django.http import Http404, HttpResponse
-from django.shortcuts import redirect, render_to_response
-from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from xblock.core import XBlock, XBlockAside
 from xblock.django.request import django_to_webob_request, webob_to_django_response
 from xblock.exceptions import NoSuchUsage
 from xblock.plugin import PluginMissingError
 
+from django.http import Http404, HttpResponse
+from django.shortcuts import redirect, render_to_response
+from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
+
 from .models import XBlockState
 from .runtime import WorkbenchRuntime
 from .runtime_util import reset_global_state
 from .scenarios import get_scenarios
-
 
 log = logging.getLogger(__name__)
 
@@ -157,7 +157,7 @@ def package_resource(_request, block_type, resource):
             raise Http404
     try:
         content = xblock_class.open_local_resource(resource)
-    except Exception:  # pylint: disable-msg=broad-except
+    except Exception:
         raise Http404
     mimetype, _ = mimetypes.guess_type(resource)
     return HttpResponse(content, content_type=mimetype)

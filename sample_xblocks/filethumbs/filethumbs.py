@@ -22,6 +22,7 @@ import logging
 
 import pkg_resources
 import png
+from six import text_type
 from xblock.core import XBlock
 from xblock.fields import Boolean, Scope
 from xblock.fragment import Fragment
@@ -71,7 +72,7 @@ class FileThumbsBlock(XBlock):
 
         # Load the HTML fragment from within the package and fill in the template
         html_str = pkg_resources.resource_string(__name__, "static/html/thumbs.html")
-        frag = Fragment(unicode(html_str))
+        frag = Fragment(text_type(html_str))
 
         if not self.fs.exists(u"thumbsvotes.json"):
             with self.fs.open(u'thumbsvotes.json', 'wb') as file_output:
@@ -84,11 +85,11 @@ class FileThumbsBlock(XBlock):
 
         # Load the CSS and JavaScript fragments from within the package
         css_str = pkg_resources.resource_string(__name__, "static/css/thumbs.css")
-        frag.add_css(unicode(css_str))
+        frag.add_css(text_type(css_str))
 
         js_str = pkg_resources.resource_string(__name__,
                                                "static/js/src/thumbs.js")
-        frag.add_javascript(unicode(js_str))
+        frag.add_javascript(text_type(js_str))
 
         with self.fs.open(u'uparrow.png', 'wb') as file_output:
             png.Writer(len(ARROW[0]), len(ARROW), greyscale=True, bitdepth=1).write(file_output, ARROW)

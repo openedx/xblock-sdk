@@ -36,7 +36,7 @@ A rough sequence diagram::
 
 import inspect
 import random
-import string  # pylint: disable=W0402
+import string
 import time
 
 from xblock.core import XBlock

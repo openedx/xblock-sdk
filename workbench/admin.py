@@ -4,7 +4,7 @@ fields.
 """
 from django.contrib import admin
 
-from .models import XBlockState  # pylint: disable=import-error
+from .models import XBlockState
 
 
 class XBlockStateAdmin(admin.ModelAdmin):
@@ -21,5 +21,6 @@ class XBlockStateAdmin(admin.ModelAdmin):
     readonly_fields = [
         'scope', 'scope_id', 'scenario', 'tag', 'user_id', 'created'
     ]
+
 
 admin.site.register(XBlockState, XBlockStateAdmin)

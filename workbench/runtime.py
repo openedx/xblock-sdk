@@ -8,18 +8,20 @@ import itertools
 import logging
 from collections import defaultdict
 
-import django.utils.translation
-from django.conf import settings
-from django.core.urlresolvers import reverse
-from django.template import loader as django_template_loader
-from django.templatetags.static import static
+from six import iteritems
 from xblock.core import XBlockAside
 from xblock.exceptions import NoSuchDefinition, NoSuchUsage
 from xblock.fragment import Fragment
 from xblock.reference.user_service import UserService, XBlockUser
 from xblock.runtime import IdGenerator, IdReader, KeyValueStore, KvsFieldData, NoSuchViewError, NullI18nService, Runtime
 
-from .models import XBlockState  # pylint: disable=import-error
+import django.utils.translation
+from django.conf import settings
+from django.core.urlresolvers import reverse
+from django.template import loader as django_template_loader
+from django.templatetags.static import static
+
+from .models import XBlockState
 from .util import make_safe_for_html
 
 try:
@@ -237,7 +239,7 @@ class WorkbenchRuntime(Runtime):
 
     """
 
-    def __init__(self, user_id=None):  # pylint: disable=super-on-old-class
+    def __init__(self, user_id=None):
         #  TODO: Add params for user, runtime, etc. to service initialization
         #  Move to stevedor
         services = {
@@ -250,7 +252,7 @@ class WorkbenchRuntime(Runtime):
         # This is useful for instances of workbench used to develop
         # XBlocks that require services that may be too specific
         # to include in the default workbench configuration.
-        for service_name, service_path in settings.WORKBENCH.get('services', {}).iteritems():
+        for service_name, service_path in iteritems(settings.WORKBENCH.get('services', {})):
             service = self._load_service(service_path)
             if service is not None:
                 services[service_name] = service
@@ -259,7 +261,7 @@ class WorkbenchRuntime(Runtime):
         self.id_generator = ID_MANAGER
         self.user_id = user_id
 
-    def render(self, block, view_name, context=None):  # pylint: disable=super-on-old-class
+    def render(self, block, view_name, context=None):
         """Renders using parent class render() method"""
         try:
             return super(WorkbenchRuntime, self).render(block, view_name, context)
@@ -274,7 +276,7 @@ class WorkbenchRuntime(Runtime):
         template = django_template_loader.get_template(template_name)
         return template.render(kwargs)
 
-    def _wrap_ele(self, block, view, frag, extra_data=None):  # pylint: disable=super-on-old-class
+    def _wrap_ele(self, block, view, frag, extra_data=None):
         """
         Add javascript to the wrapped element
         """
@@ -445,6 +447,7 @@ class _BlockSet(object):
             if hasattr(block, attr_name):
                 yield getattr(block, attr_name)
 
+
 # Our global state (the "database").
 WORKBENCH_KVS = WorkbenchDjangoKeyValueStore()
 
@@ -457,7 +460,7 @@ class WorkBenchUserService(UserService):
     An implementation of xblock.reference.user_service.UserService
     """
 
-    def __init__(self, uid):  # pylint: disable=super-on-old-class
+    def __init__(self, uid):
         """
         Initialize user
         """
@@ -473,7 +476,7 @@ class WorkBenchUserService(UserService):
         """
         Returns user created by init
         """
-        return self._user  # pylint: disable=no-member
+        return self._user
 
 
 class WorkbenchI18NService(NullI18nService):

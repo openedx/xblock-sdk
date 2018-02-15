@@ -3,10 +3,12 @@
 from unittest import TestCase
 
 import mock
-from django.conf import settings
+import pytest
 from xblock.fields import Scope
 from xblock.reference.user_service import UserService
 from xblock.runtime import KeyValueStore, KvsFieldData
+
+from django.conf import settings
 
 from ..runtime import ScenarioIdManager, WorkbenchDjangoKeyValueStore, WorkbenchRuntime
 
@@ -86,6 +88,7 @@ class TestKVStore(TestCase):
             field_name="age"
         )
 
+    @pytest.mark.django_db
     def test_storage(self):
         self.assertFalse(self.kvs.has(self.key))
         self.kvs.set(self.key, 7)

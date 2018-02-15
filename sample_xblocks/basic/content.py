@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """Content-oriented XBlocks."""
 
-from string import Template  # pylint: disable=W0402
+from string import Template
 
 from lxml import etree
+from six import text_type
 from xblock.core import Scope, String, XBlock
 from xblock.fragment import Fragment
 
@@ -169,9 +170,9 @@ class HtmlBlock(XBlock):
         """
         block = runtime.construct_xblock_from_class(cls, keys)
 
-        block.content = unicode(node.text or u"")
+        block.content = text_type(node.text or u"")
         for child in node:
-            block.content += etree.tostring(child, encoding='unicode')  # pylint: disable=no-member
+            block.content += etree.tostring(child, encoding='unicode')
 
         return block
 
@@ -183,7 +184,7 @@ class HtmlBlock(XBlock):
 
         """
         xml = "<html_demo>" + self.content + "</html_demo>"
-        html_node = etree.fromstring(xml)  # pylint: disable=no-member
+        html_node = etree.fromstring(xml)
 
         node.tag = html_node.tag
         node.text = html_node.text

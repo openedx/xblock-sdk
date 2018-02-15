@@ -4,6 +4,7 @@ Tests of the Problem XBlock, and its components.
 
 import json
 
+import pytest
 import webob
 from xblock.test.tools import assert_equals
 
@@ -23,6 +24,7 @@ def text_of_response(response):
     return "".join(response.app_iter)
 
 
+@pytest.mark.django_db
 def test_problem_submission():
     runtime = WorkbenchRuntime()
 
