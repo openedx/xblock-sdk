@@ -2,7 +2,7 @@
 
 from mock import Mock
 from xblock.runtime import DictKeyValueStore, KvsFieldData
-from xblock.test.tools import TestRuntime as TR
+from xblock.test.tools import TestRuntime as Runtime  # Workaround for pytest trying to collect "TestRuntime" as a test
 from xblock.test.tools import assert_equals, assert_in
 
 from sample_xblocks.basic.view_counter import ViewCounter
@@ -11,7 +11,7 @@ from sample_xblocks.basic.view_counter import ViewCounter
 def test_view_counter_state():
     key_store = DictKeyValueStore()
     field_data = KvsFieldData(key_store)
-    runtime = TR(services={'field-data': field_data})
+    runtime = Runtime(services={'field-data': field_data})
     tester = ViewCounter(runtime, scope_ids=Mock())
 
     assert_equals(tester.views, 0)
