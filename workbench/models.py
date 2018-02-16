@@ -14,7 +14,9 @@ from django.utils.timezone import now
 
 
 def shorten_scope_name(scope_name):
-    """Strip the "blockscope_" or "scope_" prefixes from scope names."""
+    """
+    Strip the "blockscope_" or "scope_" prefixes from scope names.
+    """
     _prefix, rest = scope_name.split("_", 1)
     return rest
 
@@ -25,7 +27,6 @@ class XBlockState(models.Model):
 
     This class assumes your IDs were generated using `ScenarioIdManager`, and
     will break otherwise.
-
     """
     class Meta(object):
         """Class metadata"""
@@ -85,7 +86,9 @@ class XBlockState(models.Model):
 
     @classmethod
     def get_for_key(cls, key):
-        """Get or create the model row for a given `KeyValueStore.Key` `key`."""
+        """
+        Get or create the model row for a given `KeyValueStore.Key` `key`.
+        """
         if key.scope in [Scope.parent, Scope.children]:
             block_scope_full_name = key.scope.attr_name
         else:
@@ -120,7 +123,8 @@ class XBlockState(models.Model):
 
     @classmethod
     def prep_for_scenario_loading(cls):
-        """This method should be executed once before loading scenarios.
+        """
+        This method should be executed once before loading scenarios.
 
         For the most part, when scenarios load, they just overwrite their
         previous entries. But adding children is an append operation, so we just
