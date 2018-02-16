@@ -344,4 +344,4 @@ def test_user_list():
     client = Client()
     result = client.get("/userlist/")
     assert_equals(result.status_code, 200)
-    assert_equals(len(result.json()), 0)
+    assert_equals(result.content, "[]")
