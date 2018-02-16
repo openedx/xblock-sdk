@@ -2,7 +2,7 @@
 
 boto==2.39.0
 cookiecutter==0.9.0
-Django
+Django>=1.8,<2.0
 django-pyfs==2.0
 fs-s3fs==0.1.5
 lxml==3.8.0
