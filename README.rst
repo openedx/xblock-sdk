@@ -18,7 +18,7 @@ This code runs on Python 2.7.
 
 #.  Install standard development libraries. Here's how you do it on Ubuntu or Debian::
 
-        $ sudo apt-get install python-dev libxml2-dev libxslt-dev lib32z1-dev libjpeg62-dev
+    $ sudo apt-get install python-dev libxml2-dev libxslt-dev lib32z1-dev libjpeg62-dev
 
 #.  Get a local copy of this repo.
 
@@ -26,11 +26,11 @@ This code runs on Python 2.7.
 
 #.  Install the requirements and register the XBlock entry points::
 
-        $ make install
+    $ make install
 
 #.  Run the Django development server::
 
-        $ python manage.py runserver
+    $ python manage.py runserver
 
 #.  Open a web browser to: http://127.0.0.1:8000
 
@@ -41,11 +41,11 @@ Alternatively, you can build and run the xblock-sdk in Docker.
 
 After cloning this repository locally, go into the repository directory and build the Docker image::
 
-        $ docker build -t xblock-sdk .
+    $ docker build -t xblock-sdk .
 
 You can then run the locally-built version using the following command::
 
-        $ docker run -d -p 8000:8000 --name xblock-sdk xblock-sdk
+    $ docker run -d -p 8000:8000 --name xblock-sdk xblock-sdk
 
 You should now be able to access the XBlock SDK environment in your browser at http://localhost:8000
 
@@ -56,18 +56,28 @@ Testing is done via tox to test all supported versions:
 
 #.  Create and activate a virtualenv to work in.
 
-#.  Install the tox testing requirements::
-
-    $ pip install -r requirements/tox.txt
-
-#.  Run tests via tox::
+#.  Run just unit tests via tox::
 
     $ tox
 
-This will run:
+For each supported version of Django (currently 1.8 and 1.11) this will run:
 
 * Integration tests of XBlocks running within the workbench.
 * Individual tests written for the demo XBlocks
+
+To run the unit tests in your virtualenv you can use::
+
+    $ make test
+
+
+To run all tox unit tests and quality checks::
+
+    $ make test-all
+
+
+To run just the quality checks::
+
+    $ make quality
 
 You can test XBlocks through a browser using `Selenium`_. We have included an
 example Selenium test for ``thumbs`` that uses Django's `LiveServerTestCase`_.
@@ -78,8 +88,7 @@ It runs as part of the test suite as executed by the above command.
 
 To update and view test coverage::
 
-    $ make install
-    $ make cover
+    $ make coverage
 
 See the `coverage.py`_ docs for more info and options.
 

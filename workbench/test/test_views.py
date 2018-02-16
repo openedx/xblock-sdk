@@ -338,3 +338,10 @@ def test_activate_id():
     XBlockWithContextTracking.clear_contexts()
     client.get("/view/context_tracking/?activate_block_id=456")
     assert_equals(XBlockWithContextTracking.registered_contexts, [{'activate_block_id': '456'}])
+
+
+def test_user_list():
+    client = Client()
+    result = client.get("/userlist/")
+    assert_equals(result.status_code, 200)
+    assert_equals(result.content, "[]")

@@ -38,7 +38,7 @@ before_install:
 
 install:
     - pip install tox-travis
-    - pip install -r requirements/tox.txt
+    - pip install -r requirements/travis.txt
 
 script:
     - tox
