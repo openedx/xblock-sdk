@@ -4,6 +4,7 @@ ddt
 mock
 pytest-cov
 pytest-django
+selenium==3.4.1           # Forcing this version fixes issues on Travis
 tox                       # Virtualenv management for tests
 tox-battery               # Makes tox aware of requirements file changes
 

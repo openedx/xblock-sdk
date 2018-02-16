@@ -45,7 +45,7 @@ pytz==2018.3              # via django, fs, xblock
 pyyaml==3.12              # via cookiecutter, xblock
 requests==2.9.1
 s3transfer==0.1.13        # via boto3
-selenium==3.9.0           # via bok-choy, needle
+selenium==3.4.1
 simplejson==3.13.2
 six==1.10.0               # via bok-choy, django-pyfs, fs, fs-s3fs, mock, pytest, python-dateutil, tox, xblock
 tox-battery==0.5
