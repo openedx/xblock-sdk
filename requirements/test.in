@@ -1,0 +1,11 @@
+bok_choy==0.7.1
+coverage
+ddt
+mock
+pytest-cov
+pytest-django
+tox                       # Virtualenv management for tests
+tox-battery               # Makes tox aware of requirements file changes
+
+# Acid xblock
+-e git+https://github.com/edx/acid-block.git@e46f9cda8a03e121a00c7e347084d142d22ebfb7#egg=acid-xblock

@@ -1,0 +1,7 @@
+# Requirements for code quality checks
+
+edx-lint                  # edX pylint rules and plugins
+isort                     # to standardize order of imports
+pycodestyle               # PEP 8 compliance validation
+pydocstyle                # PEP 257 compliance validation
+six==1.10.0               # Prevents a version conflict between this file and test.txt

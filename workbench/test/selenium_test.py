@@ -1,7 +1,6 @@
 """Helpers for Selenium tests."""
 
 from bok_choy.web_app_test import WebAppTest
-from nose.plugins.attrib import attr
 from selenium.webdriver.support.expected_conditions import staleness_of
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -10,7 +9,6 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from workbench.runtime_util import reset_global_state
 
 
-@attr('selenium')
 class SeleniumTest(WebAppTest, StaticLiveServerTestCase):
     """Base test class that provides setUpClass and tearDownClass
     methods necessary for selenium testing."""

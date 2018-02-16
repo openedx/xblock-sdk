@@ -1,0 +1,4 @@
+# This file is hand managed as pip-compile doesn't like the local installs.
+
+#install all sample xblocks
+-e .
