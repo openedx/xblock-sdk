@@ -68,6 +68,7 @@ requirements: ## install development environment requirements
 	pip install -qr requirements/local.txt --exists-action w
 
 install: requirements
+	python manage.py migrate --noinput
 
 test: clean ## run tests in the current virtualenv
 	pip install -qr requirements/local.txt --exists-action w ## Install sample xblocks
