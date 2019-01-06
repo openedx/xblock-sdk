@@ -273,7 +273,11 @@ class WorkbenchRuntime(Runtime):
     
     @property
     def descriptor_runtime(self):
-        course = Mock(lti_passports=['test:test:secret'])
+        course = Mock(
+            lti_passports=['test:test:secret'],
+            display_name_with_default='Test Course',
+            display_org_with_default='edX',
+        )
 
         return Mock(modulestore=Mock(
             get_course=Mock(return_value=course)
