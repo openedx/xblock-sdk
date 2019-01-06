@@ -7,7 +7,9 @@ import importlib
 import itertools
 import logging
 from collections import defaultdict
+from datetime import datetime, timedelta
 
+from mock import Mock
 from six import iteritems
 from xblock.core import XBlockAside
 from xblock.exceptions import NoSuchDefinition, NoSuchUsage
@@ -17,6 +19,7 @@ from xblock.runtime import IdGenerator, IdReader, KeyValueStore, KvsFieldData, N
 
 import django.utils.translation
 from django.conf import settings
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.template import loader as django_template_loader
 from django.templatetags.static import static
@@ -236,8 +239,9 @@ class WorkbenchRuntime(Runtime):
 
     A pre-configured instance of this class will be available to XBlocks as
     `self.runtime`.
-
     """
+    anonymous_student_id = 'dummydummy000-fake-fake-dummydummy00'  # Needed for the LTI XBlock
+    hostname = '127.0.0.1:8000'  # Arbitrary value, needed for the LTI XBlock
 
     def __init__(self, user_id=None):
         #  TODO: Add params for user, runtime, etc. to service initialization
@@ -261,8 +265,50 @@ class WorkbenchRuntime(Runtime):
         self.id_generator = ID_MANAGER
         self.user_id = user_id
 
+    def get_user_role(self):
+        """Provide a dummy user role."""
+        return 'Student'
+
+    @property
+    def descriptor_runtime(self):
+        """Provide a dummy course."""
+        course = Mock(
+            lti_passports=['test:test:secret'],
+            display_name_with_default='Test Course',
+            display_org_with_default='edX',
+        )
+
+        return Mock(modulestore=Mock(
+            get_course=Mock(return_value=course)
+        ))
+
+    def get_real_user(self, _):
+        """
+        Return a dummy user with a Mock profile.
+
+        Expected by the LTI Consumer XBlock.
+        """
+        u = User()
+        u.profile = Mock()
+        u.profile.name = 'John Doe'
+        return u
+
+    def _patch_xblock(self, block):
+        """Add required attributes by some legacy XBlocks such as the LTI Consumer XBlock."""
+        block.location = Mock(html_id=Mock(return_value='course-v1:edX+Demo+2020'))
+        block.course_id = block.location.html_id()
+        block.due = datetime.utcnow()
+        block.graceperiod = timedelta(seconds=0)
+        block.category = 'chapter'
+
+    def handle(self, block, handler_name, request, suffix=''):
+        """Patch the XBlock with required fields."""
+        self._patch_xblock(block)
+        return super(WorkbenchRuntime, self).handle(block, handler_name, request, suffix)
+
     def render(self, block, view_name, context=None):
         """Renders using parent class render() method"""
+        self._patch_xblock(block)
         try:
             return super(WorkbenchRuntime, self).render(block, view_name, context)
         except NoSuchViewError:

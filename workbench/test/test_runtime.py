@@ -76,6 +76,22 @@ class TestScenarioIds(TestCase):
         self.assertEqual(self.id_mgr.get_usage_id_from_aside(aside_usage), usage_id)
 
 
+class WorkbenchRuntimeTests(TestCase):
+    """
+    Tests for the WorkbenchRuntime.
+    """
+
+    def test_lti_consumer_xblock_requirements(self):
+        """
+        The LTI Consumer XBlock expects a lot of values from the LMS Runtime,
+        this test ensures that those requirements fulfilled.
+        """
+        runtime = WorkbenchRuntime('test_user')
+        assert runtime.get_real_user(object()), 'The LTI Consumer XBlock needs this method.'
+        assert runtime.hostname, 'The LTI Consumer XBlock needs this property.'
+        assert runtime.anonymous_student_id, 'The LTI Consumer XBlock needs this property.'
+
+
 class TestKVStore(TestCase):
     """
     Test the Workbench KVP Store

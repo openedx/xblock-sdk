@@ -15,6 +15,9 @@ geckodriver.log
 workbench/static/djpyfs/
 workbench.test.*
 
+### Developer Settings
+private.py
+
 # Documentation
 doc/_build
 .pip_cache

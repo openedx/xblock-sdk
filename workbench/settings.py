@@ -203,6 +203,12 @@ WORKBENCH = {
     ),
 
     'services': {
-        'fs': 'xblock.reference.plugins.FSService'
+        'fs': 'xblock.reference.plugins.FSService',
+        'settings': 'workbench.services.SettingsService',
     }
 }
+
+try:
+    from .private import *  # pylint: disable=wildcard-import,import-error,useless-suppression
+except ImportError:
+    pass
