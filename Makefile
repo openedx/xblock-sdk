@@ -67,11 +67,11 @@ upgrade: ## update the requirements/*.txt files with the latest packages satisfy
 quality: ## check coding style with pycodestyle and pylint
 	tox -e quality
 
-requirements: ## install development environment requirements
+requirements: pin_pip ## install development environment requirements
 	pip install -qr requirements/dev.txt --exists-action w
 	pip install -qr requirements/local.txt --exists-action w
 
-install: pin_pip requirements
+install: requirements
 
 test: clean ## run tests in the current virtualenv
 	pip install -qr requirements/local.txt --exists-action w ## Install sample xblocks

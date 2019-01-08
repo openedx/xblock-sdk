@@ -3,14 +3,13 @@
 Code in this file is a mix of Runtime layer and Workbench layer.
 
 """
-from collections import defaultdict
-from datetime import datetime
-from datetime import timedelta
 import importlib
 import itertools
 import logging
-from mock import Mock
+from collections import defaultdict
+from datetime import datetime, timedelta
 
+from mock import Mock
 from six import iteritems
 from xblock.core import XBlockAside
 from xblock.exceptions import NoSuchDefinition, NoSuchUsage
