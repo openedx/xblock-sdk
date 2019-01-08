@@ -208,6 +208,7 @@ WORKBENCH = {
     }
 }
 
-# See if the developer has any local overrides.
-if os.path.isfile(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'private.py')):
+try:
     from .private import *  # pylint: disable=wildcard-import
+except ImportError:
+    pass
