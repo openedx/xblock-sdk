@@ -270,7 +270,7 @@ class WorkbenchRuntime(Runtime):
     def get_user_role(self):
         """Provide a dummy user role."""
         return 'Student'
-    
+
     @property
     def descriptor_runtime(self):
         """Provide a dummy course."""
