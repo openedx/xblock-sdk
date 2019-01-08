@@ -3,6 +3,8 @@
 This code is in the Workbench layer.
 
 """
+from __future__ import unicode_literals
+
 import logging
 from collections import namedtuple
 

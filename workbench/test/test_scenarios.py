@@ -2,6 +2,7 @@
 Test that all scenarios render successfully.
 """
 from __future__ import unicode_literals
+
 import unittest
 
 import lxml.html
@@ -21,6 +22,7 @@ class ScenarioTest(unittest.TestCase):
     Test the scenario support.
     """
     def setUp(self):
+        super(ScenarioTest, self).setUp()
         reset_global_state()
 
     def test_all_scenarios(self):

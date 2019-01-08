@@ -209,6 +209,6 @@ WORKBENCH = {
 }
 
 try:
-    from .private import *  # pylint: disable=wildcard-import,import-error
+    from .private import *  # pylint: disable=wildcard-import,import-error,useless-suppression
 except ImportError:
     pass

@@ -3,6 +3,7 @@
 This code is in the Workbench layer.
 
 """
+from __future__ import unicode_literals
 
 from xblock.core import XBlock
 from xblock.fragment import Fragment
@@ -14,7 +15,7 @@ class DebuggingChildBlock(XBlock):
     """A simple gray box, to use as a child placeholder."""
     def fallback_view(self, view_name, context=None):  # pylint: disable=W0613
         """Provides a fallback view handler"""
-        frag = Fragment(u"<div class='debug_child'>%s<br>%s</div>" % (make_safe_for_html(repr(self)), view_name))
+        frag = Fragment("<div class='debug_child'>%s<br>%s</div>" % (make_safe_for_html(repr(self)), view_name))
         frag.add_css("""
             .debug_child {
                 background-color: grey;

@@ -7,6 +7,8 @@ mostly use Django because we already have it as a dependency and because Django
 Admin gives us a lot of basic search/filtering for free.
 
 """
+from __future__ import unicode_literals
+
 from xblock.fields import BlockScope, Scope
 
 from django.db import models

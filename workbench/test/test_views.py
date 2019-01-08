@@ -274,8 +274,8 @@ def test_local_resources():
 
     # The Equality block has local resources
     result = client.get('/resource/equality_demo/public/images/correct-icon.png')
-    assert result.status_code in 200
-    assert result['Content-Type'] in 'image/png'
+    assert result.status_code == 200
+    assert result['Content-Type'] == 'image/png'
 
     # The Equality block defends against malicious resource URIs
     # This test has two possible ways of passing

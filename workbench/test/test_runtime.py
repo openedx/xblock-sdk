@@ -1,4 +1,5 @@
 """Test Workbench Runtime"""
+from __future__ import unicode_literals
 
 from unittest import TestCase
 
@@ -20,6 +21,7 @@ class TestScenarioIds(TestCase):
 
     def setUp(self):
         # Test basic ID generation meets our expectations
+        super(TestScenarioIds, self).setUp()
         self.id_mgr = ScenarioIdManager()
 
     def test_no_scenario_loaded(self):
@@ -80,6 +82,7 @@ class TestKVStore(TestCase):
     Test the Workbench KVP Store
     """
     def setUp(self):
+        super(TestKVStore, self).setUp()
         self.kvs = WorkbenchDjangoKeyValueStore()
         self.key = KeyValueStore.Key(
             scope=Scope.content,
