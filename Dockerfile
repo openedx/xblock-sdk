@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /usr/local/src/xblock-sdk
 WORKDIR /usr/local/src/xblock-sdk
 ADD . .
-RUN easy_install pip && make pin_pip
+RUN easy_install pip
 RUN make install
 EXPOSE 8000
 ENTRYPOINT ["python", "manage.py"]

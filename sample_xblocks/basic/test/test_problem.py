@@ -1,6 +1,7 @@
 """
 Tests of the Problem XBlock, and its components.
 """
+from __future__ import unicode_literals
 
 import json
 

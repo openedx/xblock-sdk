@@ -3,6 +3,8 @@
 Code in this file is a mix of Runtime layer and Workbench layer.
 
 """
+from __future__ import unicode_literals
+
 import importlib
 import itertools
 import logging

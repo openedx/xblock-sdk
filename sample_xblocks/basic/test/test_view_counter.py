@@ -1,4 +1,5 @@
 """ Simple test for the view counter that verifies that it is updating properly """
+from __future__ import unicode_literals
 
 from mock import Mock
 from xblock.runtime import DictKeyValueStore, KvsFieldData

@@ -1,6 +1,8 @@
 """
 Module contains various XBlock services for the workbench.
 """
+from __future__ import unicode_literals
+
 from django.conf import settings
 
 

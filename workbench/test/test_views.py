@@ -1,5 +1,5 @@
 """Test the workbench views."""
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 
 import functools
 import json
@@ -178,12 +178,12 @@ class XBlockWithHandlers(XBlock):
     def try_bad_handler_urls(self, context=None):       # pylint: disable=W0613
         """Force some assertions for the wrong kinds of handlers."""
         # A completely non-existing function name.
-        with pytest.raises(ValueError, match=".*function name.*"):
+        with pytest.raises(ValueError, match=r".*function name.*"):
             self.runtime.handler_url(self, "this_doesnt_exist")
 
         # An existing function, but it isn't a handler.
-        with pytest.raises(ValueError, match=".*handler name.*"):
-                self.runtime.handler_url(self, "try_bad_handler_urls")
+        with pytest.raises(ValueError, match=r".*handler name.*"):
+            self.runtime.handler_url(self, "try_bad_handler_urls")
 
         return Fragment(u"Everything is Fine!")
 
