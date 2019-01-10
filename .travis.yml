@@ -20,9 +20,9 @@ matrix:
 branches:
     only:
       - master
-cache:
-    directories:
-        - $HOME/.cache/pip
+#cache:
+    #directories:
+        #- $HOME/.cache/pip
 
 before_script:
     - export DISPLAY=:99.0
