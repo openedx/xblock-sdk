@@ -101,7 +101,7 @@ class ProblemBlock(XBlock):
             frag = self.runtime.render_child(child, "problem_view", context)
             result.add_frag_resources(frag)
             named_child_frags.append((child.name, frag))
-        result.add_css("""
+        result.add_css(u"""
             .problem {
                 border: solid 1px #888; padding: 3px;
             }
@@ -110,7 +110,7 @@ class ProblemBlock(XBlock):
             "problem.html",
             named_children=named_child_frags
         ))
-        result.add_javascript("""
+        result.add_javascript(u"""
             function ProblemBlock(runtime, element) {
 
                 function callIfExists(obj, fn) {
@@ -205,7 +205,7 @@ class ProblemBlock(XBlock):
                 elif arg_value.startswith("="):
                     kwargs[arg_name] = int(arg_value[1:])
                 else:
-                    raise ValueError("Couldn't interpret checker argument: %r" % arg_value)
+                    raise ValueError(u"Couldn't interpret checker argument: %r" % arg_value)
             result = checker.check(**kwargs)
             if checker.name:
                 check_results[checker.name] = result
@@ -369,7 +369,7 @@ class TextInputBlock(InputBlock):
         """Returns a view of the problem - a javascript text input field."""
         html = u"<input type='text' name='input' value='{0}'><span class='message'></span>".format(self.student_input)
         result = Fragment(html)
-        result.add_javascript("""
+        result.add_javascript(u"""
             function TextInputBlock(runtime, element) {
                 return {
                     submit: function() {
@@ -390,7 +390,7 @@ class TextInputBlock(InputBlock):
             try:
                 self.student_input = int(submission[0]['value'])
             except ValueError:
-                return {'error': '"%s" is not an integer' % self.student_input}
+                return {'error': u'"%s" is not an integer' % self.student_input}
 
 
 class EqualityCheckerBlock(CheckerBlock):
@@ -458,7 +458,7 @@ class EqualityCheckerBlock(CheckerBlock):
         )
 
         result.add_javascript(
-            """
+            u"""
             function EqualityCheckerBlock(runtime, element) {
                 var template = _.template($("#xblock-equality-template").html());
                 function render() {

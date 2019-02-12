@@ -128,7 +128,7 @@ class AllScopesBlock(XBlock):
                 </table>
 
             """.format(u"\n".join(entries)))
-        frag.add_css("""
+        frag.add_css(u"""
             table { border-collapse:collapse; }
             table, th, td { border: 1px solid black; }
             td { vertical-align:top; }

@@ -40,7 +40,7 @@ class Sequence(XBlock, ExtraViewsMixin):
         frag.add_javascript_url('http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js')
 
         # mess things up
-        frag.add_javascript("""
+        frag.add_javascript(u"""
             function Sequence(runtime, element) {
               $(element).children('.tabs').tabs();
             };
@@ -58,7 +58,7 @@ class VerticalBlock(XBlock, ExtraViewsMixin):
         result = Fragment()
         child_frags = self.runtime.render_children(self, context=context)
         result.add_frags_resources(child_frags)
-        result.add_css("""
+        result.add_css(u"""
             .vertical {
                 border: solid 1px #888; padding: 3px;
             }
@@ -76,7 +76,7 @@ class SidebarBlock(XBlock, ExtraViewsMixin):
         result = Fragment()
         child_frags = self.runtime.render_children(self, context=context)
         result.add_frags_resources(child_frags)
-        result.add_css("""
+        result.add_css(u"""
             .sidebar {
                 border: solid 1px #888;
                 padding: 10px;

@@ -74,4 +74,4 @@ class ScenarioTest(unittest.TestCase):
             html = lxml.html.fromstring(response.content)
             for vertical_tag in html.xpath('//div[@class="vertical"]'):
                 # No vertical tag should be empty.
-                assert list(vertical_tag), "Scenario {}: Empty <vertical> shouldn't happen!".format(scenario_id)
+                assert list(vertical_tag), u"Scenario {}: Empty <vertical> shouldn't happen!".format(scenario_id)
