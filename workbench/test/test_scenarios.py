@@ -22,6 +22,7 @@ class ScenarioTest(unittest.TestCase):
     Test the scenario support.
     """
     def setUp(self):
+        super(ScenarioTest, self).setUp()
         reset_global_state()
 
     def test_all_scenarios(self):
