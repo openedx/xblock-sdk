@@ -30,6 +30,7 @@ before_install:
     - tar -xzf geckodriver-v0.15.0-linux64.tar.gz -C geckodriver
     - export PATH=$PATH:$PWD/geckodriver
     - pip install -U pip
+    - export BOTO_CONFIG=/dev/null
 
 install:
     - pip install tox-travis
