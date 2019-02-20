@@ -20,7 +20,7 @@ fs-s3fs==0.1.5
 fs==2.0.27                # via django-pyfs, fs-s3fs, xblock
 funcsigs==1.0.2           # via mock
 future==0.17.1            # via backports.os
-futures==3.2.0            # via s3transfer
+futures==3.2.0 ; python_version == "2.7"  # via s3transfer
 jinja2==2.10              # via cookiecutter
 jmespath==0.9.3           # via boto3, botocore
 lazy==1.1
@@ -37,6 +37,6 @@ s3transfer==0.1.13        # via boto3
 simplejson==3.16.0
 six==1.10.0               # via django-pyfs, fs, fs-s3fs, mock, python-dateutil, xblock
 typing==3.6.6             # via fs
-web-fragments==0.2.2      # via xblock
+web-fragments==0.3.0      # via xblock
 webob==1.8.5
 xblock==1.1.1

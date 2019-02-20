@@ -26,7 +26,7 @@ fs-s3fs==0.1.5
 fs==2.0.27                # via django-pyfs, fs-s3fs, xblock
 funcsigs==1.0.2           # via mock, pytest
 future==0.17.1            # via backports.os
-futures==3.2.0            # via s3transfer
+futures==3.2.0 ; python_version == "2.7"  # via s3transfer
 jinja2==2.10              # via cookiecutter
 jmespath==0.9.3           # via boto3, botocore
 lazy==1.1
@@ -41,11 +41,11 @@ pathlib2==2.3.3           # via pytest, pytest-django
 pbr==5.1.2                # via mock
 pillow==5.4.1             # via needle
 pluggy==0.8.1             # via pytest, tox
-py==1.7.0                 # via pytest, tox
+py==1.8.0                 # via pytest, tox
 pypng==0.0.19
 pytest-cov==2.6.1
 pytest-django==3.4.7
-pytest==4.2.0             # via pytest-cov, pytest-django
+pytest==4.3.0             # via pytest-cov, pytest-django
 python-dateutil==2.8.0    # via botocore, xblock
 pytz==2018.9              # via django, fs, xblock
 pyyaml==3.13              # via cookiecutter, xblock
@@ -59,7 +59,7 @@ toml==0.10.0              # via tox
 tox-battery==0.5.1
 tox==3.7.0
 typing==3.6.6             # via fs
-virtualenv==16.4.0        # via tox
-web-fragments==0.2.2      # via xblock
+virtualenv==16.4.1        # via tox
+web-fragments==0.3.0      # via xblock
 webob==1.8.5
 xblock==1.1.1
