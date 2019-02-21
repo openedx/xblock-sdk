@@ -53,7 +53,7 @@ def show_scenario(request, scenario_id, view_name='student_view', template='work
 
     """
     student_id = get_student_id(request)
-    log.info("Start show_scenario %r for student %s", scenario_id, student_id)
+    log.info(u"Start show_scenario %r for student %s", scenario_id, student_id)
 
     try:
         scenario = get_scenarios()[scenario_id]
@@ -68,7 +68,7 @@ def show_scenario(request, scenario_id, view_name='student_view', template='work
     }
 
     frag = block.render(view_name, render_context)
-    log.info("End show_scenario %s", scenario_id)
+    log.info(u"End show_scenario %s", scenario_id)
     return render_to_response(template, {
         'scenario': scenario,
         'block': block,
@@ -99,10 +99,10 @@ def handler(request, usage_id, handler_slug, suffix='', authenticated=True):
     """The view function for authenticated handler requests."""
     if authenticated:
         student_id = get_student_id(request)
-        log.info("Start handler %s/%s for student %s", usage_id, handler_slug, student_id)
+        log.info(u"Start handler %s/%s for student %s", usage_id, handler_slug, student_id)
     else:
         student_id = "none"
-        log.info("Start handler %s/%s", usage_id, handler_slug)
+        log.info(u"Start handler %s/%s", usage_id, handler_slug)
 
     runtime = WorkbenchRuntime(student_id)
 
@@ -115,7 +115,7 @@ def handler(request, usage_id, handler_slug, suffix='', authenticated=True):
     request.path_info_pop()
     request.path_info_pop()
     result = block.runtime.handle(block, handler_slug, request, suffix)
-    log.info("End handler %s/%s", usage_id, handler_slug)
+    log.info(u"End handler %s/%s", usage_id, handler_slug)
     return webob_to_django_response(result)
 
 
@@ -123,10 +123,10 @@ def aside_handler(request, aside_id, handler_slug, suffix='', authenticated=True
     """The view function for authenticated handler requests."""
     if authenticated:
         student_id = get_student_id(request)
-        log.info("Start handler %s/%s for student %s", aside_id, handler_slug, student_id)
+        log.info(u"Start handler %s/%s for student %s", aside_id, handler_slug, student_id)
     else:
         student_id = "none"
-        log.info("Start handler %s/%s", aside_id, handler_slug)
+        log.info(u"Start handler %s/%s", aside_id, handler_slug)
 
     runtime = WorkbenchRuntime(student_id)
 
@@ -139,7 +139,7 @@ def aside_handler(request, aside_id, handler_slug, suffix='', authenticated=True
     request.path_info_pop()
     request.path_info_pop()
     result = block.runtime.handle(block, handler_slug, request, suffix)
-    log.info("End handler %s/%s", aside_id, handler_slug)
+    log.info(u"End handler %s/%s", aside_id, handler_slug)
     return webob_to_django_response(result)
 
 

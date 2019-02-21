@@ -66,7 +66,7 @@ setup(
         'workbench',
     ],
     install_requires=[
-        "Django>=1.8,<2.0",
+        "Django>=1.11,<2.0",
     ],
     tests_require=load_requirements('{}/requirements/test.txt'.format(os.getcwd())),
     entry_points={

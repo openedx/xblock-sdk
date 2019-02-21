@@ -29,7 +29,7 @@ def temp_scenario(temp_class, scenario_name='test_scenario'):
         def _inner(*args, **kwargs):                    # pylint: disable=C0111
             # Create a scenario, just one tag for our mocked class.
             scenarios.add_xml_scenario(
-                scenario_name, "Temporary scenario {}".format(temp_class.__name__),
+                scenario_name, u"Temporary scenario {}".format(temp_class.__name__),
                 "<%s/>" % temp_class.__name__
             )
             try:

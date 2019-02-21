@@ -64,7 +64,7 @@ class ProblemInteractionTest(SeleniumTest):
                 try:
                     sources = BrowserQuery(
                         self.browser,
-                        css='{} img'.format(
+                        css=u'{} img'.format(
                             check_indicators,
                         ),
                     ).nth(right_wrong_idx).attrs('src')

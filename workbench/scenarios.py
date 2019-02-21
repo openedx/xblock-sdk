@@ -25,7 +25,7 @@ def add_xml_scenario(scname, description, xml):
     Add a scenario defined in XML.
     """
     from .runtime import WorkbenchRuntime
-    assert scname not in SCENARIOS, "Already have a %r scenario" % scname
+    assert scname not in SCENARIOS, u"Already have a %r scenario" % scname
     runtime = WorkbenchRuntime()
 
     # WorkbenchRuntime has an id_generator, but most runtimes won't

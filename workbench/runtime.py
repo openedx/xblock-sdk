@@ -299,9 +299,9 @@ class WorkbenchRuntime(Runtime):
         # Be sure this really is a handler.
         func = getattr(block, handler_name, None)
         if not func:
-            raise ValueError("{!r} is not a function name".format(handler_name))
+            raise ValueError(u"{!r} is not a function name".format(handler_name))
         if not getattr(func, "_is_xblock_handler", False):
-            raise ValueError("{!r} is not a handler name".format(handler_name))
+            raise ValueError(u"{!r} is not a handler name".format(handler_name))
 
         if thirdparty:
             url_base = "unauth_handler"
@@ -334,7 +334,7 @@ class WorkbenchRuntime(Runtime):
     def publish(self, block, event_type, event_data):
         """Mocks a publish event by logging args"""
         log.info(
-            "XBlock event %s for %s (usage_id=%s):",
+            u"XBlock event %s for %s (usage_id=%s):",
             event_type,
             block.scope_ids.block_type,
             block.scope_ids.usage_id
@@ -362,9 +362,9 @@ class WorkbenchRuntime(Runtime):
             service_instance.runtime = self
             return service_instance
         except (ImportError, ValueError, AttributeError):
-            log.info('Could not find service class defined at "%s"', service_path)
+            log.info(u'Could not find service class defined at "%s"', service_path)
         except:  # pylint: disable=bare-except
-            log.exception('Could not initialize service defined at "%s"', service_path)
+            log.exception(u'Could not initialize service defined at "%s"', service_path)
 
 
 class _BlockSet(object):
@@ -467,7 +467,7 @@ class WorkBenchUserService(UserService):
         user = XBlockUser(
             is_current_user=True,
             emails=["user@example.com"],
-            full_name="XBlock User ({})".format(uid),
+            full_name=u"XBlock User ({})".format(uid),
         )
         user.opt_attrs['xblock-workbench.user_id'] = uid
         super(WorkBenchUserService, self).__init__(user=user)

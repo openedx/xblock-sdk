@@ -23,7 +23,7 @@ class Slider(XBlock):
                                       max=self.max_value,
                                       val=self.value)
         frag = Fragment(html)
-        frag.add_css("input[type=range] { width=100px; }")
+        frag.add_css(u"input[type=range] { width=100px; }")
         frag.add_javascript(SLIDER_JS)
         frag.initialize_js('Slider')
 
@@ -40,7 +40,7 @@ SLIDER_TEMPLATE = u"""
 <input type="range" min="{min}" max="{max}" value="{val}"/> <span> {val} </span>
 """
 
-SLIDER_JS = """
+SLIDER_JS = u"""
 function Slider(runtime, element) {
   if (!(this instanceof Slider)) {
     return new Slider(runtime, element);
