@@ -1,3 +1,4 @@
+-c ../constraints.txt
 bok_choy==0.7.1
 coverage
 ddt
