@@ -68,6 +68,16 @@ setup(
     install_requires=[
         "Django>=1.11,<2.0",
     ],
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Framework :: Django',
+        'Framework :: Django :: 1.11',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',
+        'Natural Language :: English',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+    ],
     tests_require=load_requirements('{}/requirements/test.txt'.format(os.getcwd())),
     entry_points={
         'xblock.v1': [
