@@ -1,15 +1,17 @@
 """Test Workbench Runtime"""
 
 from __future__ import absolute_import
+
 from unittest import TestCase
 
-import mock
 import pytest
+
+from django.conf import settings
+
+import mock
 from xblock.fields import Scope
 from xblock.reference.user_service import UserService
 from xblock.runtime import KeyValueStore, KvsFieldData
-
-from django.conf import settings
 
 from ..runtime import ScenarioIdManager, WorkbenchDjangoKeyValueStore, WorkbenchRuntime
 

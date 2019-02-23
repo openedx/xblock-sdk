@@ -1,13 +1,14 @@
 """ Simple test for the view counter that verifies that it is updating properly """
 
 from __future__ import absolute_import
+
+from six.moves import range
+
 from mock import Mock
+from sample_xblocks.basic.view_counter import ViewCounter
 from xblock.runtime import DictKeyValueStore, KvsFieldData
 from xblock.test.tools import TestRuntime as Runtime  # Workaround for pytest trying to collect "TestRuntime" as a test
 from xblock.test.tools import assert_equals, assert_in
-
-from sample_xblocks.basic.view_counter import ViewCounter
-from six.moves import range
 
 
 def test_view_counter_state():

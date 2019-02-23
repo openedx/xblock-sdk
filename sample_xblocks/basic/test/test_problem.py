@@ -3,13 +3,14 @@ Tests of the Problem XBlock, and its components.
 """
 
 from __future__ import absolute_import
+
 import json
 
 import pytest
-import webob
-from xblock.test.tools import assert_equals
 
+import webob
 from workbench.runtime import WorkbenchRuntime
+from xblock.test.tools import assert_equals
 
 
 def make_request(body):

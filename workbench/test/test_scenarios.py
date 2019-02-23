@@ -3,17 +3,18 @@ Test that all scenarios render successfully.
 """
 
 from __future__ import absolute_import
+
 import unittest
 
 import lxml.html
 import pytest
-from xblock.test.tools import assert_equals
 
 from django.core.urlresolvers import reverse
 from django.test.client import Client
 
 from workbench import scenarios
 from workbench.runtime_util import reset_global_state
+from xblock.test.tools import assert_equals
 
 pytestmark = pytest.mark.django_db  # pylint: disable=invalid-name
 

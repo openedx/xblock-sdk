@@ -4,13 +4,14 @@ This code is in the Workbench layer.
 
 """
 from __future__ import absolute_import
+
 import logging
 from collections import namedtuple
 
-from xblock.core import XBlock
-
 from django.conf import settings
 from django.template.defaultfilters import slugify
+
+from xblock.core import XBlock
 
 log = logging.getLogger(__name__)
 

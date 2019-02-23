@@ -1,10 +1,12 @@
 """An XBlock providing thumbs-up/thumbs-down voting."""
 
 from __future__ import absolute_import
+
 import logging
 
 import pkg_resources
 from six import text_type
+
 from xblock.core import XBlock, XBlockAside
 from xblock.fields import Boolean, Integer, Scope
 from xblock.fragment import Fragment

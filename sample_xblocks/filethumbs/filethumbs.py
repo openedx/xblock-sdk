@@ -18,13 +18,15 @@ thumbs block will be instructive.
 """
 
 from __future__ import absolute_import
+
 import json
 import logging
 
 import pkg_resources
-import png
 from six import text_type
 from six.moves import map
+
+import png
 from xblock.core import XBlock
 from xblock.fields import Boolean, Scope
 from xblock.fragment import Fragment

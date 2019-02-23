@@ -4,23 +4,25 @@ Code in this file is a mix of Runtime layer and Workbench layer.
 
 """
 from __future__ import absolute_import
+
 import importlib
 import itertools
 import logging
 from collections import defaultdict
 
 from six import iteritems
-from xblock.core import XBlockAside
-from xblock.exceptions import NoSuchDefinition, NoSuchUsage
-from xblock.fragment import Fragment
-from xblock.reference.user_service import UserService, XBlockUser
-from xblock.runtime import IdGenerator, IdReader, KeyValueStore, KvsFieldData, NoSuchViewError, NullI18nService, Runtime
 
 import django.utils.translation
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.template import loader as django_template_loader
 from django.templatetags.static import static
+
+from xblock.core import XBlockAside
+from xblock.exceptions import NoSuchDefinition, NoSuchUsage
+from xblock.fragment import Fragment
+from xblock.reference.user_service import UserService, XBlockUser
+from xblock.runtime import IdGenerator, IdReader, KeyValueStore, KvsFieldData, NoSuchViewError, NullI18nService, Runtime
 
 from .models import XBlockState
 from .util import make_safe_for_html

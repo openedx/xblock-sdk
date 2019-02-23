@@ -35,6 +35,7 @@ A rough sequence diagram::
 """
 
 from __future__ import absolute_import
+
 import inspect
 import random
 import string

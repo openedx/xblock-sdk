@@ -1,16 +1,15 @@
 """Test that problems and problem submission works well."""
-from __future__ import print_function
+from __future__ import absolute_import, print_function
 
-from __future__ import absolute_import
 import time
 import unittest
 
+from six.moves import range
+
 from bok_choy.query import BrowserQuery
 from selenium.common.exceptions import StaleElementReferenceException
-
 from workbench import scenarios
 from workbench.test.selenium_test import SeleniumTest
-from six.moves import range
 
 
 class ProblemInteractionTest(SeleniumTest):
