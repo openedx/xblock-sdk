@@ -1,6 +1,7 @@
 """Test the workbench views."""
 from __future__ import print_function
 
+from __future__ import absolute_import
 import functools
 import json
 
@@ -17,6 +18,7 @@ from django.test.client import Client
 
 from workbench import scenarios
 from workbench.runtime import ID_MANAGER
+from six.moves import zip
 
 pytestmark = pytest.mark.django_db  # pylint: disable=invalid-name
 

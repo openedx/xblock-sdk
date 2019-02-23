@@ -17,6 +17,7 @@ thumbs block will be instructive.
 
 """
 
+from __future__ import absolute_import
 import json
 import logging
 
@@ -27,11 +28,12 @@ from xblock.core import XBlock
 from xblock.fields import Boolean, Scope
 from xblock.fragment import Fragment
 from xblock.reference.plugins import Filesystem
+from six.moves import map
 
 log = logging.getLogger(__name__)
 
 ARROW = [
-    map(int, value)
+    list(map(int, value))
     for value in [
         '11011',
         '10001',

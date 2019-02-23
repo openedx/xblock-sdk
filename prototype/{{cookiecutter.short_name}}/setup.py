@@ -1,5 +1,6 @@
 """Setup for {{cookiecutter.short_name|lower}} XBlock."""
 
+from __future__ import absolute_import
 import os
 
 from setuptools import setup

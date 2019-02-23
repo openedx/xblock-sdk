@@ -2,6 +2,7 @@
 Helpers for Selenium tests.
 """
 
+from __future__ import absolute_import
 import pytest
 from bok_choy.web_app_test import WebAppTest
 from selenium.webdriver.support.expected_conditions import staleness_of

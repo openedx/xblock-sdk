@@ -3,6 +3,7 @@
 This code is in the Workbench layer.
 
 """
+from __future__ import absolute_import
 import logging
 from collections import namedtuple
 

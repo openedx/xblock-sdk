@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """Manage.py file for XBlock"""
+from __future__ import absolute_import
 import os
 import sys
 

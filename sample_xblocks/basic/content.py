@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Content-oriented XBlocks."""
 
+from __future__ import absolute_import
 from string import Template
 
 from lxml import etree

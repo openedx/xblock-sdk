@@ -4,6 +4,7 @@ These utilities use the workbench runtime to load XML scenarios.
 """
 from __future__ import print_function
 
+from __future__ import absolute_import
 import json
 from functools import wraps
 
