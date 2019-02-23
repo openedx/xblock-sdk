@@ -24,11 +24,11 @@ import logging
 import pkg_resources
 import png
 from six import text_type
+from six.moves import map
 from xblock.core import XBlock
 from xblock.fields import Boolean, Scope
 from xblock.fragment import Fragment
 from xblock.reference.plugins import Filesystem
-from six.moves import map
 
 log = logging.getLogger(__name__)
 
