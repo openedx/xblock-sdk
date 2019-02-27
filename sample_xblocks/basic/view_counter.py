@@ -1,4 +1,6 @@
 """ Simple View Counting XBlock"""
+from __future__ import absolute_import
+
 from xblock.core import XBlock
 from xblock.fields import Integer, Scope
 from xblock.fragment import Fragment

@@ -1,27 +1,27 @@
 dist: latest
 language: python
+python:
+    - 2.7
+    - 3.6
+    - 3.7
+env:
+    - TOXENV=django111
+    - TOXENV=django20
+    - TOXENV=django21
 matrix:
+  include:
+    - python: 2.7
+      env: TOXENV=quality
+    - python: 3.7
+      env: TOXENV=quality
+  exclude:
+    - python: 2.7
+      env: TOXENV=django20
+    - python: 2.7
+      env: TOXENV=django21
   allow_failures:
     - python: 3.6
     - python: 3.7
-
-  include:
-    - python: 2.7
-      env: TOXENV=django111
-    - python: 3.6
-      env: TOXENV=django111
-    - python: 3.7
-      env: TOXENV=django111
-    - python: 3.6
-      env: TOXENV=django20
-    - python: 3.6
-      env: TOXENV=django21
-    - python: 3.7
-      env: TOXENV=django20
-    - python: 3.7
-      env: TOXENV=django21
-    - python: 2.7
-      env: TOXENV=quality
 
 addons:
     firefox: "52.0.1"

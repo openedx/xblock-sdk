@@ -9,7 +9,6 @@ import textwrap
 
 from cookiecutter.main import cookiecutter
 
-
 EXPLANATION = """\
 This script will create a new XBlock project.
 

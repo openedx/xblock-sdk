@@ -2,6 +2,8 @@
 Basic admin screens for displaying XBlock state and filtering/searching on the
 fields.
 """
+from __future__ import absolute_import
+
 from django.contrib import admin
 
 from .models import XBlockState

@@ -4,18 +4,20 @@ This code is in the Workbench layer.
 
 """
 
+from __future__ import absolute_import
+
 import json
 import logging
 import mimetypes
+
+from django.http import Http404, HttpResponse
+from django.shortcuts import redirect, render_to_response
+from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 
 from xblock.core import XBlock, XBlockAside
 from xblock.django.request import django_to_webob_request, webob_to_django_response
 from xblock.exceptions import NoSuchUsage
 from xblock.plugin import PluginMissingError
-
-from django.http import Http404, HttpResponse
-from django.shortcuts import redirect, render_to_response
-from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 
 from .models import XBlockState
 from .runtime import WorkbenchRuntime

@@ -2,17 +2,19 @@
 Test that all scenarios render successfully.
 """
 
+from __future__ import absolute_import
+
 import unittest
 
 import lxml.html
 import pytest
-from xblock.test.tools import assert_equals
 
 from django.core.urlresolvers import reverse
 from django.test.client import Client
 
 from workbench import scenarios
 from workbench.runtime_util import reset_global_state
+from xblock.test.tools import assert_equals
 
 pytestmark = pytest.mark.django_db  # pylint: disable=invalid-name
 
@@ -36,7 +38,7 @@ class ScenarioTest(unittest.TestCase):
         a_tags = list(html.xpath('//a'))
 
         # Load the loaded_scenarios from the classes.
-        loaded_scenarios = scenarios.get_scenarios().values()
+        loaded_scenarios = list(scenarios.get_scenarios().values())
 
         # We should have an <a> tag for each scenario.
         assert_equals(len(a_tags), len(loaded_scenarios))
@@ -60,7 +62,7 @@ class ScenarioTest(unittest.TestCase):
         serve it. Normally we would get scenario_ids through a fixture, but
         it forces database access, which pytest_django doesn't like.
         """
-        scenario_ids = scenarios.get_scenarios().keys()
+        scenario_ids = list(scenarios.get_scenarios().keys())
 
         for scenario_id in scenario_ids:
             url = reverse('workbench_show_scenario', kwargs={'scenario_id': scenario_id})
