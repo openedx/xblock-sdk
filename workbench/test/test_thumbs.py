@@ -26,7 +26,7 @@ class ThreeThumbsTest(SeleniumTest):
         self.browser.get(self.live_server_url)
 
         # She knows it's the site by the header
-        header1 = self.browser.find_element_by_css_selector('h1')
+        header1 = self.browser.find_element_by_css_selector(b'h1')
         self.assertEqual(header1.text, 'XBlock scenarios')
 
     def test_three_thumbs_initial_state(self):
@@ -36,7 +36,7 @@ class ThreeThumbsTest(SeleniumTest):
         self.wait_for_page_load(link, timeout=10)
 
         # The header reflects the XBlock
-        header1 = self.browser.find_element_by_css_selector('h1')
+        header1 = self.browser.find_element_by_css_selector(b'h1')
         self.assertEqual(header1.text, 'XBlock: three thumbs test')
 
         # She sees that there are 3 sets of thumbs
