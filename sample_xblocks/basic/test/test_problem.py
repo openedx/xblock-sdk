@@ -16,7 +16,7 @@ from xblock.test.tools import assert_equals
 def make_request(body):
     """Mock request method."""
     request = webob.Request({})
-    request.body = body
+    request.body = body.encode('utf-8')
     request.method = "POST"
     return request
 
