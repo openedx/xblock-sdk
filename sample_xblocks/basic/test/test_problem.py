@@ -23,7 +23,7 @@ def make_request(body):
 
 def text_of_response(response):
     """Return the text of response."""
-    return "".join(response.app_iter)
+    return b"".join(response.app_iter)
 
 
 @pytest.mark.django_db
