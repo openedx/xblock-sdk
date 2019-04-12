@@ -1,5 +1,6 @@
 FROM edxops/xenial-common:latest
 RUN apt-get update && apt-get install -y \
+    gettext \
     lib32z1-dev \
     libjpeg62-dev \
     libxslt-dev \
