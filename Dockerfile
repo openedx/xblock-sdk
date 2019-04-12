@@ -1,14 +1,8 @@
 FROM edxops/xenial-common:latest
 RUN apt-get update && apt-get install -y \
-    build-essential \
-    git \
     lib32z1-dev \
     libjpeg62-dev \
-    libxml2-dev \
     libxslt-dev \
-    python-dev \
-    python-setuptools \
-    xz-utils \
 && rm -rf /var/lib/apt/lists/*
 RUN mkdir -p /usr/local/src/xblock-sdk
 WORKDIR /usr/local/src/xblock-sdk
