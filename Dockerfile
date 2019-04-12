@@ -1,4 +1,4 @@
-FROM phusion/baseimage:latest
+FROM edxops/xenial-common:latest
 RUN apt-get update && apt-get install -y \
     build-essential \
     git \
