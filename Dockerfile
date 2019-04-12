@@ -4,6 +4,8 @@ RUN apt-get update && apt-get install -y \
     lib32z1-dev \
     libjpeg62-dev \
     libxslt-dev \
+    python3-dev \
+    python3-pip \
 && rm -rf /var/lib/apt/lists/*
 RUN mkdir -p /usr/local/src/xblock-sdk
 WORKDIR /usr/local/src/xblock-sdk
