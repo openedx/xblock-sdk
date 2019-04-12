@@ -10,6 +10,7 @@ import json
 import logging
 import mimetypes
 
+from django.conf import settings
 from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render_to_response
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
@@ -40,6 +41,11 @@ def get_student_id(request):
 def index(_request):
     """Render `index.html`"""
     the_scenarios = sorted(get_scenarios().items())
+    the_scenarios = [
+        (class_name, scenario)
+        for class_name, scenario in the_scenarios
+        if class_name.split('.')[0] not in settings.EXCLUDED_XBLOCKS
+    ]
     return render_to_response('workbench/index.html', {
         'scenarios': [(desc, scenario.description) for desc, scenario in the_scenarios]
     })
