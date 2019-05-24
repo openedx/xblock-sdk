@@ -11,6 +11,23 @@ DJFS = {'type': 'osfs',
         'url_root': '/static/djpyfs'}
 
 DEBUG = True
+if os.environ.get('EXCLUDE_SAMPLE_XBLOCKS') == 'yes':
+    EXCLUDED_XBLOCKS = {
+        'allscopes_demo',
+        'attempts_scoreboard_demo',
+        'equality_demo',
+        'filethumbs',
+        'helloworld_demo',
+        'html_demo',
+        'problem_demo',
+        'sidebar_demo',
+        'slider_demo',
+        'textinput_demo',
+        'thumbs',
+        'view_counter_demo',
+    }
+else:
+    EXCLUDED_XBLOCKS = set()
 
 TEMPLATES = [
     {
