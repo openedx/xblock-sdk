@@ -56,7 +56,7 @@ simplejson==3.16.0
 six==1.10.0               # via bok-choy, django-pyfs, fs, fs-s3fs, mock, pathlib2, pytest, python-dateutil, tox, xblock
 toml==0.10.0              # via tox
 tox-battery==0.5.1
-tox==3.11.1
+tox==3.12.1
 typing==3.6.6             # via fs
 virtualenv==16.6.0        # via tox
 wcwidth==0.1.7            # via pytest

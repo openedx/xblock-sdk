@@ -7,10 +7,10 @@ from __future__ import absolute_import
 import json
 
 import pytest
-
 import webob
-from workbench.runtime import WorkbenchRuntime
 from xblock.test.tools import assert_equals
+
+from workbench.runtime import WorkbenchRuntime
 
 
 def make_request(body):

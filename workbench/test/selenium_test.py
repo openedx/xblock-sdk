@@ -5,12 +5,12 @@ Helpers for Selenium tests.
 from __future__ import absolute_import
 
 import pytest
-
-from django.contrib.staticfiles.testing import StaticLiveServerTestCase
-
 from bok_choy.web_app_test import WebAppTest
 from selenium.webdriver.support.expected_conditions import staleness_of
 from selenium.webdriver.support.ui import WebDriverWait
+
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+
 from workbench.runtime_util import reset_global_state
 
 

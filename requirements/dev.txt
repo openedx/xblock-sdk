@@ -26,7 +26,7 @@ ddt==1.2.1
 django-pyfs==2.0
 django==1.11.20
 docutils==0.14            # via botocore
-edx-lint==1.2.0
+edx-lint==1.2.1
 enum34==1.1.6             # via astroid, fs
 filelock==3.0.12          # via tox
 fs-s3fs==0.1.5
@@ -74,7 +74,7 @@ six==1.10.0
 snowballstemmer==1.2.1    # via pydocstyle
 toml==0.10.0              # via tox
 tox-battery==0.5.1
-tox==3.11.1
+tox==3.12.1
 typing==3.6.6             # via fs
 virtualenv==16.6.0        # via tox
 wcwidth==0.1.7            # via pytest

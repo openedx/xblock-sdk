@@ -2,6 +2,7 @@
 from __future__ import absolute_import
 
 from bok_choy.promise import EmptyPromise
+
 from workbench import scenarios
 from workbench.test.selenium_test import SeleniumTest
 

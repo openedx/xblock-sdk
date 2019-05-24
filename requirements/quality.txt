@@ -9,7 +9,7 @@ backports.functools-lru-cache==1.5  # via astroid, isort, pylint
 click-log==0.3.2          # via edx-lint
 click==7.0                # via click-log, edx-lint
 configparser==3.7.4       # via pydocstyle, pylint
-edx-lint==1.2.0
+edx-lint==1.2.1
 enum34==1.1.6             # via astroid
 futures==3.2.0 ; python_version == "2.7"  # via isort
 isort==4.3.20
