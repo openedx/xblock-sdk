@@ -75,12 +75,13 @@ class FileThumbsBlock(XBlock):
         """
 
         # Load the HTML fragment from within the package and fill in the template
-        html_str = pkg_resources.resource_string(__name__, "static/html/thumbs.html")
+        html_str = pkg_resources.resource_string(__name__,
+                                                 "static/html/thumbs.html").decode('utf-8')
         frag = Fragment(text_type(html_str))
 
         if not self.fs.exists(u"thumbsvotes.json"):
             with self.fs.open(u'thumbsvotes.json', 'wb') as file_output:
-                json.dump({'up': 0, 'down': 0}, file_output)
+                file_output.write(json.dumps({'up': 0, 'down': 0}).encode())
                 file_output.close()
 
         votes = json.load(self.fs.open(u"thumbsvotes.json"))
@@ -88,11 +89,12 @@ class FileThumbsBlock(XBlock):
         self.downvotes = votes['down']
 
         # Load the CSS and JavaScript fragments from within the package
-        css_str = pkg_resources.resource_string(__name__, "static/css/thumbs.css")
+        css_str = pkg_resources.resource_string(__name__,
+                                                "static/css/thumbs.css").decode('utf-8')
         frag.add_css(text_type(css_str))
 
         js_str = pkg_resources.resource_string(__name__,
-                                               "static/js/src/thumbs.js")
+                                               "static/js/src/thumbs.js").decode('utf-8')
         frag.add_javascript(text_type(js_str))
 
         with self.fs.open(u'uparrow.png', 'wb') as file_output:
@@ -136,7 +138,9 @@ class FileThumbsBlock(XBlock):
             self.downvotes += 1
 
         with self.fs.open(u'thumbsvotes.json', 'wb') as file_output:
-            json.dump({'up': self.upvotes, 'down': self.downvotes}, file_output)
+            file_output.write(
+                json.dumps({'up': self.upvotes, 'down': self.downvotes}).encode()
+            )
 
         self.voted = True
 
