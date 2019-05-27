@@ -6,18 +6,18 @@ import json
 
 import pytest
 from six.moves import zip
-
-from django.core.urlresolvers import reverse
-from django.test.client import Client
-
 from webob import Response
-from workbench import scenarios
-from workbench.runtime import ID_MANAGER
 from xblock.core import Scope, String, XBlock
 from xblock.exceptions import DisallowedFileError
 from xblock.fragment import Fragment
 from xblock.runtime import NoSuchHandlerError
 from xblock.test.tools import assert_equals, assert_in, assert_raises, assert_raises_regexp, assert_true
+
+from django.core.urlresolvers import reverse
+from django.test.client import Client
+
+from workbench import scenarios
+from workbench.runtime import ID_MANAGER
 
 pytestmark = pytest.mark.django_db  # pylint: disable=invalid-name
 

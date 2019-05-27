@@ -4,10 +4,10 @@ from __future__ import absolute_import, print_function
 import time
 import unittest
 
-from six.moves import range
-
 from bok_choy.query import BrowserQuery
 from selenium.common.exceptions import StaleElementReferenceException
+from six.moves import range
+
 from workbench import scenarios
 from workbench.test.selenium_test import SeleniumTest
 

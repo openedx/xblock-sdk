@@ -1,7 +1,6 @@
 """TO-DO: Write a description of what this XBlock is."""
 
 import pkg_resources
-
 from xblock.core import XBlock
 from xblock.fields import Integer, Scope
 from xblock.fragment import Fragment

@@ -6,7 +6,6 @@ import logging
 
 import pkg_resources
 from six import text_type
-
 from xblock.core import XBlock, XBlockAside
 from xblock.fields import Boolean, Integer, Scope
 from xblock.fragment import Fragment

@@ -9,10 +9,10 @@ Admin gives us a lot of basic search/filtering for free.
 """
 from __future__ import absolute_import
 
+from xblock.fields import BlockScope, Scope
+
 from django.db import models
 from django.utils.timezone import now
-
-from xblock.fields import BlockScope, Scope
 
 
 def shorten_scope_name(scope_name):
