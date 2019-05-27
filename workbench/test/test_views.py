@@ -5,6 +5,7 @@ import functools
 import json
 
 import pytest
+from six import text_type
 from six.moves import zip
 
 from django.core.urlresolvers import reverse
@@ -65,15 +66,15 @@ def test_multiple_views():
 
     # The default view is student_view
     response = client.get("/view/multiview/")
-    assert_in("This is student view!", response.content)
+    assert_in("This is student view!", response.content.decode('utf-8'))
 
     # We can ask for student_view directly
     response = client.get("/view/multiview/student_view/")
-    assert_in("This is student view!", response.content)
+    assert_in("This is student view!", response.content.decode('utf-8'))
 
     # We can also ask for another view.
     response = client.get("/view/multiview/another_view/")
-    assert_in("This is another view!", response.content)
+    assert_in("This is another view!", response.content.decode('utf-8'))
 
 
 class XBlockWithHandlerAndStudentState(XBlock):
@@ -101,8 +102,12 @@ def test_xblock_with_handler():
 
     # Initially, the data is the default.
     response = client.get("/view/testit/")
-    assert_true("The data: u'def'." in response.content)
-    parsed = response.content.split(':::')
+    response_content = response.content.decode('utf-8')
+    assert_true(
+        "The data: u'def'." in response_content
+        or "The data: 'def'." in response_content
+    )
+    parsed = response_content.split(':::')
     assert_equals(len(parsed), 3)
     handler_url = parsed[1]
 
@@ -198,7 +203,7 @@ class XBlockWithHandlers(XBlock):
             'a': request.GET.get('a', "no-a"),
             'b': request.GET.get('b', "no-b"),
         })
-        return Response(response_json, content_type='application/json')
+        return Response(text=text_type(response_json), content_type='application/json')
 
     @XBlock.handler
     def send_it_back_public(self, request, suffix=''):
@@ -209,7 +214,7 @@ class XBlockWithHandlers(XBlock):
             'a': request.GET.get('a', "no-a"),
             'b': request.GET.get('b', "no-b"),
         })
-        return Response(response_json, content_type='application/json')
+        return Response(text=text_type(response_json), content_type='application/json')
 
 
 @temp_scenario(XBlockWithHandlers, 'with-handlers')
@@ -219,7 +224,7 @@ def test_xblock_with_handlers():
 
     # The view sends a list of URLs to try.
     response = client.get("/view/with-handlers/")
-    parsed = response.content.split(':::')
+    parsed = response.content.decode('utf-8').split(':::')
     assert_equals(len(parsed), 3)
     urls = json.loads(parsed[1])
 
@@ -238,6 +243,7 @@ def test_xblock_with_handlers():
     ]
 
     for url, expected in zip(urls, expecteds):
+        print(type(url))
         print(url)   # so we can see which one failed, if any.
         response = client.get(url)
         assert_equals(response.status_code, 200)
@@ -251,7 +257,7 @@ def test_bad_handler_urls():
 
     response = client.get("/view/with-handlers/try_bad_handler_urls/")
     assert_equals(response.status_code, 200)
-    assert_in("Everything is Fine!", response.content)
+    assert_in("Everything is Fine!", response.content.decode('utf-8'))
 
 
 class XBlockWithoutStudentView(XBlock):
@@ -268,7 +274,7 @@ def test_xblock_no_student_view():
     # indicates there is no view available.
     client = Client()
     response = client.get("/view/xblockwithoutstudentview/")
-    assert_true('No such view' in response.content)
+    assert_true('No such view' in response.content.decode('utf-8'))
 
 
 def test_local_resources():
@@ -345,4 +351,4 @@ def test_user_list():
     client = Client()
     result = client.get("/userlist/")
     assert_equals(result.status_code, 200)
-    assert_equals(result.content, "[]")
+    assert_equals(result.content.decode('utf-8'), "[]")
