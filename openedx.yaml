@@ -2,7 +2,11 @@
 # http://open-edx-proposals.readthedocs.io/en/latest/oeps/oep-0002.html#specification
 
 nick: xbsd
-oeps: {}
-owner: edx/platform-team
-tags: [xblock]
-track-pulls: true
+owner: unknown
+tags:
+    - xblock
+    - library
+oeps:
+    oep-2: false
+    oep-7: false
+    oep-18: true
