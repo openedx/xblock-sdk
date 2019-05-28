@@ -243,7 +243,6 @@ def test_xblock_with_handlers():
     ]
 
     for url, expected in zip(urls, expecteds):
-        print(type(url))
         print(url)   # so we can see which one failed, if any.
         response = client.get(url)
         assert_equals(response.status_code, 200)
