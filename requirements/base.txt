@@ -13,7 +13,7 @@ botocore==1.8.50          # via boto3, s3transfer
 chardet==3.0.4            # via binaryornot
 cookiecutter==0.9.0
 django-pyfs==2.0
-django==1.11.20
+django==1.11.21
 docutils==0.14            # via botocore
 enum34==1.1.6             # via fs
 fs-s3fs==0.1.5
@@ -30,12 +30,15 @@ mock==3.0.5               # via cookiecutter
 pypng==0.0.19
 python-dateutil==2.8.0    # via botocore, xblock
 pytz==2019.1              # via django, fs, xblock
-pyyaml==5.1               # via cookiecutter, xblock
+pyyaml==5.1.1             # via cookiecutter, xblock
 requests==2.9.1
 s3transfer==0.1.13        # via boto3
 simplejson==3.16.0
 six==1.10.0               # via django-pyfs, fs, fs-s3fs, mock, python-dateutil, xblock
-typing==3.6.6             # via fs
+typing==3.7.4             # via fs
 web-fragments==0.3.0      # via xblock
 webob==1.8.5
 xblock==1.1.1
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools==41.0.1        # via fs, lazy
