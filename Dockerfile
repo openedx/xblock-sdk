@@ -14,6 +14,11 @@ ADD requirements/dev.txt /tmp/dev.txt
 RUN pip install -r /tmp/dev.txt \
 && rm /tmp/dev.txt
 
+RUN curl -sL https://deb.nodesource.com/setup_10.x -o /tmp/nodejs-setup
+RUN /bin/bash /tmp/nodejs-setup
+RUN rm /tmp/nodejs-setup
+RUN apt-get -y install nodejs
+
 RUN mkdir -p /usr/local/src/xblock-sdk
 WORKDIR /usr/local/src/xblock-sdk
 ADD . .
