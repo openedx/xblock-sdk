@@ -8,6 +8,3 @@ pytest-django
 selenium==3.4.1           # Forcing this version fixes issues on Travis
 tox                       # Virtualenv management for tests
 tox-battery               # Makes tox aware of requirements file changes
-
-# Acid xblock
--e git+https://github.com/edx/acid-block.git@e46f9cda8a03e121a00c7e347084d142d22ebfb7#egg=acid-xblock
