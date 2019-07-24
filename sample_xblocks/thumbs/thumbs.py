@@ -37,15 +37,17 @@ class ThumbsBlockBase(object):
         """
 
         # Load the HTML fragment from within the package and fill in the template
-        html_str = pkg_resources.resource_string(__name__, "static/html/thumbs.html")
+        html_str = pkg_resources.resource_string(__name__,
+                                                 "static/html/thumbs.html").decode('utf-8')
         frag = Fragment(text_type(html_str).format(block=self))
 
         # Load the CSS and JavaScript fragments from within the package
-        css_str = pkg_resources.resource_string(__name__, "static/css/thumbs.css")
+        css_str = pkg_resources.resource_string(__name__,
+                                                "static/css/thumbs.css").decode('utf-8')
         frag.add_css(text_type(css_str))
 
         js_str = pkg_resources.resource_string(__name__,
-                                               "static/js/src/thumbs.js")
+                                               "static/js/src/thumbs.js").decode('utf-8')
         frag.add_javascript(text_type(js_str))
 
         frag.initialize_js('ThumbsBlock')
