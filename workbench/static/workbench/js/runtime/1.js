@@ -91,6 +91,10 @@ var XBlock = (function () {
 var XBlockAsides = (function () {
     
     var initializeAside = function (element) {
+        if (element.textContent.match(/Acid Aside/g)) {
+            element.parentNode.removeChild(element);
+            return null;
+        }
         var version = $(element).data('runtime-version');
         if (version === undefined) {
             return null;
