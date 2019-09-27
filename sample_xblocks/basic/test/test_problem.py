@@ -8,7 +8,6 @@ import json
 
 import pytest
 import webob
-from xblock.test.tools import assert_equals
 
 from workbench.runtime import WorkbenchRuntime
 
@@ -49,4 +48,4 @@ def test_problem_submission():
     json_data = json.dumps({"vote_count": [{"name": "input", "value": "4"}]})
     resp = runtime.handle(problem, 'check', make_request(json_data))
     resp_data = json.loads(text_of_response(resp))
-    assert_equals(resp_data['checkResults']['votes_named'], True)
+    assert resp_data['checkResults']['votes_named'] == True
