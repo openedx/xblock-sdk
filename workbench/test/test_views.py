@@ -105,7 +105,7 @@ def test_xblock_with_handler():
     response_content = response.content.decode('utf-8')
 
     expected = u"The data: %r." % u"def"
-    assert(expected in response_content)
+    assert expected in response_content
 
     parsed = response_content.split(':::')
     assert len(parsed) == 3
@@ -273,7 +273,7 @@ def test_xblock_no_student_view():
     # indicates there is no view available.
     client = Client()
     response = client.get("/view/xblockwithoutstudentview/")
-    assert('No such view' in response.content.decode('utf-8'))
+    assert 'No such view' in response.content.decode('utf-8')
 
 
 def test_local_resources():
