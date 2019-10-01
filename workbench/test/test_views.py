@@ -12,7 +12,6 @@ from xblock.core import Scope, String, XBlock
 from xblock.exceptions import DisallowedFileError
 from xblock.fragment import Fragment
 from xblock.runtime import NoSuchHandlerError
-from xblock.test.tools import assert_equals, assert_in, assert_raises, assert_raises_regexp, assert_true
 
 from django.core.urlresolvers import reverse
 from django.test.client import Client
@@ -57,7 +56,7 @@ def test_unknown_scenario():
     client = Client()
 
     response = client.get(reverse('scenario', args=('unknown_scenario', 'unknown_view')))
-    assert_equals(response.status_code, 404)
+    assert response.status_code == 404
 
 
 @temp_scenario(MultiViewXBlock, "multiview")
@@ -66,15 +65,15 @@ def test_multiple_views():
 
     # The default view is student_view
     response = client.get("/view/multiview/")
-    assert_in("This is student view!", response.content.decode('utf-8'))
+    assert "This is student view!" in response.content.decode('utf-8')
 
     # We can ask for student_view directly
     response = client.get("/view/multiview/student_view/")
-    assert_in("This is student view!", response.content.decode('utf-8'))
+    assert "This is student view!" in response.content.decode('utf-8')
 
     # We can also ask for another view.
     response = client.get("/view/multiview/another_view/")
-    assert_in("This is another view!", response.content.decode('utf-8'))
+    assert "This is another view!" in response.content.decode('utf-8')
 
 
 class XBlockWithHandlerAndStudentState(XBlock):
@@ -105,21 +104,21 @@ def test_xblock_with_handler():
     response_content = response.content.decode('utf-8')
 
     expected = u"The data: %r." % u"def"
-    assert_true(expected in response_content)
+    assert expected in response_content
 
     parsed = response_content.split(':::')
-    assert_equals(len(parsed), 3)
+    assert len(parsed) == 3
     handler_url = parsed[1]
 
     # Now change the data.
     response = client.post(handler_url, "{}", "text/json")
-    the_data = json.loads(response.content)['the_data']
-    assert_equals(the_data, "defx")
+    the_data = json.loads(response.content.decode('utf-8'))['the_data']
+    assert the_data == "defx"
 
     # Change it again.
     response = client.post(handler_url, "{}", "text/json")
-    the_data = json.loads(response.content)['the_data']
-    assert_equals(the_data, "defxx")
+    the_data = json.loads(response.content.decode('utf-8'))['the_data']
+    assert the_data == "defxx"
 
 
 @temp_scenario(XBlock)
@@ -142,7 +141,7 @@ def test_xblock_without_handler():
     # The default XBlock implementation doesn't provide
     # a handler, so this call should raise an exception
     # (from xblock.runtime.Runtime.handle)
-    with assert_raises(NoSuchHandlerError):
+    with pytest.raises(NoSuchHandlerError):
         client.post(handler_url, '{}', 'text/json')
 
 
@@ -154,7 +153,7 @@ def test_xblock_invalid_handler_url():
 
     handler_url = "/handler/obviously/a/fake/handler"
     result = client.post(handler_url, '{}', 'text/json')
-    assert_equals(result.status_code, 404)
+    assert result.status_code == 404
 
 
 class XBlockWithHandlers(XBlock):
@@ -185,11 +184,11 @@ class XBlockWithHandlers(XBlock):
     def try_bad_handler_urls(self, context=None):       # pylint: disable=W0613
         """Force some assertions for the wrong kinds of handlers."""
         # A completely non-existing function name.
-        with assert_raises_regexp(ValueError, "function name"):
+        with pytest.raises(ValueError, match="function name"):
             self.runtime.handler_url(self, "this_doesnt_exist")
 
         # An existing function, but it isn't a handler.
-        with assert_raises_regexp(ValueError, "handler name"):
+        with pytest.raises(ValueError, match="handler name"):
             self.runtime.handler_url(self, "try_bad_handler_urls")
 
         return Fragment(u"Everything is Fine!")
@@ -197,7 +196,7 @@ class XBlockWithHandlers(XBlock):
     @XBlock.handler
     def send_it_back(self, request, suffix=''):
         """Just return the data we got."""
-        assert_equals(self.scope_ids.user_id, "student_1")
+        assert self.scope_ids.user_id == "student_1"
         response_json = json.dumps({
             'suffix': suffix,
             'a': request.GET.get('a', "no-a"),
@@ -208,7 +207,7 @@ class XBlockWithHandlers(XBlock):
     @XBlock.handler
     def send_it_back_public(self, request, suffix=''):
         """Just return the data we got."""
-        assert_equals(self.scope_ids.user_id, "none")
+        assert self.scope_ids.user_id == "none"
         response_json = json.dumps({
             'suffix': suffix,
             'a': request.GET.get('a', "no-a"),
@@ -225,7 +224,7 @@ def test_xblock_with_handlers():
     # The view sends a list of URLs to try.
     response = client.get("/view/with-handlers/")
     parsed = response.content.decode('utf-8').split(':::')
-    assert_equals(len(parsed), 3)
+    assert len(parsed) == 3
     urls = json.loads(parsed[1])
 
     # These have to correspond to the urls in XBlockWithHandlers.student_view above.
@@ -245,9 +244,9 @@ def test_xblock_with_handlers():
     for url, expected in zip(urls, expecteds):
         print(url)   # so we can see which one failed, if any.
         response = client.get(url)
-        assert_equals(response.status_code, 200)
-        actual = json.loads(response.content)
-        assert_equals(actual, expected)
+        assert response.status_code == 200
+        actual = json.loads(response.content.decode('utf-8'))
+        assert actual == expected
 
 
 @temp_scenario(XBlockWithHandlers, 'with-handlers')
@@ -255,8 +254,8 @@ def test_bad_handler_urls():
     client = Client()
 
     response = client.get("/view/with-handlers/try_bad_handler_urls/")
-    assert_equals(response.status_code, 200)
-    assert_in("Everything is Fine!", response.content.decode('utf-8'))
+    assert response.status_code == 200
+    assert "Everything is Fine!" in response.content.decode('utf-8')
 
 
 class XBlockWithoutStudentView(XBlock):
@@ -273,7 +272,7 @@ def test_xblock_no_student_view():
     # indicates there is no view available.
     client = Client()
     response = client.get("/view/xblockwithoutstudentview/")
-    assert_true('No such view' in response.content.decode('utf-8'))
+    assert 'No such view' in response.content.decode('utf-8')
 
 
 def test_local_resources():
@@ -281,8 +280,8 @@ def test_local_resources():
 
     # The Equality block has local resources
     result = client.get('/resource/equality_demo/public/images/correct-icon.png')
-    assert_equals(result.status_code, 200)
-    assert_equals(result['Content-Type'], 'image/png')
+    assert result.status_code == 200
+    assert result['Content-Type'] == 'image/png'
 
     # The Equality block defends against malicious resource URIs
     # This test has two possible ways of passing
@@ -296,7 +295,7 @@ def test_local_resources():
     # support both prod and dev configurations.
     try:
         result = client.get('/resource/equality_demo/core.py')
-        assert_equals(result.status_code, 404)
+        assert result.status_code == 404
     except DisallowedFileError:
         pass
 
@@ -332,22 +331,21 @@ class XBlockWithContextTracking(XBlock):
 @temp_scenario(XBlockWithContextTracking, 'context_tracking')
 def test_activate_id():
     client = Client()
-    assert_equals(XBlockWithContextTracking.registered_contexts, [])  # precondition check
+    assert XBlockWithContextTracking.registered_contexts == []  # precondition check
     client.get("/view/context_tracking/")
-    assert_equals(XBlockWithContextTracking.registered_contexts, [{'activate_block_id': None}])
+    assert XBlockWithContextTracking.registered_contexts == [{'activate_block_id': None}]
 
     client.get("/view/context_tracking/?activate_block_id=123")
-    assert_equals(XBlockWithContextTracking.registered_contexts, [
-        {'activate_block_id': None}, {'activate_block_id': '123'}
-    ])
+    expected = [{'activate_block_id': None}, {'activate_block_id': '123'}]
+    assert XBlockWithContextTracking.registered_contexts == expected
 
     XBlockWithContextTracking.clear_contexts()
     client.get("/view/context_tracking/?activate_block_id=456")
-    assert_equals(XBlockWithContextTracking.registered_contexts, [{'activate_block_id': '456'}])
+    assert XBlockWithContextTracking.registered_contexts == [{'activate_block_id': '456'}]
 
 
 def test_user_list():
     client = Client()
     result = client.get("/userlist/")
-    assert_equals(result.status_code, 200)
-    assert_equals(result.content.decode('utf-8'), "[]")
+    assert result.status_code == 200
+    assert result.content.decode('utf-8') == "[]"

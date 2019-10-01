@@ -8,7 +8,6 @@ import unittest
 
 import lxml.html
 import pytest
-from xblock.test.tools import assert_equals
 
 from django.core.urlresolvers import reverse
 from django.test.client import Client
@@ -41,7 +40,7 @@ class ScenarioTest(unittest.TestCase):
         loaded_scenarios = list(scenarios.get_scenarios().values())
 
         # We should have an <a> tag for each scenario.
-        assert_equals(len(a_tags), len(loaded_scenarios))
+        assert len(a_tags) == len(loaded_scenarios)
 
         # We should have at least one scenario with a vertical tag, since we use
         # empty verticals as our canary in the coal mine that something has gone

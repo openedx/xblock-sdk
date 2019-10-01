@@ -6,7 +6,6 @@ This code is in the Workbench layer.
 
 from __future__ import absolute_import
 
-import json
 import logging
 import mimetypes
 
@@ -16,7 +15,7 @@ from xblock.exceptions import NoSuchUsage
 from xblock.plugin import PluginMissingError
 
 from django.conf import settings
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, JsonResponse
 from django.shortcuts import redirect, render_to_response
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 
@@ -97,10 +96,7 @@ def user_list(_request):
         user_id[0]
         for user_id in set(XBlockState.objects.values_list('user_id'))
     )
-    return HttpResponse(
-        json.dumps(users, indent=2),
-        content_type='application/json',
-    )
+    return JsonResponse(users, safe=False)
 
 
 def handler(request, usage_id, handler_slug, suffix='', authenticated=True):
