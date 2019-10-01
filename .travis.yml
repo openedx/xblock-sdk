@@ -2,6 +2,7 @@ dist: latest
 language: python
 python:
     - 2.7
+    - 3.5
     - 3.6
     - 3.7
 env:
@@ -12,7 +13,7 @@ matrix:
   include:
     - python: 2.7
       env: TOXENV=quality
-    - python: 3.7
+    - python: 3.5
       env: TOXENV=quality
   exclude:
     - python: 2.7
@@ -20,7 +21,9 @@ matrix:
     - python: 2.7
       env: TOXENV=django21
   allow_failures:
+    - python: 3.6
     - python: 3.7
+
 
 addons:
     firefox: "52.0.1"
