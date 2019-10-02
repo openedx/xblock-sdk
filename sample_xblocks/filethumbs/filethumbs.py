@@ -129,7 +129,7 @@ class FileThumbsBlock(XBlock):
 
         if data['voteType'] not in ('up', 'down'):
             log.error('error!')
-            return
+            return None
 
         if data['voteType'] == 'up':
             self.upvotes += 1

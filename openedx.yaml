@@ -8,5 +8,5 @@ tags:
     - library
 oeps:
     oep-2: false
-    oep-7: false
+    oep-7: true
     oep-18: true

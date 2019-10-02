@@ -393,6 +393,7 @@ class TextInputBlock(InputBlock):
                 self.student_input = int(submission[0]['value'])
             except ValueError:
                 return {'error': u'"%s" is not an integer' % self.student_input}
+        return None
 
 
 class EqualityCheckerBlock(CheckerBlock):
