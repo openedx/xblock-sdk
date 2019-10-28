@@ -297,11 +297,14 @@ class WorkbenchRuntime(Runtime):
 
     def _patch_xblock(self, block):
         """Add required attributes by some legacy XBlocks such as the LTI Consumer XBlock."""
-        block.location = Mock(html_id=Mock(return_value='course-v1:edX+Demo+2020'))
-        block.course_id = block.location.html_id()
-        block.due = datetime.utcnow()
-        block.graceperiod = timedelta(seconds=0)
-        block.category = 'chapter'
+        try:
+            block.location = Mock(html_id=Mock(return_value='course-v1:edX+Demo+2020'))
+            block.course_id = block.location.html_id()
+            block.due = datetime.utcnow()
+            block.graceperiod = timedelta(seconds=0)
+            block.category = 'chapter'
+        except AttributeError:
+            pass
 
     def handle(self, block, handler_name, request, suffix=''):
         """Patch the XBlock with required fields."""
