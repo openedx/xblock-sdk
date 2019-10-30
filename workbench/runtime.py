@@ -304,7 +304,7 @@ class WorkbenchRuntime(Runtime):
             block.graceperiod = timedelta(seconds=0)
             block.category = 'chapter'
         except AttributeError:
-            pass
+            log.exception(u'Unable to patch xblock, Attributes are protected.')
 
     def handle(self, block, handler_name, request, suffix=''):
         """Patch the XBlock with required fields."""
