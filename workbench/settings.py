@@ -135,7 +135,7 @@ STATICFILES_FINDERS = [
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '5ftdd9(@p)tg&amp;bqv$(^d!63psz9+g+_i5om_e%!32%po2_+%l7'
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

@@ -2,7 +2,7 @@
 
 from __future__ import absolute_import
 
-from django.conf.urls import include, url
+from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
@@ -61,7 +61,7 @@ urlpatterns = [
         name='reset_state'
     ),
 
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

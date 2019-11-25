@@ -29,6 +29,7 @@ class ThreeThumbsTest(SeleniumTest):
         header1 = self.browser.find_element_by_css_selector('h1')
         self.assertEqual(header1.text, 'XBlock scenarios')
 
+    @pytest.mark.flaky(reruns=5, reruns_delay=2)
     def test_three_thumbs_initial_state(self):
         # She clicks on the three thumbs at once scenario
         link = self.browser.find_element_by_link_text('three thumbs test')
@@ -61,6 +62,7 @@ class ThreeThumbsTest(SeleniumTest):
             self.assertEqual('0', up_count.text)
             self.assertEqual('0', down_count.text)
 
+    @pytest.mark.flaky(reruns=5, reruns_delay=2)
     def test_three_upvoting(self):
         # She clicks on the three thumbs at once scenario
         link = self.browser.find_element_by_link_text('three thumbs test')
@@ -95,6 +97,7 @@ class ThreeThumbsTest(SeleniumTest):
             down_count = thumb.find_element_by_css_selector(down_count_css)
             self.assertEqual('0', down_count.text)
 
+    @pytest.mark.flaky(reruns=5, reruns_delay=2)
     def test_three_downvoting(self):
         # She clicks on the three thumbs at once scenario
         link = self.browser.find_element_by_link_text('three thumbs test')
