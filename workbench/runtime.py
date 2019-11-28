@@ -22,9 +22,9 @@ from xblock.runtime import IdGenerator, IdReader, KeyValueStore, KvsFieldData, N
 import django.utils.translation
 from django.conf import settings
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
 from django.template import loader as django_template_loader
 from django.templatetags.static import static
+from django.urls import reverse
 
 from .models import XBlockState
 from .util import make_safe_for_html

@@ -1,6 +1,7 @@
 """Tests for the thumbs module"""
 from __future__ import absolute_import
 
+import pytest
 from bok_choy.promise import EmptyPromise
 
 from workbench import scenarios
@@ -26,6 +27,7 @@ class ThreeThumbsTest(SeleniumTest):
         header1 = self.browser.find_element_by_css_selector('h1')
         self.assertEqual(header1.text, 'XBlock scenarios')
 
+    @pytest.mark.flaky(reruns=5, reruns_delay=2)
     def test_three_thumbs_initial_state(self):
         # She clicks on the three thumbs at once scenario
         link = self.browser.find_element_by_link_text('three file thumbs test')

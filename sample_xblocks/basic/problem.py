@@ -331,7 +331,11 @@ class CheckerBlock(XBlock):
         Set the `arguments` field from XML attributes based on `check` arguments.
         """
         # Introspect the .check() method, and collect arguments it expects.
-        argspec = inspect.getargspec(self.check)
+        if hasattr(inspect, 'getfullargspec'):
+            # pylint: disable=no-member, useless-suppression
+            argspec = inspect.getfullargspec(self.check)
+        else:
+            argspec = inspect.getargspec(self.check)  # pylint: disable=deprecated-method
         arguments = {}
         for arg in argspec.args[1:]:
             arguments[arg] = node.attrib.pop(arg)

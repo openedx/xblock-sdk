@@ -7,11 +7,12 @@ mostly use Django because we already have it as a dependency and because Django
 Admin gives us a lot of basic search/filtering for free.
 
 """
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 from xblock.fields import BlockScope, Scope
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.timezone import now
 
 
@@ -23,7 +24,7 @@ def shorten_scope_name(scope_name):
     return rest
 
 
-# pylint: disable=model-missing-unicode
+@python_2_unicode_compatible
 class XBlockState(models.Model):
     """State storage for XBlock.
 
@@ -136,3 +137,6 @@ class XBlockState(models.Model):
         happens. It should *not* be called before each scenario.
         """
         cls.objects.filter(scope="children").delete()
+
+    def __str__(self):
+        return self.__repr__()

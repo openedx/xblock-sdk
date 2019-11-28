@@ -1,10 +1,12 @@
 -c ../constraints.txt
+
 bok_choy==0.7.1
 coverage
 ddt
 mock
-pytest-cov
 pytest-django
+pytest-cov
+pytest-rerunfailures
 selenium==3.4.1           # Forcing this version fixes issues on Travis
 tox                       # Virtualenv management for tests
 tox-battery               # Makes tox aware of requirements file changes

@@ -13,8 +13,8 @@ from xblock.exceptions import DisallowedFileError
 from xblock.fragment import Fragment
 from xblock.runtime import NoSuchHandlerError
 
-from django.core.urlresolvers import reverse
 from django.test.client import Client
+from django.urls import reverse
 
 from workbench import scenarios
 from workbench.runtime import ID_MANAGER
