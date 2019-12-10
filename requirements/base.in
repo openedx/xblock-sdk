@@ -9,7 +9,7 @@ django-pyfs==2.0
 fs-s3fs==0.1.5
 lxml==3.8.0
 lazy==1.1
-requests==2.9.1
+requests==2.22.0
 pypng
 simplejson
 webob
