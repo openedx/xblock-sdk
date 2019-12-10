@@ -14,12 +14,13 @@ bok_choy==0.7.1
 boto3==1.4.8              # via fs-s3fs
 boto==2.39.0
 botocore==1.8.50          # via boto3, s3transfer
-chardet==3.0.4            # via binaryornot
+certifi==2019.11.28       # via requests
+chardet==3.0.4            # via binaryornot, requests
 configparser==4.0.2       # via importlib-metadata
 contextlib2==0.6.0.post1  # via importlib-metadata
 cookiecutter==0.9.0
 coverage==4.5.4
-ddt==1.2.1
+ddt==1.2.2
 django-pyfs==2.0
 docutils==0.15.2          # via botocore
 enum34==1.1.6             # via fs
@@ -29,7 +30,8 @@ fs==2.0.27                # via django-pyfs, fs-s3fs, xblock
 funcsigs==1.0.2           # via mock, pytest
 future==0.18.2            # via backports.os
 futures==3.3.0 ; python_version == "2.7"  # via s3transfer
-importlib-metadata==0.23  # via pluggy, pytest, tox
+idna==2.8                 # via requests
+importlib-metadata==1.2.0  # via pluggy, pytest, tox
 jinja2==2.10.3            # via cookiecutter
 jmespath==0.9.4           # via boto3, botocore
 lazy==1.1
@@ -50,11 +52,11 @@ pypng==0.0.20
 pytest-cov==2.8.1
 pytest-django==3.7.0
 pytest-rerunfailures==8.0
-pytest==4.6.6             # via pytest-cov, pytest-django, pytest-rerunfailures
+pytest==4.6.7             # via pytest-cov, pytest-django, pytest-rerunfailures
 python-dateutil==2.8.1    # via botocore, xblock
 pytz==2019.3              # via django, fs, xblock
-pyyaml==5.1.2             # via cookiecutter, xblock
-requests==2.9.1
+pyyaml==5.2               # via cookiecutter, xblock
+requests==2.22.0
 s3transfer==0.1.13        # via boto3
 scandir==1.10.0           # via pathlib2
 selenium==3.4.1
@@ -62,8 +64,9 @@ simplejson==3.17.0
 six==1.10.0               # via bok-choy, django-pyfs, fs, fs-s3fs, mock, more-itertools, packaging, pathlib2, pytest, python-dateutil, tox, xblock
 toml==0.10.0              # via tox
 tox-battery==0.5.1
-tox==3.14.1
+tox==3.14.2
 typing==3.7.4.1           # via fs
+urllib3==1.25.7           # via requests
 virtualenv==16.7.8        # via tox
 wcwidth==0.1.7            # via pytest
 web-fragments==0.3.1      # via xblock
@@ -72,4 +75,4 @@ xblock==1.2.9
 zipp==0.6.0               # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
-# setuptools==42.0.1        # via fs, lazy, pytest-rerunfailures
+# setuptools
