@@ -55,14 +55,14 @@ class XBlockState(models.Model):
         blank=True,
         null=True,
         db_index=True,
-        verbose_name="Scope ID",
+        verbose_name=u"Scope ID",
     )
     user_id = models.CharField(
         max_length=255,
         blank=True,
         null=True,
         db_index=True,
-        verbose_name="User ID",
+        verbose_name=u"User ID",
     )
     scenario = models.CharField(
         max_length=255,
@@ -77,7 +77,7 @@ class XBlockState(models.Model):
         db_index=True,
     )
     created = models.DateTimeField(default=now, db_index=True)
-    state = models.TextField(default="{}")
+    state = models.TextField(default=u"{}")
 
     def __repr__(self):
         return u"<XBlockState id={xb_state.id} " \
