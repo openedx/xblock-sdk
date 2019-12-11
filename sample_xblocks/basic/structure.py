@@ -34,7 +34,7 @@ class Sequence(XBlock, ExtraViewsMixin):
         """Provide default student view."""
         frag = Fragment()
         child_frags = self.runtime.render_children(self, context=context)
-        frag.add_frags_resources(child_frags)
+        frag.add_resources(child_frags)
 
         frag.add_content(self.runtime.render_template("sequence.html", children=child_frags))
 
@@ -59,7 +59,7 @@ class VerticalBlock(XBlock, ExtraViewsMixin):
         """Provide default student view."""
         result = Fragment()
         child_frags = self.runtime.render_children(self, context=context)
-        result.add_frags_resources(child_frags)
+        result.add_resources(child_frags)
         result.add_css(u"""
             .vertical {
                 border: solid 1px #888; padding: 3px;
@@ -77,7 +77,7 @@ class SidebarBlock(XBlock, ExtraViewsMixin):
         """Provide default student view."""
         result = Fragment()
         child_frags = self.runtime.render_children(self, context=context)
-        result.add_frags_resources(child_frags)
+        result.add_resources(child_frags)
         result.add_css(u"""
             .sidebar {
                 border: solid 1px #888;
