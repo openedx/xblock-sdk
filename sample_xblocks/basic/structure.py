@@ -2,8 +2,8 @@
 
 from __future__ import absolute_import
 
-from xblock.core import XBlock
 from web_fragments.fragment import Fragment
+from xblock.core import XBlock
 
 
 class ExtraViewsMixin(object):

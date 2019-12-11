@@ -26,9 +26,9 @@ import pkg_resources
 import png
 from six import text_type
 from six.moves import map
+from web_fragments.fragment import Fragment
 from xblock.core import XBlock
 from xblock.fields import Boolean, Scope
-from web_fragments.fragment import Fragment
 from xblock.reference.plugins import Filesystem
 
 log = logging.getLogger(__name__)

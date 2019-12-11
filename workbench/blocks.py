@@ -6,8 +6,8 @@ This code is in the Workbench layer.
 
 from __future__ import absolute_import
 
-from xblock.core import XBlock
 from web_fragments.fragment import Fragment
+from xblock.core import XBlock
 
 from .util import make_safe_for_html
 

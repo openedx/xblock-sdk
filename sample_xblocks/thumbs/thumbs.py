@@ -6,9 +6,9 @@ import logging
 
 import pkg_resources
 from six import text_type
+from web_fragments.fragment import Fragment
 from xblock.core import XBlock, XBlockAside
 from xblock.fields import Boolean, Integer, Scope
-from web_fragments.fragment import Fragment
 
 log = logging.getLogger(__name__)
 

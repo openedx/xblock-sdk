@@ -7,10 +7,10 @@ from __future__ import absolute_import
 
 import json
 
+from web_fragments.fragment import Fragment
 from webob import Response
 from xblock.core import XBlock
 from xblock.fields import Integer, Scope
-from web_fragments.fragment import Fragment
 
 
 class Slider(XBlock):

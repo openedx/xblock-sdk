@@ -41,9 +41,9 @@ import random
 import string
 import time
 
+from web_fragments.fragment import Fragment
 from xblock.core import XBlock
 from xblock.fields import Any, Boolean, Dict, Integer, Scope, String
-from web_fragments.fragment import Fragment
 from xblock.run_script import run_script
 
 

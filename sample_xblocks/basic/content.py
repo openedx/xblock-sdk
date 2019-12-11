@@ -7,8 +7,8 @@ from string import Template
 
 from lxml import etree
 from six import text_type
-from xblock.core import Scope, String, XBlock
 from web_fragments.fragment import Fragment
+from xblock.core import Scope, String, XBlock
 
 
 class HelloWorldBlock(XBlock):
