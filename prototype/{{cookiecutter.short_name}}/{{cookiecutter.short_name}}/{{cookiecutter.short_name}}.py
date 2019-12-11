@@ -3,7 +3,7 @@
 import pkg_resources
 from xblock.core import XBlock
 from xblock.fields import Integer, Scope
-from xblock.fragment import Fragment
+from web_fragments.fragment import Fragment
 
 
 class {{cookiecutter.class_name}}(XBlock):

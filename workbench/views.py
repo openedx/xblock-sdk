@@ -16,7 +16,7 @@ from xblock.plugin import PluginMissingError
 
 from django.conf import settings
 from django.http import Http404, HttpResponse, JsonResponse
-from django.shortcuts import redirect, render_to_response
+from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 
 from .models import XBlockState
@@ -45,7 +45,7 @@ def index(_request):
         for class_name, scenario in the_scenarios
         if class_name.split('.')[0] not in settings.EXCLUDED_XBLOCKS
     ]
-    return render_to_response('workbench/index.html', {
+    return render(_request, 'workbench/index.html', {
         'scenarios': [(desc, scenario.description) for desc, scenario in the_scenarios]
     })
 
@@ -76,7 +76,7 @@ def show_scenario(request, scenario_id, view_name='student_view', template='work
 
     frag = block.render(view_name, render_context)
     log.info(u"End show_scenario %s", scenario_id)
-    return render_to_response(template, {
+    return render(request, template, {
         'scenario': scenario,
         'block': block,
         'body': frag.body_html(),

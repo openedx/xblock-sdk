@@ -15,7 +15,7 @@ from mock import Mock
 from six import iteritems
 from xblock.core import XBlockAside
 from xblock.exceptions import NoSuchDefinition, NoSuchUsage
-from xblock.fragment import Fragment
+from web_fragments.fragment import Fragment
 from xblock.reference.user_service import UserService, XBlockUser
 from xblock.runtime import IdGenerator, IdReader, KeyValueStore, KvsFieldData, NoSuchViewError, NullI18nService, Runtime
 
