@@ -37,7 +37,7 @@ funcsigs==1.0.2           # via mock, pytest
 future==0.18.2            # via backports.os
 futures==3.3.0 ; python_version == "2.7"  # via isort, s3transfer
 idna==2.8                 # via requests
-importlib-metadata==1.2.0  # via pluggy, pytest, tox
+importlib-metadata==1.3.0  # via pluggy, pytest, tox
 isort==4.3.21
 jinja2==2.10.3            # via cookiecutter
 jmespath==0.9.4           # via boto3, botocore
@@ -86,11 +86,11 @@ typing==3.7.4.1           # via fs
 urllib3==1.25.7           # via requests
 virtualenv==16.7.8        # via tox
 wcwidth==0.1.7            # via pytest
-web-fragments==0.3.1      # via xblock
+web-fragments==0.3.1
 webob==1.8.5
 wrapt==1.11.2             # via astroid
 xblock==1.2.9
 zipp==0.6.0               # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
-# setuptools
+# setuptools==42.0.2        # via fs, lazy, pytest-rerunfailures

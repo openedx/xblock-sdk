@@ -41,9 +41,9 @@ import random
 import string
 import time
 
+from web_fragments.fragment import Fragment
 from xblock.core import XBlock
 from xblock.fields import Any, Boolean, Dict, Integer, Scope, String
-from xblock.fragment import Fragment
 from xblock.run_script import run_script
 
 
@@ -101,7 +101,7 @@ class ProblemBlock(XBlock):
         for child_id in self.children:  # pylint: disable=E1101
             child = self.runtime.get_block(child_id)
             frag = self.runtime.render_child(child, "problem_view", context)
-            result.add_frag_resources(frag)
+            result.add_fragment_resources(frag)
             named_child_frags.append((child.name, frag))
         result.add_css(u"""
             .problem {

@@ -1,9 +1,9 @@
 """ Simple View Counting XBlock"""
 from __future__ import absolute_import
 
+from web_fragments.fragment import Fragment
 from xblock.core import XBlock
 from xblock.fields import Integer, Scope
-from xblock.fragment import Fragment
 
 
 class ViewCounter(XBlock):

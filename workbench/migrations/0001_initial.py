@@ -20,12 +20,12 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('scope', models.CharField(blank=True, choices=[('usage', 'usage'), ('definition', 'definition'), ('type', 'type'), ('all', 'all'), ('parent', 'parent'), ('children', 'children')], db_index=True, max_length=50, null=True)),
-                ('scope_id', models.CharField(blank=True, db_index=True, max_length=255, null=True, verbose_name=b'Scope ID')),
-                ('user_id', models.CharField(blank=True, db_index=True, max_length=255, null=True, verbose_name=b'User ID')),
+                ('scope_id', models.CharField(blank=True, db_index=True, max_length=255, null=True, verbose_name=u'Scope ID')),
+                ('user_id', models.CharField(blank=True, db_index=True, max_length=255, null=True, verbose_name=u'User ID')),
                 ('scenario', models.CharField(blank=True, db_index=True, max_length=255, null=True)),
                 ('tag', models.CharField(blank=True, db_index=True, max_length=50, null=True)),
                 ('created', models.DateTimeField(db_index=True, default=django.utils.timezone.now)),
-                ('state', models.TextField(default=b'{}')),
+                ('state', models.TextField(default=u'{}')),
             ],
             options={
                 'ordering': ['scope_id', 'scope', 'user_id'],

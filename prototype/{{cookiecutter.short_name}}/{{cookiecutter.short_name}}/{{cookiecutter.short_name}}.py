@@ -1,9 +1,9 @@
 """TO-DO: Write a description of what this XBlock is."""
 
 import pkg_resources
+from web_fragments.fragment import Fragment
 from xblock.core import XBlock
 from xblock.fields import Integer, Scope
-from xblock.fragment import Fragment
 
 
 class {{cookiecutter.class_name}}(XBlock):
