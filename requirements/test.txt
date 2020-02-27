@@ -6,6 +6,7 @@
 #
 -e git+https://github.com/edx/acid-block.git@98aecba94ecbfa934e2d00262741c0ea9f557fc9#egg=acid-xblock
 appdirs==1.4.3            # via fs, virtualenv
+atomicwrites==1.3.0       # via pytest
 attrs==19.3.0             # via pytest
 binaryornot==0.4.4        # via cookiecutter
 bok_choy==0.7.1
@@ -33,12 +34,12 @@ lxml==3.8.0
 mako==1.1.1
 markupsafe==1.1.1         # via jinja2, mako, xblock
 mock==3.0.5
-more-itertools==8.2.0     # via pytest
+more-itertools==5.0.0     # via pytest
 needle==0.5.0             # via bok-choy
 nose==1.3.7               # via needle
 packaging==20.1           # via pytest, tox
 pathlib2==2.3.5           # via pytest
-pillow==7.0.0             # via needle
+pillow==6.2.2             # via needle
 pluggy==0.13.1            # via pytest, tox
 py==1.8.1                 # via pytest, tox
 pyparsing==2.4.6          # via packaging
@@ -46,7 +47,7 @@ pypng==0.0.20
 pytest-cov==2.8.1
 pytest-django==3.8.0
 pytest-rerunfailures==8.0
-pytest==5.3.5             # via pytest-cov, pytest-django, pytest-rerunfailures
+pytest==4.6.9             # via pytest-cov, pytest-django, pytest-rerunfailures
 python-dateutil==2.8.1    # via botocore, xblock
 pytz==2019.3              # via django, fs, xblock
 pyyaml==5.3               # via cookiecutter, xblock
@@ -54,7 +55,7 @@ requests==2.22.0
 s3transfer==0.3.3         # via boto3
 selenium==3.4.1
 simplejson==3.17.0
-six==1.14.0               # via bok-choy, django-pyfs, fs, fs-s3fs, mock, packaging, pathlib2, python-dateutil, tox, virtualenv, xblock
+six==1.14.0               # via bok-choy, django-pyfs, fs, fs-s3fs, mock, more-itertools, packaging, pathlib2, pytest, python-dateutil, tox, virtualenv, xblock
 sqlparse==0.3.0           # via django
 toml==0.10.0              # via tox
 tox-battery==0.5.2

@@ -10,5 +10,11 @@
 
 # These packages are backports which can only be installed on Python 2.7
 futures ; python_version == "2.7"
+
+# These packages still support Python 2.7, and are required for compatibility with Django 1.11
+# See https://github.com/edx/xblock-sdk/pull/169
 astroid<2.0
 edx-lint<1.4.0
+more-itertools<=5.0.0
+pillow<=6.2.2
+pytest<=4.6.9
