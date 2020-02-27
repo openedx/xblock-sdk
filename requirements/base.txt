@@ -6,9 +6,9 @@
 #
 appdirs==1.4.3            # via fs
 binaryornot==0.4.4        # via cookiecutter
-boto3==1.12.5             # via fs-s3fs
+boto3==1.12.8             # via fs-s3fs
 boto==2.39.0
-botocore==1.15.5          # via boto3, s3transfer
+botocore==1.15.8          # via boto3, s3transfer
 certifi==2019.11.28       # via requests
 chardet==3.0.4            # via binaryornot, requests
 cookiecutter==0.9.0
@@ -19,7 +19,7 @@ fs-s3fs==0.1.8
 fs==2.0.27                # via django-pyfs, fs-s3fs, xblock
 idna==2.8                 # via requests
 jinja2==2.11.1            # via cookiecutter
-jmespath==0.9.4           # via boto3, botocore
+jmespath==0.9.5           # via boto3, botocore
 lazy==1.1
 lxml==3.8.0
 markupsafe==1.1.1         # via jinja2, xblock

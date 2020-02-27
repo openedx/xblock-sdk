@@ -10,3 +10,5 @@
 
 # These packages are backports which can only be installed on Python 2.7
 futures ; python_version == "2.7"
+astroid<2.0
+edx-lint<1.4.0

@@ -7,7 +7,7 @@
 appdirs==1.4.3            # via virtualenv
 certifi==2019.11.28       # via requests
 chardet==3.0.4            # via requests
-codecov==2.0.15
+codecov==2.0.16
 coverage==5.0.3           # via codecov
 distlib==0.3.0            # via virtualenv
 filelock==3.0.12          # via tox, virtualenv
@@ -24,5 +24,5 @@ toml==0.10.0              # via tox
 tox-battery==0.5.2
 tox==3.14.5
 urllib3==1.25.8           # via requests
-virtualenv==20.0.5        # via tox
+virtualenv==20.0.7        # via tox
 zipp==1.2.0               # via importlib-metadata
