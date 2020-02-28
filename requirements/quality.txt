@@ -12,7 +12,7 @@ isort==4.3.21
 lazy-object-proxy==1.4.3  # via astroid
 mccabe==0.6.1             # via pylint
 pycodestyle==2.5.0
-pydocstyle==5.0.2
+pydocstyle==3.0.0
 pylint-celery==0.3        # via edx-lint
 pylint-django==0.7.2      # via edx-lint
 pylint-plugin-utils==0.6  # via pylint-celery, pylint-django

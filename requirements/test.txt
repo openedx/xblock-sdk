@@ -10,9 +10,9 @@ atomicwrites==1.3.0       # via pytest
 attrs==19.3.0             # via pytest
 binaryornot==0.4.4        # via cookiecutter
 bok_choy==0.7.1
-boto3==1.12.8             # via fs-s3fs
+boto3==1.12.9             # via fs-s3fs
 boto==2.39.0
-botocore==1.15.8          # via boto3, s3transfer
+botocore==1.15.9          # via boto3, s3transfer
 certifi==2019.11.28       # via requests
 chardet==3.0.4            # via binaryornot, requests
 cookiecutter==0.9.0
