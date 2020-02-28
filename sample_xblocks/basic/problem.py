@@ -332,7 +332,7 @@ class CheckerBlock(XBlock):
         """
         # Introspect the .check() method, and collect arguments it expects.
         if hasattr(inspect, 'getfullargspec'):
-            # pylint: disable=no-member, useless-suppression
+            # pylint: disable=no-member, useless-suppression, deprecated-method
             argspec = inspect.getfullargspec(self.check)
         else:
             argspec = inspect.getargspec(self.check)  # pylint: disable=deprecated-method
