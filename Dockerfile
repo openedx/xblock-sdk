@@ -32,5 +32,5 @@ RUN .env/bin/activate
 
 RUN make install
 EXPOSE 8000
-ENTRYPOINT ["python", "manage.py"]
+ENTRYPOINT ["python3", "manage.py"]
 CMD ["runserver", "0.0.0.0:8000"]
