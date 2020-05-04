@@ -13,7 +13,7 @@ from xblock.fields import Boolean, Integer, Scope
 log = logging.getLogger(__name__)
 
 
-class ThumbsBlockBase(object):
+class ThumbsBlockBase:
     """
     An XBlock with thumbs-up/thumbs-down voting.
 
@@ -104,7 +104,6 @@ class ThumbsBlock(ThumbsBlockBase, XBlock):
 
     This demonstrates multiple data scopes and ajax handlers.
     """
-    pass
 
 
 class ThumbsAside(ThumbsBlockBase, XBlockAside):

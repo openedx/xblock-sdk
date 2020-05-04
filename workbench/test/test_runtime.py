@@ -118,12 +118,11 @@ class TestKVStore(TestCase):
         self.assertFalse(self.kvs.has(self.key))
 
 
-class StubService(object):
+class StubService:
     """Empty service to test loading additional services. """
-    pass
 
 
-class ExceptionService(object):
+class ExceptionService:
     """Stub service that raises an exception on init. """
     def __init__(self):
         raise Exception("Kaboom!")

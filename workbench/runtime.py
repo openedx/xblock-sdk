@@ -418,7 +418,7 @@ class WorkbenchRuntime(Runtime):
             log.exception(u'Could not initialize service defined at "%s"', service_path)
 
 
-class _BlockSet(object):
+class _BlockSet:
     """
     Provide a collection of blocks
     """

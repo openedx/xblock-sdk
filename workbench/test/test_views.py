@@ -24,10 +24,10 @@ pytestmark = pytest.mark.django_db  # pylint: disable=invalid-name
 
 def temp_scenario(temp_class, scenario_name='test_scenario'):
     """Create a temporary scenario that uses `temp_class`."""
-    def _decorator(func):                               # pylint: disable=C0111
+    def _decorator(func):
         @functools.wraps(func)
         @XBlock.register_temp_plugin(temp_class)
-        def _inner(*args, **kwargs):                    # pylint: disable=C0111
+        def _inner(*args, **kwargs):
             # Create a scenario, just one tag for our mocked class.
             scenarios.add_xml_scenario(
                 scenario_name, u"Temporary scenario {}".format(temp_class.__name__),
