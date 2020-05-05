@@ -354,6 +354,7 @@ disable =
 	using-cmp-argument,
 	xrange-builtin,
 	zip-builtin-not-iterating,
+	missing-format-attribute,
 
 [REPORTS]
 output-format = text
