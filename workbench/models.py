@@ -77,6 +77,7 @@ class XBlockState(models.Model):
     created = models.DateTimeField(default=now, db_index=True)
     state = models.TextField(default=u"{}")
 
+    # pylint: disable=missing-format-attribute
     def __repr__(self):
         return u"<XBlockState id={xb_state.id} " \
             "scope={xb_state.scope} " \
