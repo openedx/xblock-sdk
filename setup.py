@@ -68,7 +68,7 @@ setup(
         'workbench',
     ],
     install_requires=[
-        "Django>=2.2",
+        "Django>=2.2,<3.0",
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
