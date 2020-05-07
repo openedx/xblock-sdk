@@ -6,7 +6,7 @@ from web_fragments.fragment import Fragment
 from xblock.core import XBlock
 
 
-class ExtraViewsMixin(object):
+class ExtraViewsMixin:
     '''
     This is a mixin which will redirect all functions ending with
     `_view` to `view()` if not implemented otherwise.

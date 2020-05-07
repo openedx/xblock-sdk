@@ -5,38 +5,44 @@
 #    make upgrade
 #
 appdirs==1.4.3            # via fs
+arrow==0.15.6             # via jinja2-time
 binaryornot==0.4.4        # via cookiecutter
-boto3==1.12.9             # via fs-s3fs
-boto==2.39.0
-botocore==1.15.9          # via boto3, s3transfer
-certifi==2019.11.28       # via requests
+boto3==1.13.2             # via fs-s3fs
+boto==2.49.0              # via -r requirements/base.in
+botocore==1.16.2          # via boto3, s3transfer
+certifi==2020.4.5.1       # via requests
 chardet==3.0.4            # via binaryornot, requests
-cookiecutter==0.9.0
-django-pyfs==2.0
-django==2.2.10
+click==7.1.2              # via cookiecutter
+cookiecutter==1.7.2       # via -r requirements/base.in
+django-pyfs==2.1          # via -r requirements/base.in
+django==2.2.12            # via -r requirements/base.in, django-pyfs
 docutils==0.15.2          # via botocore
-fs-s3fs==0.1.8
-fs==2.0.27                # via django-pyfs, fs-s3fs, xblock
-idna==2.8                 # via requests
-jinja2==2.11.1            # via cookiecutter
+fs-s3fs==1.1.1            # via -r requirements/base.in, django-pyfs
+fs==2.4.11                # via django-pyfs, fs-s3fs, xblock
+idna==2.9                 # via requests
+jinja2-time==0.2.0        # via cookiecutter
+jinja2==2.11.2            # via cookiecutter, jinja2-time
 jmespath==0.9.5           # via boto3, botocore
-lazy==1.1
-lxml==3.8.0
-markupsafe==1.1.1         # via jinja2, xblock
-pypng==0.0.20
-python-dateutil==2.8.1    # via botocore, xblock
-pytz==2019.3              # via django, fs, xblock
-pyyaml==5.3               # via cookiecutter, xblock
-requests==2.22.0
+lazy==1.4                 # via -r requirements/base.in
+lxml==4.5.0               # via -r requirements/base.in, xblock
+markupsafe==1.1.1         # via cookiecutter, jinja2, xblock
+poyo==0.5.0               # via cookiecutter
+pypng==0.0.20             # via -r requirements/base.in
+python-dateutil==2.8.1    # via arrow, botocore, xblock
+python-slugify==4.0.0     # via cookiecutter
+pytz==2020.1              # via django, fs, xblock
+pyyaml==5.3.1             # via xblock
+requests==2.23.0          # via -r requirements/base.in, cookiecutter
 s3transfer==0.3.3         # via boto3
-simplejson==3.17.0
-six==1.14.0               # via django-pyfs, fs, fs-s3fs, python-dateutil, xblock
-sqlparse==0.3.0           # via django
+simplejson==3.17.0        # via -r requirements/base.in
+six==1.14.0               # via cookiecutter, django-pyfs, fs, fs-s3fs, python-dateutil, xblock
+sqlparse==0.3.1           # via django
+text-unidecode==1.3       # via python-slugify
 typing==3.7.4.1           # via fs
-urllib3==1.25.8           # via botocore, requests
-web-fragments==0.3.1
-webob==1.8.6
-xblock==1.2.9
+urllib3==1.25.9           # via botocore, requests
+web-fragments==0.3.1      # via -r requirements/base.in, xblock
+webob==1.8.6              # via -r requirements/base.in, xblock
+xblock==1.3.0             # via -r requirements/base.in
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools

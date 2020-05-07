@@ -71,8 +71,7 @@ class ProblemInteractionTest(SeleniumTest):
                     ).nth(right_wrong_idx).attrs('src')
                     if sources and expected_icon in sources[0]:
                         break
-                    else:
-                        time.sleep(.25)
+                    time.sleep(.25)
                 except StaleElementReferenceException as exc:
                     print(exc)
             self.assertIn(expected_icon, sources[0])

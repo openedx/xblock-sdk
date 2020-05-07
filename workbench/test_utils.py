@@ -68,7 +68,7 @@ def scenario(scenario_path, user_id=None):
     return _decorator
 
 
-class XBlockHandlerTestCaseMixin(object):
+class XBlockHandlerTestCaseMixin:
     """Load the XBlock in the workbench runtime to test its handler. """
 
     def setUp(self):

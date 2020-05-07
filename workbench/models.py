@@ -12,7 +12,6 @@ from __future__ import absolute_import, unicode_literals
 from xblock.fields import BlockScope, Scope
 
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.timezone import now
 
 
@@ -24,14 +23,13 @@ def shorten_scope_name(scope_name):
     return rest
 
 
-@python_2_unicode_compatible
 class XBlockState(models.Model):
     """State storage for XBlock.
 
     This class assumes your IDs were generated using `ScenarioIdManager`, and
     will break otherwise.
     """
-    class Meta(object):
+    class Meta:
         """Class metadata"""
         verbose_name = "XBlock State"
         verbose_name_plural = "XBlock State"
@@ -79,6 +77,7 @@ class XBlockState(models.Model):
     created = models.DateTimeField(default=now, db_index=True)
     state = models.TextField(default=u"{}")
 
+    # pylint: disable=missing-format-attribute
     def __repr__(self):
         return u"<XBlockState id={xb_state.id} " \
             "scope={xb_state.scope} " \

@@ -316,7 +316,6 @@ class InputBlock(XBlock):
         function.
 
         """
-        pass
 
 
 @XBlock.tag("checker")

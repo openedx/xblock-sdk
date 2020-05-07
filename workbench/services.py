@@ -6,7 +6,7 @@ from __future__ import unicode_literals
 from django.conf import settings
 
 
-class SettingsService(object):
+class SettingsService:
     """
     Allows server-wide configuration of XBlocks on a per-type basis.
 
