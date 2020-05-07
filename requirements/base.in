@@ -4,7 +4,7 @@
 
 boto
 cookiecutter
-Django>=2.2
+Django
 django-pyfs
 fs-s3fs
 lxml
