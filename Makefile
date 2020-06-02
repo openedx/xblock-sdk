@@ -85,3 +85,16 @@ validate: quality test ## run tests and quality checks
 
 selfcheck: ## check that the Makefile is well-formed
 	@echo "The Makefile is well-formed."
+
+docker_build:
+	docker build . -t "openedx/xblock-sdk:latest"
+
+travis_docker_auth:
+	echo "$$DOCKER_PASSWORD" | docker login -u "$$DOCKER_USERNAME" --password-stdin
+
+travis_docker_tag: docker_build
+	docker tag "openedx/xblock-sdk:latest" "openedx/xblock-sdk:$$TRAVIS_COMMIT"
+
+travis_docker_push: travis_docker_auth travis_docker_tag ## push to docker hub
+	docker push "openedx/xblock-sdk:latest"
+	docker push "openedx/xblock-sdk:$$TRAVIS_COMMIT"
