@@ -1,38 +1,33 @@
 dist: latest
 language: python
 python:
-- 3.5
-- 3.8
+    - 3.5
+    - 3.8
 env:
-  matrix:
-  - TOXENV=django22
-  - TOXENV=quality
-  global:
-  - DOCKER_USERNAME=edxbuilder
-  # encrypted DOCKER_PASSWORD
-  - secure: DVriHgFilTcMLvYzJoMLYlkAwqno9SjeveWfBYIiNowypo9UvKWSH97TORKl/zl3YDDHgjv25olBezVIzS6s7gqmRzUe61pYB0S8O+RSa+h/HHeUfRBtYTF5ljhzQxjrv8wY7BmMm6BNNOcud1lP5pemVN7waZ5GwZx9KNjHmBQ=
+    - TOXENV=django22
+    - TOXENV=quality
+
 addons:
-  firefox: 52.0.1
+    firefox: "52.0.1"
+
 cache:
-  directories:
-  - "$HOME/.cache/pip"
+    directories:
+        - $HOME/.cache/pip
+
 before_install:
-- sudo apt-get install xvfb
-- wget https://github.com/mozilla/geckodriver/releases/download/v0.15.0/geckodriver-v0.15.0-linux64.tar.gz
-- mkdir geckodriver
-- tar -xzf geckodriver-v0.15.0-linux64.tar.gz -C geckodriver
-- export PATH=$PATH:$(pwd)/geckodriver
-- pip install pip==20.0.2
-- export BOTO_CONFIG=/dev/null
+    - sudo apt-get install xvfb
+    - wget https://github.com/mozilla/geckodriver/releases/download/v0.15.0/geckodriver-v0.15.0-linux64.tar.gz
+    - mkdir geckodriver
+    - tar -xzf geckodriver-v0.15.0-linux64.tar.gz -C geckodriver
+    - export PATH=$PATH:$(pwd)/geckodriver
+    - pip install pip==20.0.2
+    - export BOTO_CONFIG=/dev/null
+
 install:
-- pip install tox-travis
-- pip install -r requirements/travis.txt
+    - pip install tox-travis
+    - pip install -r requirements/travis.txt
+
 script:
-- xvfb-run --server-args=-ac -- tox
+    - xvfb-run --server-args=-ac -- tox
 after_success:
-- codecov
-deploy:
-  provider: script
-  script: make travis_docker_push
-  on:
-    branch: master
+    - codecov
