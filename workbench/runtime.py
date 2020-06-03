@@ -11,7 +11,7 @@ import logging
 from collections import defaultdict
 from datetime import datetime, timedelta
 
-from mock import Mock
+from unittest.mock import MagicMock as Mock
 from six import iteritems
 from web_fragments.fragment import Fragment
 from xblock.core import XBlockAside

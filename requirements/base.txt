@@ -42,7 +42,7 @@ typing==3.7.4.1           # via fs
 urllib3==1.25.9           # via botocore, requests
 web-fragments==0.3.1      # via -r requirements/base.in, xblock
 webob==1.8.6              # via -r requirements/base.in, xblock
-xblock==1.3.0             # via -r requirements/base.in
+xblock==1.3.1             # via -r requirements/base.in
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
