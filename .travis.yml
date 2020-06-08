@@ -40,4 +40,4 @@ deploy:
   on:
     python: 3.5
     condition: '$TOXENV=django22'
-    branch: msingh/make_upgrade
+    branch: master
