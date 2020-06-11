@@ -35,9 +35,14 @@ script:
 after_success:
   - codecov
 deploy:
-  provider: script
-  script: make travis_docker_push
+  provider: pypi
+  user: edx
+  password:
+    secure:
+  distributions: sdist bdist_wheel
   on:
+    tags: true
     python: 3.5
     condition: '$TOXENV=django22'
-    branch: master
+after_deploy:
+  - make travis_docker_push
