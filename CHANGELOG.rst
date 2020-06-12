@@ -3,6 +3,7 @@ Change history for XBlock SDK
 =============================
 
 These are notable changes in XBlock.
+
 0.2.0
 -----
 * Released on PyPI
