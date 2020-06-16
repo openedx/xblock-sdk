@@ -2,7 +2,7 @@
 Helpers for Selenium tests.
 """
 
-from __future__ import absolute_import
+
 
 import pytest
 from bok_choy.web_app_test import WebAppTest

@@ -3,7 +3,7 @@
 WARNING: This is an experimental module, subject to future change or removal.
 """
 
-from __future__ import absolute_import
+
 
 import json
 

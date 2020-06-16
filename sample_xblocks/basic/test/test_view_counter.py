@@ -1,6 +1,6 @@
 """ Simple test for the view counter that verifies that it is updating properly """
 
-from __future__ import absolute_import
+
 
 from mock import Mock
 from six.moves import range

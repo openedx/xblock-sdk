@@ -2,7 +2,7 @@
 Test that all scenarios render successfully.
 """
 
-from __future__ import absolute_import
+
 
 import unittest
 

@@ -1,6 +1,6 @@
 """An XBlock providing thumbs-up/thumbs-down voting."""
 
-from __future__ import absolute_import
+
 
 import logging
 

@@ -1,5 +1,5 @@
 """Test that problems and problem submission works well."""
-from __future__ import absolute_import, print_function
+
 
 import time
 import unittest
