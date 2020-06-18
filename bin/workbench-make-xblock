@@ -1,8 +1,10 @@
-#!/usr/bin/env python
+!/usr/bin/env python
 """
 Use cookiecutter to create a new XBlock project.
 """
+from __future__ import print_function
 
+from builtins import input
 import os
 import re
 import textwrap
@@ -31,28 +33,28 @@ just delete the directory it created.
 
 
 def main():
-    print EXPLANATION
+    print(EXPLANATION)
 
     # Get the values.
     try:
         while True:
-            short_name = raw_input("Short name: ")
+            short_name = input("Short name: ")
             if re.match(r"^[a-z][a-z0-9_]+$", short_name):
                 break
-            print "The short name must be a valid Python identifier, all lower-case."
+            print("The short name must be a valid Python identifier, all lower-case.")
 
         while True:
-            class_name = raw_input("Class name: ")
+            class_name = input("Class name: ")
             if re.match(r"[A-Z][a-zA-Z0-9]+XBlock$", class_name):
                 break
-            print "The class name must be a valid Python class name, ending with XBlock."
+            print("The class name must be a valid Python class name, ending with XBlock.")
     except KeyboardInterrupt:
-        print "\n** Cancelled **"
+        print("\n** Cancelled **")
         return
 
     # Find the prototype.
     proto_dir = os.path.abspath(os.path.join(__file__, "../../prototype"))
-
+    
     cookiecutter(
         proto_dir,
         no_input=True,
