@@ -2,7 +2,7 @@
 Tests of the Problem XBlock, and its components.
 """
 
-from __future__ import absolute_import
+
 
 import json
 

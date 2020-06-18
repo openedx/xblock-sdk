@@ -1,5 +1,5 @@
 """Tests for the thumbs module"""
-from __future__ import absolute_import
+
 
 import pytest
 from bok_choy.promise import EmptyPromise

@@ -1,6 +1,6 @@
 """Structure-oriented XBlocks."""
 
-from __future__ import absolute_import
+
 
 from web_fragments.fragment import Fragment
 from xblock.core import XBlock
