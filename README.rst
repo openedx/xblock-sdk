@@ -14,7 +14,7 @@ This repository consists of three main components to assist in the creation of n
 Installation
 ------------
 
-This code runs on Python 2.7.
+This code runs on Python 3.5 or newer.
 
 #.  Install standard development libraries. Here's how you do it on Ubuntu or Debian::
 

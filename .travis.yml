@@ -2,6 +2,7 @@ dist: latest
 language: python
 python:
 - 3.5
+- 3.8
 env:
   matrix:
   - TOXENV=django22
