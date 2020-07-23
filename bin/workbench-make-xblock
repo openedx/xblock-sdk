@@ -4,10 +4,10 @@ Use cookiecutter to create a new XBlock project.
 """
 from __future__ import print_function
 
-from builtins import input
 import os
 import re
 import textwrap
+from builtins import input
 
 from cookiecutter.main import cookiecutter
 

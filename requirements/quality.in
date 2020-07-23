@@ -7,4 +7,3 @@ edx-lint                  # edX pylint rules and plugins
 isort                     # to standardize order of imports
 pycodestyle               # PEP 8 compliance validation
 pydocstyle                # PEP 257 compliance validation
-six                       # Prevents a version conflict between this file and test.txt

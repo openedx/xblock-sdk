@@ -5,8 +5,6 @@ import functools
 import json
 
 import pytest
-from six import text_type
-from six.moves import zip
 from web_fragments.fragment import Fragment
 from webob import Response
 from xblock.core import Scope, String, XBlock
@@ -202,7 +200,7 @@ class XBlockWithHandlers(XBlock):
             'a': request.GET.get('a', "no-a"),
             'b': request.GET.get('b', "no-b"),
         })
-        return Response(text=text_type(response_json), content_type='application/json')
+        return Response(text=str(response_json), content_type='application/json')
 
     @XBlock.handler
     def send_it_back_public(self, request, suffix=''):
@@ -213,7 +211,7 @@ class XBlockWithHandlers(XBlock):
             'a': request.GET.get('a', "no-a"),
             'b': request.GET.get('b', "no-b"),
         })
-        return Response(text=text_type(response_json), content_type='application/json')
+        return Response(text=str(response_json), content_type='application/json')
 
 
 @temp_scenario(XBlockWithHandlers, 'with-handlers')

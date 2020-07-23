@@ -6,7 +6,6 @@
 from string import Template
 
 from lxml import etree
-from six import text_type
 from web_fragments.fragment import Fragment
 from xblock.core import Scope, String, XBlock
 
@@ -172,7 +171,7 @@ class HtmlBlock(XBlock):
         """
         block = runtime.construct_xblock_from_class(cls, keys)
 
-        block.content = text_type(node.text or u"")
+        block.content = str(node.text or u"")
         for child in node:
             block.content += etree.tostring(child, encoding='unicode')
 
