@@ -53,11 +53,11 @@ package_data = {}  # pylint: disable=invalid-name
 package_data.update(find_package_data("sample_xblocks.basic", ["public", "templates"]))
 package_data.update(find_package_data("sample_xblocks.thumbs", ["static"]))
 package_data.update(find_package_data("sample_xblocks.filethumbs", ["static"]))
-package_data.update(find_package_data("workbench", ["static", "templates"]))
+package_data.update(find_package_data("workbench", ["static", "templates", "test"]))
 
 setup(
     name='xblock-sdk',
-    version='0.2.0',
+    version='0.2.1',
     description='XBlock SDK',
     packages=[
         'sample_xblocks',
