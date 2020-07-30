@@ -13,6 +13,8 @@ from xblock.core import XBlock
 from django.conf import settings
 from django.template.defaultfilters import slugify
 
+from .runtime import WORKBENCH_KVS, WorkbenchRuntime
+
 log = logging.getLogger(__name__)
 
 # Build the scenarios, which are named trees of usages.
@@ -26,7 +28,6 @@ def add_xml_scenario(scname, description, xml):
     """
     Add a scenario defined in XML.
     """
-    from .runtime import WorkbenchRuntime
     assert scname not in SCENARIOS, u"Already have a %r scenario" % scname
     runtime = WorkbenchRuntime()
 
@@ -69,7 +70,6 @@ def init_scenarios():
     """
     # Clear any existing scenarios, since this is used repeatedly during testing.
     SCENARIOS.clear()
-    from .runtime import WORKBENCH_KVS
     if settings.WORKBENCH['reset_state_on_restart']:
         WORKBENCH_KVS.clear()
     else:

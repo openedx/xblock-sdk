@@ -12,7 +12,6 @@ from collections import defaultdict
 from datetime import datetime, timedelta
 
 from mock import Mock
-from six import iteritems
 from web_fragments.fragment import Fragment
 from xblock.core import XBlockAside
 from xblock.exceptions import NoSuchDefinition, NoSuchUsage
@@ -258,7 +257,7 @@ class WorkbenchRuntime(Runtime):
         # This is useful for instances of workbench used to develop
         # XBlocks that require services that may be too specific
         # to include in the default workbench configuration.
-        for service_name, service_path in iteritems(settings.WORKBENCH.get('services', {})):
+        for service_name, service_path in (settings.WORKBENCH.get('services', {})).items():
             service = self._load_service(service_path)
             if service is not None:
                 services[service_name] = service
