@@ -197,7 +197,7 @@ You can discuss this code on the `edx-code Google Group`__ or in the
 
 __ https://groups.google.com/group/edx-code
 
-.. |build-status| image:: https://travis-ci.org/edx/xblock-sdk.svg?branch=master
-   :target: https://travis-ci.org/edx/xblock-sdk
+.. |build-status| image:: https://travis-ci.com/edx/xblock-sdk.svg?branch=master
+   :target: https://travis-ci.com/edx/xblock-sdk
 .. |coverage-status| image:: https://coveralls.io/repos/edx/xblock-sdk/badge.png
    :target: https://coveralls.io/r/edx/xblock-sdk
