@@ -1,0 +1,20 @@
+version: '3.5'
+services:
+  xblock_sdk:
+    image: xblock-sdk
+    container_name: edx.devstack.xblock-sdk
+
+    build: .
+
+    volumes:
+      # Provide a persistant location for the SQLite database
+      - xblock-var:/usr/local/src/xblock-sdk/var
+
+    hostname: localhost
+    ports:
+      - "8000:8000"
+
+# Persistant storage volumes:
+volumes:
+  # For the SQLite database
+  xblock-var:

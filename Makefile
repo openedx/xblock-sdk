@@ -87,7 +87,23 @@ selfcheck: ## check that the Makefile is well-formed
 	@echo "The Makefile is well-formed."
 
 docker_build:
-	docker build . -t "openedx/xblock-sdk:latest"
+	docker-compose build
+
+# devstack-themed shortcuts
+dev.up: # Starts all containers
+	docker-compose up -d
+
+dev.up.build:
+	docker-compose up -d --build
+
+dev.down: # Kills containers and all of their data that isn't in volumes
+	docker-compose down
+
+dev.stop: # Stops containers so they can be restarted
+	docker-compose stop
+
+app-shell: # Run bash in the container as root
+	docker exec -u 0 -it edx.devstack.xblock-sdk bash
 
 travis_docker_auth:
 	echo "$$DOCKER_PASSWORD" | docker login -u "$$DOCKER_USERNAME" --password-stdin
