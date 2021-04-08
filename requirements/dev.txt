@@ -23,7 +23,7 @@ coverage==5.2             # via -r requirements/test.in, -r requirements/test.tx
 ddt==1.4.1                # via -r requirements/test.in, -r requirements/test.txt
 distlib==0.3.1            # via -r requirements/test.txt, virtualenv
 django-pyfs==2.2          # via -r requirements/base.in, -r requirements/test.txt
-django==2.2.14            # via -r requirements/base.in, -r requirements/test.txt, django-pyfs
+django==2.2.20            # via -r requirements/base.in, -r requirements/test.txt, django-pyfs
 docutils==0.15.2          # via -r requirements/test.txt, botocore
 edx-lint==1.5.0           # via -r requirements/quality.in
 filelock==3.0.12          # via -r requirements/test.txt, tox, virtualenv
