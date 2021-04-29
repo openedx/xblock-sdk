@@ -57,7 +57,7 @@ package_data.update(find_package_data("workbench", ["static", "templates", "test
 
 setup(
     name='xblock-sdk',
-    version='0.2.2',
+    version='0.3.0',
     description='XBlock SDK',
     packages=[
         'sample_xblocks',
@@ -67,7 +67,7 @@ setup(
         'workbench',
     ],
     install_requires=[
-        "Django>=2.2,<3.0",
+        "Django>=2.2",
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
@@ -77,10 +77,9 @@ setup(
         'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.8',
     ],
-    tests_require=load_requirements('{}/requirements/test.txt'.format(os.getcwd())),
+    tests_require=load_requirements(f'{os.getcwd()}/requirements/test.txt'),
     entry_points={
         'xblock.v1': [
             # Basic XBlocks

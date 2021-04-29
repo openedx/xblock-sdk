@@ -51,7 +51,7 @@ def scenario(scenario_path, user_id=None):
                 self = args[0]
                 if isinstance(self, XBlockHandlerTestCaseMixin):
                     # Print a debug message
-                    print(u"Loading scenario from {path}".format(path=scenario_path))
+                    print(f"Loading scenario from {scenario_path}")
 
                     # Configure the runtime with our user id
                     self.set_user(user_id)
@@ -73,7 +73,7 @@ class XBlockHandlerTestCaseMixin:
 
     def setUp(self):
         """Create the runtime. """
-        super(XBlockHandlerTestCaseMixin, self).setUp()
+        super().setUp()
         self.runtime = WorkbenchRuntime()
 
     def set_user(self, user_id):
@@ -136,7 +136,7 @@ class XBlockHandlerTestCaseMixin:
         elif response_format == 'json':
             return json.loads(response.body)
         else:
-            raise NotImplementedError(u"Response format '{}' not supported".format(response_format))
+            raise NotImplementedError(f"Response format '{response_format}' not supported")
 
     @staticmethod
     def load_fixture_str(path):

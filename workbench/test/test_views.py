@@ -17,7 +17,7 @@ from django.urls import reverse
 from workbench import scenarios
 from workbench.runtime import ID_MANAGER
 
-pytestmark = pytest.mark.django_db  # pylint: disable=invalid-name
+pytestmark = pytest.mark.django_db
 
 
 def temp_scenario(temp_class, scenario_name='test_scenario'):
@@ -28,7 +28,7 @@ def temp_scenario(temp_class, scenario_name='test_scenario'):
         def _inner(*args, **kwargs):
             # Create a scenario, just one tag for our mocked class.
             scenarios.add_xml_scenario(
-                scenario_name, u"Temporary scenario {}".format(temp_class.__name__),
+                scenario_name, f"Temporary scenario {temp_class.__name__}",
                 "<%s/>" % temp_class.__name__
             )
             try:
@@ -43,11 +43,11 @@ class MultiViewXBlock(XBlock):
     """A bare-bone XBlock with two views."""
     def student_view(self, context=None):  # pylint: disable=W0613
         """A view, with the default name."""
-        return Fragment(u"This is student view!")
+        return Fragment("This is student view!")
 
     def another_view(self, context=None):  # pylint: disable=W0613
         """A secondary view for this block."""
-        return Fragment(u"This is another view!")
+        return Fragment("This is another view!")
 
 
 def test_unknown_scenario():
@@ -80,8 +80,8 @@ class XBlockWithHandlerAndStudentState(XBlock):
 
     def student_view(self, context=None):  # pylint: disable=W0613
         """Provide the default view."""
-        body = u"The data: %r." % self.the_data
-        body += u":::%s:::" % self.runtime.handler_url(self, "update_the_data")
+        body = "The data: %r." % self.the_data
+        body += ":::%s:::" % self.runtime.handler_url(self, "update_the_data")
         return Fragment(body)
 
     @XBlock.json_handler
@@ -101,7 +101,7 @@ def test_xblock_with_handler():
     response = client.get("/view/testit/")
     response_content = response.content.decode('utf-8')
 
-    expected = u"The data: %r." % u"def"
+    expected = "The data: %r." % "def"
     assert expected in response_content
 
     parsed = response_content.split(':::')
@@ -177,7 +177,7 @@ class XBlockWithHandlers(XBlock):
             thirdparty = (args[0] == "send_it_back_public")
             urls.append(self.runtime.handler_url(self, *args, thirdparty=thirdparty))
         encoded = json.dumps(urls)
-        return Fragment(u":::" + encoded + u":::")
+        return Fragment(":::" + encoded + ":::")
 
     def try_bad_handler_urls(self, context=None):       # pylint: disable=W0613
         """Force some assertions for the wrong kinds of handlers."""
@@ -189,7 +189,7 @@ class XBlockWithHandlers(XBlock):
         with pytest.raises(ValueError, match="handler name"):
             self.runtime.handler_url(self, "try_bad_handler_urls")
 
-        return Fragment(u"Everything is Fine!")
+        return Fragment("Everything is Fine!")
 
     @XBlock.handler
     def send_it_back(self, request, suffix=''):

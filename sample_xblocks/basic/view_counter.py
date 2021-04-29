@@ -25,6 +25,6 @@ class ViewCounter(XBlock):
         return frag
 
 
-VIEW_COUNTER_TEMPLATE = u"""
+VIEW_COUNTER_TEMPLATE = """
 <span class="views">{views}</span>
 """
