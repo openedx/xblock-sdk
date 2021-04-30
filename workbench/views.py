@@ -60,12 +60,12 @@ def show_scenario(request, scenario_id, view_name='student_view', template='work
 
     """
     student_id = get_student_id(request)
-    log.info(u"Start show_scenario %r for student %s", scenario_id, student_id)
+    log.info("Start show_scenario %r for student %s", scenario_id, student_id)
 
     try:
         scenario = get_scenarios()[scenario_id]
-    except KeyError:
-        raise Http404
+    except KeyError as ex:
+        raise Http404 from ex
 
     usage_id = scenario.usage_id
     runtime = WorkbenchRuntime(student_id)
@@ -75,7 +75,7 @@ def show_scenario(request, scenario_id, view_name='student_view', template='work
     }
 
     frag = block.render(view_name, render_context)
-    log.info(u"End show_scenario %s", scenario_id)
+    log.info("End show_scenario %s", scenario_id)
     return render(request, template, {
         'scenario': scenario,
         'block': block,
@@ -103,23 +103,23 @@ def handler(request, usage_id, handler_slug, suffix='', authenticated=True):
     """The view function for authenticated handler requests."""
     if authenticated:
         student_id = get_student_id(request)
-        log.info(u"Start handler %s/%s for student %s", usage_id, handler_slug, student_id)
+        log.info("Start handler %s/%s for student %s", usage_id, handler_slug, student_id)
     else:
         student_id = "none"
-        log.info(u"Start handler %s/%s", usage_id, handler_slug)
+        log.info("Start handler %s/%s", usage_id, handler_slug)
 
     runtime = WorkbenchRuntime(student_id)
 
     try:
         block = runtime.get_block(usage_id)
-    except NoSuchUsage:
-        raise Http404
+    except NoSuchUsage as ex:
+        raise Http404 from ex
 
     request = django_to_webob_request(request)
     request.path_info_pop()
     request.path_info_pop()
     result = block.runtime.handle(block, handler_slug, request, suffix)
-    log.info(u"End handler %s/%s", usage_id, handler_slug)
+    log.info("End handler %s/%s", usage_id, handler_slug)
     return webob_to_django_response(result)
 
 
@@ -127,23 +127,23 @@ def aside_handler(request, aside_id, handler_slug, suffix='', authenticated=True
     """The view function for authenticated handler requests."""
     if authenticated:
         student_id = get_student_id(request)
-        log.info(u"Start handler %s/%s for student %s", aside_id, handler_slug, student_id)
+        log.info("Start handler %s/%s for student %s", aside_id, handler_slug, student_id)
     else:
         student_id = "none"
-        log.info(u"Start handler %s/%s", aside_id, handler_slug)
+        log.info("Start handler %s/%s", aside_id, handler_slug)
 
     runtime = WorkbenchRuntime(student_id)
 
     try:
         block = runtime.get_aside(aside_id)
-    except NoSuchUsage:
-        raise Http404
+    except NoSuchUsage as ex:
+        raise Http404 from ex
 
     request = django_to_webob_request(request)
     request.path_info_pop()
     request.path_info_pop()
     result = block.runtime.handle(block, handler_slug, request, suffix)
-    log.info(u"End handler %s/%s", aside_id, handler_slug)
+    log.info("End handler %s/%s", aside_id, handler_slug)
     return webob_to_django_response(result)
 
 
@@ -157,12 +157,12 @@ def package_resource(_request, block_type, resource):
     except PluginMissingError:
         try:
             xblock_class = XBlockAside.load_class(block_type)
-        except PluginMissingError:
-            raise Http404
+        except PluginMissingError as ex:
+            raise Http404 from ex
     try:
         content = xblock_class.open_local_resource(resource)
-    except Exception:
-        raise Http404
+    except Exception as ex:
+        raise Http404 from ex
     mimetype, _ = mimetypes.guess_type(resource)
     return HttpResponse(content, content_type=mimetype)
 

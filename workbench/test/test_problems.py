@@ -17,7 +17,7 @@ class ProblemInteractionTest(SeleniumTest):
     """
 
     def setUp(self):
-        super(ProblemInteractionTest, self).setUp()
+        super().setUp()
 
         one_problem = """
             <problem_demo>
@@ -64,7 +64,7 @@ class ProblemInteractionTest(SeleniumTest):
                 try:
                     sources = BrowserQuery(
                         self.browser,
-                        css=u'{} img'.format(
+                        css='{} img'.format(
                             check_indicators,
                         ),
                     ).nth(right_wrong_idx).attrs('src')

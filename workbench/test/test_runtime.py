@@ -4,7 +4,7 @@
 
 from unittest import TestCase
 
-import mock
+from unittest import mock
 import pytest
 from xblock.fields import Scope
 from xblock.reference.user_service import UserService
@@ -22,7 +22,7 @@ class TestScenarioIds(TestCase):
 
     def setUp(self):
         # Test basic ID generation meets our expectations
-        super(TestScenarioIds, self).setUp()
+        super().setUp()
         self.id_mgr = ScenarioIdManager()
 
     def test_no_scenario_loaded(self):
@@ -99,7 +99,7 @@ class TestKVStore(TestCase):
     Test the Workbench KVP Store
     """
     def setUp(self):
-        super(TestKVStore, self).setUp()
+        super().setUp()
         self.kvs = WorkbenchDjangoKeyValueStore()
         self.key = KeyValueStore.Key(
             scope=Scope.content,
@@ -134,7 +134,7 @@ class TestServices(TestCase):
     """
 
     def setUp(self):
-        super(TestServices, self).setUp()
+        super().setUp()
         self.xblock = mock.Mock()
 
     def test_default_services(self):

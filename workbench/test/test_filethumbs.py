@@ -12,7 +12,7 @@ class ThreeThumbsTest(SeleniumTest):
     """Test the functionalities of the three thumbs test XBlock."""
 
     def setUp(self):
-        super(ThreeThumbsTest, self).setUp()
+        super().setUp()
 
         scenarios.add_xml_scenario(
             "test_three_file_thumbs", "three file thumbs test",

@@ -53,14 +53,14 @@ class XBlockState(models.Model):
         blank=True,
         null=True,
         db_index=True,
-        verbose_name=u"Scope ID",
+        verbose_name="Scope ID",
     )
     user_id = models.CharField(
         max_length=255,
         blank=True,
         null=True,
         db_index=True,
-        verbose_name=u"User ID",
+        verbose_name="User ID",
     )
     scenario = models.CharField(
         max_length=255,
@@ -75,11 +75,11 @@ class XBlockState(models.Model):
         db_index=True,
     )
     created = models.DateTimeField(default=now, db_index=True)
-    state = models.TextField(default=u"{}")
+    state = models.TextField(default="{}")
 
     # pylint: disable=missing-format-attribute
     def __repr__(self):
-        return u"<XBlockState id={xb_state.id} " \
+        return "<XBlockState id={xb_state.id} " \
             "scope={xb_state.scope} " \
             "scope_id={xb_state.scope_id} " \
             "user_id={xb_state.user_id} " \

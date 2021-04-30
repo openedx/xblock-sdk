@@ -28,7 +28,7 @@ def add_xml_scenario(scname, description, xml):
     """
     Add a scenario defined in XML.
     """
-    assert scname not in SCENARIOS, u"Already have a %r scenario" % scname
+    assert scname not in SCENARIOS, "Already have a %r scenario" % scname
     runtime = WorkbenchRuntime()
 
     # WorkbenchRuntime has an id_generator, but most runtimes won't
@@ -59,7 +59,7 @@ def add_class_scenarios(class_name, cls, fail_silently=True):
             except Exception:  # pylint:disable=broad-except
                 # don't allow a single bad scenario to block the whole workbench
                 if fail_silently:
-                    log.warning(u"Cannot load %s", desc, exc_info=True)
+                    log.warning("Cannot load %s", desc, exc_info=True)
                 else:
                     raise
 

@@ -2,7 +2,7 @@
 
 
 
-from mock import Mock
+from unittest.mock import Mock
 from xblock.runtime import DictKeyValueStore, KvsFieldData
 from xblock.test.tools import TestRuntime as Runtime  # Workaround for pytest trying to collect "TestRuntime" as a test
 
@@ -21,5 +21,5 @@ def test_view_counter_state():
     for i in range(5):
         generated_html = tester.student_view({})
         # Make sure the html fragment we're expecting appears in the body_html
-        assert '<span class="views">{0}</span>'.format(i + 1) in generated_html.body_html()
+        assert f'<span class="views">{i + 1}</span>' in generated_html.body_html()
         assert tester.views == (i + 1)

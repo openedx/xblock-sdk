@@ -103,7 +103,7 @@ class ProblemBlock(XBlock):
             frag = self.runtime.render_child(child, "problem_view", context)
             result.add_fragment_resources(frag)
             named_child_frags.append((child.name, frag))
-        result.add_css(u"""
+        result.add_css("""
             .problem {
                 border: solid 1px #888; padding: 3px;
             }
@@ -112,7 +112,7 @@ class ProblemBlock(XBlock):
             "problem.html",
             named_children=named_child_frags
         ))
-        result.add_javascript(u"""
+        result.add_javascript("""
             function ProblemBlock(runtime, element) {
 
                 function callIfExists(obj, fn) {
@@ -207,7 +207,7 @@ class ProblemBlock(XBlock):
                 elif arg_value.startswith("="):
                     kwargs[arg_name] = int(arg_value[1:])
                 else:
-                    raise ValueError(u"Couldn't interpret checker argument: %r" % arg_value)
+                    raise ValueError("Couldn't interpret checker argument: %r" % arg_value)
             result = checker.check(**kwargs)
             if checker.name:
                 check_results[checker.name] = result
@@ -346,7 +346,7 @@ class CheckerBlock(XBlock):
         Parse the XML for a checker. A few arguments are handled specially,
         then the rest get the usual treatment.
         """
-        block = super(CheckerBlock, cls).parse_xml(node, runtime, keys, id_generator)
+        block = super().parse_xml(node, runtime, keys, id_generator)
         block.set_arguments_from_xml(node)
         return block
 
@@ -368,13 +368,13 @@ class TextInputBlock(InputBlock):
 
     def student_view(self, context=None):  # pylint: disable=W0613
         """Returns default student view."""
-        return Fragment(u"<p>I can only appear inside problems.</p>")
+        return Fragment("<p>I can only appear inside problems.</p>")
 
     def problem_view(self, context=None):  # pylint: disable=W0613
         """Returns a view of the problem - a javascript text input field."""
-        html = u"<input type='text' name='input' value='{0}'><span class='message'></span>".format(self.student_input)
+        html = f"<input type='text' name='input' value='{self.student_input}'><span class='message'></span>"
         result = Fragment(html)
-        result.add_javascript(u"""
+        result.add_javascript("""
             function TextInputBlock(runtime, element) {
                 return {
                     submit: function() {
@@ -395,7 +395,7 @@ class TextInputBlock(InputBlock):
             try:
                 self.student_input = int(submission[0]['value'])
             except ValueError:
-                return {'error': u'"%s" is not an integer' % self.student_input}
+                return {'error': '"%s" is not an integer' % self.student_input}
         return None
 
 
@@ -426,7 +426,7 @@ class EqualityCheckerBlock(CheckerBlock):
         # Note the horror of mixed Python-Javascript data below...
         content = string.Template(self.content).substitute(**context)
         result = Fragment(
-            u"""
+            """
             <span class="mydata" data-attempted='{ecb.attempted}' data-correct='{correct}'>
                 {content}
                 <span class='indicator'></span>
@@ -449,7 +449,7 @@ class EqualityCheckerBlock(CheckerBlock):
                 self, 'public/images/incorrect-icon.png'),
         }
         result.add_resource(
-            u"""
+            """
             <script type="text/template" id="xblock-equality-template">
                 <% if (attempted !== "True") {{ %>
                     (Not attempted)
@@ -464,7 +464,7 @@ class EqualityCheckerBlock(CheckerBlock):
         )
 
         result.add_javascript(
-            u"""
+            """
             function EqualityCheckerBlock(runtime, element) {
                 var template = _.template($("#xblock-equality-template").html());
                 function render() {
@@ -513,11 +513,11 @@ class AttemptsScoreboardBlock(XBlock):
             num_problems = len(attempts)
             attempted = sum(attempts)
             if num_problems == 0:
-                content = u"There are no problems here..."
+                content = "There are no problems here..."
             elif attempted == num_problems:
-                content = u"Great! You attempted all %d problems!" % num_problems
+                content = "Great! You attempted all %d problems!" % num_problems
             else:
-                content = u"Hmm, you've only tried %d out of %d problems..." % (attempted, num_problems)
+                content = "Hmm, you've only tried %d out of %d problems..." % (attempted, num_problems)
         else:
-            content = u"I have nothing to live for! :("
+            content = "I have nothing to live for! :("
         return Fragment(content)

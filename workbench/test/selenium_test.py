@@ -22,7 +22,7 @@ class SeleniumTest(WebAppTest, StaticLiveServerTestCase):
     """
 
     def setUp(self):
-        super(SeleniumTest, self).setUp()
+        super().setUp()
 
         # Clear the in-memory key value store, the usage store, and whatever
         # else needs to be cleared and re-initialized.

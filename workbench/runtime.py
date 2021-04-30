@@ -11,7 +11,7 @@ import logging
 from collections import defaultdict
 from datetime import datetime, timedelta
 
-from mock import Mock
+from unittest.mock import Mock
 from web_fragments.fragment import Fragment
 from xblock.core import XBlockAside
 from xblock.exceptions import NoSuchDefinition, NoSuchUsage
@@ -20,7 +20,7 @@ from xblock.runtime import IdGenerator, IdReader, KeyValueStore, KvsFieldData, N
 
 import django.utils.translation
 from django.conf import settings
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.template import loader as django_template_loader
 from django.templatetags.static import static
 from django.urls import reverse
@@ -34,6 +34,7 @@ except ImportError:
     import json
 
 log = logging.getLogger(__name__)
+User = get_user_model()
 
 
 class WorkbenchDjangoKeyValueStore(KeyValueStore):
@@ -118,6 +119,7 @@ class ScenarioIdManager(IdReader, IdGenerator):
         self._aside_defs = {}
         self._aside_usages = {}
         self.scenario = ""
+        super().__init__()
 
     def clear(self):
         """Remove all entries."""
@@ -132,7 +134,7 @@ class ScenarioIdManager(IdReader, IdGenerator):
     def create_usage(self, def_id):
         """Make a usage, storing its definition id."""
         id_seq = self._def_ids_to_id_seq[def_id]
-        usage_id = "{}.u{}".format(def_id, next(id_seq))
+        usage_id = f"{def_id}.u{next(id_seq)}"
         self._usages[usage_id] = def_id
 
         return usage_id
@@ -141,17 +143,17 @@ class ScenarioIdManager(IdReader, IdGenerator):
         """Get a definition_id by its usage id."""
         try:
             return self._usages[usage_id]
-        except KeyError:
-            raise NoSuchUsage(repr(usage_id))
+        except KeyError as ex:
+            raise NoSuchUsage(repr(usage_id)) from ex
 
     def create_definition(self, block_type, slug=None):
         """Make a definition_id, storing its block type."""
-        prefix = "{}.{}".format(self.scenario, block_type)
+        prefix = f"{self.scenario}.{block_type}"
         if slug:
             prefix += "." + slug
 
         id_seq = self._block_types_to_id_seq[prefix]
-        def_id = "{}.d{}".format(prefix, next(id_seq))
+        def_id = f"{prefix}.d{next(id_seq)}"
         self._definitions[def_id] = block_type
 
         return def_id
@@ -160,13 +162,13 @@ class ScenarioIdManager(IdReader, IdGenerator):
         """Get a block_type by its definition id."""
         try:
             return self._definitions[def_id]
-        except KeyError:
-            raise NoSuchDefinition(repr(def_id))
+        except KeyError as ex:
+            raise NoSuchDefinition(repr(def_id)) from ex
 
     def create_aside(self, definition_id, usage_id, aside_type):
         """Create asides"""
-        aside_def_id = u"{}.{}".format(definition_id, aside_type)
-        aside_usage_id = u"{}.{}".format(usage_id, aside_type)
+        aside_def_id = f"{definition_id}.{aside_type}"
+        aside_usage_id = f"{usage_id}.{aside_type}"
         self._aside_defs[aside_def_id] = (definition_id, aside_type)
         self._aside_usages[aside_usage_id] = (usage_id, aside_type)
         return aside_def_id, aside_usage_id
@@ -180,8 +182,8 @@ class ScenarioIdManager(IdReader, IdGenerator):
         """
         try:
             return self._aside_defs[aside_id][1]
-        except KeyError:
-            raise NoSuchDefinition(aside_id)
+        except KeyError as ex:
+            raise NoSuchDefinition(aside_id) from ex
 
     def get_aside_type_from_usage(self, aside_id):
         """
@@ -192,8 +194,8 @@ class ScenarioIdManager(IdReader, IdGenerator):
         """
         try:
             return self._aside_usages[aside_id][1]
-        except KeyError:
-            raise NoSuchUsage(aside_id)
+        except KeyError as ex:
+            raise NoSuchUsage(aside_id) from ex
 
     def get_usage_id_from_aside(self, aside_id):
         """
@@ -204,8 +206,8 @@ class ScenarioIdManager(IdReader, IdGenerator):
         """
         try:
             return self._aside_usages[aside_id][0]
-        except KeyError:
-            raise NoSuchUsage(aside_id)
+        except KeyError as ex:
+            raise NoSuchUsage(aside_id) from ex
 
     def get_definition_id_from_aside(self, aside_id):
         """
@@ -216,8 +218,8 @@ class ScenarioIdManager(IdReader, IdGenerator):
         """
         try:
             return self._aside_defs[aside_id][0]
-        except KeyError:
-            raise NoSuchDefinition(aside_id)
+        except KeyError as ex:
+            raise NoSuchDefinition(aside_id) from ex
 
     # Workbench specific functionality
     def set_scenario(self, scenario):
@@ -262,7 +264,7 @@ class WorkbenchRuntime(Runtime):
             if service is not None:
                 services[service_name] = service
 
-        super(WorkbenchRuntime, self).__init__(ID_MANAGER, services=services)
+        super().__init__(ID_MANAGER, services=services)
         self.id_generator = ID_MANAGER
         self.user_id = user_id
 
@@ -303,20 +305,20 @@ class WorkbenchRuntime(Runtime):
             block.graceperiod = timedelta(seconds=0)
             block.category = 'chapter'
         except AttributeError:
-            log.exception(u'Unable to patch xblock, Attributes are protected.')
+            log.exception('Unable to patch xblock, Attributes are protected.')
 
     def handle(self, block, handler_name, request, suffix=''):
         """Patch the XBlock with required fields."""
         self._patch_xblock(block)
-        return super(WorkbenchRuntime, self).handle(block, handler_name, request, suffix)
+        return super().handle(block, handler_name, request, suffix)
 
     def render(self, block, view_name, context=None):
         """Renders using parent class render() method"""
         self._patch_xblock(block)
         try:
-            return super(WorkbenchRuntime, self).render(block, view_name, context)
+            return super().render(block, view_name, context)
         except NoSuchViewError:
-            return Fragment(u"<i>No such view: %s on %s</i>"
+            return Fragment("<i>No such view: %s on %s</i>"
                             % (view_name, make_safe_for_html(repr(block))))
 
     # TODO: [rocha] runtime should not provide this, each xblock
@@ -330,7 +332,7 @@ class WorkbenchRuntime(Runtime):
         """
         Add javascript to the wrapped element
         """
-        wrapped = super(WorkbenchRuntime, self)._wrap_ele(block, view, frag, extra_data)
+        wrapped = super()._wrap_ele(block, view, frag, extra_data)
         wrapped.add_resource_url(
             self.resource_url('js/vendor/jquery.min.js'),
             'application/javascript',
@@ -349,9 +351,9 @@ class WorkbenchRuntime(Runtime):
         # Be sure this really is a handler.
         func = getattr(block, handler_name, None)
         if not func:
-            raise ValueError(u"{!r} is not a function name".format(handler_name))
+            raise ValueError(f"{handler_name!r} is not a function name")
         if not getattr(func, "_is_xblock_handler", False):
-            raise ValueError(u"{!r} is not a handler name".format(handler_name))
+            raise ValueError(f"{handler_name!r} is not a handler name")
 
         if thirdparty:
             url_base = "unauth_handler"
@@ -366,7 +368,7 @@ class WorkbenchRuntime(Runtime):
 
         has_query = False
         if not thirdparty:
-            url += "?student={student}".format(student=block.scope_ids.user_id)
+            url += f"?student={block.scope_ids.user_id}"
             has_query = True
         if query:
             url += "&" if has_query else "?"
@@ -384,7 +386,7 @@ class WorkbenchRuntime(Runtime):
     def publish(self, block, event_type, event_data):
         """Mocks a publish event by logging args"""
         log.info(
-            u"XBlock event %s for %s (usage_id=%s):",
+            "XBlock event %s for %s (usage_id=%s):",
             event_type,
             block.scope_ids.block_type,
             block.scope_ids.usage_id
@@ -395,7 +397,7 @@ class WorkbenchRuntime(Runtime):
         """Return a BlockSet query on block"""
         return _BlockSet(self, [block])
 
-    def _load_service(self, service_path):
+    def _load_service(self, service_path):  # pylint: disable=inconsistent-return-statements
         """Load and and initialize a service instance.
 
         `service_path` is a Python module path of the form
@@ -412,9 +414,9 @@ class WorkbenchRuntime(Runtime):
             service_instance.runtime = self
             return service_instance
         except (ImportError, ValueError, AttributeError):
-            log.info(u'Could not find service class defined at "%s"', service_path)
+            log.info('Could not find service class defined at "%s"', service_path)
         except:  # pylint: disable=bare-except
-            log.exception(u'Could not initialize service defined at "%s"', service_path)
+            log.exception('Could not initialize service defined at "%s"', service_path)
 
 
 class _BlockSet:
@@ -517,10 +519,10 @@ class WorkBenchUserService(UserService):
         user = XBlockUser(
             is_current_user=True,
             emails=["user@example.com"],
-            full_name=u"XBlock User ({})".format(uid),
+            full_name=f"XBlock User ({uid})",
         )
         user.opt_attrs['xblock-workbench.user_id'] = uid
-        super(WorkBenchUserService, self).__init__(user=user)
+        super().__init__(user=user)
 
     def get_current_user(self):
         """

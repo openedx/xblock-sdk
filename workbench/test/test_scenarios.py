@@ -15,7 +15,7 @@ from django.urls import reverse
 from workbench import scenarios
 from workbench.runtime_util import reset_global_state
 
-pytestmark = pytest.mark.django_db  # pylint: disable=invalid-name
+pytestmark = pytest.mark.django_db
 
 
 class ScenarioTest(unittest.TestCase):
@@ -23,7 +23,7 @@ class ScenarioTest(unittest.TestCase):
     Test the scenario support.
     """
     def setUp(self):
-        super(ScenarioTest, self).setUp()
+        super().setUp()
         reset_global_state()
 
     def test_all_scenarios(self):
@@ -76,4 +76,4 @@ class ScenarioTest(unittest.TestCase):
             html = lxml.html.fromstring(response.content)
             for vertical_tag in html.xpath('//div[@class="vertical"]'):
                 # No vertical tag should be empty.
-                assert list(vertical_tag), u"Scenario {}: Empty <vertical> shouldn't happen!".format(scenario_id)
+                assert list(vertical_tag), f"Scenario {scenario_id}: Empty <vertical> shouldn't happen!"
