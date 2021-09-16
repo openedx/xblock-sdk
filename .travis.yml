@@ -8,7 +8,8 @@ env:
   - TOXENV=django30
   global:
   - DOCKER_USERNAME=edxbuilder
-  - secure: L3RJviQKzXNRYpsnO4Nt8VgHMiKZxkvZP7omKn3bMXNk3h3K6z9IluaHA8Icec7ZA+bStQxjNHd+OG9MqsixbfAlVFw6Iw9UZAcDHmK8pLxSzecSojiGMSWH+AndDnHO0qMUPJNawV7mVinaf4r8FqjoTktL/eUkfWZkH6dBAiQ=
+  # encrypted DOCKER_PASSWORD
+  - secure: JWmtldloBZLU/+M3FlKaVGM9Kn3jMa4RTGGB84P2VIDMoCeKk6JBgdYLvt8LXx8bLV5/1JcBL+oNOWGWE7SL/AhfTKXwGq1FYdt9Nu8UqtscfIEbzBwT0MdLZtfOHqS7c7MP0ViKIcOcyj7o+vpuauJVx6MGgAzBhFH6QlVQLZU=
   - secure: ZAQze5XdSm8VEdmMdpXIxF8y163XbbnsDw+06ue5yYG41OGKcZW0u92CgzuKyjaamKJFPfST05ap9L/AxYjJ7A7bmYBUeMyMkIuHMPeJ1XOtMEtsb2x3hV5x2Z3kjxUCD/YYExDTvoGqcEbNamGZLkGPI+hJ+WXSGzw9OXqztF8=
 addons:
   firefox: 52.0.1
