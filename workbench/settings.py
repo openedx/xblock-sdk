@@ -231,3 +231,4 @@ try:
     from .private import *  # pylint: disable=wildcard-import,import-error,useless-suppression
 except ImportError:
     pass
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

@@ -1,6 +1,6 @@
 # Requirements for code quality checks
 
--c ../constraints.txt
+-c constraints.txt
 -r test.txt
 
 edx-lint                  # edX pylint rules and plugins

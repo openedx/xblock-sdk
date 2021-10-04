@@ -57,7 +57,7 @@ package_data.update(find_package_data("workbench", ["static", "templates", "test
 
 setup(
     name='xblock-sdk',
-    version='0.3.0',
+    version='0.4.0',
     description='XBlock SDK',
     packages=[
         'sample_xblocks',
@@ -73,6 +73,9 @@ setup(
         'Development Status :: 3 - Alpha',
         'Framework :: Django',
         'Framework :: Django :: 2.2',
+        'Framework :: Django :: 3.0',
+        'Framework :: Django :: 3.1',
+        'Framework :: Django :: 3.2',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',
         'Natural Language :: English',

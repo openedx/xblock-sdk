@@ -9,4 +9,5 @@
 # linking to it here is good.
 
 # Common constraints for edx repos
--c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
+-c common_constraints.txt
+
