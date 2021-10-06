@@ -4,6 +4,17 @@ Change history for XBlock SDK
 
 These are notable changes in XBlock.
 
+0.4.0
+-----
+* Added support for Django 3.0, Django 3.1 and Django 3.2 tests
+* Added GitHub CI to replace Travis
+
+0.3.0
+-----
+* Dropped support for Python 3.5
+* Upgraded Code To Python 3.8 Standards
+* Upgraded dependencies to Python 3.8
+
 0.2.0
 -----
 * Released on PyPI

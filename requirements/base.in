@@ -1,6 +1,6 @@
 # Pinned versions here match edx-platform versions, and should be upgraded frequently
 
--c ../constraints.txt
+-c constraints.txt
 
 boto
 cookiecutter

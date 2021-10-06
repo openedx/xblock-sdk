@@ -1,4 +1,5 @@
--c ../constraints.txt
+-c constraints.txt
+-r base.txt
 
 acid-xblock
 bok_choy==0.7.1

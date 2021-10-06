@@ -16,7 +16,7 @@ class DebuggingChildBlock(XBlock):
     """A simple gray box, to use as a child placeholder."""
     def fallback_view(self, view_name, context=None):  # pylint: disable=W0613
         """Provides a fallback view handler"""
-        frag = Fragment("<div class='debug_child'>%s<br>%s</div>" % (make_safe_for_html(repr(self)), view_name))
+        frag = Fragment(f"<div class='debug_child'>{make_safe_for_html(repr(self))}<br>{view_name}</div>")
         frag.add_css("""
             .debug_child {
                 background-color: grey;
