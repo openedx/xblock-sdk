@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     python3 \
     python3-dev \
+    python3-venv \
     python3-pip && \
     pip3 install --upgrade pip setuptools && \
     rm -rf /var/lib/apt/lists/*
@@ -14,9 +15,11 @@ RUN apt-get update && apt-get install -y \
 COPY . /usr/local/src/xblock-sdk
 WORKDIR /usr/local/src/xblock-sdk
 
-RUN ln -s /usr/bin/python3.8 /usr/bin/python && \
-    /usr/bin/python3 -m pip install --upgrade pip && \
-    pip install -r /usr/local/src/xblock-sdk/requirements/dev.txt
+ENV VIRTUAL_ENV=/venvs/xblock-sdk
+RUN python3.8 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+RUN pip install --upgrade pip && pip install -r /usr/local/src/xblock-sdk/requirements/dev.txt
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x -o /tmp/nodejs-setup && \
     /bin/bash /tmp/nodejs-setup && \
@@ -26,5 +29,5 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x -o /tmp/nodejs-setup && \
     make install
 
 EXPOSE 8000
-ENTRYPOINT ["python3", "manage.py"]
+ENTRYPOINT ["python", "manage.py"]
 CMD ["runserver", "0.0.0.0:8000"]
