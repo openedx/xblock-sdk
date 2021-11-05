@@ -9,6 +9,6 @@ mock
 pytest-django
 pytest-cov
 pytest-rerunfailures
-selenium==3.4.1           # Forcing this version fixes issues on Travis
+selenium==3.4.1           # Forcing this version fixes issues on CI
 tox                       # Virtualenv management for tests
 tox-battery               # Makes tox aware of requirements file changes

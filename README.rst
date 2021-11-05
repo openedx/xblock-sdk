@@ -243,7 +243,7 @@ You can discuss this code on the `edx-code Google Group`__ or in the
 
 __ https://groups.google.com/group/edx-code
 
-.. |build-status| image:: https://travis-ci.com/edx/xblock-sdk.svg?branch=master
-   :target: https://travis-ci.com/edx/xblock-sdk
+.. |build-status| image:: https://github.com/edx/xblock-sdk/workflows/Python%20CI/badge.svg?branch=master
+:target: https://github.com/edx/xblock-sdk/actions?query=workflow%3A%22Python+CI%22
 .. |coverage-status| image:: https://coveralls.io/repos/edx/xblock-sdk/badge.png
    :target: https://coveralls.io/r/edx/xblock-sdk
