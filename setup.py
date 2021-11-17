@@ -2,6 +2,7 @@
 
 import os
 import os.path
+import re
 
 from setuptools import setup
 
@@ -49,6 +50,21 @@ def load_requirements(*requirements_paths):
     return list(requirements)
 
 
+def get_version(*file_paths):
+    """
+    Extract the version string from the file at the given relative path fragments.
+    """
+    filename = os.path.join(os.path.dirname(__file__), *file_paths)
+    with open(filename, encoding='utf-8') as opened_file:
+        version_file = opened_file.read()
+        version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
+                                  version_file, re.M)
+    if version_match:
+        return version_match.group(1)
+    raise RuntimeError('Unable to find version string.')
+
+
+VERSION = get_version("workbench", "__init__.py")
 package_data = {}  # pylint: disable=invalid-name
 package_data.update(find_package_data("sample_xblocks.basic", ["public", "templates"]))
 package_data.update(find_package_data("sample_xblocks.thumbs", ["static"]))
@@ -57,7 +73,7 @@ package_data.update(find_package_data("workbench", ["static", "templates", "test
 
 setup(
     name='xblock-sdk',
-    version='0.4.0',
+    version=VERSION,
     description='XBlock SDK',
     packages=[
         'sample_xblocks',
