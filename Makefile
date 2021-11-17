@@ -95,7 +95,7 @@ selfcheck: ## check that the Makefile is well-formed
 	@echo "The Makefile is well-formed."
 
 docker_build:
-	docker-compose build
+	docker build . -t openedx/xblock-sdk:latest
 
 # devstack-themed shortcuts
 dev.up: # Starts all containers
