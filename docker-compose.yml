@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   xblock_sdk:
-    image: xblock-sdk
+    image: openedx/xblock-sdk
     container_name: edx.devstack.xblock-sdk
 
     build: .
