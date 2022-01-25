@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-.PHONY: clean help quality requirements selfcheck test test-all upgrade validate
+.PHONY: clean help quality requirements selfcheck test test-all upgrade validate check_keywords
 .PHONY: docker_build docker_auth docker_tag docker_push
 .DEFAULT_GOAL := help
 
@@ -124,3 +124,6 @@ docker_push: | docker_auth docker_tag ## push to docker hub
 	docker images
 	docker -l debug push "openedx/xblock-sdk:latest"
 	docker -l debug push "openedx/xblock-sdk:${GITHUB_SHA}"
+
+check_keywords: ## Scan the Django models in all installed apps in this project for restricted field names
+	python manage.py check_reserved_keywords --override_file db_keyword_overrides.yml

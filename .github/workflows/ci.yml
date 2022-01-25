@@ -13,7 +13,7 @@ jobs:
       matrix:
         os: [ ubuntu-20.04 ]
         python-version: [ '3.8' ]
-        toxenv: [ django22, django30, django31, django32 ]
+        toxenv: [ django22, django30, django31, django32, check_keywords]
     steps:
       - uses: actions/checkout@v2
 
