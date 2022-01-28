@@ -4,6 +4,13 @@ Change history for XBlock SDK
 
 These are notable changes in XBlock.
 
+0.5.0
+-----
+* Removed Django22, 30 and 31 support
+* Added Django40 support
+* Renamed CI job so that our modernizers work fine
+* Code changes related to things removed in Django40
+
 0.4.0
 -----
 * Added support for Django 3.0, Django 3.1 and Django 3.2 tests

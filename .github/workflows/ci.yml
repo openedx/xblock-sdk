@@ -2,46 +2,46 @@ name: Python CI
 on:
   push:
     branches:
-      - master
+    - master
   pull_request:
     branches:
-      - '**'
+    - '**'
 jobs:
-  python-tests:
+  run_tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ ubuntu-20.04 ]
-        python-version: [ '3.8' ]
-        toxenv: [ django22, django30, django31, django32 ]
+        os: [ubuntu-20.04]
+        python-version: ['3.8']
+        toxenv: [django32, django40]
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
-      - name: Python setup
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
+    - name: Python setup
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
 
-      - name: Set up test environment
-        run: |
-          sudo apt-get install xvfb
-          wget https://github.com/mozilla/geckodriver/releases/download/v0.15.0/geckodriver-v0.15.0-linux64.tar.gz
-          mkdir geckodriver
-          tar -xzf geckodriver-v0.15.0-linux64.tar.gz -C geckodriver
-          export PATH=$PATH:$(pwd)/geckodriver
-          export BOTO_CONFIG=/dev/null
+    - name: Set up test environment
+      run: |
+        sudo apt-get install xvfb
+        wget https://github.com/mozilla/geckodriver/releases/download/v0.15.0/geckodriver-v0.15.0-linux64.tar.gz
+        mkdir geckodriver
+        tar -xzf geckodriver-v0.15.0-linux64.tar.gz -C geckodriver
+        export PATH=$PATH:$(pwd)/geckodriver
+        export BOTO_CONFIG=/dev/null
 
-      - name: Install Requirements
-        run: |
-          pip install -r requirements/pip.txt
-          pip install -r requirements/ci.txt
+    - name: Install Requirements
+      run: |
+        pip install -r requirements/pip.txt
+        pip install -r requirements/ci.txt
 
-      - name: Run Tests
-        run: xvfb-run --server-args=-ac -- tox -e ${{ matrix.toxenv }}
+    - name: Run Tests
+      run: xvfb-run --server-args=-ac -- tox -e ${{ matrix.toxenv }}
 
-      - name: Upload coverage to CodeCov
-        if: matrix.python-version == '3.8' && matrix.toxenv == 'django32'
-        uses: codecov/codecov-action@v1
-        with:
-          file: ./coverage.xml
-          fail_ci_if_error: true
+    - name: Upload coverage to CodeCov
+      if: matrix.python-version == '3.8' && matrix.toxenv == 'django32'
+      uses: codecov/codecov-action@v1
+      with:
+        file: ./coverage.xml
+        fail_ci_if_error: true
