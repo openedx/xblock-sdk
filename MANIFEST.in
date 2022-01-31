@@ -5,3 +5,4 @@ include README.rst
 include requirements/base.in
 include requirements/test.in
 include requirements/test.txt
+include requirements/constraints.txt

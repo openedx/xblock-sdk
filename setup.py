@@ -6,7 +6,6 @@ import re
 
 from setuptools import setup
 
-
 def find_package_data(pkg, data_paths):
     """Generic function to find package_data for `pkg` under `root`."""
     data = []
@@ -29,6 +28,7 @@ def is_requirement(line):
     # Skip blank lines, comments, and editable installs
     return not (
         line == '' or
+        line.startswith('-c') or
         line.startswith('-r') or
         line.startswith('#') or
         line.startswith('-e') or
@@ -82,23 +82,19 @@ setup(
         'sample_xblocks.filethumbs',
         'workbench',
     ],
-    install_requires=[
-        "Django>=2.2",
-    ],
+    install_requires=load_requirements('requirements/base.in'),
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Framework :: Django',
-        'Framework :: Django :: 2.2',
-        'Framework :: Django :: 3.0',
-        'Framework :: Django :: 3.1',
         'Framework :: Django :: 3.2',
+        'Framework :: Django :: 4.0',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.8',
     ],
-    tests_require=load_requirements(f'{os.getcwd()}/requirements/test.txt'),
+    tests_require=load_requirements('requirements/test.txt'),
     entry_points={
         'xblock.v1': [
             # Basic XBlocks

@@ -10,14 +10,16 @@ appdirs==1.4.4
     # via
     #   -r requirements/base.txt
     #   fs
-arrow==1.2.0
+arrow==1.2.1
     # via
     #   -r requirements/base.txt
     #   jinja2-time
-attrs==21.2.0
+asgiref==3.5.0
+    # via
+    #   -r requirements/base.txt
+    #   django
+attrs==21.4.0
     # via pytest
-backports.entry-points-selectable==1.1.0
-    # via virtualenv
 binaryornot==0.4.4
     # via
     #   -r requirements/base.txt
@@ -26,16 +28,16 @@ bok_choy==0.7.1
     # via -r requirements/test.in
 boto==2.49.0
     # via -r requirements/base.txt
-boto3==1.18.54
+boto3==1.20.41
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.21.54
+botocore==1.23.41
     # via
     #   -r requirements/base.txt
     #   boto3
     #   s3transfer
-certifi==2021.5.30
+certifi==2021.10.8
     # via
     #   -r requirements/base.txt
     #   requests
@@ -43,35 +45,35 @@ chardet==4.0.0
     # via
     #   -r requirements/base.txt
     #   binaryornot
-charset-normalizer==2.0.6
+charset-normalizer==2.0.10
     # via
     #   -r requirements/base.txt
     #   requests
-click==8.0.1
+click==8.0.3
     # via
     #   -r requirements/base.txt
     #   cookiecutter
 cookiecutter==1.7.3
     # via -r requirements/base.txt
-coverage[toml]==6.0
+coverage[toml]==6.2
     # via
     #   -r requirements/test.in
     #   pytest-cov
 ddt==1.4.4
     # via -r requirements/test.in
-distlib==0.3.3
+distlib==0.3.4
     # via virtualenv
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/base.txt
     #   django-pyfs
-django-pyfs==3.1.0
+django-pyfs==3.2.0
     # via -r requirements/base.txt
-filelock==3.3.0
+filelock==3.4.2
     # via
     #   tox
     #   virtualenv
-fs==2.4.13
+fs==2.4.14
     # via
     #   -r requirements/base.txt
     #   django-pyfs
@@ -81,13 +83,13 @@ fs-s3fs==1.1.1
     # via
     #   -r requirements/base.txt
     #   django-pyfs
-idna==3.2
+idna==3.3
     # via
     #   -r requirements/base.txt
     #   requests
 iniconfig==1.1.1
     # via pytest
-jinja2==3.0.2
+jinja2==3.0.3
     # via
     #   -r requirements/base.txt
     #   cookiecutter
@@ -106,11 +108,11 @@ lazy==1.4
     #   -r requirements/base.txt
     #   acid-xblock
     #   bok-choy
-lxml==4.6.3
+lxml==4.7.1
     # via
     #   -r requirements/base.txt
     #   xblock
-mako==1.1.5
+mako==1.1.6
     # via acid-xblock
 markupsafe==2.0.1
     # via
@@ -124,13 +126,13 @@ needle==0.5.0
     # via bok-choy
 nose==1.3.7
     # via needle
-packaging==21.0
+packaging==21.3
     # via
     #   pytest
     #   tox
-pillow==8.3.2
+pillow==9.0.0
     # via needle
-platformdirs==2.4.0
+platformdirs==2.4.1
     # via virtualenv
 pluggy==1.0.0
     # via
@@ -140,11 +142,11 @@ poyo==0.5.0
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-py==1.10.0
+py==1.11.0
     # via
     #   pytest
     #   tox
-pyparsing==2.4.7
+pyparsing==3.0.7
     # via packaging
 pypng==0.0.21
     # via -r requirements/base.txt
@@ -155,7 +157,7 @@ pytest==6.2.5
     #   pytest-rerunfailures
 pytest-cov==3.0.0
     # via -r requirements/test.in
-pytest-django==4.4.0
+pytest-django==4.5.2
     # via -r requirements/test.in
 pytest-rerunfailures==10.2
     # via -r requirements/test.in
@@ -175,11 +177,11 @@ pytz==2021.3
     #   django
     #   fs
     #   xblock
-pyyaml==5.4.1
+pyyaml==6.0
     # via
     #   -r requirements/base.txt
     #   xblock
-requests==2.26.0
+requests==2.27.1
     # via
     #   -r requirements/base.txt
     #   cookiecutter
@@ -192,7 +194,7 @@ selenium==3.4.1
     #   -r requirements/test.in
     #   bok-choy
     #   needle
-simplejson==3.17.5
+simplejson==3.17.6
     # via -r requirements/base.txt
 six==1.16.0
     # via
@@ -216,22 +218,22 @@ toml==0.10.2
     # via
     #   pytest
     #   tox
-tomli==1.2.1
+tomli==2.0.0
     # via coverage
-tox==3.24.4
+tox==3.24.5
     # via
     #   -r requirements/test.in
     #   tox-battery
 tox-battery==0.6.1
     # via -r requirements/test.in
-urllib3==1.26.7
+urllib3==1.26.8
     # via
     #   -r requirements/base.txt
     #   botocore
     #   requests
-virtualenv==20.8.1
+virtualenv==20.13.0
     # via tox
-web-fragments==1.1.0
+web-fragments==2.0.0
     # via
     #   -r requirements/base.txt
     #   xblock
