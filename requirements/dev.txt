@@ -13,17 +13,17 @@ appdirs==1.4.4
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs
-arrow==1.2.1
+arrow==1.2.2
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   jinja2-time
-asgiref==3.5.0
+asgiref==3.5.2
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   django
-astroid==2.9.3
+astroid==2.11.5
     # via
     #   pylint
     #   pylint-celery
@@ -36,7 +36,7 @@ binaryornot==0.4.4
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-bok_choy==0.7.1
+bok-choy==0.7.1
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -44,18 +44,18 @@ boto==2.49.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-boto3==1.20.41
+boto3==1.23.10
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.23.41
+botocore==1.26.10
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   boto3
     #   s3transfer
-certifi==2021.10.8
+certifi==2022.5.18.1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -65,12 +65,12 @@ chardet==4.0.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   binaryornot
-charset-normalizer==2.0.10
+charset-normalizer==2.0.12
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   requests
-click==8.0.3
+click==8.1.3
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -78,28 +78,30 @@ click==8.0.3
     #   code-annotations
     #   cookiecutter
     #   edx-lint
-click-log==0.3.2
+click-log==0.4.0
     # via edx-lint
-code-annotations==1.2.0
+code-annotations==1.3.0
     # via edx-lint
 cookiecutter==1.7.3
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-coverage[toml]==6.2
+coverage[toml]==6.4
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
     #   pytest-cov
-ddt==1.4.4
+ddt==1.5.0
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
+dill==0.3.5.1
+    # via pylint
 distlib==0.3.4
     # via
     #   -r requirements/test.txt
     #   virtualenv
-django==3.2.11
+django==3.2.13
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/base.txt
@@ -109,14 +111,14 @@ django-pyfs==3.2.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-edx-lint==5.2.1
+edx-lint==5.2.2
     # via -r requirements/quality.in
-filelock==3.4.2
+filelock==3.7.0
     # via
     #   -r requirements/test.txt
     #   tox
     #   virtualenv
-fs==2.4.14
+fs==2.4.16
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -141,7 +143,7 @@ isort==5.10.1
     # via
     #   -r requirements/quality.in
     #   pylint
-jinja2==3.0.3
+jinja2==3.1.2
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -153,7 +155,7 @@ jinja2-time==0.2.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-jmespath==0.10.0
+jmespath==1.0.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -167,23 +169,23 @@ lazy==1.4
     #   bok-choy
 lazy-object-proxy==1.7.1
     # via astroid
-lxml==4.7.1
+lxml==4.8.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   xblock
-mako==1.1.6
+mako==1.2.0
     # via
     #   -r requirements/test.txt
     #   acid-xblock
-markupsafe==2.0.1
+markupsafe==2.1.1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   jinja2
     #   mako
     #   xblock
-mccabe==0.6.1
+mccabe==0.7.0
     # via pylint
 mock==4.0.3
     # via
@@ -202,13 +204,13 @@ packaging==21.3
     #   -r requirements/test.txt
     #   pytest
     #   tox
-pbr==5.8.0
+pbr==5.9.0
     # via stevedore
-pillow==9.0.0
+pillow==9.1.1
     # via
     #   -r requirements/test.txt
     #   needle
-platformdirs==2.4.1
+platformdirs==2.5.2
     # via
     #   -r requirements/test.txt
     #   pylint
@@ -232,7 +234,7 @@ pycodestyle==2.8.0
     # via -r requirements/quality.in
 pydocstyle==6.1.1
     # via -r requirements/quality.in
-pylint==2.12.2
+pylint==2.13.9
     # via
     #   edx-lint
     #   pylint-celery
@@ -240,13 +242,13 @@ pylint==2.12.2
     #   pylint-plugin-utils
 pylint-celery==0.3
     # via edx-lint
-pylint-django==2.5.0
+pylint-django==2.5.3
     # via edx-lint
 pylint-plugin-utils==0.7
     # via
     #   pylint-celery
     #   pylint-django
-pyparsing==3.0.7
+pyparsing==3.0.9
     # via
     #   -r requirements/test.txt
     #   packaging
@@ -254,7 +256,7 @@ pypng==0.0.21
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-pytest==6.2.5
+pytest==7.1.2
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -279,18 +281,17 @@ python-dateutil==2.8.2
     #   arrow
     #   botocore
     #   xblock
-python-slugify==5.0.2
+python-slugify==6.1.2
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   code-annotations
     #   cookiecutter
-pytz==2021.3
+pytz==2022.1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   django
-    #   fs
     #   xblock
 pyyaml==6.0
     # via
@@ -303,7 +304,7 @@ requests==2.27.1
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-s3transfer==0.5.0
+s3transfer==0.5.2
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -347,14 +348,14 @@ text-unidecode==1.3
 toml==0.10.2
     # via
     #   -r requirements/test.txt
-    #   pylint
-    #   pytest
     #   tox
-tomli==2.0.0
+tomli==2.0.1
     # via
     #   -r requirements/test.txt
     #   coverage
-tox==3.24.5
+    #   pylint
+    #   pytest
+tox==3.25.0
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -363,17 +364,17 @@ tox-battery==0.6.1
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
-typing-extensions==4.0.1
+typing-extensions==4.2.0
     # via
     #   astroid
     #   pylint
-urllib3==1.26.8
+urllib3==1.26.9
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==20.13.0
+virtualenv==20.14.1
     # via
     #   -r requirements/test.txt
     #   tox
@@ -387,9 +388,9 @@ webob==1.8.7
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   xblock
-wrapt==1.13.3
+wrapt==1.14.1
     # via astroid
-xblock==1.5.1
+xblock==1.6.1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
