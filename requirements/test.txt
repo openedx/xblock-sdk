@@ -28,11 +28,11 @@ bok-choy==0.7.1
     # via -r requirements/test.in
 boto==2.49.0
     # via -r requirements/base.txt
-boto3==1.24.10
+boto3==1.24.12
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.27.10
+botocore==1.27.12
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -98,7 +98,7 @@ jinja2-time==0.2.0
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-jmespath==1.0.0
+jmespath==1.0.1
     # via
     #   -r requirements/base.txt
     #   boto3

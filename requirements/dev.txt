@@ -44,12 +44,12 @@ boto==2.49.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-boto3==1.24.10
+boto3==1.24.12
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.27.10
+botocore==1.27.12
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -155,7 +155,7 @@ jinja2-time==0.2.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-jmespath==1.0.0
+jmespath==1.0.1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -229,7 +229,7 @@ pycodestyle==2.8.0
     # via -r requirements/quality.in
 pydocstyle==6.1.1
     # via -r requirements/quality.in
-pylint==2.14.2
+pylint==2.14.3
     # via
     #   edx-lint
     #   pylint-celery
