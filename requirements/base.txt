@@ -14,15 +14,15 @@ binaryornot==0.4.4
     # via cookiecutter
 boto==2.49.0
     # via -r requirements/base.in
-boto3==1.24.10
+boto3==1.24.17
     # via fs-s3fs
-botocore==1.27.10
+botocore==1.27.17
     # via
     #   boto3
     #   s3transfer
 certifi==2022.6.15
     # via requests
-chardet==4.0.0
+chardet==5.0.0
     # via binaryornot
 charset-normalizer==2.0.12
     # via requests
@@ -54,7 +54,7 @@ jinja2==3.1.2
     #   jinja2-time
 jinja2-time==0.2.0
     # via cookiecutter
-jmespath==1.0.0
+jmespath==1.0.1
     # via
     #   boto3
     #   botocore

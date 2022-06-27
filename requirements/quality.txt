@@ -34,11 +34,11 @@ bok-choy==0.7.1
     # via -r requirements/test.txt
 boto==2.49.0
     # via -r requirements/test.txt
-boto3==1.24.10
+boto3==1.24.17
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.27.10
+botocore==1.27.17
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -47,7 +47,7 @@ certifi==2022.6.15
     # via
     #   -r requirements/test.txt
     #   requests
-chardet==4.0.0
+chardet==5.0.0
     # via
     #   -r requirements/test.txt
     #   binaryornot
@@ -126,7 +126,7 @@ jinja2-time==0.2.0
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-jmespath==1.0.0
+jmespath==1.0.1
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -194,7 +194,7 @@ pycodestyle==2.8.0
     # via -r requirements/quality.in
 pydocstyle==6.1.1
     # via -r requirements/quality.in
-pylint==2.14.2
+pylint==2.14.3
     # via
     #   edx-lint
     #   pylint-celery
@@ -312,7 +312,7 @@ urllib3==1.26.9
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==20.14.1
+virtualenv==20.15.0
     # via
     #   -r requirements/test.txt
     #   tox

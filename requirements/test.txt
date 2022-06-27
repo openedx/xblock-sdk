@@ -28,11 +28,11 @@ bok-choy==0.7.1
     # via -r requirements/test.in
 boto==2.49.0
     # via -r requirements/base.txt
-boto3==1.24.10
+boto3==1.24.17
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.27.10
+botocore==1.27.17
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -41,7 +41,7 @@ certifi==2022.6.15
     # via
     #   -r requirements/base.txt
     #   requests
-chardet==4.0.0
+chardet==5.0.0
     # via
     #   -r requirements/base.txt
     #   binaryornot
@@ -98,7 +98,7 @@ jinja2-time==0.2.0
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-jmespath==1.0.0
+jmespath==1.0.1
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -226,7 +226,7 @@ urllib3==1.26.9
     #   -r requirements/base.txt
     #   botocore
     #   requests
-virtualenv==20.14.1
+virtualenv==20.15.0
     # via tox
 web-fragments==2.0.0
     # via
