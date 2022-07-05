@@ -34,11 +34,11 @@ bok-choy==0.7.1
     # via -r requirements/test.txt
 boto==2.49.0
     # via -r requirements/test.txt
-boto3==1.24.10
+boto3==1.24.22
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.27.10
+botocore==1.27.22
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -47,11 +47,11 @@ certifi==2022.6.15
     # via
     #   -r requirements/test.txt
     #   requests
-chardet==4.0.0
+chardet==5.0.0
     # via
     #   -r requirements/test.txt
     #   binaryornot
-charset-normalizer==2.0.12
+charset-normalizer==2.1.0
     # via
     #   -r requirements/test.txt
     #   requests
@@ -126,7 +126,7 @@ jinja2-time==0.2.0
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-jmespath==1.0.0
+jmespath==1.0.1
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -138,11 +138,11 @@ lazy==1.4
     #   bok-choy
 lazy-object-proxy==1.7.1
     # via astroid
-lxml==4.9.0
+lxml==4.9.1
     # via
     #   -r requirements/test.txt
     #   xblock
-mako==1.2.0
+mako==1.2.1
     # via
     #   -r requirements/test.txt
     #   acid-xblock
@@ -171,7 +171,7 @@ packaging==21.3
     #   tox
 pbr==5.9.0
     # via stevedore
-pillow==9.1.1
+pillow==9.2.0
     # via
     #   -r requirements/test.txt
     #   needle
@@ -194,7 +194,7 @@ pycodestyle==2.8.0
     # via -r requirements/quality.in
 pydocstyle==6.1.1
     # via -r requirements/quality.in
-pylint==2.14.2
+pylint==2.14.4
     # via
     #   edx-lint
     #   pylint-celery
@@ -248,7 +248,7 @@ pyyaml==6.0
     #   code-annotations
     #   cookiecutter
     #   xblock
-requests==2.28.0
+requests==2.28.1
     # via
     #   -r requirements/test.txt
     #   cookiecutter
@@ -297,13 +297,13 @@ tomli==2.0.1
     #   pytest
 tomlkit==0.11.0
     # via pylint
-tox==3.25.0
+tox==3.25.1
     # via
     #   -r requirements/test.txt
     #   tox-battery
 tox-battery==0.6.1
     # via -r requirements/test.txt
-typing-extensions==4.2.0
+typing-extensions==4.3.0
     # via
     #   astroid
     #   pylint
@@ -312,7 +312,7 @@ urllib3==1.26.9
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==20.14.1
+virtualenv==20.15.1
     # via
     #   -r requirements/test.txt
     #   tox
