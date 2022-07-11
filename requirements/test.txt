@@ -28,11 +28,11 @@ bok-choy==0.7.1
     # via -r requirements/test.in
 boto==2.49.0
     # via -r requirements/base.txt
-boto3==1.24.22
+boto3==1.24.26
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.27.22
+botocore==1.27.26
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -221,7 +221,7 @@ tox==3.25.1
     #   tox-battery
 tox-battery==0.6.1
     # via -r requirements/test.in
-urllib3==1.26.9
+urllib3==1.26.10
     # via
     #   -r requirements/base.txt
     #   botocore
