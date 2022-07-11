@@ -18,7 +18,7 @@ asgiref==3.5.2
     # via
     #   -r requirements/test.txt
     #   django
-astroid==2.11.6
+astroid==2.11.7
     # via
     #   pylint
     #   pylint-celery
@@ -34,11 +34,11 @@ bok-choy==0.7.1
     # via -r requirements/test.txt
 boto==2.49.0
     # via -r requirements/test.txt
-boto3==1.24.22
+boto3==1.24.26
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.27.22
+botocore==1.27.26
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -80,7 +80,7 @@ distlib==0.3.4
     # via
     #   -r requirements/test.txt
     #   virtualenv
-django==3.2.13
+django==3.2.14
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/test.txt
@@ -295,7 +295,7 @@ tomli==2.0.1
     #   coverage
     #   pylint
     #   pytest
-tomlkit==0.11.0
+tomlkit==0.11.1
     # via pylint
 tox==3.25.1
     # via
@@ -307,7 +307,7 @@ typing-extensions==4.3.0
     # via
     #   astroid
     #   pylint
-urllib3==1.26.9
+urllib3==1.26.10
     # via
     #   -r requirements/test.txt
     #   botocore
