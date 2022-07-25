@@ -44,12 +44,12 @@ boto==2.49.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-boto3==1.24.26
+boto3==1.24.36
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.27.26
+botocore==1.27.36
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -86,7 +86,7 @@ cookiecutter==2.1.1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-coverage[toml]==6.4.1
+coverage[toml]==6.4.2
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -97,7 +97,7 @@ ddt==1.5.0
     #   -r requirements/test.txt
 dill==0.3.5.1
     # via pylint
-distlib==0.3.4
+distlib==0.3.5
     # via
     #   -r requirements/test.txt
     #   virtualenv
@@ -229,7 +229,7 @@ pycodestyle==2.8.0
     # via -r requirements/quality.in
 pydocstyle==6.1.1
     # via -r requirements/quality.in
-pylint==2.14.4
+pylint==2.14.5
     # via
     #   edx-lint
     #   pylint-celery
@@ -247,7 +247,7 @@ pyparsing==3.0.9
     # via
     #   -r requirements/test.txt
     #   packaging
-pypng==0.0.21
+pypng==0.20220715.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -333,7 +333,7 @@ sqlparse==0.4.2
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   django
-stevedore==3.5.0
+stevedore==4.0.0
     # via code-annotations
 text-unidecode==1.3
     # via
