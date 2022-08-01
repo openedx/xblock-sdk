@@ -18,7 +18,7 @@ asgiref==3.5.2
     # via
     #   -r requirements/base.txt
     #   django
-attrs==21.4.0
+attrs==22.1.0
     # via pytest
 binaryornot==0.4.4
     # via
@@ -28,11 +28,11 @@ bok-choy==0.7.1
     # via -r requirements/test.in
 boto==2.49.0
     # via -r requirements/base.txt
-boto3==1.24.26
+boto3==1.24.42
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.27.26
+botocore==1.27.42
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -55,13 +55,13 @@ click==8.1.3
     #   cookiecutter
 cookiecutter==2.1.1
     # via -r requirements/base.txt
-coverage[toml]==6.4.1
+coverage[toml]==6.4.2
     # via
     #   -r requirements/test.in
     #   pytest-cov
 ddt==1.5.0
     # via -r requirements/test.in
-distlib==0.3.4
+distlib==0.3.5
     # via virtualenv
     # via
     #   -c requirements/common_constraints.txt
@@ -144,7 +144,7 @@ py==1.11.0
     #   tox
 pyparsing==3.0.9
     # via packaging
-pypng==0.0.21
+pypng==0.20220715.0
     # via -r requirements/base.txt
 pytest==7.1.2
     # via
@@ -200,7 +200,6 @@ six==1.16.0
     #   fs-s3fs
     #   python-dateutil
     #   tox
-    #   virtualenv
 sqlparse==0.4.2
     # via
     #   -r requirements/base.txt
@@ -221,12 +220,12 @@ tox==3.25.1
     #   tox-battery
 tox-battery==0.6.1
     # via -r requirements/test.in
-urllib3==1.26.10
+urllib3==1.26.11
     # via
     #   -r requirements/base.txt
     #   botocore
     #   requests
-virtualenv==20.15.1
+virtualenv==20.16.2
     # via tox
 web-fragments==2.0.0
     # via
