@@ -44,12 +44,12 @@ boto==2.49.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-boto3==1.24.46
+boto3==1.24.51
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.27.46
+botocore==1.27.51
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -91,7 +91,7 @@ coverage[toml]==6.4.3
     #   -r requirements/test.in
     #   -r requirements/test.txt
     #   pytest-cov
-ddt==1.5.0
+ddt==1.6.0
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -113,7 +113,7 @@ django-pyfs==3.2.0
     #   -r requirements/test.txt
 edx-lint==5.2.4
     # via -r requirements/quality.in
-filelock==3.7.1
+filelock==3.8.0
     # via
     #   -r requirements/test.txt
     #   tox
@@ -204,7 +204,7 @@ packaging==21.3
     #   -r requirements/test.txt
     #   pytest
     #   tox
-pbr==5.9.0
+pbr==5.10.0
     # via stevedore
 pillow==9.2.0
     # via
@@ -282,7 +282,7 @@ python-slugify==6.1.2
     #   -r requirements/test.txt
     #   code-annotations
     #   cookiecutter
-pytz==2022.1
+pytz==2022.2.1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -349,7 +349,7 @@ tomli==2.0.1
     #   coverage
     #   pylint
     #   pytest
-tomlkit==0.11.2
+tomlkit==0.11.4
     # via pylint
 tox==3.25.1
     # via
