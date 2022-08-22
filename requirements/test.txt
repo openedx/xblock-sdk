@@ -28,11 +28,11 @@ bok-choy==0.7.1
     # via -r requirements/test.in
 boto==2.49.0
     # via -r requirements/base.txt
-boto3==1.24.46
+boto3==1.24.56
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.27.46
+botocore==1.27.56
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -45,7 +45,7 @@ chardet==5.0.0
     # via
     #   -r requirements/base.txt
     #   binaryornot
-charset-normalizer==2.1.0
+charset-normalizer==2.1.1
     # via
     #   -r requirements/base.txt
     #   requests
@@ -55,11 +55,11 @@ click==8.1.3
     #   cookiecutter
 cookiecutter==2.1.1
     # via -r requirements/base.txt
-coverage[toml]==6.4.3
+coverage[toml]==6.4.4
     # via
     #   -r requirements/test.in
     #   pytest-cov
-ddt==1.5.0
+ddt==1.6.0
     # via -r requirements/test.in
 distlib==0.3.5
     # via virtualenv
@@ -69,7 +69,7 @@ distlib==0.3.5
     #   django-pyfs
 django-pyfs==3.2.0
     # via -r requirements/base.txt
-filelock==3.7.1
+filelock==3.8.0
     # via
     #   tox
     #   virtualenv
@@ -167,7 +167,7 @@ python-slugify==6.1.2
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-pytz==2022.1
+pytz==2022.2.1
     # via
     #   -r requirements/base.txt
     #   django
