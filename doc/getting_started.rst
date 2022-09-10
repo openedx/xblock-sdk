@@ -41,7 +41,7 @@ Get the XBlock-SDK repository
 
 The XBlock code is on Github.  Get the code by cloning the XBlock-SDK repo::
 
-    $ git clone https://github.com/edx/xblock-sdk.git
+    $ git clone https://github.com/openedx/xblock-sdk.git
 
 This will create the XBlock-SDK directory in your current directory.
 
