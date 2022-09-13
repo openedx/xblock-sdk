@@ -204,7 +204,7 @@ There is a rich community of XBlock developers that have put together a large
 number of XBlocks that have been used in various contexts, mostly on the edx-platform.
 You can see examples of what that community has done in the `edx-platform wiki`_.
 
-.. _the README: https://github.com/edx/xblock-sdk/blob/master/sample_xblocks/README.rst
+.. _the README: https://github.com/openedx/xblock-sdk/blob/master/sample_xblocks/README.rst
 .. _edx-platform wiki: https://openedx.atlassian.net/wiki/spaces/COMM/pages/43385346/XBlocks+Directory
 
 
@@ -243,7 +243,7 @@ You can discuss this code on the `edx-code Google Group`__ or in the
 
 __ https://groups.google.com/group/edx-code
 
-.. |build-status| image:: https://github.com/edx/xblock-sdk/workflows/Python%20CI/badge.svg?branch=master
-:target: https://github.com/edx/xblock-sdk/actions?query=workflow%3A%22Python+CI%22
+.. |build-status| image:: https://github.com/openedx/xblock-sdk/workflows/Python%20CI/badge.svg?branch=master
+:target: https://github.com/openedx/xblock-sdk/actions?query=workflow%3A%22Python+CI%22
 .. |coverage-status| image:: https://coveralls.io/repos/edx/xblock-sdk/badge.png
    :target: https://coveralls.io/r/edx/xblock-sdk
