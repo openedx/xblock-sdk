@@ -14,13 +14,13 @@ binaryornot==0.4.4
     # via cookiecutter
 boto==2.49.0
     # via -r requirements/base.in
-boto3==1.24.66
+boto3==1.24.70
     # via fs-s3fs
-botocore==1.27.66
+botocore==1.27.70
     # via
     #   boto3
     #   s3transfer
-certifi==2022.6.15
+certifi==2022.6.15.1
     # via requests
 chardet==5.0.0
     # via binaryornot
