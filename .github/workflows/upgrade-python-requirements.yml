@@ -1,4 +1,4 @@
-name: Upgrade Python Requirements
+name: Upgrade Requirements
 
 on:
   schedule:
