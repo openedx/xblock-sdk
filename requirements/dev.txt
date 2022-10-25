@@ -101,7 +101,7 @@ distlib==0.3.6
     # via
     #   -r requirements/test.txt
     #   virtualenv
-django==3.2.15
+django==3.2.16
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/base.txt
