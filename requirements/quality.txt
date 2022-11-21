@@ -18,7 +18,7 @@ asgiref==3.5.2
     # via
     #   -r requirements/test.txt
     #   django
-astroid==2.12.9
+astroid==2.12.13
     # via
     #   pylint
     #   pylint-celery
@@ -34,16 +34,16 @@ bok-choy==0.7.1
     # via -r requirements/test.txt
 boto==2.49.0
     # via -r requirements/test.txt
-boto3==1.24.70
+boto3==1.26.13
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.27.70
+botocore==1.29.13
     # via
     #   -r requirements/test.txt
     #   boto3
     #   s3transfer
-certifi==2022.6.15.1
+certifi==2022.9.24
     # via
     #   -r requirements/test.txt
     #   requests
@@ -68,27 +68,31 @@ code-annotations==1.3.0
     # via edx-lint
 cookiecutter==2.1.1
     # via -r requirements/test.txt
-coverage[toml]==6.4.4
+coverage[toml]==6.5.0
     # via
     #   -r requirements/test.txt
     #   pytest-cov
 ddt==1.6.0
     # via -r requirements/test.txt
-dill==0.3.5.1
+dill==0.3.6
     # via pylint
 distlib==0.3.6
     # via
     #   -r requirements/test.txt
     #   virtualenv
-django==3.2.15
+django==3.2.16
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/test.txt
     #   django-pyfs
 django-pyfs==3.2.0
     # via -r requirements/test.txt
-edx-lint==5.2.5
+edx-lint==5.3.0
     # via -r requirements/quality.in
+exceptiongroup==1.0.4
+    # via
+    #   -r requirements/test.txt
+    #   pytest
 filelock==3.8.0
     # via
     #   -r requirements/test.txt
@@ -104,7 +108,7 @@ fs-s3fs==1.1.1
     # via
     #   -r requirements/test.txt
     #   django-pyfs
-idna==3.3
+idna==3.4
     # via
     #   -r requirements/test.txt
     #   requests
@@ -131,18 +135,18 @@ jmespath==1.0.1
     #   -r requirements/test.txt
     #   boto3
     #   botocore
-lazy==1.4
+lazy==1.5
     # via
     #   -r requirements/test.txt
     #   acid-xblock
     #   bok-choy
-lazy-object-proxy==1.7.1
+lazy-object-proxy==1.8.0
     # via astroid
 lxml==4.9.1
     # via
     #   -r requirements/test.txt
     #   xblock
-mako==1.2.2
+mako==1.2.4
     # via
     #   -r requirements/test.txt
     #   acid-xblock
@@ -169,13 +173,13 @@ packaging==21.3
     #   -r requirements/test.txt
     #   pytest
     #   tox
-pbr==5.10.0
+pbr==5.11.0
     # via stevedore
-pillow==9.2.0
+pillow==9.3.0
     # via
     #   -r requirements/test.txt
     #   needle
-platformdirs==2.5.2
+platformdirs==2.5.4
     # via
     #   -r requirements/test.txt
     #   pylint
@@ -188,13 +192,12 @@ pluggy==1.0.0
 py==1.11.0
     # via
     #   -r requirements/test.txt
-    #   pytest
     #   tox
 pycodestyle==2.9.1
     # via -r requirements/quality.in
 pydocstyle==6.1.1
     # via -r requirements/quality.in
-pylint==2.15.2
+pylint==2.15.6
     # via
     #   edx-lint
     #   pylint-celery
@@ -214,13 +217,13 @@ pyparsing==3.0.9
     #   packaging
 pypng==0.20220715.0
     # via -r requirements/test.txt
-pytest==7.1.3
+pytest==7.2.0
     # via
     #   -r requirements/test.txt
     #   pytest-cov
     #   pytest-django
     #   pytest-rerunfailures
-pytest-cov==3.0.0
+pytest-cov==4.0.0
     # via -r requirements/test.txt
 pytest-django==4.5.2
     # via -r requirements/test.txt
@@ -232,12 +235,12 @@ python-dateutil==2.8.2
     #   arrow
     #   botocore
     #   xblock
-python-slugify==6.1.2
+python-slugify==7.0.0
     # via
     #   -r requirements/test.txt
     #   code-annotations
     #   cookiecutter
-pytz==2022.2.1
+pytz==2022.6
     # via
     #   -r requirements/test.txt
     #   django
@@ -261,7 +264,7 @@ selenium==3.4.1
     #   -r requirements/test.txt
     #   bok-choy
     #   needle
-simplejson==3.17.6
+simplejson==3.18.0
     # via -r requirements/test.txt
 six==1.16.0
     # via
@@ -274,11 +277,11 @@ six==1.16.0
     #   tox
 snowballstemmer==2.2.0
     # via pydocstyle
-sqlparse==0.4.2
+sqlparse==0.4.3
     # via
     #   -r requirements/test.txt
     #   django
-stevedore==4.0.0
+stevedore==4.1.1
     # via code-annotations
 text-unidecode==1.3
     # via
@@ -291,15 +294,15 @@ tomli==2.0.1
     #   pylint
     #   pytest
     #   tox
-tomlkit==0.11.4
+tomlkit==0.11.6
     # via pylint
-tox==3.26.0
+tox==3.27.1
     # via
     #   -r requirements/test.txt
     #   tox-battery
 tox-battery==0.6.1
     # via -r requirements/test.txt
-typing-extensions==4.3.0
+typing-extensions==4.4.0
     # via
     #   astroid
     #   pylint
@@ -308,7 +311,7 @@ urllib3==1.26.12
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==20.16.5
+virtualenv==20.16.7
     # via
     #   -r requirements/test.txt
     #   tox

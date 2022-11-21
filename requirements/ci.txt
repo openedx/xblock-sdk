@@ -4,13 +4,13 @@
 #
 #    make upgrade
 #
-certifi==2022.6.15.1
+certifi==2022.9.24
     # via requests
 charset-normalizer==2.1.1
     # via requests
 codecov==2.1.12
     # via -r requirements/ci.in
-coverage==6.4.4
+coverage==6.5.0
     # via codecov
 distlib==0.3.6
     # via virtualenv
@@ -18,11 +18,11 @@ filelock==3.8.0
     # via
     #   tox
     #   virtualenv
-idna==3.3
+idna==3.4
     # via requests
 packaging==21.3
     # via tox
-platformdirs==2.5.2
+platformdirs==2.5.4
     # via virtualenv
 pluggy==1.0.0
     # via tox
@@ -36,7 +36,7 @@ six==1.16.0
     # via tox
 tomli==2.0.1
     # via tox
-tox==3.26.0
+tox==3.27.1
     # via
     #   -r requirements/ci.in
     #   tox-battery
@@ -44,5 +44,5 @@ tox-battery==0.6.1
     # via -r requirements/ci.in
 urllib3==1.26.12
     # via requests
-virtualenv==20.16.5
+virtualenv==20.16.7
     # via tox
