@@ -10,7 +10,7 @@ charset-normalizer==2.1.1
     # via requests
 codecov==2.1.12
     # via -r requirements/ci.in
-coverage==6.5.0
+coverage==7.0.0
     # via codecov
 distlib==0.3.6
     # via virtualenv
@@ -34,7 +34,7 @@ six==1.16.0
     # via tox
 tomli==2.0.1
     # via tox
-tox==3.27.1
+tox==3.28.0
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/ci.in
