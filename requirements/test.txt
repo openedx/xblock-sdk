@@ -14,11 +14,11 @@ arrow==1.2.3
     # via
     #   -r requirements/base.txt
     #   jinja2-time
-asgiref==3.5.2
+asgiref==3.6.0
     # via
     #   -r requirements/base.txt
     #   django
-attrs==22.1.0
+attrs==22.2.0
     # via pytest
 binaryornot==0.4.4
     # via
@@ -28,11 +28,11 @@ bok-choy==0.7.1
     # via -r requirements/test.in
 boto==2.49.0
     # via -r requirements/base.txt
-boto3==1.26.27
+boto3==1.26.37
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.29.27
+botocore==1.29.37
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -55,7 +55,7 @@ click==8.1.3
     #   cookiecutter
 cookiecutter==2.1.1
     # via -r requirements/base.txt
-coverage[toml]==6.5.0
+coverage[toml]==7.0.1
     # via
     #   -r requirements/test.in
     #   pytest-cov
@@ -69,7 +69,7 @@ distlib==0.3.6
     #   django-pyfs
 django-pyfs==3.2.0
     # via -r requirements/base.txt
-exceptiongroup==1.0.4
+exceptiongroup==1.1.0
     # via pytest
 filelock==3.8.2
     # via
@@ -110,7 +110,7 @@ lazy==1.5
     #   -r requirements/base.txt
     #   acid-xblock
     #   bok-choy
-lxml==4.9.1
+lxml==4.9.2
     # via
     #   -r requirements/base.txt
     #   xblock
@@ -166,7 +166,7 @@ python-slugify==7.0.0
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-pytz==2022.6
+pytz==2022.7
     # via
     #   -r requirements/base.txt
     #   django
@@ -212,7 +212,7 @@ tomli==2.0.1
     #   coverage
     #   pytest
     #   tox
-tox==3.27.1
+tox==3.28.0
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/test.in
