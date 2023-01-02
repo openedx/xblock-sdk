@@ -18,7 +18,7 @@ arrow==1.2.3
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   jinja2-time
-asgiref==3.5.2
+asgiref==3.6.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -27,7 +27,7 @@ astroid==2.12.13
     # via
     #   pylint
     #   pylint-celery
-attrs==22.1.0
+attrs==22.2.0
     # via
     #   -r requirements/test.txt
     #   pytest
@@ -44,12 +44,12 @@ boto==2.49.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-boto3==1.26.27
+boto3==1.26.41
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.29.27
+botocore==1.29.41
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -86,7 +86,7 @@ cookiecutter==2.1.1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-coverage[toml]==6.5.0
+coverage[toml]==7.0.1
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -113,11 +113,11 @@ django-pyfs==3.2.0
     #   -r requirements/test.txt
 edx-lint==5.3.0
     # via -r requirements/quality.in
-exceptiongroup==1.0.4
+exceptiongroup==1.1.0
     # via
     #   -r requirements/test.txt
     #   pytest
-filelock==3.8.2
+filelock==3.9.0
     # via
     #   -r requirements/test.txt
     #   tox
@@ -143,7 +143,7 @@ iniconfig==1.1.1
     # via
     #   -r requirements/test.txt
     #   pytest
-isort==5.10.1
+isort==5.11.4
     # via
     #   -r requirements/quality.in
     #   pylint
@@ -173,7 +173,7 @@ lazy==1.5
     #   bok-choy
 lazy-object-proxy==1.8.0
     # via astroid
-lxml==4.9.1
+lxml==4.9.2
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -191,7 +191,7 @@ markupsafe==2.1.1
     #   xblock
 mccabe==0.7.0
     # via pylint
-mock==4.0.3
+mock==5.0.0
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -211,11 +211,11 @@ packaging==22.0
     #   tox
 pbr==5.11.0
     # via stevedore
-pillow==9.3.0
+pillow==9.4.0
     # via
     #   -r requirements/test.txt
     #   needle
-platformdirs==2.6.0
+platformdirs==2.6.2
     # via
     #   -r requirements/test.txt
     #   pylint
@@ -233,7 +233,7 @@ pycodestyle==2.10.0
     # via -r requirements/quality.in
 pydocstyle==6.1.1
     # via -r requirements/quality.in
-pylint==2.15.8
+pylint==2.15.9
     # via
     #   edx-lint
     #   pylint-celery
@@ -282,7 +282,7 @@ python-slugify==7.0.0
     #   -r requirements/test.txt
     #   code-annotations
     #   cookiecutter
-pytz==2022.6
+pytz==2022.7
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -348,7 +348,7 @@ tomli==2.0.1
     #   tox
 tomlkit==0.11.6
     # via pylint
-tox==3.27.1
+tox==3.28.0
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/test.in
