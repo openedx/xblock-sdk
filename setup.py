@@ -75,6 +75,7 @@ setup(
     name='xblock-sdk',
     version=VERSION,
     description='XBlock SDK',
+    long_description="XBlock SDK",
     packages=[
         'sample_xblocks',
         'sample_xblocks.basic',
