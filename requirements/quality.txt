@@ -34,11 +34,11 @@ bok-choy==0.7.1
     # via -r requirements/test.txt
 boto==2.49.0
     # via -r requirements/test.txt
-boto3==1.26.58
+boto3==1.26.59
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.29.58
+botocore==1.29.59
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -114,7 +114,7 @@ iniconfig==2.0.0
     # via
     #   -r requirements/test.txt
     #   pytest
-isort==5.11.4
+isort==5.12.0
     # via
     #   -r requirements/quality.in
     #   pylint
@@ -235,7 +235,7 @@ python-dateutil==2.8.2
     #   arrow
     #   botocore
     #   xblock
-python-slugify==7.0.0
+python-slugify==8.0.0
     # via
     #   -r requirements/test.txt
     #   code-annotations
