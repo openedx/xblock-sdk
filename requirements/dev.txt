@@ -23,7 +23,7 @@ asgiref==3.6.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   django
-astroid==2.13.3
+astroid==2.14.1
     # via
     #   pylint
     #   pylint-celery
@@ -44,12 +44,12 @@ boto==2.49.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-boto3==1.26.58
+boto3==1.26.64
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.29.58
+botocore==1.29.64
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -139,7 +139,7 @@ iniconfig==2.0.0
     # via
     #   -r requirements/test.txt
     #   pytest
-isort==5.11.4
+isort==5.12.0
     # via
     #   -r requirements/quality.in
     #   pylint
@@ -235,7 +235,7 @@ pycodestyle==2.10.0
     # via -r requirements/quality.in
 pydocstyle==6.3.0
     # via -r requirements/quality.in
-pylint==2.15.10
+pylint==2.16.1
     # via
     #   edx-lint
     #   pylint-celery
@@ -278,7 +278,7 @@ python-dateutil==2.8.2
     #   arrow
     #   botocore
     #   xblock
-python-slugify==7.0.0
+python-slugify==8.0.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -313,7 +313,7 @@ selenium==3.4.1
     #   -r requirements/test.txt
     #   bok-choy
     #   needle
-simplejson==3.18.1
+simplejson==3.18.3
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
