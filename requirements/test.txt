@@ -28,11 +28,11 @@ bok-choy==0.7.1
     # via -r requirements/test.in
 boto==2.49.0
     # via -r requirements/base.txt
-boto3==1.26.58
+boto3==1.26.74
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.29.58
+botocore==1.29.74
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -138,7 +138,7 @@ packaging==23.0
     #   tox
 pillow==9.4.0
     # via needle
-platformdirs==2.6.2
+platformdirs==3.0.0
     # via virtualenv
 pluggy==1.0.0
     # via
@@ -157,7 +157,7 @@ pytest-cov==4.0.0
     # via -r requirements/test.in
 pytest-django==4.5.2
     # via -r requirements/test.in
-pytest-rerunfailures==11.0
+pytest-rerunfailures==11.1.1
     # via -r requirements/test.in
 python-dateutil==2.8.2
     # via
@@ -165,7 +165,7 @@ python-dateutil==2.8.2
     #   arrow
     #   botocore
     #   xblock
-python-slugify==7.0.0
+python-slugify==8.0.0
     # via
     #   -r requirements/base.txt
     #   cookiecutter
@@ -192,7 +192,7 @@ selenium==3.4.1
     #   -r requirements/test.in
     #   bok-choy
     #   needle
-simplejson==3.18.1
+simplejson==3.18.3
     # via -r requirements/base.txt
 six==1.16.0
     # via
@@ -227,7 +227,7 @@ urllib3==1.26.14
     #   -r requirements/base.txt
     #   botocore
     #   requests
-virtualenv==20.17.1
+virtualenv==20.19.0
     # via tox
 web-fragments==2.0.0
     # via
