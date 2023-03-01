@@ -23,7 +23,7 @@ asgiref==3.6.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   django
-astroid==2.13.3
+astroid==2.14.2
     # via
     #   pylint
     #   pylint-celery
@@ -44,12 +44,12 @@ boto==2.49.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-boto3==1.26.58
+boto3==1.26.79
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.29.58
+botocore==1.29.79
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -86,7 +86,7 @@ cookiecutter==2.1.1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-coverage[toml]==7.1.0
+coverage[toml]==7.2.1
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -101,13 +101,13 @@ distlib==0.3.6
     # via
     #   -r requirements/test.txt
     #   virtualenv
-django==3.2.17
+django==3.2.18
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   openedx-django-pyfs
-edx-lint==5.3.0
+edx-lint==5.3.2
     # via -r requirements/quality.in
 exceptiongroup==1.1.0
     # via
@@ -139,7 +139,7 @@ iniconfig==2.0.0
     # via
     #   -r requirements/test.txt
     #   pytest
-isort==5.11.4
+isort==5.12.0
     # via
     #   -r requirements/quality.in
     #   pylint
@@ -217,7 +217,7 @@ pillow==9.4.0
     # via
     #   -r requirements/test.txt
     #   needle
-platformdirs==2.6.2
+platformdirs==3.0.0
     # via
     #   -r requirements/test.txt
     #   pylint
@@ -235,7 +235,7 @@ pycodestyle==2.10.0
     # via -r requirements/quality.in
 pydocstyle==6.3.0
     # via -r requirements/quality.in
-pylint==2.15.10
+pylint==2.16.2
     # via
     #   edx-lint
     #   pylint-celery
@@ -267,7 +267,7 @@ pytest-django==4.5.2
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
-pytest-rerunfailures==11.0
+pytest-rerunfailures==11.1.1
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -278,7 +278,7 @@ python-dateutil==2.8.2
     #   arrow
     #   botocore
     #   xblock
-python-slugify==7.0.0
+python-slugify==8.0.1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -313,7 +313,7 @@ selenium==3.4.1
     #   -r requirements/test.txt
     #   bok-choy
     #   needle
-simplejson==3.18.1
+simplejson==3.18.3
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -334,7 +334,7 @@ sqlparse==0.4.3
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   django
-stevedore==4.1.1
+stevedore==5.0.0
     # via code-annotations
 text-unidecode==1.3
     # via
@@ -360,7 +360,7 @@ tox-battery==0.6.1
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
-typing-extensions==4.4.0
+typing-extensions==4.5.0
     # via
     #   astroid
     #   pylint
@@ -370,7 +370,7 @@ urllib3==1.26.14
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==20.17.1
+virtualenv==20.19.0
     # via
     #   -r requirements/test.txt
     #   tox
@@ -384,7 +384,7 @@ webob==1.8.7
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   xblock
-wrapt==1.14.1
+wrapt==1.15.0
     # via astroid
 xblock[django]==1.6.2
     # via
