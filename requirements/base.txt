@@ -14,9 +14,9 @@ binaryornot==0.4.4
     # via cookiecutter
 boto==2.49.0
     # via -r requirements/base.in
-boto3==1.26.79
+boto3==1.26.84
     # via fs-s3fs
-botocore==1.29.79
+botocore==1.29.84
     # via
     #   boto3
     #   s3transfer
