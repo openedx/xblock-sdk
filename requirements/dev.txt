@@ -23,7 +23,7 @@ asgiref==3.6.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   django
-astroid==2.15.0
+astroid==2.15.1
     # via
     #   pylint
     #   pylint-celery
@@ -44,12 +44,12 @@ boto==2.49.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-boto3==1.26.94
+boto3==1.26.99
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.29.94
+botocore==1.29.99
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -113,7 +113,7 @@ exceptiongroup==1.1.1
     # via
     #   -r requirements/test.txt
     #   pytest
-filelock==3.10.0
+filelock==3.10.6
     # via
     #   -r requirements/test.txt
     #   tox
@@ -217,7 +217,7 @@ pillow==9.4.0
     # via
     #   -r requirements/test.txt
     #   needle
-platformdirs==3.1.1
+platformdirs==3.2.0
     # via
     #   -r requirements/test.txt
     #   pylint
@@ -235,7 +235,7 @@ pycodestyle==2.10.0
     # via -r requirements/quality.in
 pydocstyle==6.3.0
     # via -r requirements/quality.in
-pylint==2.17.0
+pylint==2.17.1
     # via
     #   edx-lint
     #   pylint-celery
@@ -284,7 +284,7 @@ python-slugify==8.0.1
     #   -r requirements/test.txt
     #   code-annotations
     #   cookiecutter
-pytz==2022.7.1
+pytz==2023.2
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
