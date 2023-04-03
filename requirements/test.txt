@@ -28,11 +28,11 @@ bok-choy==0.7.1
     # via -r requirements/test.in
 boto==2.49.0
     # via -r requirements/base.txt
-boto3==1.26.94
+boto3==1.26.104
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.29.94
+botocore==1.29.104
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -69,7 +69,7 @@ distlib==0.3.6
     #   openedx-django-pyfs
 exceptiongroup==1.1.1
     # via pytest
-filelock==3.10.0
+filelock==3.10.7
     # via
     #   tox
     #   virtualenv
@@ -136,9 +136,9 @@ packaging==23.0
     #   pytest
     #   pytest-rerunfailures
     #   tox
-pillow==9.4.0
+pillow==9.5.0
     # via needle
-platformdirs==3.1.1
+platformdirs==3.2.0
     # via virtualenv
 pluggy==1.0.0
     # via
@@ -169,7 +169,7 @@ python-slugify==8.0.1
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-pytz==2022.7.1
+pytz==2023.3
     # via
     #   -r requirements/base.txt
     #   django
