@@ -23,14 +23,10 @@ asgiref==3.6.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   django
-astroid==2.15.0
+astroid==2.15.2
     # via
     #   pylint
     #   pylint-celery
-attrs==22.2.0
-    # via
-    #   -r requirements/test.txt
-    #   pytest
 binaryornot==0.4.4
     # via
     #   -r requirements/base.txt
@@ -44,12 +40,12 @@ boto==2.49.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-boto3==1.26.94
+boto3==1.26.109
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.29.94
+botocore==1.29.109
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -86,7 +82,7 @@ cookiecutter==2.1.1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-coverage[toml]==7.2.2
+coverage[toml]==7.2.3
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -113,7 +109,7 @@ exceptiongroup==1.1.1
     # via
     #   -r requirements/test.txt
     #   pytest
-filelock==3.10.0
+filelock==3.11.0
     # via
     #   -r requirements/test.txt
     #   tox
@@ -213,11 +209,11 @@ packaging==23.0
     #   tox
 pbr==5.11.1
     # via stevedore
-pillow==9.4.0
+pillow==9.5.0
     # via
     #   -r requirements/test.txt
     #   needle
-platformdirs==3.1.1
+platformdirs==3.2.0
     # via
     #   -r requirements/test.txt
     #   pylint
@@ -235,7 +231,7 @@ pycodestyle==2.10.0
     # via -r requirements/quality.in
 pydocstyle==6.3.0
     # via -r requirements/quality.in
-pylint==2.17.0
+pylint==2.17.2
     # via
     #   edx-lint
     #   pylint-celery
@@ -253,7 +249,7 @@ pypng==0.20220715.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-pytest==7.2.2
+pytest==7.3.0
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -284,7 +280,7 @@ python-slugify==8.0.1
     #   -r requirements/test.txt
     #   code-annotations
     #   cookiecutter
-pytz==2022.7.1
+pytz==2023.3
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -313,7 +309,7 @@ selenium==3.4.1
     #   -r requirements/test.txt
     #   bok-choy
     #   needle
-simplejson==3.18.4
+simplejson==3.19.1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -348,7 +344,7 @@ tomli==2.0.1
     #   pylint
     #   pytest
     #   tox
-tomlkit==0.11.6
+tomlkit==0.11.7
     # via pylint
 tox==3.28.0
     # via
