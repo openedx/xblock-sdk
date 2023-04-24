@@ -14,9 +14,9 @@ binaryornot==0.4.4
     # via cookiecutter
 boto==2.49.0
     # via -r requirements/base.in
-boto3==1.26.109
+boto3==1.26.118
     # via fs-s3fs
-botocore==1.29.109
+botocore==1.29.118
     # via
     #   boto3
     #   s3transfer
@@ -98,7 +98,7 @@ six==1.16.0
     #   fs
     #   fs-s3fs
     #   python-dateutil
-sqlparse==0.4.3
+sqlparse==0.4.4
     # via django
 text-unidecode==1.3
     # via python-slugify

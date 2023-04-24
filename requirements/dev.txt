@@ -23,7 +23,7 @@ asgiref==3.6.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   django
-astroid==2.15.2
+astroid==2.15.3
     # via
     #   pylint
     #   pylint-celery
@@ -40,12 +40,12 @@ boto==2.49.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-boto3==1.26.109
+boto3==1.26.118
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.29.109
+botocore==1.29.118
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -109,7 +109,7 @@ exceptiongroup==1.1.1
     # via
     #   -r requirements/test.txt
     #   pytest
-filelock==3.11.0
+filelock==3.12.0
     # via
     #   -r requirements/test.txt
     #   tox
@@ -184,7 +184,7 @@ markupsafe==2.1.2
     #   xblock
 mccabe==0.7.0
     # via pylint
-mock==5.0.1
+mock==5.0.2
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -201,7 +201,7 @@ openedx-django-pyfs==3.2.1
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   xblock
-packaging==23.0
+packaging==23.1
     # via
     #   -r requirements/test.txt
     #   pytest
@@ -249,7 +249,7 @@ pypng==0.20220715.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-pytest==7.3.0
+pytest==7.3.1
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -325,7 +325,7 @@ six==1.16.0
     #   tox
 snowballstemmer==2.2.0
     # via pydocstyle
-sqlparse==0.4.3
+sqlparse==0.4.4
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -366,7 +366,7 @@ urllib3==1.26.15
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==20.21.0
+virtualenv==20.22.0
     # via
     #   -r requirements/test.txt
     #   tox
