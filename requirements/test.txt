@@ -241,6 +241,7 @@ xblock[django]==1.6.2
     # via
     #   -r requirements/base.txt
     #   acid-xblock
-
+    
+boto==2.49.0
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
