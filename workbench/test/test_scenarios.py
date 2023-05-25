@@ -62,7 +62,8 @@ class ScenarioTest(unittest.TestCase):
         it forces database access, which pytest_django doesn't like.
         """
         scenario_ids = list(scenarios.get_scenarios().keys())
-
+        from djpyfs import djpyfs
+        
         for scenario_id in scenario_ids:
             url = reverse('workbench_show_scenario', kwargs={'scenario_id': scenario_id})
             client = Client()
