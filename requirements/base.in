@@ -2,7 +2,6 @@
 
 -c constraints.txt
 
-boto
 cookiecutter
 Django
 fs-s3fs

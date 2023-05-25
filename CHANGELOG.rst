@@ -4,6 +4,11 @@ Change history for XBlock SDK
 
 These are notable changes in XBlock.
 
+0.6.0
+-----
+* Removed boto usage.
+* openedx-django-pyf is now using boto3 to generate URL.
+
 0.5.0
 -----
 * Removed Django22, 30 and 31 support
