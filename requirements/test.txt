@@ -242,3 +242,5 @@ xblock[django]==1.6.2
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
+
+git+https://github.com/openedx/django-pyfs.git@4179ff06128098bc11ca70e666ccd6adde3652b2#egg=django-pyfs==3.3.0
