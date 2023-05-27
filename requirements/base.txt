@@ -12,9 +12,9 @@ asgiref==3.7.1
     # via django
 binaryornot==0.4.4
     # via cookiecutter
-boto3==1.26.140
+boto3==1.26.142
     # via fs-s3fs
-botocore==1.29.140
+botocore==1.29.142
     # via
     #   boto3
     #   s3transfer
@@ -64,7 +64,10 @@ markupsafe==2.1.2
     # via
     #   jinja2
     #   xblock
-        # via xblock
+openedx-django-pyfs @ git+https://github.com/openedx/django-pyfs.git@4179ff06128098bc11ca70e666ccd6adde3652b2
+    # via
+    #   -r requirements/base.in
+    #   xblock
 pypng==0.20220715.0
     # via -r requirements/base.in
 python-dateutil==2.8.2
@@ -99,7 +102,7 @@ sqlparse==0.4.4
     # via django
 text-unidecode==1.3
     # via python-slugify
-typing-extensions==4.6.1
+typing-extensions==4.6.2
     # via asgiref
 urllib3==1.26.16
     # via

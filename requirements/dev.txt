@@ -36,12 +36,12 @@ bok-choy==0.7.1
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
-boto3==1.26.140
+boto3==1.26.142
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.29.140
+botocore==1.29.142
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -192,6 +192,7 @@ nose==1.3.7
     # via
     #   -r requirements/test.txt
     #   needle
+openedx-django-pyfs @ git+https://github.com/openedx/django-pyfs.git@4179ff06128098bc11ca70e666ccd6adde3652b2
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -351,7 +352,7 @@ tox-battery==0.6.1
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
-typing-extensions==4.6.1
+typing-extensions==4.6.2
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
