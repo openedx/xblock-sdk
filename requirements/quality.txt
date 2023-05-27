@@ -161,7 +161,6 @@ nose==1.3.7
     # via
     #   -r requirements/test.txt
     #   needle
-openedx-django-pyfs==3.2.1
     # via
     #   -r requirements/test.txt
     #   xblock
