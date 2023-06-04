@@ -12,4 +12,3 @@ simplejson
 web-fragments
 webob
 XBlock[django]
-git+https://github.com/openedx/django-pyfs.git@4179ff06128098bc11ca70e666ccd6adde3652b2#egg=openedx-django-pyfs
