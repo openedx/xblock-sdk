@@ -28,11 +28,11 @@ binaryornot==0.4.4
     #   cookiecutter
 bok-choy==0.7.1
     # via -r requirements/test.txt
-boto3==1.26.146
+boto3==1.26.152
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.29.146
+botocore==1.29.152
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -85,7 +85,7 @@ exceptiongroup==1.1.1
     # via
     #   -r requirements/test.txt
     #   pytest
-filelock==3.12.0
+filelock==3.12.2
     # via
     #   -r requirements/test.txt
     #   tox
@@ -177,7 +177,7 @@ pillow==9.5.0
     # via
     #   -r requirements/test.txt
     #   needle
-platformdirs==3.5.1
+platformdirs==3.5.3
     # via
     #   -r requirements/test.txt
     #   pylint
@@ -211,7 +211,7 @@ pylint-plugin-utils==0.8.2
     #   pylint-django
 pypng==0.20220715.0
     # via -r requirements/test.txt
-pytest==7.3.1
+pytest==7.3.2
     # via
     #   -r requirements/test.txt
     #   pytest-cov
