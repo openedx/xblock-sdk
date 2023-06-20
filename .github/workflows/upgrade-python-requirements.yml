@@ -2,8 +2,8 @@ name: Upgrade Requirements
 
 on:
   schedule:
-    # will start the job at 03:30 UTC every Monday
-    - cron: "30 3 * * 1"
+    # will start the job at Midnight UTC every Sunday
+    - cron: "0 0 * * 0"
   workflow_dispatch:
     inputs:
       branch:
@@ -15,8 +15,7 @@ jobs:
    call-upgrade-python-requirements-workflow:
     with:
        branch: ${{ github.event.inputs.branch }}
-       team_reviewers: "teaching-and-learning"
-       email_address: teaching-and-learning@2u-internal.opsgenie.net
+       team_reviewers: "axim-engineering"
     secrets:
        requirements_bot_github_token: ${{ secrets.REQUIREMENTS_BOT_GITHUB_TOKEN }}
        requirements_bot_github_email: ${{ secrets.REQUIREMENTS_BOT_GITHUB_EMAIL }}
