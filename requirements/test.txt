@@ -24,11 +24,11 @@ binaryornot==0.4.4
     #   cookiecutter
 bok-choy==0.7.1
     # via -r requirements/test.in
-boto3==1.26.146
+boto3==1.26.155
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.29.146
+botocore==1.29.155
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -65,7 +65,7 @@ distlib==0.3.6
     #   openedx-django-pyfs
 exceptiongroup==1.1.1
     # via pytest
-filelock==3.12.0
+filelock==3.12.2
     # via
     #   tox
     #   virtualenv
@@ -134,7 +134,7 @@ packaging==23.1
     #   tox
 pillow==9.5.0
     # via needle
-platformdirs==3.5.1
+platformdirs==3.6.0
     # via virtualenv
 pluggy==1.0.0
     # via
@@ -144,7 +144,7 @@ py==1.11.0
     # via tox
 pypng==0.20220715.0
     # via -r requirements/base.txt
-pytest==7.3.1
+pytest==7.3.2
     # via
     #   pytest-cov
     #   pytest-django
@@ -227,7 +227,7 @@ urllib3==1.26.16
     #   -r requirements/base.txt
     #   botocore
     #   requests
-virtualenv==20.23.0
+virtualenv==20.23.1
     # via tox
 web-fragments==2.0.0
     # via
