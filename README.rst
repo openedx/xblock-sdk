@@ -1,6 +1,18 @@
-===========================================
-XBlock SDK |build-status| |coverage-status|
-===========================================
+XBlock SDK
+#############################
+
+.. note::
+
+  This README was auto-generated. Maintainer: please review its contents and
+  update all relevant sections. Instructions to you are marked with
+  "PLACEHOLDER" or "TODO". Update or remove those sections, and remove this
+  note when you are done.
+
+|pypi-badge| |ci-badge| |codecov-badge| |doc-badge| |pyversions-badge|
+|license-badge| |status-badge|
+
+Purpose
+*******
 
 This repository consists of three main components to assist in the creation of new XBlocks:
 
@@ -10,21 +22,35 @@ This repository consists of three main components to assist in the creation of n
 
 * Workbench runtime, a simple runtime for viewing and testing XBlocks in a browser (found in the ``workbench`` directory)
 
+Getting Started
+***************
 
-Installation
-------------
+Developing
+==========
 
-This code runs on Python 3.5 or newer.
+This code runs on Python 3.8 or newer.
 
-#.  Install standard development libraries. Here's how you do it on Ubuntu or Debian::
+One Time Setup
+--------------
+.. code-block::
 
-    $ sudo apt-get install python-dev libxml2-dev libxslt-dev lib32z1-dev libjpeg62-dev
+  # Clone the repository
+  git clone git@github.com:openedx/xblock-sdk.git
+  cd xblock-sdk
 
-    Note: Debian 10 needs libjpeg62-turbo-dev instead of libjpeg62-dev.
+  # Set up a virtualenv with the same name as the repo and activate it
+  # Here's how you might do that if you have virtualenvwrapper setup.
+  mkvirtualenv -p python3.8 xblock-sdk
 
-#.  Get a local copy of this repo.
+  # Install system requirements needed to run this on ubuntu.
+  # Note: Debian 10 needs libjpeg62-turbo-dev instead of libjpeg62-dev.
+  sudo apt-get install python-dev libxml2-dev libxslt-dev lib32z1-dev libjpeg62-dev
 
-#.  Create and activate a virtualenv to work in.
+Every time you develop something in this repo
+---------------------------------------------
+
+Locally
+~~~~~~~
 
 #.  Install the requirements and register the XBlock entry points::
 
@@ -37,7 +63,7 @@ This code runs on Python 3.5 or newer.
 #.  Open a web browser to: http://127.0.0.1:8000
 
 Docker
-------
+~~~~~~
 
 Alternatively, you can build and run the xblock-sdk in Docker (we are using docker-compose which
 can be installed as explained at https://docs.docker.com/compose/install/)
@@ -94,7 +120,7 @@ or::
     $ docker container exec -it edx.devstack.xblock-sdk bash
 
 Testing
---------
+~~~~~~~
 
 If using Docker, all these commands need to be run inside the xblock-sdk container.
 
@@ -141,8 +167,124 @@ See the `coverage.py`_ docs for more info and options.
 .. _coverage.py: http://coverage.readthedocs.org/
 
 
+Deploying
+=========
+
+This repository is deployed to PyPI.  To deploy a new version.
+
+#. Bump the version of the package in ``workbench/__init__.py``
+
+#. Make a new release in github or push a new tag up to Github.
+
+The pypi-publish github action should trigger.  It will build and deploy the source and wheel package to PyPI.
+
+Getting Help
+************
+
+Documentation
+=============
+
+Start by going through `the documentation`_.  If you need more help see below.
+
+.. _the documentation: https://edx.readthedocs.io/projects/xblock-tutorial/en/latest/sdk/get_started_sdk.html
+
+More Help
+=========
+
+If you're having trouble, we have discussion forums at
+https://discuss.openedx.org where you can connect with others in the
+community.
+
+Our real-time conversations are on Slack. You can request a `Slack
+invitation`_, then join our `community Slack workspace`_.
+
+For anything non-trivial, the best path is to open an issue in this
+repository with as many details about the issue you are facing as you
+can provide.
+
+https://github.com/openedx/xblock-sdk/issues
+
+For more information about these options, see the `Getting Help`_ page.
+
+.. _Slack invitation: https://openedx.org/slack
+.. _community Slack workspace: https://openedx.slack.com/
+.. _Getting Help: https://openedx.org/getting-help
+
+License
+*******
+
+The code in this repository is licensed under the APACHE 2.0 license unless
+otherwise noted.
+
+Please see `LICENSE.txt <LICENSE.txt>`_ for details.
+
+Contributing
+************
+
+Contributions are very welcome.
+Please read `How To Contribute <https://openedx.org/r/how-to-contribute>`_ for details.
+
+This project is currently accepting all types of contributions, bug fixes,
+security fixes, maintenance work, or new features.  However, please make sure
+to have a discussion about your new feature idea with the maintainers prior to
+beginning development to maximize the chances of your change being accepted.
+You can start a conversation by creating a new issue on this repo summarizing
+your idea.
+
+The Open edX Code of Conduct
+****************************
+
+All community members are expected to follow the `Open edX Code of Conduct`_.
+
+.. _Open edX Code of Conduct: https://openedx.org/code-of-conduct/
+
+People
+******
+
+The assigned maintainers for this component and other project details may be
+found in `Backstage`_. Backstage pulls this data from the ``catalog-info.yaml``
+file in this repo.
+
+.. _Backstage: https://backstage.openedx.org/catalog/default/component/xblock-sdk
+
+Reporting Security Issues
+*************************
+
+Please do not report security issues in public. Please email security@openedx.org.
+
+.. |pypi-badge| image:: https://img.shields.io/pypi/v/xblock-sdk.svg
+    :target: https://pypi.python.org/pypi/xblock-sdk/
+    :alt: PyPI
+
+.. |ci-badge| image:: https://github.com/openedx/xblock-sdk/workflows/Python%20CI/badge.svg?branch=main
+    :target: https://github.com/openedx/xblock-sdk/actions
+    :alt: CI
+
+.. |codecov-badge| image:: https://codecov.io/github/openedx/xblock-sdk/coverage.svg?branch=main
+    :target: https://codecov.io/github/openedx/xblock-sdk?branch=main
+    :alt: Codecov
+
+.. |doc-badge| image:: https://readthedocs.org/projects/xblock-sdk/badge/?version=latest
+    :target: https://docs.openedx.org/projects/xblock-sdk
+    :alt: Documentation
+
+.. |pyversions-badge| image:: https://img.shields.io/pypi/pyversions/xblock-sdk.svg
+    :target: https://pypi.python.org/pypi/xblock-sdk/
+    :alt: Supported Python versions
+
+.. |license-badge| image:: https://img.shields.io/github/license/openedx/xblock-sdk.svg
+    :target: https://github.com/openedx/xblock-sdk/blob/main/LICENSE.txt
+    :alt: License
+
+.. |status-badge| image:: https://img.shields.io/badge/Status-Maintained-brightgreen
+
+
+
+Other Documentation
+*******************
+
 Using the workbench
--------------------
+===================
 
 When you open the workbench, you'll see a list of sample XBlock configurations
 (scenarios).  Each will display a page showing the XBlocks composited together,
@@ -163,7 +305,7 @@ strings.
 
 
 Making your own XBlock
-----------------------
+======================
 
 Making an XBlock involves creating a Python class that conforms to the XBlock
 specification. See the ``sample_xblocks`` directory for examples and
@@ -194,7 +336,7 @@ own instance of Open edX, or released to the wider community).
 
 
 Example XBlocks
----------------
+===============
 
 Included in this repository are some example XBlocks that demonstrate how to use
 various aspects of the XBlock SDK. You can see a more detailed description of
@@ -204,46 +346,5 @@ There is a rich community of XBlock developers that have put together a large
 number of XBlocks that have been used in various contexts, mostly on the edx-platform.
 You can see examples of what that community has done in the `edx-platform wiki`_.
 
-.. _the README: https://github.com/edx/xblock-sdk/blob/master/sample_xblocks/README.rst
+.. _the README: https://github.com/openedx/xblock-sdk/blob/master/sample_xblocks/README.rst
 .. _edx-platform wiki: https://openedx.atlassian.net/wiki/spaces/COMM/pages/43385346/XBlocks+Directory
-
-
-License
--------
-
-The code in this repository is licensed under version 3 of the AGPL unless
-otherwise noted.
-
-Please see ``LICENSE.txt`` for details.
-
-
-How to Contribute
------------------
-
-Contributions are very welcome. The easiest way is to fork this repo, and then
-make a pull request from your fork. The first time you make a pull request, you
-will be asked to sign a Contributor Agreement.
-
-Please see our `contributor's guide`_ for more information on contributing.
-
-.. _contributor's guide: http://edx.readthedocs.org/projects/edx-developer-guide/en/latest/process/overview.html
-
-
-Reporting Security Issues
--------------------------
-
-Please do not report security issues in public. Please email security@edx.org
-
-
-Mailing List and IRC Channel
-----------------------------
-
-You can discuss this code on the `edx-code Google Group`__ or in the
-``#edx-code`` IRC channel on Freenode.
-
-__ https://groups.google.com/group/edx-code
-
-.. |build-status| image:: https://github.com/edx/xblock-sdk/workflows/Python%20CI/badge.svg?branch=master
-:target: https://github.com/edx/xblock-sdk/actions?query=workflow%3A%22Python+CI%22
-.. |coverage-status| image:: https://coveralls.io/repos/edx/xblock-sdk/badge.png
-   :target: https://coveralls.io/r/edx/xblock-sdk

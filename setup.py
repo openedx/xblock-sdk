@@ -6,7 +6,6 @@ import re
 
 from setuptools import setup
 
-
 def find_package_data(pkg, data_paths):
     """Generic function to find package_data for `pkg` under `root`."""
     data = []
@@ -84,6 +83,21 @@ def load_requirements(*requirements_paths):
     return constrained_requirements
 
 
+def get_version(*file_paths):
+    """
+    Extract the version string from the file at the given relative path fragments.
+    """
+    filename = os.path.join(os.path.dirname(__file__), *file_paths)
+    with open(filename, encoding='utf-8') as opened_file:
+        version_file = opened_file.read()
+        version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
+                                  version_file, re.M)
+    if version_match:
+        return version_match.group(1)
+    raise RuntimeError('Unable to find version string.')
+
+
+VERSION = get_version("workbench", "__init__.py")
 package_data = {}  # pylint: disable=invalid-name
 package_data.update(find_package_data("sample_xblocks.basic", ["public", "templates"]))
 package_data.update(find_package_data("sample_xblocks.thumbs", ["static"]))
@@ -92,8 +106,9 @@ package_data.update(find_package_data("workbench", ["static", "templates", "test
 
 setup(
     name='xblock-sdk',
-    version='0.4.0',
+    version=VERSION,
     description='XBlock SDK',
+    long_description="XBlock SDK",
     packages=[
         'sample_xblocks',
         'sample_xblocks.basic',
@@ -101,23 +116,19 @@ setup(
         'sample_xblocks.filethumbs',
         'workbench',
     ],
-    install_requires=[
-        "Django>=2.2",
-    ],
+    install_requires=load_requirements('requirements/base.in'),
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Framework :: Django',
-        'Framework :: Django :: 2.2',
-        'Framework :: Django :: 3.0',
-        'Framework :: Django :: 3.1',
         'Framework :: Django :: 3.2',
+        'Framework :: Django :: 4.0',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.8',
     ],
-    tests_require=load_requirements(f'{os.getcwd()}/requirements/test.txt'),
+    tests_require=load_requirements('requirements/test.txt'),
     entry_points={
         'xblock.v1': [
             # Basic XBlocks
