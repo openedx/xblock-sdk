@@ -28,11 +28,11 @@ binaryornot==0.4.4
     #   cookiecutter
 bok-choy==0.7.1
     # via -r requirements/test.txt
-boto3==1.26.160
+boto3==1.26.165
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.29.160
+botocore==1.29.165
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -173,7 +173,7 @@ packaging==23.1
     #   tox
 pbr==5.11.1
     # via stevedore
-pillow==9.5.0
+pillow==10.0.0
     # via
     #   -r requirements/test.txt
     #   needle
@@ -297,7 +297,7 @@ tox==3.28.0
     #   tox-battery
 tox-battery==0.6.1
     # via -r requirements/test.txt
-typing-extensions==4.6.3
+typing-extensions==4.7.0
     # via
     #   -r requirements/test.txt
     #   asgiref
