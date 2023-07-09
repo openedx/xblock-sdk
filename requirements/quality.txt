@@ -13,12 +13,12 @@ appdirs==1.4.4
 arrow==1.2.3
     # via
     #   -r requirements/test.txt
-    #   jinja2-time
+    #   cookiecutter
 asgiref==3.7.2
     # via
     #   -r requirements/test.txt
     #   django
-astroid==2.15.5
+astroid==2.15.6
     # via
     #   pylint
     #   pylint-celery
@@ -28,11 +28,11 @@ binaryornot==0.4.4
     #   cookiecutter
 bok-choy==0.7.1
     # via -r requirements/test.txt
-boto3==1.26.165
+boto3==1.28.1
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.29.165
+botocore==1.31.1
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -45,11 +45,11 @@ chardet==5.1.0
     # via
     #   -r requirements/test.txt
     #   binaryornot
-charset-normalizer==3.1.0
+charset-normalizer==3.2.0
     # via
     #   -r requirements/test.txt
     #   requests
-click==8.1.3
+click==8.1.4
     # via
     #   -r requirements/test.txt
     #   click-log
@@ -60,7 +60,7 @@ click-log==0.4.0
     # via edx-lint
 code-annotations==1.3.0
     # via edx-lint
-cookiecutter==2.1.1
+cookiecutter==2.2.0
     # via -r requirements/test.txt
 coverage[toml]==7.2.7
     # via
@@ -74,14 +74,14 @@ distlib==0.3.6
     # via
     #   -r requirements/test.txt
     #   virtualenv
-django==3.2.19
+django==3.2.20
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/test.txt
     #   openedx-django-pyfs
 edx-lint==5.3.4
     # via -r requirements/quality.in
-exceptiongroup==1.1.1
+exceptiongroup==1.1.2
     # via
     #   -r requirements/test.txt
     #   pytest
@@ -117,11 +117,6 @@ jinja2==3.1.2
     #   -r requirements/test.txt
     #   code-annotations
     #   cookiecutter
-    #   jinja2-time
-jinja2-time==0.2.0
-    # via
-    #   -r requirements/test.txt
-    #   cookiecutter
 jmespath==1.0.1
     # via
     #   -r requirements/test.txt
@@ -135,7 +130,7 @@ lazy==1.5
     #   xblock
 lazy-object-proxy==1.9.0
     # via astroid
-lxml==4.9.2
+lxml==4.9.3
     # via
     #   -r requirements/test.txt
     #   xblock
@@ -177,7 +172,7 @@ pillow==10.0.0
     # via
     #   -r requirements/test.txt
     #   needle
-platformdirs==3.8.0
+platformdirs==3.8.1
     # via
     #   -r requirements/test.txt
     #   pylint
@@ -221,7 +216,7 @@ pytest-cov==4.1.0
     # via -r requirements/test.txt
 pytest-django==4.5.2
     # via -r requirements/test.txt
-pytest-rerunfailures==11.1.2
+pytest-rerunfailures==12.0
     # via -r requirements/test.txt
 python-dateutil==2.8.2
     # via
@@ -297,7 +292,7 @@ tox==3.28.0
     #   tox-battery
 tox-battery==0.6.1
     # via -r requirements/test.txt
-typing-extensions==4.7.0
+typing-extensions==4.7.1
     # via
     #   -r requirements/test.txt
     #   asgiref

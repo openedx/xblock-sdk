@@ -13,7 +13,7 @@ appdirs==1.4.4
 arrow==1.2.3
     # via
     #   -r requirements/base.txt
-    #   jinja2-time
+    #   cookiecutter
 asgiref==3.7.2
     # via
     #   -r requirements/base.txt
@@ -24,11 +24,11 @@ binaryornot==0.4.4
     #   cookiecutter
 bok-choy==0.7.1
     # via -r requirements/test.in
-boto3==1.26.165
+boto3==1.28.1
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.29.165
+botocore==1.31.1
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -41,15 +41,15 @@ chardet==5.1.0
     # via
     #   -r requirements/base.txt
     #   binaryornot
-charset-normalizer==3.1.0
+charset-normalizer==3.2.0
     # via
     #   -r requirements/base.txt
     #   requests
-click==8.1.3
+click==8.1.4
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-cookiecutter==2.1.1
+cookiecutter==2.2.0
     # via -r requirements/base.txt
 coverage[toml]==7.2.7
     # via
@@ -63,7 +63,7 @@ distlib==0.3.6
     #   -c requirements/common_constraints.txt
     #   -r requirements/base.txt
     #   openedx-django-pyfs
-exceptiongroup==1.1.1
+exceptiongroup==1.1.2
     # via pytest
 filelock==3.12.2
     # via
@@ -89,11 +89,6 @@ jinja2==3.1.2
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-    #   jinja2-time
-jinja2-time==0.2.0
-    # via
-    #   -r requirements/base.txt
-    #   cookiecutter
 jmespath==1.0.1
     # via
     #   -r requirements/base.txt
@@ -105,7 +100,7 @@ lazy==1.5
     #   acid-xblock
     #   bok-choy
     #   xblock
-lxml==4.9.2
+lxml==4.9.3
     # via
     #   -r requirements/base.txt
     #   xblock
@@ -134,7 +129,7 @@ packaging==23.1
     #   tox
 pillow==10.0.0
     # via needle
-platformdirs==3.8.0
+platformdirs==3.8.1
     # via virtualenv
 pluggy==1.2.0
     # via
@@ -153,7 +148,7 @@ pytest-cov==4.1.0
     # via -r requirements/test.in
 pytest-django==4.5.2
     # via -r requirements/test.in
-pytest-rerunfailures==11.1.2
+pytest-rerunfailures==12.0
     # via -r requirements/test.in
 python-dateutil==2.8.2
     # via
@@ -218,7 +213,7 @@ tox==3.28.0
     #   tox-battery
 tox-battery==0.6.1
     # via -r requirements/test.in
-typing-extensions==4.7.0
+typing-extensions==4.7.1
     # via
     #   -r requirements/base.txt
     #   asgiref
