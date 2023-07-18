@@ -36,12 +36,12 @@ bok-choy==0.7.1
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
-boto3==1.28.3
+boto3==1.28.4
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.31.3
+botocore==1.31.4
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -89,7 +89,7 @@ ddt==1.6.0
     #   -r requirements/test.txt
 dill==0.3.6
     # via pylint
-distlib==0.3.6
+distlib==0.3.7
     # via
     #   -r requirements/test.txt
     #   virtualenv
@@ -276,7 +276,7 @@ pytz==2023.3
     #   -r requirements/test.txt
     #   django
     #   xblock
-pyyaml==6.0
+pyyaml==6.0.1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
