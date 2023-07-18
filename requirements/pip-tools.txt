@@ -18,6 +18,7 @@ tomli==2.0.1
     # via
     #   build
     #   pip-tools
+    #   pyproject-hooks
 wheel==0.40.0
     # via pip-tools
 
