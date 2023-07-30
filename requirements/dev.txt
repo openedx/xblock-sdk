@@ -36,12 +36,12 @@ bok-choy==0.7.1
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
-boto3==1.28.9
+boto3==1.28.15
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.31.9
+botocore==1.31.15
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -203,7 +203,7 @@ pillow==10.0.0
     # via
     #   -r requirements/test.txt
     #   needle
-platformdirs==3.9.1
+platformdirs==3.10.0
     # via
     #   -r requirements/test.txt
     #   pylint
@@ -217,11 +217,11 @@ py==1.11.0
     # via
     #   -r requirements/test.txt
     #   tox
-pycodestyle==2.10.0
+pycodestyle==2.11.0
     # via -r requirements/quality.in
 pydocstyle==6.3.0
     # via -r requirements/quality.in
-pylint==2.17.4
+pylint==2.17.5
     # via
     #   edx-lint
     #   pylint-celery
@@ -334,7 +334,7 @@ tomli==2.0.1
     #   pylint
     #   pytest
     #   tox
-tomlkit==0.11.8
+tomlkit==0.12.1
     # via pylint
 tox==3.28.0
     # via
@@ -359,7 +359,7 @@ urllib3==1.26.16
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==20.24.1
+virtualenv==20.24.2
     # via
     #   -r requirements/test.txt
     #   tox
