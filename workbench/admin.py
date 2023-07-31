@@ -9,6 +9,7 @@ from django.contrib import admin
 from .models import XBlockState
 
 
+@admin.register(XBlockState)
 class XBlockStateAdmin(admin.ModelAdmin):
     """Basic admin operations for XBlockState model.
 
@@ -25,4 +26,3 @@ class XBlockStateAdmin(admin.ModelAdmin):
     ]
 
 
-admin.site.register(XBlockState, XBlockStateAdmin)
