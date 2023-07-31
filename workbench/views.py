@@ -172,6 +172,6 @@ def reset_state(request):
     """Delete all state and reload the scenarios."""
     log.info("RESETTING ALL STATE")
     reset_global_state()
-    referrer_url = request.headers['referer']
+    referrer_url = request.META['HTTP_REFERER']
 
     return redirect(referrer_url)
