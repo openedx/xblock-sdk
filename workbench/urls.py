@@ -5,7 +5,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.urls import path
 from django.urls import re_path
 
 from workbench import views
@@ -13,27 +12,27 @@ from workbench import views
 admin.autodiscover()
 
 urlpatterns = [
-    path('', views.index, name='workbench_index'),
-    path(
-        'scenario/<str:scenario_id>/<str:view_name>/',
+    re_path(r'^$', views.index, name='workbench_index'),
+    re_path(
+        r'^scenario/(?P<scenario_id>[^/]+)/(?P<view_name>[^/]+)/$',
         views.show_scenario,
         name='scenario'
     ),
-    path('userlist/',
+    re_path(r'^userlist/$',
         views.user_list,
         name='userlist'),
-    path(
-        'scenario/<str:scenario_id>/',
+    re_path(
+        r'^scenario/(?P<scenario_id>[^/]+)/$',
         views.show_scenario,
         name='workbench_show_scenario'
     ),
-    path(
-        'view/<str:scenario_id>/<str:view_name>/',
+    re_path(
+        r'^view/(?P<scenario_id>[^/]+)/(?P<view_name>[^/]+)/$',
         views.show_scenario,
         {'template': 'workbench/blockview.html'}
     ),
-    path(
-        'view/<str:scenario_id>/',
+    re_path(
+        r'^view/(?P<scenario_id>[^/]+)/$',
         views.show_scenario,
         {'template': 'workbench/blockview.html'}
     ),
@@ -57,8 +56,8 @@ urlpatterns = [
         views.package_resource,
         name='package_resource'
     ),
-    path(
-        'reset_state',
+    re_path(
+        r'^reset_state$',
         views.reset_state,
         name='reset_state'
     ),
