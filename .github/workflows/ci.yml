@@ -13,7 +13,7 @@ jobs:
       matrix:
         os: [ubuntu-20.04]
         python-version: ['3.8']
-        toxenv: [django32, django40]
+        toxenv: [django32, django42]
     steps:
     - uses: actions/checkout@v2
 
@@ -40,7 +40,7 @@ jobs:
       run: xvfb-run --server-args=-ac -- tox -e ${{ matrix.toxenv }}
 
     - name: Upload coverage to CodeCov
-      if: matrix.python-version == '3.8' && matrix.toxenv == 'django32'
+      if: matrix.python-version == '3.8' && matrix.toxenv == 'django42'
       uses: codecov/codecov-action@v3
       with:
         file: ./coverage.xml

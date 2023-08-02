@@ -4,6 +4,10 @@ Change history for XBlock SDK
 
 These are notable changes in XBlock.
 
+0.7.0
+-----
+* Added support for Django 4.2
+
 0.6.0
 -----
 * Removed boto usage.
