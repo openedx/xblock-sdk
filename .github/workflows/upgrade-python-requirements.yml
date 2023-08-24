@@ -16,6 +16,7 @@ jobs:
     with:
        branch: ${{ github.event.inputs.branch }}
        team_reviewers: "axim-aximprovements"
+       email_address: "aximimprovements@axim.org"
     secrets:
        requirements_bot_github_token: ${{ secrets.REQUIREMENTS_BOT_GITHUB_TOKEN }}
        requirements_bot_github_email: ${{ secrets.REQUIREMENTS_BOT_GITHUB_EMAIL }}
