@@ -24,11 +24,11 @@ binaryornot==0.4.4
     #   cookiecutter
 bok-choy==0.7.1
     # via -r requirements/test.in
-boto3==1.28.40
+boto3==1.28.44
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.31.40
+botocore==1.31.44
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -51,7 +51,7 @@ click==8.1.7
     #   cookiecutter
 cookiecutter==2.3.0
     # via -r requirements/base.txt
-coverage[toml]==7.3.0
+coverage[toml]==7.3.1
     # via
     #   -r requirements/test.in
     #   pytest-cov
@@ -151,7 +151,7 @@ pygments==2.16.1
     #   rich
 pypng==0.20220715.0
     # via -r requirements/base.txt
-pytest==7.4.1
+pytest==7.4.2
     # via
     #   pytest-cov
     #   pytest-django
@@ -172,7 +172,7 @@ python-slugify==8.0.1
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-pytz==2023.3
+pytz==2023.3.post1
     # via
     #   -r requirements/base.txt
     #   django
@@ -240,7 +240,7 @@ urllib3==1.26.16
     #   -r requirements/base.txt
     #   botocore
     #   requests
-virtualenv==20.24.4
+virtualenv==20.24.5
     # via tox
 web-fragments==2.1.0
     # via
