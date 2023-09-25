@@ -18,7 +18,7 @@ asgiref==3.7.2
     # via
     #   -r requirements/test.txt
     #   django
-astroid==2.15.6
+astroid==2.15.7
     # via
     #   pylint
     #   pylint-celery
@@ -28,11 +28,11 @@ binaryornot==0.4.4
     #   cookiecutter
 bok-choy==0.7.1
     # via -r requirements/test.txt
-boto3==1.28.49
+boto3==1.28.53
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.31.49
+botocore==1.31.53
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -60,7 +60,7 @@ click-log==0.4.0
     # via edx-lint
 code-annotations==1.5.0
     # via edx-lint
-cookiecutter==2.3.0
+cookiecutter==2.3.1
     # via -r requirements/test.txt
 coverage[toml]==7.3.1
     # via
@@ -256,7 +256,7 @@ requests==2.31.0
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-rich==13.5.2
+rich==13.5.3
     # via
     #   -r requirements/test.txt
     #   cookiecutter
@@ -308,7 +308,7 @@ tox==3.28.0
     #   tox-battery
 tox-battery==0.6.2
     # via -r requirements/test.txt
-typing-extensions==4.7.1
+typing-extensions==4.8.0
     # via
     #   -r requirements/test.txt
     #   asgiref
