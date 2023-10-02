@@ -10,7 +10,7 @@ appdirs==1.4.4
     # via
     #   -r requirements/base.txt
     #   fs
-arrow==1.2.3
+arrow==1.3.0
     # via
     #   -r requirements/base.txt
     #   cookiecutter
@@ -24,11 +24,11 @@ binaryornot==0.4.4
     #   cookiecutter
 bok-choy==0.7.1
     # via -r requirements/test.in
-boto3==1.28.53
+boto3==1.28.57
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.31.53
+botocore==1.31.57
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -41,7 +41,7 @@ chardet==5.2.0
     # via
     #   -r requirements/base.txt
     #   binaryornot
-charset-normalizer==3.2.0
+charset-normalizer==3.3.0
     # via
     #   -r requirements/base.txt
     #   requests
@@ -49,7 +49,7 @@ click==8.1.7
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-cookiecutter==2.3.1
+cookiecutter==2.4.0
     # via -r requirements/base.txt
 coverage[toml]==7.3.1
     # via
@@ -186,11 +186,11 @@ requests==2.31.0
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-rich==13.5.3
+rich==13.6.0
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-s3transfer==0.6.2
+s3transfer==0.7.0
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -229,6 +229,10 @@ tox==3.28.0
     #   tox-battery
 tox-battery==0.6.2
     # via -r requirements/test.in
+types-python-dateutil==2.8.19.14
+    # via
+    #   -r requirements/base.txt
+    #   arrow
 typing-extensions==4.8.0
     # via
     #   -r requirements/base.txt
@@ -249,7 +253,7 @@ webob==1.8.7
     # via
     #   -r requirements/base.txt
     #   xblock
-xblock[django]==1.7.0
+xblock[django]==1.8.0
     # via
     #   -r requirements/base.txt
     #   acid-xblock
