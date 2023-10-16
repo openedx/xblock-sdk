@@ -5,7 +5,6 @@ Helpers for Selenium tests.
 
 
 import pytest
-from bok_choy.web_app_test import WebAppTest
 from selenium.webdriver.support.expected_conditions import staleness_of
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -15,7 +14,7 @@ from workbench.runtime_util import reset_global_state
 
 
 @pytest.mark.selenium
-class SeleniumTest(WebAppTest, StaticLiveServerTestCase):
+class SeleniumTest(StaticLiveServerTestCase):
     """
     Base test class that provides setUpClass and tearDownClass
     methods necessary for selenium testing.

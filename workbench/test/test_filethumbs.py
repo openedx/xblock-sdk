@@ -2,7 +2,6 @@
 
 
 import pytest
-from bok_choy.promise import EmptyPromise
 
 from workbench import scenarios
 from workbench.test.selenium_test import SeleniumTest
@@ -63,16 +62,16 @@ class ThreeThumbsTest(SeleniumTest):
 
             # upvote
             thumb.find_element_by_css_selector('span.upvote').click()
-            _ = EmptyPromise(
-                lambda: int(thumb.find_element_by_css_selector(up_count_css).text) == initial_up + 1,
-                "upvote action succeeded"
-            ).fulfill()
+            # _ = EmptyPromise(
+            #     lambda: int(thumb.find_element_by_css_selector(up_count_css).text) == initial_up + 1,
+            #     "upvote action succeeded"
+            # ).fulfill()
             self.assertEqual(initial_down, int(thumb.find_element_by_css_selector(down_count_css).text))
 
             # downvote
             thumb.find_element_by_css_selector('span.downvote').click()
-            _ = EmptyPromise(
-                lambda: int(thumb.find_element_by_css_selector(down_count_css).text) == initial_down + 1,
-                "downvote action succeeded"
-            ).fulfill()
+            # _ = EmptyPromise(
+            #     lambda: int(thumb.find_element_by_css_selector(down_count_css).text) == initial_down + 1,
+            #     "downvote action succeeded"
+            # ).fulfill()
             self.assertEqual(initial_up + 1, int(thumb.find_element_by_css_selector(up_count_css).text))

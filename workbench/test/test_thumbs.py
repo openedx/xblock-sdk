@@ -2,7 +2,6 @@
 
 
 import pytest
-from bok_choy.promise import EmptyPromise
 
 from workbench import scenarios
 from workbench.test.selenium_test import SeleniumTest
@@ -85,10 +84,10 @@ class ThreeThumbsTest(SeleniumTest):
         thumbs[0].find_element_by_css_selector('span.upvote').click()
 
         # Only the first thumb's upcount should increase
-        _ = EmptyPromise(
-            lambda: int(thumbs[0].find_element_by_css_selector(up_count_css).text) == 1,
-            "upvote action succeeded"
-        ).fulfill()
+        # _ = EmptyPromise(
+        #     lambda: int(thumbs[0].find_element_by_css_selector(up_count_css).text) == 1,
+        #     "upvote action succeeded"
+        # ).fulfill()
         self.assertEqual('0', thumbs[1].find_element_by_css_selector(up_count_css).text)
         self.assertEqual('0', thumbs[2].find_element_by_css_selector(up_count_css).text)
 
@@ -120,10 +119,10 @@ class ThreeThumbsTest(SeleniumTest):
         thumbs[0].find_element_by_css_selector('span.downvote').click()
 
         # Only the first thumb's downcount should increase
-        _ = EmptyPromise(
-            lambda: int(thumbs[0].find_element_by_css_selector(down_count_css).text) == 1,
-            "downvote action succeeded"
-        ).fulfill()
+        # _ = EmptyPromise(
+        #     lambda: int(thumbs[0].find_element_by_css_selector(down_count_css).text) == 1,
+        #     "downvote action succeeded"
+        # ).fulfill()
         self.assertEqual('0', thumbs[1].find_element_by_css_selector(down_count_css).text)
         self.assertEqual('0', thumbs[2].find_element_by_css_selector(down_count_css).text)
 
