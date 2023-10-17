@@ -4,6 +4,7 @@
 import time
 import unittest
 
+# from bok_choy.query import BrowserQuery
 from selenium.common.exceptions import StaleElementReferenceException
 
 from workbench import scenarios
@@ -15,28 +16,28 @@ class ProblemInteractionTest(SeleniumTest):
     A browser-based test of answering problems right and wrong.
     """
 
-    def setUp(self):
-        super().setUp()
+    # def setUp(self):
+    #     super().setUp()
 
-        one_problem = """
-            <problem_demo>
-                <html_demo><p class="the_numbers">$a $b</p></html_demo>
-                <textinput_demo name="sum_input" input_type="int" />
-                <equality_demo name="sum_checker" left="./sum_input/@student_input" right="$c" />
-                <script>
-                    import random
-                    a = random.randint(1, 1000000)
-                    b = random.randint(1, 1000000)
-                    c = a + b
-                </script>
-            </problem_demo>
-            """
-        self.num_problems = 3
-        scenarios.add_xml_scenario(
-            "test_many_problems", "Many problems",
-            "<vertical_demo>" + one_problem * self.num_problems + "</vertical_demo>"
-        )
-        self.addCleanup(scenarios.remove_scenario, "test_many_problems")
+    #     one_problem = """
+    #         <problem_demo>
+    #             <html_demo><p class="the_numbers">$a $b</p></html_demo>
+    #             <textinput_demo name="sum_input" input_type="int" />
+    #             <equality_demo name="sum_checker" left="./sum_input/@student_input" right="$c" />
+    #             <script>
+    #                 import random
+    #                 a = random.randint(1, 1000000)
+    #                 b = random.randint(1, 1000000)
+    #                 c = a + b
+    #             </script>
+    #         </problem_demo>
+    #         """
+    #     self.num_problems = 3
+    #     scenarios.add_xml_scenario(
+    #         "test_many_problems", "Many problems",
+    #         "<vertical_demo>" + one_problem * self.num_problems + "</vertical_demo>"
+    #     )
+    #     self.addCleanup(scenarios.remove_scenario, "test_many_problems")
 
     # @unittest.skip("Flaky test: PLAT-614")
     # def test_many_problems(self):
