@@ -22,11 +22,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-boto3==1.28.63
+boto3==1.28.65
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.31.63
+botocore==1.31.65
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -188,8 +188,6 @@ s3transfer==0.7.0
     # via
     #   -r requirements/base.txt
     #   boto3
-selenium==3.4.1
-    # via -r requirements/test.in
 simplejson==3.19.2
     # via
     #   -r requirements/base.txt
@@ -230,7 +228,7 @@ typing-extensions==4.8.0
     #   -r requirements/base.txt
     #   asgiref
     #   rich
-urllib3==1.26.17
+urllib3==1.26.18
     # via
     #   -r requirements/base.txt
     #   botocore
