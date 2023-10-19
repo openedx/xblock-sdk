@@ -264,7 +264,7 @@ class WorkbenchRuntime(Runtime):
             if service is not None:
                 services[service_name] = service
 
-        super().__init__(ID_MANAGER, services=services)
+        super().__init__(ID_MANAGER, ID_MANAGER, services=services)
         self.id_generator = ID_MANAGER
         self.user_id = user_id
 
