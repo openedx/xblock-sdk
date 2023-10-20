@@ -28,7 +28,7 @@ jobs:
         pip install -r requirements/ci.txt
 
     - name: Run Tests
-      run: xvfb-run --server-args=-ac -- tox -e ${{ matrix.toxenv }}
+      run:  tox -e ${{ matrix.toxenv }}
 
     - name: Upload coverage to CodeCov
       if: matrix.python-version == '3.8' && matrix.toxenv == 'django42'
