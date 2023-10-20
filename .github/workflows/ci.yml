@@ -22,22 +22,13 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Set up test environment
-      run: |
-        sudo apt-get install xvfb
-        wget https://github.com/mozilla/geckodriver/releases/download/v0.15.0/geckodriver-v0.15.0-linux64.tar.gz
-        mkdir geckodriver
-        tar -xzf geckodriver-v0.15.0-linux64.tar.gz -C geckodriver
-        export PATH=$PATH:$(pwd)/geckodriver
-        export BOTO_CONFIG=/dev/null
-
     - name: Install Requirements
       run: |
         pip install -r requirements/pip.txt
         pip install -r requirements/ci.txt
 
     - name: Run Tests
-      run: xvfb-run --server-args=-ac -- tox -e ${{ matrix.toxenv }}
+      run:  tox -e ${{ matrix.toxenv }}
 
     - name: Upload coverage to CodeCov
       if: matrix.python-version == '3.8' && matrix.toxenv == 'django42'
