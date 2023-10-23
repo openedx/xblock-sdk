@@ -26,8 +26,5 @@ tox==3.28.0
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/ci.in
-    #   tox-battery
-tox-battery==0.6.2
-    # via -r requirements/ci.in
 virtualenv==20.24.5
     # via tox
