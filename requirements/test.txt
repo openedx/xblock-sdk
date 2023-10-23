@@ -39,7 +39,7 @@ chardet==5.2.0
     # via
     #   -r requirements/base.txt
     #   binaryornot
-charset-normalizer==3.3.0
+charset-normalizer==3.3.1
     # via
     #   -r requirements/base.txt
     #   requests
