@@ -6,7 +6,7 @@
 #
 distlib==0.3.7
     # via virtualenv
-filelock==3.12.4
+filelock==3.13.0
     # via
     #   tox
     #   virtualenv
@@ -26,5 +26,5 @@ tox==3.28.0
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/ci.in
-virtualenv==20.24.5
+virtualenv==20.24.6
     # via tox
