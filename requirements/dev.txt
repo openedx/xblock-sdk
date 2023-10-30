@@ -247,7 +247,7 @@ pytest-cov==4.1.0
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
-pytest-django==4.5.2
+pytest-django==4.6.0
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
