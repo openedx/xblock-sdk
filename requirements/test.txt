@@ -22,11 +22,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-boto3==1.29.3
+boto3==1.29.6
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.32.3
+botocore==1.32.6
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -52,7 +52,7 @@ click==8.1.7
     #   cookiecutter
 colorama==0.4.6
     # via tox
-cookiecutter==2.4.0
+cookiecutter==2.5.0
     # via -r requirements/base.txt
 coverage[toml]==7.3.2
     # via
@@ -66,7 +66,7 @@ distlib==0.3.7
     #   -c requirements/common_constraints.txt
     #   -r requirements/base.txt
     #   openedx-django-pyfs
-exceptiongroup==1.1.3
+exceptiongroup==1.2.0
     # via pytest
 filelock==3.13.1
     # via
@@ -82,7 +82,7 @@ fs-s3fs==1.1.1
     # via
     #   -r requirements/base.txt
     #   openedx-django-pyfs
-idna==3.4
+idna==3.6
     # via
     #   -r requirements/base.txt
     #   requests
@@ -146,7 +146,7 @@ pluggy==1.3.0
     # via
     #   pytest
     #   tox
-pygments==2.17.0
+pygments==2.17.2
     # via
     #   -r requirements/base.txt
     #   rich
@@ -163,7 +163,7 @@ pytest-cov==4.1.0
     # via -r requirements/test.in
 pytest-django==4.7.0
     # via -r requirements/test.in
-pytest-rerunfailures==12.0
+pytest-rerunfailures==13.0
     # via -r requirements/test.in
 python-dateutil==2.8.2
     # via
@@ -237,7 +237,7 @@ urllib3==1.26.18
     #   -r requirements/base.txt
     #   botocore
     #   requests
-virtualenv==20.24.6
+virtualenv==20.24.7
     # via tox
 web-fragments==2.1.0
     # via
