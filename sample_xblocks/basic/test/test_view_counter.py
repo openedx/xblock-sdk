@@ -3,6 +3,7 @@
 
 
 from unittest.mock import Mock
+
 from xblock.runtime import DictKeyValueStore, KvsFieldData
 from xblock.test.tools import TestRuntime as Runtime  # Workaround for pytest trying to collect "TestRuntime" as a test
 

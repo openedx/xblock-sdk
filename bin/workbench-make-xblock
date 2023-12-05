@@ -6,7 +6,6 @@ from __future__ import print_function
 
 import os
 import re
-import textwrap
 from builtins import input
 
 from cookiecutter.main import cookiecutter
@@ -54,7 +53,7 @@ def main():
 
     # Find the prototype.
     proto_dir = os.path.abspath(os.path.join(__file__, "../../prototype"))
-    
+
     cookiecutter(
         proto_dir,
         no_input=True,
