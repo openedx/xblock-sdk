@@ -1,10 +1,8 @@
 """Test Workbench Runtime"""
 
 
+from unittest import TestCase, mock
 
-from unittest import TestCase
-
-from unittest import mock
 import pytest
 from xblock.fields import Scope
 from xblock.reference.user_service import UserService
@@ -34,12 +32,10 @@ class TestScenarioIds(TestCase):
 
     def test_slug_support(self):
         self.assertEqual(
-            self.id_mgr.create_definition("my_block", "my_slug"),
-            ".my_block.my_slug.d0"
+            self.id_mgr.create_definition("my_block", "my_slug"), ".my_block.my_slug.d0"
         )
         self.assertEqual(
-            self.id_mgr.create_definition("my_block", "my_slug"),
-            ".my_block.my_slug.d1"
+            self.id_mgr.create_definition("my_block", "my_slug"), ".my_block.my_slug.d1"
         )
 
     def test_scenario_support(self):
@@ -47,34 +43,48 @@ class TestScenarioIds(TestCase):
 
         # Now that we have a scenario, our definition numbering starts over again.
         self.id_mgr.set_scenario("my_scenario")
-        self.assertEqual(self.id_mgr.create_definition("my_block"), "my_scenario.my_block.d0")
-        self.assertEqual(self.id_mgr.create_definition("my_block"), "my_scenario.my_block.d1")
+        self.assertEqual(
+            self.id_mgr.create_definition("my_block"), "my_scenario.my_block.d0"
+        )
+        self.assertEqual(
+            self.id_mgr.create_definition("my_block"), "my_scenario.my_block.d1"
+        )
 
         self.id_mgr.set_scenario("another_scenario")
-        self.assertEqual(self.id_mgr.create_definition("my_block"), "another_scenario.my_block.d0")
+        self.assertEqual(
+            self.id_mgr.create_definition("my_block"), "another_scenario.my_block.d0"
+        )
 
     def test_usages(self):
         # Now make sure our usages are attached to definitions
         self.assertIsNone(self.id_mgr.last_created_usage_id())
         self.assertEqual(
             self.id_mgr.create_usage("my_scenario.my_block.d0"),
-            "my_scenario.my_block.d0.u0"
+            "my_scenario.my_block.d0.u0",
         )
         self.assertEqual(
             self.id_mgr.create_usage("my_scenario.my_block.d0"),
-            "my_scenario.my_block.d0.u1"
+            "my_scenario.my_block.d0.u1",
         )
-        self.assertEqual(self.id_mgr.last_created_usage_id(), "my_scenario.my_block.d0.u1")
+        self.assertEqual(
+            self.id_mgr.last_created_usage_id(), "my_scenario.my_block.d0.u1"
+        )
 
     def test_asides(self):
-        definition_id = self.id_mgr.create_definition('my_block')
+        definition_id = self.id_mgr.create_definition("my_block")
         usage_id = self.id_mgr.create_usage(definition_id)
 
-        aside_definition, aside_usage = self.id_mgr.create_aside(definition_id, usage_id, 'my_aside')
+        aside_definition, aside_usage = self.id_mgr.create_aside(
+            definition_id, usage_id, "my_aside"
+        )
 
-        self.assertEqual(self.id_mgr.get_aside_type_from_definition(aside_definition), 'my_aside')
-        self.assertEqual(self.id_mgr.get_definition_id_from_aside(aside_definition), definition_id)
-        self.assertEqual(self.id_mgr.get_aside_type_from_usage(aside_usage), 'my_aside')
+        self.assertEqual(
+            self.id_mgr.get_aside_type_from_definition(aside_definition), "my_aside"
+        )
+        self.assertEqual(
+            self.id_mgr.get_definition_id_from_aside(aside_definition), definition_id
+        )
+        self.assertEqual(self.id_mgr.get_aside_type_from_usage(aside_usage), "my_aside")
         self.assertEqual(self.id_mgr.get_usage_id_from_aside(aside_usage), usage_id)
 
 
@@ -88,16 +98,21 @@ class WorkbenchRuntimeTests(TestCase):
         The LTI Consumer XBlock expects a lot of values from the LMS Runtime,
         this test ensures that those requirements fulfilled.
         """
-        runtime = WorkbenchRuntime('test_user')
-        assert runtime.get_real_user(object()), 'The LTI Consumer XBlock needs this method.'
-        assert runtime.hostname, 'The LTI Consumer XBlock needs this property.'
-        assert runtime.anonymous_student_id, 'The LTI Consumer XBlock needs this property.'
+        runtime = WorkbenchRuntime("test_user")
+        assert runtime.get_real_user(
+            object()
+        ), "The LTI Consumer XBlock needs this method."
+        assert runtime.hostname, "The LTI Consumer XBlock needs this property."
+        assert (
+            runtime.anonymous_student_id
+        ), "The LTI Consumer XBlock needs this property."
 
 
 class TestKVStore(TestCase):
     """
     Test the Workbench KVP Store
     """
+
     def setUp(self):
         super().setUp()
         self.kvs = WorkbenchDjangoKeyValueStore()
@@ -105,7 +120,7 @@ class TestKVStore(TestCase):
             scope=Scope.content,
             user_id="rusty",
             block_scope_id="my_scenario.my_block.d0",
-            field_name="age"
+            field_name="age",
         )
 
     @pytest.mark.django_db
@@ -119,11 +134,12 @@ class TestKVStore(TestCase):
 
 
 class StubService:
-    """Empty service to test loading additional services. """
+    """Empty service to test loading additional services."""
 
 
 class ExceptionService:
-    """Stub service that raises an exception on init. """
+    """Stub service that raises an exception on init."""
+
     def __init__(self):
         raise Exception("Kaboom!")
 
@@ -138,55 +154,58 @@ class TestServices(TestCase):
         self.xblock = mock.Mock()
 
     def test_default_services(self):
-        runtime = WorkbenchRuntime('test_user')
+        runtime = WorkbenchRuntime("test_user")
         self._assert_default_services(runtime)
 
-    @mock.patch.dict(settings.WORKBENCH['services'], {
-        'stub': 'workbench.test.test_runtime.StubService'
-    })
+    @mock.patch.dict(
+        settings.WORKBENCH["services"],
+        {"stub": "workbench.test.test_runtime.StubService"},
+    )
     def test_settings_adds_services(self):
-        runtime = WorkbenchRuntime('test_user')
+        runtime = WorkbenchRuntime("test_user")
 
         # Default services should still be available
         self._assert_default_services(runtime)
 
         # An additional service should be provided
-        self._assert_service(runtime, 'stub', StubService)
+        self._assert_service(runtime, "stub", StubService)
 
         # Check that the service has the runtime attribute set
-        service = runtime.service(self.xblock, 'stub')
+        service = runtime.service(self.xblock, "stub")
         self.assertIs(service.runtime, runtime)
 
-    @mock.patch.dict(settings.WORKBENCH['services'], {
-        'not_found': 'workbench.test.test_runtime.NotFoundService'
-    })
+    @mock.patch.dict(
+        settings.WORKBENCH["services"],
+        {"not_found": "workbench.test.test_runtime.NotFoundService"},
+    )
     def test_could_not_find_service(self):
-        runtime = WorkbenchRuntime('test_user')
+        runtime = WorkbenchRuntime("test_user")
 
         # Default services should still be available
         self._assert_default_services(runtime)
 
         # The additional service should NOT be available
-        self.assertIs(runtime.service(self.xblock, 'not_found'), None)
+        self.assertIs(runtime.service(self.xblock, "not_found"), None)
 
-    @mock.patch.dict(settings.WORKBENCH['services'], {
-        'exception': 'workbench.test.test_runtime.ExceptionService'
-    })
+    @mock.patch.dict(
+        settings.WORKBENCH["services"],
+        {"exception": "workbench.test.test_runtime.ExceptionService"},
+    )
     def test_runtime_service_initialization_failed(self):
-        runtime = WorkbenchRuntime('test_user')
+        runtime = WorkbenchRuntime("test_user")
 
         # Default services should still be available
         self._assert_default_services(runtime)
 
         # The additional service should NOT be available
-        self.assertIs(runtime.service(self.xblock, 'exception'), None)
+        self.assertIs(runtime.service(self.xblock, "exception"), None)
 
     def _assert_default_services(self, runtime):
-        """Check that the default services are available. """
-        self._assert_service(runtime, 'field-data', KvsFieldData)
-        self._assert_service(runtime, 'user', UserService)
+        """Check that the default services are available."""
+        self._assert_service(runtime, "field-data", KvsFieldData)
+        self._assert_service(runtime, "user", UserService)
 
     def _assert_service(self, runtime, service_name, service_class):
-        """Check that a service is loaded. """
+        """Check that a service is loaded."""
         service_instance = runtime.service(self.xblock, service_name)
         self.assertIsInstance(service_instance, service_class)

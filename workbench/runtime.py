@@ -10,8 +10,8 @@ import itertools
 import logging
 from collections import defaultdict
 from datetime import datetime, timedelta
-
 from unittest.mock import Mock
+
 from web_fragments.fragment import Fragment
 from xblock.core import XBlockAside
 from xblock.exceptions import NoSuchDefinition, NoSuchUsage

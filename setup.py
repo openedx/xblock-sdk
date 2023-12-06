@@ -6,6 +6,7 @@ import re
 
 from setuptools import setup
 
+
 def find_package_data(pkg, data_paths):
     """Generic function to find package_data for `pkg` under `root`."""
     data = []

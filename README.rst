@@ -100,7 +100,7 @@ or::
 
     $ docker-compose down
 
-will shut down the container and delete non-persistant data.
+will shut down the container and delete non-persistent data.
 
 On the first startup run the following command to create the SQLite database.
 (Otherwise you will get an error no such table: workbench_xblockstate.)
