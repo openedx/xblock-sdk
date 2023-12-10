@@ -20,9 +20,8 @@ packaging==23.2
     # via
     #   pyproject-api
     #   tox
-platformdirs==3.11.0
+platformdirs==4.1.0
     # via
-    #   -c requirements/common_constraints.txt
     #   tox
     #   virtualenv
 pluggy==1.3.0
