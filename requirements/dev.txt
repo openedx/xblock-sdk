@@ -32,12 +32,12 @@ binaryornot==0.4.4
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.34.14
+boto3==1.34.18
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.34.14
+botocore==1.34.18
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -140,7 +140,7 @@ isort==5.13.2
     # via
     #   -r requirements/quality.in
     #   pylint
-jinja2==3.1.2
+jinja2==3.1.3
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -158,7 +158,7 @@ lazy==1.6
     #   -r requirements/test.txt
     #   acid-xblock
     #   xblock
-lxml==5.0.1
+lxml==5.1.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -344,7 +344,7 @@ tomli==2.0.1
     #   tox
 tomlkit==0.12.3
     # via pylint
-tox==4.11.4
+tox==4.12.0
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
