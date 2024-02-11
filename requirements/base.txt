@@ -12,9 +12,9 @@ asgiref==3.7.2
     # via django
 binaryornot==0.4.4
     # via cookiecutter
-boto3==1.34.34
+boto3==1.34.39
     # via fs-s3fs
-botocore==1.34.34
+botocore==1.34.39
     # via
     #   boto3
     #   s3transfer
@@ -28,7 +28,7 @@ click==8.1.7
     # via cookiecutter
 cookiecutter==2.5.0
     # via -r requirements/base.in
-django==3.2.23
+django==3.2.24
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/base.in
@@ -78,7 +78,7 @@ python-dateutil==2.8.2
     #   arrow
     #   botocore
     #   xblock
-python-slugify==8.0.3
+python-slugify==8.0.4
     # via cookiecutter
 pytz==2024.1
     # via
