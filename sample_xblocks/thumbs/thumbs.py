@@ -1,9 +1,8 @@
 """An XBlock providing thumbs-up/thumbs-down voting."""
 
-
-import importlib_resources
 import logging
 
+import importlib_resources
 from web_fragments.fragment import Fragment
 from xblock.core import XBlock, XBlockAside
 from xblock.fields import Boolean, Integer, Scope
