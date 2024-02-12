@@ -135,8 +135,9 @@ lazy==1.6
     #   -r requirements/test.txt
     #   acid-xblock
     #   xblock
-lxml==5.1.0
+lxml==4.9.4
     # via
+    #   -c requirements/constraints.txt
     #   -r requirements/test.txt
     #   xblock
 mako==1.3.2
