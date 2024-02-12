@@ -1,4 +1,6 @@
 # This file is hand managed as pip-compile doesn't like the local installs.
 
-#install all sample xblocks
--e .
+# Avoid local installation of xblock-sdk because importlib_metadata returns duplicate package Entry points
+# Ref: https://github.com/pypa/setuptools/issues/3649#issuecomment-1293666053
+# Package duplication crashes the code here https://github.com/openedx/xblock-sdk/blob/master/workbench/scenarios.py#L31
+# -e .  #install all sample xblocks
