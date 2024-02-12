@@ -12,3 +12,4 @@ simplejson
 web-fragments
 webob
 XBlock[django]
+importlib-resources

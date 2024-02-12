@@ -132,6 +132,10 @@ idna==3.6
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   requests
+importlib-resources==6.1.1
+    # via
+    #   -r requirements/base.txt
+    #   -r requirements/test.txt
 iniconfig==2.0.0
     # via
     #   -r requirements/test.txt
@@ -388,6 +392,11 @@ xblock[django]==1.10.0
     #   -r requirements/test.txt
     #   acid-xblock
     #   xblock
+zipp==3.17.0
+    # via
+    #   -r requirements/base.txt
+    #   -r requirements/test.txt
+    #   importlib-resources
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
