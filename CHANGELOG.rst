@@ -4,6 +4,12 @@ Change history for XBlock SDK
 
 These are notable changes in XBlock.
 
+0.8.0
+-----
+* Added support for python 3.12
+* Dropped support for django 3.2
+
+
 0.7.0
 -----
 * Added support for Django 4.2
