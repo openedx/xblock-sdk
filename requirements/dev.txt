@@ -23,7 +23,7 @@ asgiref==3.7.2
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   django
-astroid==3.0.3
+astroid==3.1.0
     # via
     #   pylint
     #   pylint-celery
@@ -88,7 +88,7 @@ coverage[toml]==7.4.3
     #   -r requirements/test.in
     #   -r requirements/test.txt
     #   pytest-cov
-ddt==1.7.1
+ddt==1.7.2
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -158,8 +158,9 @@ lazy==1.6
     #   -r requirements/test.txt
     #   acid-xblock
     #   xblock
-lxml==5.1.0
+lxml==4.9.4
     # via
+    #   -c requirements/constraints.txt
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   xblock
@@ -226,7 +227,7 @@ pygments==2.17.2
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   rich
-pylint==3.0.4
+pylint==3.1.0
     # via
     #   edx-lint
     #   pylint-celery
@@ -353,7 +354,7 @@ types-python-dateutil==2.8.19.20240106
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   arrow
-typing-extensions==4.9.0
+typing-extensions==4.10.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
