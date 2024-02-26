@@ -34,5 +34,5 @@ tomli==2.0.1
     #   tox
 tox==4.13.0
     # via -r requirements/ci.in
-virtualenv==20.25.0
+virtualenv==20.25.1
     # via tox
