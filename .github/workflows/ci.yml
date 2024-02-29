@@ -12,8 +12,8 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-20.04]
-        python-version: ['3.8']
-        toxenv: [django32, django42]
+        python-version: ['3.8', '3.12']
+        toxenv: [django42]
     steps:
     - uses: actions/checkout@v2
 
