@@ -27,8 +27,9 @@ astroid==3.1.0
     # via
     #   pylint
     #   pylint-celery
-backports-zoneinfo==0.2.1
+backports-zoneinfo==0.2.1 ; python_version < "3.9"
     # via
+    #   -c requirements/constraints.txt
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   django
@@ -254,7 +255,7 @@ pyproject-api==1.6.1
     # via
     #   -r requirements/test.txt
     #   tox
-pytest==8.0.2
+pytest==8.1.0
     # via
     #   -r requirements/test.txt
     #   pytest-cov
