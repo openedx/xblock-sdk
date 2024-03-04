@@ -160,7 +160,7 @@ class HtmlBlock(XBlock):
         return Fragment(Template(self.content).substitute(**context))
 
     @classmethod
-    def parse_xml(cls, node, runtime, keys, id_generator):
+    def parse_xml(cls, node, runtime, keys):
         """
         Parse the XML for an HTML block.
 
