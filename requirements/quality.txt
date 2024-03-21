@@ -22,19 +22,20 @@ astroid==3.1.0
     # via
     #   pylint
     #   pylint-celery
-backports-zoneinfo==0.2.1
+backports-zoneinfo==0.2.1 ; python_version < "3.9"
     # via
+    #   -c requirements/constraints.txt
     #   -r requirements/test.txt
     #   django
 binaryornot==0.4.4
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.34.66
+boto3==1.34.67
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.34.66
+botocore==1.34.67
     # via
     #   -r requirements/test.txt
     #   boto3

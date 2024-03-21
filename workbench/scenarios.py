@@ -35,7 +35,7 @@ def add_xml_scenario(scname, description, xml):
     # (because the generator will be contextual), so we
     # pass it explicitly to parse_xml_string.
     runtime.id_generator.set_scenario(slugify(description))
-    usage_id = runtime.parse_xml_string(xml, runtime.id_generator)
+    usage_id = runtime.parse_xml_string(xml)
     SCENARIOS[scname] = Scenario(description, usage_id, xml)
 
 
