@@ -4,6 +4,10 @@ Change history for XBlock SDK
 
 These are notable changes in XBlock.
 
+0.9.0
+-----
+* Xblock bumped to 3.0.0. Removed the deprecated id_generator method parameter in xblock.runtime
+
 0.8.0
 -----
 * Added support for python 3.12

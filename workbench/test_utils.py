@@ -98,7 +98,7 @@ class XBlockHandlerTestCaseMixin:
             XBlock
         """
         block_id = self.runtime.parse_xml_string(
-            self.load_fixture_str(xml_path), self.runtime.id_generator
+            self.load_fixture_str(xml_path)
         )
         return self.runtime.get_block(block_id)
 

@@ -43,7 +43,7 @@ def test_problem_submission():
                 Number of upvotes matches entered string
             </equality_demo>
         </problem_demo>
-    """, runtime.id_generator)
+    """)
     problem = runtime.get_block(problem_usage_id)
     json_data = json.dumps({"vote_count": [{"name": "input", "value": "4"}]})
     resp = runtime.handle(problem, 'check', make_request(json_data))

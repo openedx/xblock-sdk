@@ -119,7 +119,11 @@ def test_xblock_with_handler():
     assert the_data == "defxx"
 
 
-@temp_scenario(XBlock)
+class XBlockWithoutHandler(XBlock):
+    pass
+
+
+@temp_scenario(XBlockWithoutHandler)
 def test_xblock_without_handler():
     # Test that an XBlock without a handler raises an Exception
     # when we try to hit a handler on it

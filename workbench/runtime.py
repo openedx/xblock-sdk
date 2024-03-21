@@ -265,7 +265,6 @@ class WorkbenchRuntime(Runtime):
                 services[service_name] = service
 
         super().__init__(ID_MANAGER, ID_MANAGER, services=services)
-        self.id_generator = ID_MANAGER
         self.user_id = user_id
 
     def get_user_role(self):
