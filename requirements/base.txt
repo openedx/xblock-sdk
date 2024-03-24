@@ -8,7 +8,7 @@ appdirs==1.4.4
     # via fs
 arrow==1.3.0
     # via cookiecutter
-asgiref==3.8.0
+asgiref==3.8.1
     # via django
 backports-zoneinfo==0.2.1 ; python_version < "3.9"
     # via
@@ -16,9 +16,9 @@ backports-zoneinfo==0.2.1 ; python_version < "3.9"
     #   django
 binaryornot==0.4.4
     # via cookiecutter
-boto3==1.34.67
+boto3==1.34.69
     # via fs-s3fs
-botocore==1.34.67
+botocore==1.34.69
     # via
     #   boto3
     #   s3transfer
