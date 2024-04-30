@@ -16,9 +16,9 @@ backports-zoneinfo==0.2.1 ; python_version < "3.9"
     #   django
 binaryornot==0.4.4
     # via cookiecutter
-boto3==1.34.88
+boto3==1.34.93
     # via fs-s3fs
-botocore==1.34.88
+botocore==1.34.93
     # via
     #   boto3
     #   s3transfer
@@ -129,7 +129,7 @@ webob==1.8.7
     # via
     #   -r requirements/base.in
     #   xblock
-xblock[django]==4.0.0
+xblock[django]==4.0.1
     # via -r requirements/base.in
 
 # The following packages are considered to be unsafe in a requirements file:
