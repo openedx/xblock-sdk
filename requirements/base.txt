@@ -16,9 +16,9 @@ backports-zoneinfo==0.2.1 ; python_version < "3.9"
     #   django
 binaryornot==0.4.4
     # via cookiecutter
-boto3==1.34.93
+boto3==1.34.98
     # via fs-s3fs
-botocore==1.34.93
+botocore==1.34.98
     # via
     #   boto3
     #   s3transfer
@@ -73,7 +73,7 @@ mdurl==0.1.2
     # via markdown-it-py
 openedx-django-pyfs==3.6.0
     # via xblock
-pygments==2.17.2
+pygments==2.18.0
     # via rich
 pypng==0.20220715.0
     # via -r requirements/base.in
