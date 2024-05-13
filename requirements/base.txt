@@ -16,9 +16,9 @@ backports-zoneinfo==0.2.1 ; python_version < "3.9"
     #   django
 binaryornot==0.4.4
     # via cookiecutter
-boto3==1.34.98
+boto3==1.34.103
     # via fs-s3fs
-botocore==1.34.98
+botocore==1.34.103
     # via
     #   boto3
     #   s3transfer
@@ -32,7 +32,7 @@ click==8.1.7
     # via cookiecutter
 cookiecutter==2.6.0
     # via -r requirements/base.in
-django==4.2.11
+django==4.2.13
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/base.in
@@ -48,7 +48,7 @@ fs-s3fs==1.1.1
     #   openedx-django-pyfs
 idna==3.7
     # via requests
-jinja2==3.1.3
+jinja2==3.1.4
     # via cookiecutter
 jmespath==1.0.1
     # via
