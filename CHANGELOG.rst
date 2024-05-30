@@ -4,6 +4,11 @@ Change history for XBlock SDK
 
 These are notable changes in XBlock.
 
+1.0.0 - 2024-05-30
+------------------
+* dropped python 3.8 support
+* transitioned from deprecated pkg_resources lib to importlib.resources
+
 0.9.0
 -----
 * Xblock bumped to 3.0.0. Removed the deprecated id_generator method parameter in xblock.runtime
