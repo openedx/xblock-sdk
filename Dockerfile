@@ -16,7 +16,7 @@ COPY . /usr/local/src/xblock-sdk
 WORKDIR /usr/local/src/xblock-sdk
 
 ENV VIRTUAL_ENV=/venvs/xblock-sdk
-RUN python3.8 -m venv $VIRTUAL_ENV
+RUN python3.11 -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 RUN pip install --upgrade pip && pip install -r /usr/local/src/xblock-sdk/requirements/dev.txt
