@@ -16,13 +16,13 @@ backports-zoneinfo==0.2.1 ; python_version < "3.9"
     #   django
 binaryornot==0.4.4
     # via cookiecutter
-boto3==1.34.117
+boto3==1.34.122
     # via fs-s3fs
-botocore==1.34.117
+botocore==1.34.122
     # via
     #   boto3
     #   s3transfer
-certifi==2024.2.2
+certifi==2024.6.2
     # via requests
 chardet==5.2.0
     # via binaryornot
@@ -113,7 +113,7 @@ text-unidecode==1.3
     # via python-slugify
 types-python-dateutil==2.9.0.20240316
     # via arrow
-typing-extensions==4.12.1
+typing-extensions==4.12.2
     # via
     #   asgiref
     #   rich
