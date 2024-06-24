@@ -17,12 +17,10 @@ thumbs block will be instructive.
 
 """
 
-
-
 import json
 import logging
 
-import pkg_resources
+import importlib.resources
 import png
 from web_fragments.fragment import Fragment
 from xblock.core import XBlock
@@ -72,8 +70,7 @@ class FileThumbsBlock(XBlock):
         """
 
         # Load the HTML fragment from within the package and fill in the template
-        html_str = pkg_resources.resource_string(__name__,
-                                                 "static/html/thumbs.html").decode('utf-8')
+        html_str = importlib.resources.files(__package__).joinpath("static/html/thumbs.html").read_text()
         frag = Fragment(str(html_str))
 
         if not self.fs.exists("thumbsvotes.json"):
@@ -86,12 +83,10 @@ class FileThumbsBlock(XBlock):
         self.downvotes = votes['down']
 
         # Load the CSS and JavaScript fragments from within the package
-        css_str = pkg_resources.resource_string(__name__,
-                                                "static/css/thumbs.css").decode('utf-8')
+        css_str = importlib.resources.files(__package__).joinpath("static/css/thumbs.css").read_text()
         frag.add_css(str(css_str))
 
-        js_str = pkg_resources.resource_string(__name__,
-                                               "static/js/src/thumbs.js").decode('utf-8')
+        js_str = importlib.resources.files(__package__).joinpath("static/js/src/thumbs.js").read_text()
         frag.add_javascript(str(js_str))
 
         with self.fs.open('uparrow.png', 'wb') as file_output:
