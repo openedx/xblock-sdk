@@ -16,9 +16,9 @@ backports-zoneinfo==0.2.1 ; python_version < "3.9"
     #   django
 binaryornot==0.4.4
     # via cookiecutter
-boto3==1.34.131
+boto3==1.34.136
     # via fs-s3fs
-botocore==1.34.131
+botocore==1.34.136
     # via
     #   boto3
     #   s3transfer
@@ -96,7 +96,7 @@ requests==2.32.3
     #   cookiecutter
 rich==13.7.1
     # via cookiecutter
-s3transfer==0.10.1
+s3transfer==0.10.2
     # via boto3
 simplejson==3.19.2
     # via
