@@ -28,7 +28,7 @@ Getting Started
 Developing
 ==========
 
-This code runs on Python 3.8 or newer.
+This code runs on Python 3.11 or newer.
 
 One Time Setup
 --------------
@@ -40,7 +40,7 @@ One Time Setup
 
   # Set up a virtualenv with the same name as the repo and activate it
   # Here's how you might do that if you have virtualenvwrapper setup.
-  mkvirtualenv -p python3.8 xblock-sdk
+  mkvirtualenv -p python3.11 xblock-sdk
 
   # Install system requirements needed to run this on ubuntu.
   # Note: Debian 10 needs libjpeg62-turbo-dev instead of libjpeg62-dev.
@@ -107,7 +107,7 @@ On the first startup run the following command to create the SQLite database.
 
 Command::
 
-    $ docker container exec -it edx.devstack.xblock-sdk python3.8 manage.py migrate
+    $ docker container exec -it edx.devstack.xblock-sdk python3.11 manage.py migrate
 
 You should now be able to access the XBlock SDK environment in your browser at http://localhost:8000
 
