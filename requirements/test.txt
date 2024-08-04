@@ -22,11 +22,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-boto3==1.34.149
+boto3==1.34.153
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.34.149
+botocore==1.34.153
     # via
     #   -r requirements/base.txt
     #   boto3
