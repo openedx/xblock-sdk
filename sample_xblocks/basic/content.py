@@ -112,7 +112,7 @@ class AllScopesBlock(XBlock):
                 value=getattr(self, field_name),
                 help=field.help
             )
-            for field_name, field in self.fields.items()  # pylint: disable=no-member
+            for field_name, field in self.fields.items()
             if field_name not in ["name", "parent", "tags"]
         ]
 

@@ -97,20 +97,20 @@ selfcheck: ## check that the Makefile is well-formed
 	@echo "The Makefile is well-formed."
 
 docker_build:
-	docker-compose build
+	docker compose build
 
 # devstack-themed shortcuts
 dev.up: # Starts all containers
-	docker-compose up -d
+	docker compose up -d
 
 dev.up.build:
-	docker-compose up -d --build
+	docker compose up -d --build
 
 dev.down: # Kills containers and all of their data that isn't in volumes
-	docker-compose down
+	docker compose down
 
 dev.stop: # Stops containers so they can be restarted
-	docker-compose stop
+	docker compose stop
 
 app-shell: # Run bash in the container as root
 	docker exec -u 0 -it edx.devstack.xblock-sdk bash

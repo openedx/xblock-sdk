@@ -1,33 +1,33 @@
-FROM edxops/focal-common:latest
+FROM ubuntu:noble
+
 RUN apt-get update && apt-get install -y \
     gettext \
-    lib32z1-dev \
+    zlib1g-dev \
     libjpeg62-dev \
     libxslt1-dev \
-    zlib1g-dev \
-    python3 \
-    python3-dev \
-    python3-venv \
-    python3-pip && \
-    pip3 install --upgrade pip setuptools && \
-    rm -rf /var/lib/apt/lists/*
+    python3.12 \
+    python3.12-dev \
+    python3.12-venv \
+    curl \
+    make \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY . /usr/local/src/xblock-sdk
 WORKDIR /usr/local/src/xblock-sdk
 
 ENV VIRTUAL_ENV=/venvs/xblock-sdk
-RUN python3.11 -m venv $VIRTUAL_ENV
+RUN python3.12 -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-RUN pip install --upgrade pip && pip install -r /usr/local/src/xblock-sdk/requirements/dev.txt
-
-RUN curl -sL https://deb.nodesource.com/setup_14.x -o /tmp/nodejs-setup && \
-    /bin/bash /tmp/nodejs-setup && \
+RUN curl -sL https://deb.nodesource.com/setup_22.x -o /tmp/nodejs-setup && \
+    bash /tmp/nodejs-setup && \
     rm /tmp/nodejs-setup && \
-    apt-get -y install nodejs && \
-    echo $PYTHONPATH && \
-    make install
+    apt-get install -y nodejs
+
+RUN pip install --upgrade pip setuptools
+RUN make install
 
 EXPOSE 8000
-ENTRYPOINT ["python", "manage.py"]
-CMD ["runserver", "0.0.0.0:8000"]
+
+ENTRYPOINT ["bash", "-c", "python manage.py migrate && exec python manage.py runserver 0.0.0.0:8000"]

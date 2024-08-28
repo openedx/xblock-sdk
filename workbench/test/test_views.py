@@ -178,7 +178,7 @@ class XBlockWithHandlers(XBlock):
         ]
         urls = []
         for args in all_args:
-            thirdparty = (args[0] == "send_it_back_public")
+            thirdparty = args[0] == "send_it_back_public"
             urls.append(self.runtime.handler_url(self, *args, thirdparty=thirdparty))
         encoded = json.dumps(urls)
         return Fragment(":::" + encoded + ":::")
@@ -333,7 +333,7 @@ class XBlockWithContextTracking(XBlock):
 @temp_scenario(XBlockWithContextTracking, 'context_tracking')
 def test_activate_id():
     client = Client()
-    assert XBlockWithContextTracking.registered_contexts == []  # precondition check
+    assert not XBlockWithContextTracking.registered_contexts  # precondition check
     client.get("/view/context_tracking/")
     assert XBlockWithContextTracking.registered_contexts == [{'activate_block_id': None}]
 
