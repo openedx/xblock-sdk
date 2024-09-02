@@ -1,6 +1,7 @@
 """TO-DO: Write a description of what this XBlock is."""
 
-import pkg_resources
+from importlib.resources import files
+
 from web_fragments.fragment import Fragment
 from xblock.core import XBlock
 from xblock.fields import Integer, Scope
@@ -22,8 +23,7 @@ class {{cookiecutter.class_name}}(XBlock):
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
-        data = pkg_resources.resource_string(__name__, path)
-        return data.decode("utf8")
+        return files(__package__).joinpath(path).read_text(encoding="utf-8")
 
     # TO-DO: change this view to display your data your own way.
     def student_view(self, context=None):
