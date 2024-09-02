@@ -12,13 +12,13 @@ asgiref==3.8.1
     # via django
 binaryornot==0.4.4
     # via cookiecutter
-boto3==1.35.5
+boto3==1.35.10
     # via fs-s3fs
-botocore==1.35.5
+botocore==1.35.10
     # via
     #   boto3
     #   s3transfer
-certifi==2024.7.4
+certifi==2024.8.30
     # via requests
 chardet==5.2.0
     # via binaryornot
@@ -90,7 +90,7 @@ requests==2.32.3
     # via
     #   -r requirements/base.in
     #   cookiecutter
-rich==13.7.1
+rich==13.8.0
     # via cookiecutter
 s3transfer==0.10.2
     # via boto3
