@@ -26,11 +26,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.35.7
+boto3==1.35.10
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.35.7
+botocore==1.35.10
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -39,7 +39,7 @@ cachetools==5.5.0
     # via
     #   -r requirements/test.txt
     #   tox
-certifi==2024.7.4
+certifi==2024.8.30
     # via
     #   -r requirements/test.txt
     #   requests
@@ -189,7 +189,7 @@ pygments==2.18.0
     # via
     #   -r requirements/test.txt
     #   rich
-pylint==3.2.6
+pylint==3.2.7
     # via
     #   edx-lint
     #   pylint-celery
