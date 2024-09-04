@@ -65,7 +65,7 @@ Locally
 Docker
 ~~~~~~
 
-Alternatively, you can build and run the xblock-sdk in Docker (we are using docker-compose which
+Alternatively, you can build and run the xblock-sdk in Docker (we are using docker compose which
 can be installed as explained at https://docs.docker.com/compose/install/)
 
 After cloning this repository locally, go into the repository directory and build the Docker image::
@@ -74,7 +74,7 @@ After cloning this repository locally, go into the repository directory and buil
 
 or manually run
 
-    $ docker-compose build
+    $ docker compose build
 
 You can then run the locally-built version using the following command::
 
@@ -82,15 +82,17 @@ You can then run the locally-built version using the following command::
 
 or manually run::
 
-    $ docker-compose up -d
+    $ docker compose up -d
 
-and stop the container (without removing data) by::
+You should now be able to access the XBlock SDK environment in your browser at http://localhost:8000
+
+To stop the container (without removing data) by::
 
     $ make dev.stop
 
 or manually run::
 
-    $ docker-compose stop
+    $ docker compose stop
 
 Note, using::
 
@@ -98,18 +100,9 @@ Note, using::
 
 or::
 
-    $ docker-compose down
+    $ docker compose down
 
 will shut down the container and delete non-persistent data.
-
-On the first startup run the following command to create the SQLite database.
-(Otherwise you will get an error no such table: workbench_xblockstate.)
-
-Command::
-
-    $ docker container exec -it edx.devstack.xblock-sdk python3.11 manage.py migrate
-
-You should now be able to access the XBlock SDK environment in your browser at http://localhost:8000
 
 You can open a bash shell in the running container by using::
 

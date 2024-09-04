@@ -1,4 +1,3 @@
-version: '3.5'
 services:
   xblock_sdk:
     image: openedx/xblock-sdk

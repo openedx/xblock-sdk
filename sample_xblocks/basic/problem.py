@@ -98,7 +98,7 @@ class ProblemBlock(XBlock):
         named_child_frags = []
         # self.children is an attribute obtained from ChildrenModelMetaclass, so disable the
         # static pylint checking warning about this.
-        for child_id in self.children:  # pylint: disable=E1101
+        for child_id in self.children:
             child = self.runtime.get_block(child_id)
             frag = self.runtime.render_child(child, "problem_view", context)
             result.add_fragment_resources(frag)
@@ -175,7 +175,7 @@ class ProblemBlock(XBlock):
         child_map = {}
         # self.children is an attribute obtained from ChildrenModelMetaclass, so disable the
         # static pylint checking warning about this.
-        for child_id in self.children:  # pylint: disable=E1101
+        for child_id in self.children:
             child = self.runtime.get_block(child_id)
             if child.name:
                 child_map[child.name] = child
@@ -334,7 +334,7 @@ class CheckerBlock(XBlock):
             # pylint: disable=no-member, useless-suppression, deprecated-method
             argspec = inspect.getfullargspec(self.check)
         else:
-            argspec = inspect.getargspec(self.check)  # pylint: disable=deprecated-method
+            argspec = inspect.getargspec(self.check)  # pylint: disable=no-member
         arguments = {}
         for arg in argspec.args[1:]:
             arguments[arg] = node.attrib.pop(arg)

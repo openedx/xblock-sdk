@@ -4,6 +4,12 @@ Change history for XBlock SDK
 
 These are notable changes in XBlock.
 
+0.13.0 - 2024-08-28
+-------------------
+
+* upgraded to Ubuntu 24.04 and Python 3.12
+* replaced deprecated docker-compose command with docker compose
+
 0.12.0 - 2024-05-30
 ------------------
 * dropped python 3.8 support

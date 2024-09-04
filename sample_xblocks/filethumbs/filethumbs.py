@@ -17,10 +17,10 @@ thumbs block will be instructive.
 
 """
 
+import importlib.resources
 import json
 import logging
 
-import importlib.resources
 import png
 from web_fragments.fragment import Fragment
 from xblock.core import XBlock

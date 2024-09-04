@@ -24,5 +24,3 @@ class XBlockStateAdmin(admin.ModelAdmin):
     readonly_fields = [
         'scope', 'scope_id', 'scenario', 'tag', 'user_id', 'created'
     ]
-
-
