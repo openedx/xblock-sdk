@@ -23,7 +23,7 @@ asgiref==3.8.1
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   django
-astroid==3.2.4
+astroid==3.3.3
     # via
     #   pylint
     #   pylint-celery
@@ -32,12 +32,12 @@ binaryornot==0.4.4
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.35.19
+boto3==1.35.24
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.35.19
+botocore==1.35.24
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -106,7 +106,7 @@ django==4.2.16
     #   openedx-django-pyfs
 edx-lint==5.4.0
     # via -r requirements/quality.in
-filelock==3.16.0
+filelock==3.16.1
     # via
     #   -r requirements/test.txt
     #   tox
@@ -123,7 +123,7 @@ fs-s3fs==1.1.1
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   openedx-django-pyfs
-idna==3.9
+idna==3.10
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -202,7 +202,7 @@ packaging==24.1
     #   tox
 pbr==6.1.0
     # via stevedore
-platformdirs==4.3.3
+platformdirs==4.3.6
     # via
     #   -r requirements/test.txt
     #   pylint
@@ -222,7 +222,7 @@ pygments==2.18.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   rich
-pylint==3.2.7
+pylint==3.3.0
     # via
     #   edx-lint
     #   pylint-celery
@@ -240,7 +240,7 @@ pypng==0.20220715.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-pyproject-api==1.7.1
+pyproject-api==1.8.0
     # via
     #   -r requirements/test.txt
     #   tox
@@ -331,7 +331,7 @@ text-unidecode==1.3
     #   python-slugify
 tomlkit==0.13.2
     # via pylint
-tox==4.18.1
+tox==4.20.0
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -346,7 +346,7 @@ urllib3==2.2.3
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==20.26.4
+virtualenv==20.26.5
     # via
     #   -r requirements/test.txt
     #   tox
