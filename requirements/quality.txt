@@ -18,7 +18,7 @@ asgiref==3.8.1
     # via
     #   -r requirements/test.txt
     #   django
-astroid==3.3.3
+astroid==3.3.4
     # via
     #   pylint
     #   pylint-celery
@@ -26,11 +26,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.35.24
+boto3==1.35.29
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.35.24
+botocore==1.35.29
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -75,7 +75,7 @@ coverage[toml]==7.6.1
     #   pytest-cov
 ddt==1.7.2
     # via -r requirements/test.txt
-dill==0.3.8
+dill==0.3.9
     # via pylint
 distlib==0.3.8
     # via
@@ -189,7 +189,7 @@ pygments==2.18.0
     # via
     #   -r requirements/test.txt
     #   rich
-pylint==3.3.0
+pylint==3.3.1
     # via
     #   edx-lint
     #   pylint-celery
@@ -290,7 +290,7 @@ urllib3==2.2.3
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==20.26.5
+virtualenv==20.26.6
     # via
     #   -r requirements/test.txt
     #   tox
