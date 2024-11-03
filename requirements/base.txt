@@ -12,9 +12,9 @@ asgiref==3.8.1
     # via django
 binaryornot==0.4.4
     # via cookiecutter
-boto3==1.35.49
+boto3==1.35.54
     # via fs-s3fs
-botocore==1.35.49
+botocore==1.35.54
     # via
     #   boto3
     #   s3transfer
@@ -30,7 +30,7 @@ cookiecutter==2.6.0
     # via -r requirements/base.in
 django==4.2.16
     # via
-    #   -c requirements/common_constraints.txt
+    #   -c /home/runner/work/xblock-sdk/xblock-sdk/requirements/common_constraints.txt
     #   -r requirements/base.in
     #   openedx-django-pyfs
 fs==2.4.16
@@ -90,7 +90,7 @@ requests==2.32.3
     # via
     #   -r requirements/base.in
     #   cookiecutter
-rich==13.9.3
+rich==13.9.4
     # via cookiecutter
 s3transfer==0.10.3
     # via boto3
