@@ -32,12 +32,12 @@ binaryornot==0.4.4
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.35.49
+boto3==1.35.54
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.35.49
+botocore==1.35.54
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -104,7 +104,7 @@ django==4.2.16
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   openedx-django-pyfs
-edx-lint==5.4.0
+edx-lint==5.4.1
     # via -r requirements/quality.in
 filelock==3.16.1
     # via
@@ -250,7 +250,7 @@ pytest==8.3.3
     #   pytest-cov
     #   pytest-django
     #   pytest-rerunfailures
-pytest-cov==5.0.0
+pytest-cov==6.0.0
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -292,7 +292,7 @@ requests==2.32.3
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-rich==13.9.3
+rich==13.9.4
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -346,7 +346,7 @@ urllib3==2.2.3
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==20.27.0
+virtualenv==20.27.1
     # via
     #   -r requirements/test.txt
     #   tox
