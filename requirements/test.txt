@@ -8,52 +8,52 @@ acid-xblock==0.4.1
     # via -r requirements/test.in
 appdirs==1.4.4
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   fs
 arrow==1.3.0
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   cookiecutter
 asgiref==3.8.1
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   django
 binaryornot==0.4.4
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   cookiecutter
 boto3==1.35.54
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   fs-s3fs
 botocore==1.35.54
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   boto3
     #   s3transfer
 cachetools==5.5.0
     # via tox
 certifi==2024.8.30
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   requests
 chardet==5.2.0
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   binaryornot
     #   tox
 charset-normalizer==3.4.0
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   requests
 click==8.1.7
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   cookiecutter
 colorama==0.4.6
     # via tox
 cookiecutter==2.6.0
-    # via -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    # via -r requirements/base.txt
 coverage[toml]==7.6.4
     # via
     #   -r requirements/test.in
@@ -63,8 +63,8 @@ ddt==1.7.2
 distlib==0.3.9
     # via virtualenv
     # via
-    #   -c /home/runner/work/xblock-sdk/xblock-sdk/requirements/common_constraints.txt
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -c requirements/common_constraints.txt
+    #   -r requirements/base.txt
     #   openedx-django-pyfs
 filelock==3.16.1
     # via
@@ -72,62 +72,62 @@ filelock==3.16.1
     #   virtualenv
 fs==2.4.16
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   fs-s3fs
     #   openedx-django-pyfs
     #   xblock
 fs-s3fs==1.1.1
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   openedx-django-pyfs
 idna==3.10
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   requests
 iniconfig==2.0.0
     # via pytest
 jinja2==3.1.4
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   cookiecutter
 jmespath==1.0.1
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   boto3
     #   botocore
 lazy==1.6
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   acid-xblock
     #   xblock
 lxml==5.3.0
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   xblock
 mako==1.3.6
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   acid-xblock
     #   xblock
 markdown-it-py==3.0.0
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   rich
 markupsafe==3.0.2
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   jinja2
     #   mako
     #   xblock
 mdurl==0.1.2
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   markdown-it-py
 mock==5.1.0
     # via -r requirements/test.in
 openedx-django-pyfs==3.7.0
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   xblock
 packaging==24.1
     # via
@@ -145,10 +145,10 @@ pluggy==1.5.0
     #   tox
 pygments==2.18.0
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   rich
 pypng==0.20220715.0
-    # via -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    # via -r requirements/base.txt
 pyproject-api==1.8.0
     # via tox
 pytest==8.3.3
@@ -164,77 +164,77 @@ pytest-rerunfailures==14.0
     # via -r requirements/test.in
 python-dateutil==2.9.0.post0
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   arrow
     #   botocore
     #   xblock
 python-slugify==8.0.4
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   cookiecutter
 pytz==2024.2
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   xblock
 pyyaml==6.0.2
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   cookiecutter
     #   xblock
 requests==2.32.3
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   cookiecutter
 rich==13.9.4
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   cookiecutter
 s3transfer==0.10.3
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   boto3
 simplejson==3.19.3
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   xblock
 six==1.16.0
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   fs
     #   fs-s3fs
     #   python-dateutil
 sqlparse==0.5.1
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   django
 text-unidecode==1.3
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   python-slugify
 tox==4.23.2
     # via -r requirements/test.in
 types-python-dateutil==2.9.0.20241003
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   arrow
 urllib3==2.2.3
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   botocore
     #   requests
 virtualenv==20.27.1
     # via tox
 web-fragments==2.2.0
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   xblock
 webob==1.8.9
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   xblock
 xblock[django]==5.1.0
     # via
-    #   -r /home/runner/work/xblock-sdk/xblock-sdk/requirements/base.txt
+    #   -r requirements/base.txt
     #   acid-xblock
 
 # The following packages are considered to be unsafe in a requirements file:

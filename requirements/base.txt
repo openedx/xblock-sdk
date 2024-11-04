@@ -30,7 +30,7 @@ cookiecutter==2.6.0
     # via -r requirements/base.in
 django==4.2.16
     # via
-    #   -c /home/runner/work/xblock-sdk/xblock-sdk/requirements/common_constraints.txt
+    #   -c requirements/common_constraints.txt
     #   -r requirements/base.in
     #   openedx-django-pyfs
 fs==2.4.16
