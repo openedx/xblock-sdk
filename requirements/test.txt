@@ -22,11 +22,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-boto3==1.35.57
+boto3==1.35.63
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.35.57
+botocore==1.35.63
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -54,7 +54,7 @@ colorama==0.4.6
     # via tox
 cookiecutter==2.6.0
     # via -r requirements/base.txt
-coverage[toml]==7.6.4
+coverage[toml]==7.6.7
     # via
     #   -r requirements/test.in
     #   pytest-cov
@@ -203,7 +203,7 @@ six==1.16.0
     #   fs
     #   fs-s3fs
     #   python-dateutil
-sqlparse==0.5.1
+sqlparse==0.5.2
     # via
     #   -r requirements/base.txt
     #   django

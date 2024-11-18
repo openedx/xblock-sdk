@@ -32,12 +32,12 @@ binaryornot==0.4.4
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.35.57
+boto3==1.35.63
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.35.57
+botocore==1.35.63
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -73,7 +73,7 @@ click==8.1.7
     #   edx-lint
 click-log==0.4.0
     # via edx-lint
-code-annotations==1.8.0
+code-annotations==1.8.1
     # via edx-lint
 colorama==0.4.6
     # via
@@ -83,7 +83,7 @@ cookiecutter==2.6.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-coverage[toml]==7.6.4
+coverage[toml]==7.6.7
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -317,7 +317,7 @@ six==1.16.0
     #   python-dateutil
 snowballstemmer==2.2.0
     # via pydocstyle
-sqlparse==0.5.1
+sqlparse==0.5.2
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
