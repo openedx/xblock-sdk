@@ -26,11 +26,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.35.68
+boto3==1.35.71
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.35.68
+botocore==1.35.71
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -61,7 +61,7 @@ click==8.1.7
     #   edx-lint
 click-log==0.4.0
     # via edx-lint
-code-annotations==1.8.2
+code-annotations==2.0.0
     # via edx-lint
 colorama==0.4.6
     # via
@@ -69,7 +69,7 @@ colorama==0.4.6
     #   tox
 cookiecutter==2.6.0
     # via -r requirements/test.txt
-coverage[toml]==7.6.7
+coverage[toml]==7.6.8
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -290,7 +290,7 @@ urllib3==2.2.3
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==20.27.1
+virtualenv==20.28.0
     # via
     #   -r requirements/test.txt
     #   tox
