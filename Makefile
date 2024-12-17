@@ -1,7 +1,6 @@
 #!/usr/bin/make -f
 
 .PHONY: clean help quality requirements selfcheck test test-all upgrade validate
-.PHONY: docker_build docker_auth docker_tag docker_push
 .DEFAULT_GOAL := help
 
 define BROWSER_PYSCRIPT
@@ -95,34 +94,3 @@ validate: quality test ## run tests and quality checks
 
 selfcheck: ## check that the Makefile is well-formed
 	@echo "The Makefile is well-formed."
-
-docker_build:
-	docker compose build
-
-# devstack-themed shortcuts
-dev.up: # Starts all containers
-	docker compose up -d
-
-dev.up.build:
-	docker compose up -d --build
-
-dev.down: # Kills containers and all of their data that isn't in volumes
-	docker compose down
-
-dev.stop: # Stops containers so they can be restarted
-	docker compose stop
-
-app-shell: # Run bash in the container as root
-	docker exec -u 0 -it edx.devstack.xblock-sdk bash
-
-docker_auth:
-	echo "$$DOCKERHUB_PASSWORD" | docker login -u "$$DOCKERHUB_USERNAME" --password-stdin
-
-docker_tag: docker_build
-	docker tag "openedx/xblock-sdk:latest" "openedx/xblock-sdk:${GITHUB_SHA}"
-
-docker_push: | docker_auth docker_tag ## push to docker hub
-	echo "${GITHUB_SHA}"
-	docker images
-	docker -l debug push "openedx/xblock-sdk:latest"
-	docker -l debug push "openedx/xblock-sdk:${GITHUB_SHA}"

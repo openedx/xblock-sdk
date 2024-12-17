@@ -4,6 +4,11 @@ Change history for XBlock SDK
 
 These are notable changes in XBlock.
 
+0.14.0 - 2024-12-16
+-------------------
+
+* remove unsupported docker instructions, as part of https://github.com/openedx/public-engineering/issues/263
+
 0.13.0 - 2024-08-28
 -------------------
 
