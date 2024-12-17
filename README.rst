@@ -62,6 +62,51 @@ Locally
 
 #.  Open a web browser to: http://127.0.0.1:8000
 
+Testing
+~~~~~~~
+
+Testing is done via tox to test all supported versions:
+
+#.  Create and activate a virtualenv to work in.
+
+#.  Run just unit tests via tox::
+
+    $ tox
+
+For each supported version of Django (currently 1.8 and 1.11) this will run:
+
+* Integration tests of XBlocks running within the workbench.
+* Individual tests written for the demo XBlocks
+
+To run the unit tests in your virtualenv you can use::
+
+    $ make test
+
+
+To run all tox unit tests and quality checks::
+
+    $ make test-all
+
+
+To run just the quality checks::
+
+    $ make quality
+
+You can test XBlocks through a browser using `Selenium`_. We have included an
+example Selenium test for ``thumbs`` that uses Django's `LiveServerTestCase`_.
+It runs as part of the test suite as executed by the above command.
+
+.. _Selenium: http://docs.seleniumhq.org/
+.. _LiveServerTestCase: https://docs.djangoproject.com/en/1.11/topics/testing/tools/#django.test.LiveServerTestCase
+
+To update and view test coverage::
+
+    $ make coverage
+
+See the `coverage.py`_ docs for more info and options.
+
+.. _coverage.py: http://coverage.readthedocs.org/
+
 
 Deploying
 =========
