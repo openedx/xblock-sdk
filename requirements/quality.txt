@@ -18,7 +18,7 @@ asgiref==3.8.1
     # via
     #   -r requirements/test.txt
     #   django
-astroid==3.3.6
+astroid==3.3.7
     # via
     #   pylint
     #   pylint-celery
@@ -26,11 +26,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.35.81
+boto3==1.35.86
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.35.81
+botocore==1.35.86
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -52,7 +52,7 @@ charset-normalizer==3.4.0
     # via
     #   -r requirements/test.txt
     #   requests
-click==8.1.7
+click==8.1.8
     # via
     #   -r requirements/test.txt
     #   click-log
@@ -115,7 +115,7 @@ isort==5.13.2
     # via
     #   -r requirements/quality.in
     #   pylint
-jinja2==3.1.4
+jinja2==3.1.5
     # via
     #   -r requirements/test.txt
     #   code-annotations
