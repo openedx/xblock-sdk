@@ -18,7 +18,7 @@ asgiref==3.8.1
     # via
     #   -r requirements/test.txt
     #   django
-astroid==3.3.7
+astroid==3.3.8
     # via
     #   pylint
     #   pylint-celery
@@ -26,11 +26,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.35.86
+boto3==1.35.90
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.35.86
+botocore==1.35.90
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -48,7 +48,7 @@ chardet==5.2.0
     #   -r requirements/test.txt
     #   binaryornot
     #   tox
-charset-normalizer==3.4.0
+charset-normalizer==3.4.1
     # via
     #   -r requirements/test.txt
     #   requests
@@ -69,7 +69,7 @@ colorama==0.4.6
     #   tox
 cookiecutter==2.6.0
     # via -r requirements/test.txt
-coverage[toml]==7.6.9
+coverage[toml]==7.6.10
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -189,7 +189,7 @@ pygments==2.18.0
     # via
     #   -r requirements/test.txt
     #   rich
-pylint==3.3.2
+pylint==3.3.3
     # via
     #   edx-lint
     #   pylint-celery
@@ -285,7 +285,7 @@ types-python-dateutil==2.9.0.20241206
     # via
     #   -r requirements/test.txt
     #   arrow
-urllib3==2.2.3
+urllib3==2.3.0
     # via
     #   -r requirements/test.txt
     #   botocore
