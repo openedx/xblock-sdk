@@ -32,12 +32,12 @@ binaryornot==0.4.4
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.35.90
+boto3==1.35.92
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.35.90
+botocore==1.35.92
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -346,7 +346,7 @@ urllib3==2.3.0
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==20.28.0
+virtualenv==20.28.1
     # via
     #   -r requirements/test.txt
     #   tox
