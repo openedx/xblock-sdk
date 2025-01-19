@@ -26,11 +26,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.35.97
+boto3==1.36.2
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.35.97
+botocore==1.36.2
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -61,7 +61,7 @@ click==8.1.8
     #   edx-lint
 click-log==0.4.0
     # via edx-lint
-code-annotations==2.1.0
+code-annotations==2.2.0
     # via edx-lint
 colorama==0.4.6
     # via
@@ -81,7 +81,7 @@ distlib==0.3.9
     # via
     #   -r requirements/test.txt
     #   virtualenv
-django==4.2.17
+django==4.2.18
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/test.txt
@@ -250,7 +250,7 @@ rich==13.9.4
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-s3transfer==0.10.4
+s3transfer==0.11.1
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -291,7 +291,7 @@ urllib3==2.2.3
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==20.28.1
+virtualenv==20.29.1
     # via
     #   -r requirements/test.txt
     #   tox
