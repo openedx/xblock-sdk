@@ -22,11 +22,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-boto3==1.35.97
+boto3==1.36.2
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.35.97
+botocore==1.36.2
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -189,7 +189,7 @@ rich==13.9.4
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-s3transfer==0.10.4
+s3transfer==0.11.1
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -223,7 +223,7 @@ urllib3==2.2.3
     #   -r requirements/base.txt
     #   botocore
     #   requests
-virtualenv==20.28.1
+virtualenv==20.29.1
     # via tox
 web-fragments==2.2.0
     # via
