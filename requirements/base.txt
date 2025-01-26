@@ -12,9 +12,9 @@ asgiref==3.8.1
     # via django
 binaryornot==0.4.4
     # via cookiecutter
-boto3==1.36.2
+boto3==1.36.6
     # via fs-s3fs
-botocore==1.36.2
+botocore==1.36.6
     # via
     #   boto3
     #   s3transfer
@@ -92,7 +92,7 @@ requests==2.32.3
     #   cookiecutter
 rich==13.9.4
     # via cookiecutter
-s3transfer==0.11.1
+s3transfer==0.11.2
     # via boto3
 simplejson==3.19.3
     # via
@@ -122,7 +122,7 @@ webob==1.8.9
     # via
     #   -r requirements/base.in
     #   xblock
-xblock[django]==5.1.0
+xblock[django]==5.1.1
     # via -r requirements/base.in
 
 # The following packages are considered to be unsafe in a requirements file:

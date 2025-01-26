@@ -22,16 +22,16 @@ binaryornot==0.4.4
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-boto3==1.36.2
+boto3==1.36.6
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.36.2
+botocore==1.36.6
     # via
     #   -r requirements/base.txt
     #   boto3
     #   s3transfer
-cachetools==5.5.0
+cachetools==5.5.1
     # via tox
 certifi==2024.12.14
     # via
@@ -66,7 +66,7 @@ distlib==0.3.9
     #   -c requirements/common_constraints.txt
     #   -r requirements/base.txt
     #   openedx-django-pyfs
-filelock==3.16.1
+filelock==3.17.0
     # via
     #   tox
     #   virtualenv
@@ -149,7 +149,7 @@ pygments==2.19.1
     #   rich
 pypng==0.20220715.0
     # via -r requirements/base.txt
-pyproject-api==1.8.0
+pyproject-api==1.9.0
     # via tox
 pytest==8.3.4
     # via
@@ -189,7 +189,7 @@ rich==13.9.4
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-s3transfer==0.11.1
+s3transfer==0.11.2
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -211,7 +211,7 @@ text-unidecode==1.3
     # via
     #   -r requirements/base.txt
     #   python-slugify
-tox==4.23.2
+tox==4.24.1
     # via -r requirements/test.in
 types-python-dateutil==2.9.0.20241206
     # via
@@ -233,7 +233,7 @@ webob==1.8.9
     # via
     #   -r requirements/base.txt
     #   xblock
-xblock[django]==5.1.0
+xblock[django]==5.1.1
     # via
     #   -r requirements/base.txt
     #   acid-xblock
