@@ -2,10 +2,11 @@
 
 
 from django.conf import settings
+from django.views.i18n import JavaScriptCatalog
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.urls import re_path
+from django.urls import re_path, path
 
 from workbench import views
 
@@ -61,6 +62,7 @@ urlpatterns = [
         views.reset_state,
         name='reset_state'
     ),
+    path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
 
     re_path(r'^admin/', admin.site.urls),
 ]

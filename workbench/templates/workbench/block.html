@@ -5,6 +5,7 @@
         <link rel="stylesheet" type="text/css"
               href="{% static 'workbench/css/workbench.css' %}">
 	<script src="{% static 'workbench/js/runtime/logger.js' %}"></script>
+    <script src="{% url 'javascript-catalog' %}"></script>
         <script>
             // TODO: This should be handled more modularly.
             studentId = '{{student_id}}';
