@@ -32,12 +32,12 @@ binaryornot==0.4.4
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.36.6
+boto3==1.36.11
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.36.6
+botocore==1.36.11
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -47,7 +47,7 @@ cachetools==5.5.1
     # via
     #   -r requirements/test.txt
     #   tox
-certifi==2024.12.14
+certifi==2025.1.31
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -132,7 +132,7 @@ iniconfig==2.0.0
     # via
     #   -r requirements/test.txt
     #   pytest
-isort==5.13.2
+isort==6.0.0
     # via
     #   -r requirements/quality.in
     #   pylint
@@ -222,7 +222,7 @@ pygments==2.19.1
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   rich
-pylint==3.3.3
+pylint==3.3.4
     # via
     #   edx-lint
     #   pylint-celery
@@ -275,7 +275,7 @@ python-slugify==8.0.4
     #   -r requirements/test.txt
     #   code-annotations
     #   cookiecutter
-pytz==2024.2
+pytz==2025.1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
