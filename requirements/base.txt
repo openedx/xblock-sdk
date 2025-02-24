@@ -12,9 +12,9 @@ asgiref==3.8.1
     # via django
 binaryornot==0.4.4
     # via cookiecutter
-boto3==1.36.21
+boto3==1.36.26
     # via fs-s3fs
-botocore==1.36.21
+botocore==1.36.26
     # via
     #   boto3
     #   s3transfer
