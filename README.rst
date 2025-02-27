@@ -127,7 +127,7 @@ Documentation
 
 Start by going through `the documentation`_.  If you need more help see below.
 
-.. _the documentation: https://edx.readthedocs.io/projects/xblock-tutorial/en/latest/sdk/get_started_sdk.html
+.. _the documentation: https://docs.openedx.org/projects/xblock/en/latest/xblock-tutorial/sdk/get_started_sdk.html
 
 More Help
 =========
@@ -252,7 +252,7 @@ Making an XBlock involves creating a Python class that conforms to the XBlock
 specification. See the ``sample_xblocks`` directory for examples and
 `the XBlock tutorial`_ for a full walk-through.
 
-.. _the XBlock tutorial: http://edx.readthedocs.org/projects/xblock-tutorial
+.. _the XBlock tutorial: https://docs.openedx.org/projects/xblock/en/latest/xblock-tutorial/index.html
 
 We provide a script to create a new XBlock project to help you get started.
 Run ``bin/workbench-make-xblock`` in a directory where you want to create your XBlock
