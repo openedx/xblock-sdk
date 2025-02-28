@@ -9,7 +9,7 @@ metadata:
   name: 'xblock-sdk'
   description: "A Workbench for developing xblocks and some sample xblocks."
   links:
-    - url: "https://edx.readthedocs.io/projects/xblock-tutorial/en/latest/sdk/get_started_sdk.html"
+    - url: "https://docs.openedx.org/projects/xblock/en/latest/xblock-tutorial/sdk/get_started_sdk.html"
       title: "Documentation"
       # Backstage uses the MaterialUI Icon Set.
       # https://mui.com/material-ui/material-icons/
