@@ -18,7 +18,7 @@ asgiref==3.8.1
     # via
     #   -r requirements/test.txt
     #   django
-astroid==3.3.8
+astroid==3.3.9
     # via
     #   pylint
     #   pylint-celery
@@ -26,11 +26,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.37.9
+boto3==1.37.13
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.37.9
+botocore==1.37.13
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -88,7 +88,7 @@ django==4.2.20
     #   openedx-django-pyfs
 edx-lint==5.6.0
     # via -r requirements/quality.in
-filelock==3.17.0
+filelock==3.18.0
     # via
     #   -r requirements/test.txt
     #   tox
@@ -189,7 +189,7 @@ pygments==2.19.1
     # via
     #   -r requirements/test.txt
     #   rich
-pylint==3.3.4
+pylint==3.3.5
     # via
     #   edx-lint
     #   pylint-celery
