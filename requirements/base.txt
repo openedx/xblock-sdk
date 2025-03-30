@@ -12,9 +12,9 @@ asgiref==3.8.1
     # via django
 binaryornot==0.4.4
     # via cookiecutter
-boto3==1.37.18
+boto3==1.37.23
     # via fs-s3fs
-botocore==1.37.18
+botocore==1.37.23
     # via
     #   boto3
     #   s3transfer
@@ -80,7 +80,7 @@ python-dateutil==2.9.0.post0
     #   xblock
 python-slugify==8.0.4
     # via cookiecutter
-pytz==2025.1
+pytz==2025.2
     # via xblock
 pyyaml==6.0.2
     # via
