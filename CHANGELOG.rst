@@ -4,6 +4,12 @@ Change history for XBlock SDK
 
 These are notable changes in XBlock.
 
+0.15.0 - 2025-04-08
+-------------------
+
+* Added support for Django 5.2
+
+
 0.14.0 - 2024-12-16
 -------------------
 

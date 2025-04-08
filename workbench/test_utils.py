@@ -102,7 +102,7 @@ class XBlockHandlerTestCaseMixin:
         )
         return self.runtime.get_block(block_id)
 
-    def request(self, xblock, handler_name, content, request_method="POST", response_format=None):
+    def request(self, xblock, handler_name, content, request_method="POST", response_format=None):  # pylint: disable=too-many-positional-arguments
         """Make a request to an XBlock handler.
 
         Args:
