@@ -4,22 +4,12 @@ Change history for XBlock SDK
 
 These are notable changes in XBlock.
 
-0.15.0 - 2025-04-08
+0.13.0 - 2025-04-08
 -------------------
-
-* Added support for Django 5.2
-
-
-0.14.0 - 2024-12-16
--------------------
-
-* remove unsupported docker instructions, as part of https://github.com/openedx/public-engineering/issues/263
-
-0.13.0 - 2024-08-28
--------------------
-
 * upgraded to Ubuntu 24.04 and Python 3.12
 * replaced deprecated docker-compose command with docker compose
+* remove unsupported docker instructions, as part of https://github.com/openedx/public-engineering/issues/263
+* Added support for Django 5.2
 
 0.12.0 - 2024-05-30
 ------------------
