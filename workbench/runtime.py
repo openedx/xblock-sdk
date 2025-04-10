@@ -345,7 +345,7 @@ class WorkbenchRuntime(Runtime):
 
         return wrapped
 
-    def handler_url(self, block, handler_name, suffix='', query='', thirdparty=False):
+    def handler_url(self, block, handler_name, suffix='', query='', thirdparty=False):  # pylint: disable=too-many-positional-arguments
         """Helper to get the correct url for the given handler"""
         # Be sure this really is a handler.
         func = getattr(block, handler_name, None)
