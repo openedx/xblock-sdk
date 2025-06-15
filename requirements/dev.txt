@@ -32,12 +32,12 @@ binaryornot==0.4.4
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.38.32
+boto3==1.38.36
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.38.32
+botocore==1.38.36
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -83,7 +83,7 @@ cookiecutter==2.6.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-coverage[toml]==7.8.2
+coverage[toml]==7.9.1
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -98,7 +98,7 @@ distlib==0.3.9
     # via
     #   -r requirements/test.txt
     #   virtualenv
-django==4.2.22
+django==4.2.23
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/base.txt
@@ -212,6 +212,7 @@ pluggy==1.6.0
     # via
     #   -r requirements/test.txt
     #   pytest
+    #   pytest-cov
     #   tox
 pycodestyle==2.13.0
     # via -r requirements/quality.in
@@ -251,7 +252,7 @@ pytest==8.4.0
     #   pytest-cov
     #   pytest-django
     #   pytest-rerunfailures
-pytest-cov==6.1.1
+pytest-cov==6.2.1
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -288,7 +289,7 @@ pyyaml==6.0.2
     #   code-annotations
     #   cookiecutter
     #   xblock
-requests==2.32.3
+requests==2.32.4
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
