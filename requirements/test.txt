@@ -22,18 +22,18 @@ binaryornot==0.4.4
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-boto3==1.39.4
+boto3==1.39.9
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.39.4
+botocore==1.39.9
     # via
     #   -r requirements/base.txt
     #   boto3
     #   s3transfer
 cachetools==6.1.0
     # via tox
-certifi==2025.7.9
+certifi==2025.7.14
     # via
     #   -r requirements/base.txt
     #   requests
@@ -60,7 +60,7 @@ coverage[toml]==7.9.2
     #   pytest-cov
 ddt==1.7.2
     # via -r requirements/test.in
-distlib==0.3.9
+distlib==0.4.0
     # via virtualenv
     # via
     #   -c requirements/common_constraints.txt
@@ -191,7 +191,7 @@ rich==14.0.0
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-s3transfer==0.13.0
+s3transfer==0.13.1
     # via
     #   -r requirements/base.txt
     #   boto3
