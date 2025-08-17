@@ -26,11 +26,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.40.6
+boto3==1.40.11
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.40.6
+botocore==1.40.11
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -69,7 +69,7 @@ colorama==0.4.6
     #   tox
 cookiecutter==2.6.0
     # via -r requirements/test.txt
-coverage[toml]==7.10.2
+coverage[toml]==7.10.3
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -88,7 +88,7 @@ django==4.2.23
     #   openedx-django-pyfs
 edx-lint==5.6.0
     # via -r requirements/quality.in
-filelock==3.18.0
+filelock==3.19.1
     # via
     #   -r requirements/test.txt
     #   tox
@@ -139,7 +139,7 @@ mako==1.3.10
     #   -r requirements/test.txt
     #   acid-xblock
     #   xblock
-markdown-it-py==3.0.0
+markdown-it-py==4.0.0
     # via
     #   -r requirements/test.txt
     #   rich
@@ -168,7 +168,7 @@ packaging==25.0
     #   pytest
     #   pytest-rerunfailures
     #   tox
-pbr==6.1.1
+pbr==7.0.0
     # via stevedore
 platformdirs==4.3.8
     # via
@@ -292,7 +292,7 @@ urllib3==2.5.0
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==20.33.1
+virtualenv==20.34.0
     # via
     #   -r requirements/test.txt
     #   tox
