@@ -26,11 +26,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.40.11
+boto3==1.40.16
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.40.11
+botocore==1.40.16
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -69,7 +69,7 @@ colorama==0.4.6
     #   tox
 cookiecutter==2.6.0
     # via -r requirements/test.txt
-coverage[toml]==7.10.3
+coverage[toml]==7.10.5
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -130,7 +130,7 @@ lazy==1.6
     #   -r requirements/test.txt
     #   acid-xblock
     #   xblock
-lxml==6.0.0
+lxml==6.0.1
     # via
     #   -r requirements/test.txt
     #   xblock
@@ -168,7 +168,7 @@ packaging==25.0
     #   pytest
     #   pytest-rerunfailures
     #   tox
-pbr==7.0.0
+pbr==7.0.1
     # via stevedore
 platformdirs==4.3.8
     # via
@@ -244,7 +244,7 @@ pyyaml==6.0.2
     #   code-annotations
     #   cookiecutter
     #   xblock
-requests==2.32.4
+requests==2.32.5
     # via
     #   -r requirements/test.txt
     #   cookiecutter
@@ -283,7 +283,7 @@ tomlkit==0.13.3
     # via pylint
 tox==4.28.4
     # via -r requirements/test.txt
-types-python-dateutil==2.9.0.20250809
+types-python-dateutil==2.9.0.20250822
     # via
     #   -r requirements/test.txt
     #   arrow
