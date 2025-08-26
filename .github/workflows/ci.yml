@@ -14,7 +14,7 @@ jobs:
         python-version: ['3.11', '3.12']
         toxenv: [django42, django52, quality]
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
     - name: Python setup
       uses: actions/setup-python@v5
