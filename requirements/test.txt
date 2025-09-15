@@ -22,11 +22,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-boto3==1.40.25
+boto3==1.40.30
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.40.25
+botocore==1.40.30
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -158,7 +158,7 @@ pytest==8.4.2
     #   pytest-cov
     #   pytest-django
     #   pytest-rerunfailures
-pytest-cov==6.3.0
+pytest-cov==7.0.0
     # via -r requirements/test.in
 pytest-django==4.11.1
     # via -r requirements/test.in
@@ -191,7 +191,7 @@ rich==14.1.0
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-s3transfer==0.13.1
+s3transfer==0.14.0
     # via
     #   -r requirements/base.txt
     #   boto3
