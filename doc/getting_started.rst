@@ -90,9 +90,9 @@ where you should make changes::
 
 
 For more details about the details of writing an XBlock, please refer to the
-XBlock documentation: https://xblock.readthedocs.org/en/latest/getting_started.html#write-your-xblock
+`XBlock documentation <https://docs.openedx.org/projects/xblock/en/latest/xblock-tutorial/getting_started/index.html>`_
 
-Testing your XBlock in the XBlock-SDK 
+Testing your XBlock in the XBlock-SDK
 --------------------------------------
 
 .. highlight: console
@@ -128,4 +128,4 @@ This will automatically start the workbench on port 8000. If you visit the page:
 
     http://localhost:8000
 
-the workbench should be visible along with the `workbench_scenarios` of any installed XBlocks. 
+the workbench should be visible along with the `workbench_scenarios` of any installed XBlocks.
