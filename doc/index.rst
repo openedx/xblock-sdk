@@ -8,11 +8,11 @@ XBlock-SDK
     if you have any questions or concerns. Do not make any plans based on this
     document without talking to us first.
 
-This is documentation for using the XBlock-SDK effectively to develop XBlocks. This documentation 
+This is documentation for using the XBlock-SDK effectively to develop XBlocks. This documentation
 does not go into any detail about the inner workings of XBlocks. Please see the primary XBlock documentation
 for any questions and concerns about the XBlock API.
 
-   https://xblock.readthedocs.org/
+   https://docs.openedx.org/projects/xblock/en/latest/
 
 Getting Started
 ---------------
