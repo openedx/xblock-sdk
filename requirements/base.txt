@@ -8,13 +8,13 @@ appdirs==1.4.4
     # via fs
 arrow==1.3.0
     # via cookiecutter
-asgiref==3.9.1
+asgiref==3.9.2
     # via django
 binaryornot==0.4.4
     # via cookiecutter
-boto3==1.40.35
+boto3==1.40.40
     # via fs-s3fs
-botocore==1.40.35
+botocore==1.40.40
     # via
     #   boto3
     #   s3transfer
@@ -52,7 +52,7 @@ jmespath==1.0.1
     #   botocore
 lazy==1.6
     # via xblock
-lxml==6.0.1
+lxml==6.0.2
     # via
     #   -r requirements/base.in
     #   xblock
@@ -60,7 +60,7 @@ mako==1.3.10
     # via xblock
 markdown-it-py==4.0.0
     # via rich
-markupsafe==3.0.2
+markupsafe==3.0.3
     # via
     #   jinja2
     #   mako
@@ -82,7 +82,7 @@ python-slugify==8.0.4
     # via cookiecutter
 pytz==2025.2
     # via xblock
-pyyaml==6.0.2
+pyyaml==6.0.3
     # via
     #   cookiecutter
     #   xblock
@@ -94,7 +94,7 @@ rich==14.1.0
     # via cookiecutter
 s3transfer==0.14.0
     # via boto3
-simplejson==3.20.1
+simplejson==3.20.2
     # via
     #   -r requirements/base.in
     #   xblock

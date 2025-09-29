@@ -14,7 +14,7 @@ arrow==1.3.0
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-asgiref==3.9.1
+asgiref==3.9.2
     # via
     #   -r requirements/base.txt
     #   django
@@ -22,11 +22,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-boto3==1.40.35
+boto3==1.40.40
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.40.35
+botocore==1.40.40
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -54,7 +54,7 @@ colorama==0.4.6
     # via tox
 cookiecutter==2.6.0
     # via -r requirements/base.txt
-coverage[toml]==7.10.6
+coverage[toml]==7.10.7
     # via
     #   -r requirements/test.in
     #   pytest-cov
@@ -100,7 +100,7 @@ lazy==1.6
     #   -r requirements/base.txt
     #   acid-xblock
     #   xblock
-lxml==6.0.1
+lxml==6.0.2
     # via
     #   -r requirements/base.txt
     #   xblock
@@ -113,7 +113,7 @@ markdown-it-py==4.0.0
     # via
     #   -r requirements/base.txt
     #   rich
-markupsafe==3.0.2
+markupsafe==3.0.3
     # via
     #   -r requirements/base.txt
     #   jinja2
@@ -178,7 +178,7 @@ pytz==2025.2
     # via
     #   -r requirements/base.txt
     #   xblock
-pyyaml==6.0.2
+pyyaml==6.0.3
     # via
     #   -r requirements/base.txt
     #   cookiecutter
@@ -195,7 +195,7 @@ s3transfer==0.14.0
     # via
     #   -r requirements/base.txt
     #   boto3
-simplejson==3.20.1
+simplejson==3.20.2
     # via
     #   -r requirements/base.txt
     #   xblock
