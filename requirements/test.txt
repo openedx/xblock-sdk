@@ -22,11 +22,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-boto3==1.40.55
+boto3==1.40.68
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.40.55
+botocore==1.40.68
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -54,7 +54,7 @@ colorama==0.4.6
     # via tox
 cookiecutter==2.6.0
     # via -r requirements/base.txt
-coverage[toml]==7.11.0
+coverage[toml]==7.11.1
     # via
     #   -r requirements/test.in
     #   pytest-cov
@@ -213,7 +213,7 @@ text-unidecode==1.3
     # via
     #   -r requirements/base.txt
     #   python-slugify
-tox==4.31.0
+tox==4.32.0
     # via -r requirements/test.in
 tzdata==2025.2
     # via
@@ -224,7 +224,7 @@ urllib3==2.5.0
     #   -r requirements/base.txt
     #   botocore
     #   requests
-virtualenv==20.35.3
+virtualenv==20.35.4
     # via tox
 web-fragments==3.1.0
     # via
