@@ -26,11 +26,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.40.68
+boto3==1.40.69
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.40.68
+botocore==1.40.69
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -69,7 +69,7 @@ colorama==0.4.6
     #   tox
 cookiecutter==2.6.0
     # via -r requirements/test.txt
-coverage[toml]==7.11.1
+coverage[toml]==7.11.2
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -209,7 +209,7 @@ pyproject-api==1.10.0
     # via
     #   -r requirements/test.txt
     #   tox
-pytest==8.4.2
+pytest==9.0.0
     # via
     #   -r requirements/test.txt
     #   pytest-cov
