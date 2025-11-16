@@ -26,20 +26,20 @@ binaryornot==0.4.4
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.40.69
+boto3==1.40.74
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.40.69
+botocore==1.40.74
     # via
     #   -r requirements/test.txt
     #   boto3
     #   s3transfer
-cachetools==6.2.1
+cachetools==6.2.2
     # via
     #   -r requirements/test.txt
     #   tox
-certifi==2025.10.5
+certifi==2025.11.12
     # via
     #   -r requirements/test.txt
     #   requests
@@ -52,7 +52,7 @@ charset-normalizer==3.4.4
     # via
     #   -r requirements/test.txt
     #   requests
-click==8.3.0
+click==8.3.1
     # via
     #   -r requirements/test.txt
     #   click-log
@@ -69,7 +69,7 @@ colorama==0.4.6
     #   tox
 cookiecutter==2.6.0
     # via -r requirements/test.txt
-coverage[toml]==7.11.2
+coverage[toml]==7.11.3
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -209,7 +209,7 @@ pyproject-api==1.10.0
     # via
     #   -r requirements/test.txt
     #   tox
-pytest==9.0.0
+pytest==9.0.1
     # via
     #   -r requirements/test.txt
     #   pytest-cov
