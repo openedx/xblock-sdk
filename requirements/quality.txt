@@ -26,11 +26,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.41.2
+boto3==1.41.5
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.41.2
+botocore==1.41.5
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -267,7 +267,7 @@ six==1.17.0
     #   python-dateutil
 snowballstemmer==3.0.1
     # via pydocstyle
-sqlparse==0.5.3
+sqlparse==0.5.4
     # via
     #   -r requirements/test.txt
     #   django
