@@ -26,16 +26,16 @@ binaryornot==0.4.4
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.42.9
+boto3==1.42.14
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.42.9
+botocore==1.42.14
     # via
     #   -r requirements/test.txt
     #   boto3
     #   s3transfer
-cachetools==6.2.3
+cachetools==6.2.4
     # via
     #   -r requirements/test.txt
     #   tox
@@ -88,7 +88,7 @@ django==5.2.9
     #   openedx-django-pyfs
 edx-lint==5.6.0
     # via -r requirements/quality.in
-filelock==3.20.0
+filelock==3.20.1
     # via
     #   -r requirements/test.txt
     #   tox
@@ -267,7 +267,7 @@ six==1.17.0
     #   python-dateutil
 snowballstemmer==3.0.1
     # via pydocstyle
-sqlparse==0.5.4
+sqlparse==0.5.5
     # via
     #   -r requirements/test.txt
     #   django
