@@ -22,11 +22,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-boto3==1.42.17
+boto3==1.42.21
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.42.17
+botocore==1.42.21
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -54,7 +54,7 @@ colorama==0.4.6
     # via tox
 cookiecutter==2.6.0
     # via -r requirements/base.txt
-coverage[toml]==7.13.0
+coverage[toml]==7.13.1
     # via
     #   -r requirements/test.in
     #   pytest-cov
@@ -66,7 +66,7 @@ distlib==0.4.0
     #   -c requirements/common_constraints.txt
     #   -r requirements/base.txt
     #   openedx-django-pyfs
-filelock==3.20.1
+filelock==3.20.2
     # via
     #   tox
     #   virtualenv
@@ -213,7 +213,7 @@ text-unidecode==1.3
     # via
     #   -r requirements/base.txt
     #   python-slugify
-tox==4.32.0
+tox==4.33.0
     # via -r requirements/test.in
 tzdata==2025.3
     # via
