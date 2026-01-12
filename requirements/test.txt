@@ -22,18 +22,18 @@ binaryornot==0.4.4
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-boto3==1.42.21
+boto3==1.42.25
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.42.21
+botocore==1.42.25
     # via
     #   -r requirements/base.txt
     #   boto3
     #   s3transfer
 cachetools==6.2.4
     # via tox
-certifi==2025.11.12
+certifi==2026.1.4
     # via
     #   -r requirements/base.txt
     #   requests
@@ -66,7 +66,7 @@ distlib==0.4.0
     #   -c requirements/common_constraints.txt
     #   -r requirements/base.txt
     #   openedx-django-pyfs
-filelock==3.20.2
+filelock==3.20.3
     # via
     #   tox
     #   virtualenv
@@ -213,18 +213,18 @@ text-unidecode==1.3
     # via
     #   -r requirements/base.txt
     #   python-slugify
-tox==4.33.0
+tox==4.34.1
     # via -r requirements/test.in
 tzdata==2025.3
     # via
     #   -r requirements/base.txt
     #   arrow
-urllib3==2.6.2
+urllib3==2.6.3
     # via
     #   -r requirements/base.txt
     #   botocore
     #   requests
-virtualenv==20.35.4
+virtualenv==20.36.1
     # via tox
 web-fragments==3.1.0
     # via
