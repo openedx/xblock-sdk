@@ -26,11 +26,11 @@ binaryornot==0.4.4
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.42.54
+boto3==1.42.59
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.42.54
+botocore==1.42.59
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -39,15 +39,14 @@ cachetools==7.0.1
     # via
     #   -r requirements/test.txt
     #   tox
-certifi==2026.1.4
+certifi==2026.2.25
     # via
     #   -r requirements/test.txt
     #   requests
-chardet==5.2.0
+chardet==6.0.0.post1
     # via
     #   -r requirements/test.txt
     #   binaryornot
-    #   tox
 charset-normalizer==3.4.4
     # via
     #   -r requirements/test.txt
@@ -91,6 +90,7 @@ edx-lint==5.6.0
 filelock==3.24.3
     # via
     #   -r requirements/test.txt
+    #   python-discovery
     #   tox
     #   virtualenv
 fs==2.4.16
@@ -111,7 +111,7 @@ iniconfig==2.3.0
     # via
     #   -r requirements/test.txt
     #   pytest
-isort==8.0.0
+isort==8.0.1
     # via
     #   -r requirements/quality.in
     #   pylint
@@ -172,6 +172,7 @@ platformdirs==4.9.2
     # via
     #   -r requirements/test.txt
     #   pylint
+    #   python-discovery
     #   tox
     #   virtualenv
 pluggy==1.6.0
@@ -227,6 +228,10 @@ python-dateutil==2.9.0.post0
     #   arrow
     #   botocore
     #   xblock
+python-discovery==1.1.0
+    # via
+    #   -r requirements/test.txt
+    #   virtualenv
 python-slugify==8.0.4
     # via
     #   -r requirements/test.txt
@@ -279,7 +284,7 @@ text-unidecode==1.3
     #   python-slugify
 tomlkit==0.14.0
     # via pylint
-tox==4.44.0
+tox==4.46.3
     # via -r requirements/test.txt
 tzdata==2025.3
     # via
@@ -290,7 +295,7 @@ urllib3==2.6.3
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==20.38.0
+virtualenv==21.1.0
     # via
     #   -r requirements/test.txt
     #   tox
