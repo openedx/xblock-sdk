@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.11', '3.12']
+        python-version: ['3.12']
         toxenv: [django42, django52, quality]
     steps:
     - uses: actions/checkout@v6
@@ -30,7 +30,7 @@ jobs:
       run:  tox -e ${{ matrix.toxenv }}
 
     - name: Upload coverage to CodeCov
-      if: matrix.python-version == '3.11' && matrix.toxenv == 'django42'
+      if: matrix.python-version == '3.12' && matrix.toxenv == 'django42'
       uses: codecov/codecov-action@v5
       with:
         file: ./coverage.xml
