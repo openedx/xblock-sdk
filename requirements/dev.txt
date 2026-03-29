@@ -32,12 +32,12 @@ binaryornot==0.6.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.42.74
+boto3==1.42.78
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.42.74
+botocore==1.42.78
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -265,9 +265,10 @@ python-dateutil==2.9.0.post0
     #   arrow
     #   botocore
     #   xblock
-python-discovery==1.2.0
+python-discovery==1.2.1
     # via
     #   -r requirements/test.txt
+    #   tox
     #   virtualenv
 python-slugify==8.0.4
     # via
@@ -287,7 +288,7 @@ pyyaml==6.0.3
     #   code-annotations
     #   cookiecutter
     #   xblock
-requests==2.32.5
+requests==2.33.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -335,7 +336,7 @@ tomli-w==1.2.0
     #   tox
 tomlkit==0.14.0
     # via pylint
-tox==4.50.3
+tox==4.51.0
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -364,7 +365,7 @@ webob==1.8.9
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   xblock
-xblock[django]==5.3.0
+xblock[django]==6.0.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
