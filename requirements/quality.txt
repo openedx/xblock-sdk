@@ -26,11 +26,11 @@ binaryornot==0.6.0
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.42.78
+boto3==1.42.83
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.42.78
+botocore==1.42.83
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -43,11 +43,11 @@ certifi==2026.2.25
     # via
     #   -r requirements/test.txt
     #   requests
-charset-normalizer==3.4.6
+charset-normalizer==3.4.7
     # via
     #   -r requirements/test.txt
     #   requests
-click==8.3.1
+click==8.3.2
     # via
     #   -r requirements/test.txt
     #   click-log
@@ -181,7 +181,7 @@ pycodestyle==2.14.0
     # via -r requirements/quality.in
 pydocstyle==6.3.0
     # via -r requirements/quality.in
-pygments==2.19.2
+pygments==2.20.0
     # via
     #   -r requirements/test.txt
     #   pytest
@@ -244,7 +244,7 @@ pyyaml==6.0.3
     #   code-annotations
     #   cookiecutter
     #   xblock
-requests==2.33.0
+requests==2.33.1
     # via
     #   -r requirements/test.txt
     #   cookiecutter
@@ -285,9 +285,9 @@ tomli-w==1.2.0
     #   tox
 tomlkit==0.14.0
     # via pylint
-tox==4.51.0
+tox==4.52.0
     # via -r requirements/test.txt
-tzdata==2025.3
+tzdata==2026.1
     # via
     #   -r requirements/test.txt
     #   arrow

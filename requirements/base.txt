@@ -12,17 +12,17 @@ asgiref==3.11.1
     # via django
 binaryornot==0.6.0
     # via cookiecutter
-boto3==1.42.78
+boto3==1.42.83
     # via fs-s3fs
-botocore==1.42.78
+botocore==1.42.83
     # via
     #   boto3
     #   s3transfer
 certifi==2026.2.25
     # via requests
-charset-normalizer==3.4.6
+charset-normalizer==3.4.7
     # via requests
-click==8.3.1
+click==8.3.2
     # via cookiecutter
 cookiecutter==2.7.1
     # via -r requirements/base.in
@@ -67,7 +67,7 @@ mdurl==0.1.2
     # via markdown-it-py
 openedx-django-pyfs==4.0.0
     # via xblock
-pygments==2.19.2
+pygments==2.20.0
     # via rich
 pypng==0.20220715.0
     # via -r requirements/base.in
@@ -84,7 +84,7 @@ pyyaml==6.0.3
     # via
     #   cookiecutter
     #   xblock
-requests==2.33.0
+requests==2.33.1
     # via
     #   -r requirements/base.in
     #   cookiecutter
@@ -105,7 +105,7 @@ sqlparse==0.5.5
     # via django
 text-unidecode==1.3
     # via python-slugify
-tzdata==2025.3
+tzdata==2026.1
     # via arrow
 urllib3==2.6.3
     # via
