@@ -26,11 +26,11 @@ binaryornot==0.6.0
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.42.83
+boto3==1.42.88
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.42.83
+botocore==1.42.88
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -76,7 +76,7 @@ distlib==0.4.0
     # via
     #   -r requirements/test.txt
     #   virtualenv
-django==5.2.12
+django==5.2.13
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/test.txt
@@ -126,7 +126,7 @@ lazy==1.6
     #   -r requirements/test.txt
     #   acid-xblock
     #   xblock
-lxml==6.0.2
+lxml==6.0.3
     # via
     #   -r requirements/test.txt
     #   xblock
@@ -164,7 +164,7 @@ packaging==26.0
     #   pytest
     #   pytest-rerunfailures
     #   tox
-platformdirs==4.9.4
+platformdirs==4.9.6
     # via
     #   -r requirements/test.txt
     #   pylint
@@ -206,7 +206,7 @@ pyproject-api==1.10.0
     # via
     #   -r requirements/test.txt
     #   tox
-pytest==9.0.2
+pytest==9.0.3
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -224,7 +224,7 @@ python-dateutil==2.9.0.post0
     #   arrow
     #   botocore
     #   xblock
-python-discovery==1.2.1
+python-discovery==1.2.2
     # via
     #   -r requirements/test.txt
     #   tox
@@ -248,7 +248,7 @@ requests==2.33.1
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-rich==14.3.3
+rich==14.3.4
     # via
     #   -r requirements/test.txt
     #   cookiecutter
@@ -285,7 +285,7 @@ tomli-w==1.2.0
     #   tox
 tomlkit==0.14.0
     # via pylint
-tox==4.52.0
+tox==4.52.1
     # via -r requirements/test.txt
 tzdata==2026.1
     # via
@@ -296,7 +296,7 @@ urllib3==2.6.3
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==21.2.0
+virtualenv==21.2.1
     # via
     #   -r requirements/test.txt
     #   tox
