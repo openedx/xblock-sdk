@@ -22,18 +22,18 @@ binaryornot==0.6.0
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-boto3==1.42.91
+boto3==1.42.96
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.42.91
+botocore==1.42.96
     # via
     #   -r requirements/base.txt
     #   boto3
     #   s3transfer
-cachetools==7.0.5
+cachetools==7.0.6
     # via tox
-certifi==2026.2.25
+certifi==2026.4.22
     # via
     #   -r requirements/base.txt
     #   requests
@@ -41,7 +41,7 @@ charset-normalizer==3.4.7
     # via
     #   -r requirements/base.txt
     #   requests
-click==8.3.2
+click==8.3.3
     # via
     #   -r requirements/base.txt
     #   cookiecutter
@@ -61,7 +61,7 @@ distlib==0.4.0
     #   -c requirements/common_constraints.txt
     #   -r requirements/base.txt
     #   openedx-django-pyfs
-filelock==3.28.0
+filelock==3.29.0
     # via
     #   python-discovery
     #   tox
@@ -76,7 +76,7 @@ fs-s3fs==1.1.1
     # via
     #   -r requirements/base.txt
     #   openedx-django-pyfs
-idna==3.11
+idna==3.13
     # via
     #   -r requirements/base.txt
     #   requests
@@ -125,7 +125,7 @@ openedx-django-pyfs==4.0.0
     # via
     #   -r requirements/base.txt
     #   xblock
-packaging==26.1
+packaging==26.2
     # via
     #   pyproject-api
     #   pytest
@@ -192,11 +192,11 @@ rich==15.0.0
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-s3transfer==0.16.0
+s3transfer==0.16.1
     # via
     #   -r requirements/base.txt
     #   boto3
-simplejson==4.0.1
+simplejson==4.1.1
     # via
     #   -r requirements/base.txt
     #   xblock
@@ -218,7 +218,7 @@ tomli-w==1.2.0
     # via tox
 tox==4.53.0
     # via -r requirements/test.in
-tzdata==2026.1
+tzdata==2026.2
     # via
     #   -r requirements/base.txt
     #   arrow
@@ -237,7 +237,7 @@ webob==1.8.9
     # via
     #   -r requirements/base.txt
     #   xblock
-xblock[django]==6.0.0
+xblock[django]==6.1.0
     # via
     #   -r requirements/base.txt
     #   acid-xblock

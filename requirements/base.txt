@@ -12,17 +12,17 @@ asgiref==3.11.1
     # via django
 binaryornot==0.6.0
     # via cookiecutter
-boto3==1.42.91
+boto3==1.42.96
     # via fs-s3fs
-botocore==1.42.91
+botocore==1.42.96
     # via
     #   boto3
     #   s3transfer
-certifi==2026.2.25
+certifi==2026.4.22
     # via requests
 charset-normalizer==3.4.7
     # via requests
-click==8.3.2
+click==8.3.3
     # via cookiecutter
 cookiecutter==2.7.1
     # via -r requirements/base.in
@@ -40,7 +40,7 @@ fs-s3fs==1.1.1
     # via
     #   -r requirements/base.in
     #   openedx-django-pyfs
-idna==3.11
+idna==3.13
     # via requests
 jinja2==3.1.6
     # via cookiecutter
@@ -90,9 +90,9 @@ requests==2.33.1
     #   cookiecutter
 rich==15.0.0
     # via cookiecutter
-s3transfer==0.16.0
+s3transfer==0.16.1
     # via boto3
-simplejson==4.0.1
+simplejson==4.1.1
     # via
     #   -r requirements/base.in
     #   xblock
@@ -105,7 +105,7 @@ sqlparse==0.5.5
     # via django
 text-unidecode==1.3
     # via python-slugify
-tzdata==2026.1
+tzdata==2026.2
     # via arrow
 urllib3==2.6.3
     # via
@@ -119,7 +119,7 @@ webob==1.8.9
     # via
     #   -r requirements/base.in
     #   xblock
-xblock[django]==6.0.0
+xblock[django]==6.1.0
     # via -r requirements/base.in
 
 # The following packages are considered to be unsafe in a requirements file:
