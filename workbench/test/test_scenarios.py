@@ -62,6 +62,7 @@ class ScenarioTest(unittest.TestCase):
         it forces database access, which pytest_django doesn't like.
         """
         scenario_ids = list(scenarios.get_scenarios().keys())
+        views_seen = set()
 
         for scenario_id in scenario_ids:
             url = reverse('workbench_show_scenario', kwargs={'scenario_id': scenario_id})
@@ -77,3 +78,9 @@ class ScenarioTest(unittest.TestCase):
             for vertical_tag in html.xpath('//div[@class="vertical"]'):
                 # No vertical tag should be empty.
                 assert list(vertical_tag), f"Scenario {scenario_id}: Empty <vertical> shouldn't happen!"
+            # Default view for scenario should be the student view.
+            indicator = html.xpath('//div[@class="current-view-indicator"]')[0]
+            assert "Current view: student_view" in indicator.text
+            views_seen |= set(el.text.strip() for el in html.xpath('//a[@class="block-view-link"]'))
+        # At least one of our test blocks should have the studio view available, or else we need to add one which does.
+        assert "studio_view" in views_seen

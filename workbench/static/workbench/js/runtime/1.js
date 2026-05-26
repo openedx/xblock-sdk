@@ -40,6 +40,9 @@ var RuntimeProvider = (function() {
             return child
           }
         }
+      },
+      notify: function(name, data) {
+          console.log(`Runtime event ${JSON.stringify(name)} with data:`, data)
       }
     }
   };

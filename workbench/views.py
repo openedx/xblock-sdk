@@ -26,6 +26,7 @@ from .scenarios import get_scenarios
 
 log = logging.getLogger(__name__)
 
+KNOWN_BLOCK_VIEWS = ['student_view', 'author_view', 'studio_view']
 
 # We don't really have authentication and multiple students, just accept their
 # id on the URL.
@@ -33,6 +34,24 @@ def get_student_id(request):
     """Get the student_id from the given request."""
     student_id = request.GET.get('student', 'student_1')
     return student_id
+
+
+def can_render_view(block, view_name, root=False) -> bool:
+    """
+    Verifies that a view can be rendered by a block.
+    """
+    if (children := getattr(block, 'children', [])) and not root:
+        child_blocks = (block.runtime.get_block(child_id) for child_id in children)
+        return (
+            can_render_view(block, view_name, root=True) and
+            all(can_render_view(child, view_name) for child in child_blocks)
+        )
+    return getattr(block, view_name, getattr(block, "fallback_view", None)) is not None
+
+
+def get_block_views(block: XBlock) -> set[str]:
+    """Get the available views for a block."""
+    return {view_name for view_name in KNOWN_BLOCK_VIEWS if can_render_view(block, view_name)}
 
 
 # ---- Views -----
@@ -74,15 +93,20 @@ def show_scenario(request, scenario_id, view_name='student_view', template='work
         'activate_block_id': request.GET.get('activate_block_id', None)
     }
 
+    other_views = sorted(get_block_views(block) - {view_name})
+
     frag = block.render(view_name, render_context)
     log.info("End show_scenario %s", scenario_id)
     return render(request, template, {
+        'scenario_id': scenario_id,
         'scenario': scenario,
         'block': block,
         'body': frag.body_html(),
         'head_html': frag.head_html(),
         'foot_html': frag.foot_html(),
         'student_id': student_id,
+        'view_name': view_name,
+        'other_views': other_views,
     })
 
 
