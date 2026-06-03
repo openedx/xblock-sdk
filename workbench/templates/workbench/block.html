@@ -30,6 +30,22 @@
                 </section>
 
                 <section class="debug">
+                    <div class="data view-info">
+                        <span class="label">View</span>
+                        <div class="current-view-indicator">
+                          Current view: {{ view_name }}
+                        </div>
+                        {% if other_views %}
+                        <div class="other-views-list">
+                        Other views:
+                            <ul>
+                                {% for view_name in other_views %}
+                                <li><a class="block-view-link" href="{% url "scenario" scenario_id=scenario_id view_name=view_name %}">{{ view_name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
                     <div class="data">
                         <span class="label">Database</span>
                         <div align="left" style="float:left">
