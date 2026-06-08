@@ -8,9 +8,9 @@ cachetools==7.1.4
     # via tox
 colorama==0.4.6
     # via tox
-distlib==0.4.0
+distlib==0.4.1
     # via virtualenv
-filelock==3.29.0
+filelock==3.29.1
     # via
     #   python-discovery
     #   tox
@@ -34,7 +34,7 @@ python-discovery==1.4.0
     #   virtualenv
 tomli-w==1.2.0
     # via tox
-tox==4.55.0
+tox==4.55.1
     # via -r requirements/ci.in
-virtualenv==21.4.1
+virtualenv==21.4.2
     # via tox

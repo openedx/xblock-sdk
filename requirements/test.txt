@@ -22,11 +22,11 @@ binaryornot==0.6.0
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-boto3==1.43.18
+boto3==1.43.24
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.43.18
+botocore==1.43.24
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -55,13 +55,13 @@ coverage[toml]==7.14.1
     #   pytest-cov
 ddt==1.7.2
     # via -r requirements/test.in
-distlib==0.4.0
+distlib==0.4.1
     # via virtualenv
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/base.txt
     #   openedx-django-pyfs
-filelock==3.29.0
+filelock==3.29.1
     # via
     #   python-discovery
     #   tox
@@ -76,7 +76,7 @@ fs-s3fs==1.1.1
     # via
     #   -r requirements/base.txt
     #   openedx-django-pyfs
-idna==3.17
+idna==3.18
     # via
     #   -r requirements/base.txt
     #   requests
@@ -216,7 +216,7 @@ text-unidecode==1.3
     #   python-slugify
 tomli-w==1.2.0
     # via tox
-tox==4.55.0
+tox==4.55.1
     # via -r requirements/test.in
 tzdata==2026.2
     # via
@@ -227,13 +227,13 @@ urllib3==2.7.0
     #   -r requirements/base.txt
     #   botocore
     #   requests
-virtualenv==21.4.1
+virtualenv==21.4.2
     # via tox
 web-fragments==4.0.0
     # via
     #   -r requirements/base.txt
     #   xblock
-webob==1.8.9
+webob==1.8.10
     # via
     #   -r requirements/base.txt
     #   xblock

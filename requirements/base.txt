@@ -12,9 +12,9 @@ asgiref==3.11.1
     # via django
 binaryornot==0.6.0
     # via cookiecutter
-boto3==1.43.18
+boto3==1.43.24
     # via fs-s3fs
-botocore==1.43.18
+botocore==1.43.24
     # via
     #   boto3
     #   s3transfer
@@ -26,7 +26,7 @@ click==8.4.1
     # via cookiecutter
 cookiecutter==2.7.1
     # via -r requirements/base.in
-django==5.2.14
+django==5.2.15
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/base.in
@@ -40,7 +40,7 @@ fs-s3fs==1.1.1
     # via
     #   -r requirements/base.in
     #   openedx-django-pyfs
-idna==3.17
+idna==3.18
     # via requests
 jinja2==3.1.6
     # via cookiecutter
@@ -115,7 +115,7 @@ web-fragments==4.0.0
     # via
     #   -r requirements/base.in
     #   xblock
-webob==1.8.9
+webob==1.8.10
     # via
     #   -r requirements/base.in
     #   xblock
