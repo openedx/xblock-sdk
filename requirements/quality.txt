@@ -26,11 +26,11 @@ binaryornot==0.6.0
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.43.24
+boto3==1.43.29
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.43.24
+botocore==1.43.29
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -72,7 +72,7 @@ ddt==1.7.2
     # via -r requirements/test.txt
 dill==0.4.1
     # via pylint
-distlib==0.4.1
+distlib==0.4.3
     # via
     #   -r requirements/test.txt
     #   virtualenv
@@ -81,9 +81,17 @@ django==5.2.15
     #   -c requirements/common_constraints.txt
     #   -r requirements/test.txt
     #   openedx-django-pyfs
+dnspython==2.8.0
+    # via
+    #   -r requirements/test.txt
+    #   pymongo
 edx-lint==6.1.0
     # via -r requirements/quality.in
-filelock==3.29.1
+edx-opaque-keys==4.0.0
+    # via
+    #   -r requirements/test.txt
+    #   xblock
+filelock==3.29.4
     # via
     #   -r requirements/test.txt
     #   python-discovery
@@ -200,13 +208,17 @@ pylint-plugin-utils==0.9.0
     # via
     #   pylint-celery
     #   pylint-django
+pymongo==4.17.0
+    # via
+    #   -r requirements/test.txt
+    #   edx-opaque-keys
 pypng==0.20220715.0
     # via -r requirements/test.txt
 pyproject-api==1.10.1
     # via
     #   -r requirements/test.txt
     #   tox
-pytest==9.0.3
+pytest==9.1.0
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -224,7 +236,7 @@ python-dateutil==2.9.0.post0
     #   arrow
     #   botocore
     #   xblock
-python-discovery==1.4.0
+python-discovery==1.4.2
     # via
     #   -r requirements/test.txt
     #   tox
@@ -274,7 +286,10 @@ sqlparse==0.5.5
     #   -r requirements/test.txt
     #   django
 stevedore==5.8.0
-    # via code-annotations
+    # via
+    #   -r requirements/test.txt
+    #   code-annotations
+    #   edx-opaque-keys
 text-unidecode==1.3
     # via
     #   -r requirements/test.txt
@@ -289,6 +304,10 @@ tomlkit==0.15.0
     #   pylint
 tox==4.55.1
     # via -r requirements/test.txt
+typing-extensions==4.15.0
+    # via
+    #   -r requirements/test.txt
+    #   edx-opaque-keys
 tzdata==2026.2
     # via
     #   -r requirements/test.txt
@@ -298,19 +317,17 @@ urllib3==2.7.0
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==21.4.2
+virtualenv==21.5.0
     # via
     #   -r requirements/test.txt
     #   tox
 web-fragments==4.0.0
-    # via
-    #   -r requirements/test.txt
-    #   xblock
+    # via -r requirements/test.txt
 webob==1.8.10
     # via
     #   -r requirements/test.txt
     #   xblock
-xblock[django]==6.1.0
+xblock[django]==6.3.0
     # via
     #   -r requirements/test.txt
     #   acid-xblock
