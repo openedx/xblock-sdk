@@ -12,9 +12,9 @@ asgiref==3.11.1
     # via django
 binaryornot==0.6.0
     # via cookiecutter
-boto3==1.43.24
+boto3==1.43.29
     # via fs-s3fs
-botocore==1.43.24
+botocore==1.43.29
     # via
     #   boto3
     #   s3transfer
@@ -31,6 +31,10 @@ django==5.2.15
     #   -c requirements/common_constraints.txt
     #   -r requirements/base.in
     #   openedx-django-pyfs
+dnspython==2.8.0
+    # via pymongo
+edx-opaque-keys==4.0.0
+    # via xblock
 fs==2.4.16
     # via
     #   fs-s3fs
@@ -69,6 +73,8 @@ openedx-django-pyfs==4.0.0
     # via xblock
 pygments==2.20.0
     # via rich
+pymongo==4.17.0
+    # via edx-opaque-keys
 pypng==0.20220715.0
     # via -r requirements/base.in
 python-dateutil==2.9.0.post0
@@ -103,8 +109,12 @@ six==1.17.0
     #   python-dateutil
 sqlparse==0.5.5
     # via django
+stevedore==5.8.0
+    # via edx-opaque-keys
 text-unidecode==1.3
     # via python-slugify
+typing-extensions==4.15.0
+    # via edx-opaque-keys
 tzdata==2026.2
     # via arrow
 urllib3==2.7.0
@@ -112,14 +122,12 @@ urllib3==2.7.0
     #   botocore
     #   requests
 web-fragments==4.0.0
-    # via
-    #   -r requirements/base.in
-    #   xblock
+    # via -r requirements/base.in
 webob==1.8.10
     # via
     #   -r requirements/base.in
     #   xblock
-xblock[django]==6.1.0
+xblock[django]==6.3.0
     # via -r requirements/base.in
 
 # The following packages are considered to be unsafe in a requirements file:
