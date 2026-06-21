@@ -22,18 +22,18 @@ binaryornot==0.6.0
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-boto3==1.43.29
+boto3==1.43.34
     # via
     #   -r requirements/base.txt
     #   fs-s3fs
-botocore==1.43.29
+botocore==1.43.34
     # via
     #   -r requirements/base.txt
     #   boto3
     #   s3transfer
 cachetools==7.1.4
     # via tox
-certifi==2026.5.20
+certifi==2026.6.17
     # via
     #   -r requirements/base.txt
     #   requests
@@ -49,7 +49,7 @@ colorama==0.4.6
     # via tox
 cookiecutter==2.7.1
     # via -r requirements/base.txt
-coverage[toml]==7.14.1
+coverage[toml]==7.14.2
     # via
     #   -r requirements/test.in
     #   pytest-cov
@@ -162,7 +162,7 @@ pypng==0.20220715.0
     # via -r requirements/base.txt
 pyproject-api==1.10.1
     # via tox
-pytest==9.1.0
+pytest==9.1.1
     # via
     #   pytest-cov
     #   pytest-django
@@ -204,7 +204,7 @@ rich==15.0.0
     # via
     #   -r requirements/base.txt
     #   cookiecutter
-s3transfer==0.18.0
+s3transfer==0.19.0
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -247,7 +247,7 @@ urllib3==2.7.0
     #   -r requirements/base.txt
     #   botocore
     #   requests
-virtualenv==21.5.0
+virtualenv==21.5.1
     # via tox
 web-fragments==4.0.0
     # via -r requirements/base.txt
