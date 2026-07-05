@@ -26,11 +26,11 @@ binaryornot==0.6.0
     # via
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.43.36
+boto3==1.43.40
     # via
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.43.36
+botocore==1.43.40
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -64,7 +64,7 @@ colorama==0.4.6
     #   tox
 cookiecutter==2.7.1
     # via -r requirements/test.txt
-coverage[toml]==7.14.3
+coverage[toml]==7.15.0
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -91,7 +91,7 @@ edx-opaque-keys==4.0.0
     # via
     #   -r requirements/test.txt
     #   xblock
-filelock==3.29.4
+filelock==3.29.5
     # via
     #   -r requirements/test.txt
     #   python-discovery
@@ -129,7 +129,7 @@ jmespath==1.1.0
     #   -r requirements/test.txt
     #   boto3
     #   botocore
-lazy==1.6
+lazy==2.0
     # via
     #   -r requirements/test.txt
     #   acid-xblock
@@ -228,7 +228,7 @@ pytest-cov==7.1.0
     # via -r requirements/test.txt
 pytest-django==4.12.0
     # via -r requirements/test.txt
-pytest-rerunfailures==16.3
+pytest-rerunfailures==16.4
     # via -r requirements/test.txt
 python-dateutil==2.9.0.post0
     # via
@@ -236,7 +236,7 @@ python-dateutil==2.9.0.post0
     #   arrow
     #   botocore
     #   xblock
-python-discovery==1.4.2
+python-discovery==1.4.3
     # via
     #   -r requirements/test.txt
     #   tox
@@ -285,7 +285,7 @@ sqlparse==0.5.5
     # via
     #   -r requirements/test.txt
     #   django
-stevedore==5.8.0
+stevedore==5.9.0
     # via
     #   -r requirements/test.txt
     #   code-annotations
@@ -304,7 +304,7 @@ tomlkit==0.15.0
     #   pylint
 tox==4.56.1
     # via -r requirements/test.txt
-typing-extensions==4.15.0
+typing-extensions==4.16.0
     # via
     #   -r requirements/test.txt
     #   edx-opaque-keys

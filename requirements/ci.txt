@@ -10,7 +10,7 @@ colorama==0.4.6
     # via tox
 distlib==0.4.3
     # via virtualenv
-filelock==3.29.4
+filelock==3.29.5
     # via
     #   python-discovery
     #   tox
@@ -28,7 +28,7 @@ pluggy==1.6.0
     # via tox
 pyproject-api==1.10.1
     # via tox
-python-discovery==1.4.2
+python-discovery==1.4.3
     # via
     #   tox
     #   virtualenv
