@@ -4,7 +4,7 @@
 #
 #    make upgrade
 #
-build==1.5.0
+build==1.5.1
     # via pip-tools
 click==8.4.2
     # via pip-tools

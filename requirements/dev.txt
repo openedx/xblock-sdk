@@ -32,12 +32,12 @@ binaryornot==0.6.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.43.40
+boto3==1.43.46
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.43.40
+botocore==1.43.46
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -52,7 +52,7 @@ certifi==2026.6.17
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   requests
-charset-normalizer==3.4.7
+charset-normalizer==3.4.9
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -92,7 +92,7 @@ distlib==0.4.3
     # via
     #   -r requirements/test.txt
     #   virtualenv
-django==5.2.15
+django==5.2.16
     # via
     #   -c requirements/common_constraints.txt
     #   -r requirements/base.txt
@@ -110,7 +110,7 @@ edx-opaque-keys==4.0.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   xblock
-filelock==3.29.5
+filelock==3.29.7
     # via
     #   -r requirements/test.txt
     #   python-discovery
@@ -236,7 +236,7 @@ pylint==4.0.6
     #   pylint-plugin-utils
 pylint-celery==0.3
     # via edx-lint
-pylint-django==2.7.0
+pylint-django==2.8.0
     # via edx-lint
 pylint-plugin-utils==0.9.0
     # via
@@ -280,7 +280,7 @@ python-dateutil==2.9.0.post0
     #   arrow
     #   botocore
     #   xblock
-python-discovery==1.4.3
+python-discovery==1.4.4
     # via
     #   -r requirements/test.txt
     #   tox
@@ -313,7 +313,7 @@ rich==15.0.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-s3transfer==0.19.0
+s3transfer==0.19.1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -357,7 +357,7 @@ tomlkit==0.15.0
     # via
     #   edx-lint
     #   pylint
-tox==4.56.1
+tox==4.56.4
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -366,7 +366,7 @@ typing-extensions==4.16.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   edx-opaque-keys
-tzdata==2026.2
+tzdata==2026.3
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -377,7 +377,7 @@ urllib3==2.7.0
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==21.5.1
+virtualenv==21.6.1
     # via
     #   -r requirements/test.txt
     #   tox
@@ -390,7 +390,7 @@ webob==1.8.10
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   xblock
-xblock[django]==6.3.0
+xblock[django]==6.3.1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
