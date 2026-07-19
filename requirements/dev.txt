@@ -18,7 +18,7 @@ arrow==1.4.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-asgiref==3.11.1
+asgiref==3.12.1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -32,12 +32,12 @@ binaryornot==0.6.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.43.46
+boto3==1.43.51
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.43.46
+botocore==1.43.51
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -77,7 +77,7 @@ cookiecutter==2.7.1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-coverage[toml]==7.15.0
+coverage[toml]==7.15.2
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -110,7 +110,7 @@ edx-opaque-keys==4.0.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   xblock
-filelock==3.29.7
+filelock==3.31.0
     # via
     #   -r requirements/test.txt
     #   python-discovery
@@ -205,7 +205,7 @@ packaging==26.2
     #   pytest
     #   pytest-rerunfailures
     #   tox
-platformdirs==4.10.0
+platformdirs==4.10.1
     # via
     #   -r requirements/test.txt
     #   pylint
@@ -353,11 +353,11 @@ tomli-w==1.2.0
     # via
     #   -r requirements/test.txt
     #   tox
-tomlkit==0.15.0
+tomlkit==0.15.1
     # via
     #   edx-lint
     #   pylint
-tox==4.56.4
+tox==4.57.0
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
