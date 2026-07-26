@@ -32,22 +32,22 @@ binaryornot==0.6.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-boto3==1.43.51
+boto3==1.43.56
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   fs-s3fs
-botocore==1.43.51
+botocore==1.43.56
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   boto3
     #   s3transfer
-cachetools==7.1.4
+cachetools==7.1.6
     # via
     #   -r requirements/test.txt
     #   tox
-certifi==2026.6.17
+certifi==2026.7.22
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -110,7 +110,7 @@ edx-opaque-keys==4.0.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   xblock
-filelock==3.31.0
+filelock==3.32.0
     # via
     #   -r requirements/test.txt
     #   python-discovery
@@ -205,7 +205,7 @@ packaging==26.2
     #   pytest
     #   pytest-rerunfailures
     #   tox
-platformdirs==4.10.1
+platformdirs==4.11.0
     # via
     #   -r requirements/test.txt
     #   pylint
@@ -251,7 +251,7 @@ pypng==0.20220715.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
-pyproject-api==1.10.1
+pyproject-api==1.11.0
     # via
     #   -r requirements/test.txt
     #   tox
@@ -280,7 +280,7 @@ python-dateutil==2.9.0.post0
     #   arrow
     #   botocore
     #   xblock
-python-discovery==1.4.4
+python-discovery==1.5.0
     # via
     #   -r requirements/test.txt
     #   tox
@@ -291,7 +291,7 @@ python-slugify==8.0.4
     #   -r requirements/test.txt
     #   code-annotations
     #   cookiecutter
-pytz==2026.2
+pytz==2026.3.post1
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -313,7 +313,7 @@ rich==15.0.0
     #   -r requirements/base.txt
     #   -r requirements/test.txt
     #   cookiecutter
-s3transfer==0.19.1
+s3transfer==0.19.2
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.txt
@@ -357,7 +357,7 @@ tomlkit==0.15.1
     # via
     #   edx-lint
     #   pylint
-tox==4.57.0
+tox==4.58.0
     # via
     #   -r requirements/test.in
     #   -r requirements/test.txt
@@ -377,7 +377,7 @@ urllib3==2.7.0
     #   -r requirements/test.txt
     #   botocore
     #   requests
-virtualenv==21.6.1
+virtualenv==21.7.0
     # via
     #   -r requirements/test.txt
     #   tox
