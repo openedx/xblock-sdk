@@ -1,0 +1,172 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm>8.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xblock-sdk"
+dynamic = ["version"]
+description = "XBlock SDK"
+readme = "README.rst"
+license = "AGPL-3.0"
+license-files = ["LICENSE.TXT"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Framework :: Django",
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.2",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+]
+requires-python = ">=3.12"
+dependencies = [
+    "cookiecutter",
+    "django>=4.2",
+    "fs-s3fs",
+    "lxml",
+    "requests",
+    "pypng",
+    "simplejson",
+    "web-fragments",
+    "webob",
+    "XBlock[django]",
+]
+
+[project.entry-points."xblock.v1"]
+helloworld_demo = "sample_xblocks.basic.content:HelloWorldBlock"
+allscopes_demo = "sample_xblocks.basic.content:AllScopesBlock"
+html_demo = "sample_xblocks.basic.content:HtmlBlock"
+sequence_demo = "sample_xblocks.basic.structure:Sequence"
+vertical_demo = "sample_xblocks.basic.structure:VerticalBlock"
+sidebar_demo = "sample_xblocks.basic.structure:SidebarBlock"
+problem_demo = "sample_xblocks.basic.problem:ProblemBlock"
+textinput_demo = "sample_xblocks.basic.problem:TextInputBlock"
+equality_demo = "sample_xblocks.basic.problem:EqualityCheckerBlock"
+attempts_scoreboard_demo = "sample_xblocks.basic.problem:AttemptsScoreboardBlock"
+slider_demo = "sample_xblocks.basic.slider:Slider"
+view_counter_demo = "sample_xblocks.basic.view_counter:ViewCounter"
+thumbs = "sample_xblocks.thumbs:ThumbsBlock"
+filethumbs = "sample_xblocks.filethumbs:FileThumbsBlock"
+debugchild = "workbench.blocks:DebuggingChildBlock"
+
+[tool.setuptools_scm]
+version_scheme = "only-version"
+local_scheme = "no-local-version"
+# Dummy version for when .git isn't accessible (e.g. Docker bind-mount)
+fallback_version = "0.0.0.dev0"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"sample_xblocks.basic" = ["public/**/*", "templates/**/*"]
+"sample_xblocks.thumbs" = ["static/**/*"]
+"sample_xblocks.filethumbs" = ["static/**/*"]
+"workbench" = ["static/**/*", "templates/**/*", "test/**/*"]
+
+[tool.setuptools.exclude-package-data]
+"*" = ["tests*", "*.tests*", "spec*", "*.spec*", "test/*", "*/test/*"]
+
+[tool.coverage.run]
+branch = true
+source_pkgs = ["workbench", "sample_xblocks"]
+omit = [
+    "*/workbench/test/*",
+    "*/sample_xblocks/*/test/*",
+    "*/migrations/*",
+    "*/__pycache__/*",
+    "*/settings.py",
+]
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]
+
+[tool.coverage.html]
+directory = "htmlcov"
+
+[dependency-groups]
+# To update the matrix: run `uv lock --upgrade` and add/remove Django version groups as needed.
+test-base = [
+    "acid-xblock",
+    "coverage",
+    "ddt",
+    "mock",
+    "pytest",
+    "pytest-cov",
+    "pytest-django",
+    "pytest-rerunfailures",
+]
+test = [
+    { include-group = "test-base" },
+    "django>=5.2,<6.0",
+]
+django42 = [
+    { include-group = "test-base" },
+    "django>=4.2,<5.0",
+]
+quality = [
+    { include-group = "test" },
+    "edx-lint",
+    "isort",
+    "pycodestyle",
+    "pydocstyle",
+]
+doc = [
+    { include-group = "test" },
+    "sphinx",
+    "sphinxcontrib-napoleon",
+]
+ci = [
+    "tox",
+    "tox-uv>=1",
+]
+dev = [
+    { include-group = "quality" },
+    { include-group = "ci" },
+    { include-group = "doc" },
+]
+
+[tool.uv]
+package = true
+default-groups = []
+# test includes Django>=5.2 and django42 includes Django>=4.2,<5.0 — they conflict.
+conflicts = [
+    [
+        { group = "test" },
+        { group = "django42" },
+    ],
+]
+constraint-dependencies = [
+    "Django<6.0",
+    "elasticsearch<7.14.0",
+    "setuptools<82.0",
+]
+
+[tool.edx_lint]
+uv_constraints = [
+    # setuptools 82 removed pkg_resources; pyfilesystem2 (fs) still uses it
+    # https://setuptools.pypa.io/en/latest/history.html#v82-0-0
+    "setuptools<82.0",
+]
+
+[tool.semantic_release.changelog]
+mode = "update"
+insertion_flag = ".. changelog-insertion-marker"
+
+[tool.semantic_release.changelog.default_templates]
+changelog_file = "CHANGELOG.rst"
+output_format = "rst"
+
+[tool.semantic_release]
+build_command = "python -m pip install --upgrade build && SETUPTOOLS_SCM_PRETEND_VERSION=$NEW_VERSION python -m build"
+allow_zero_version = true
+major_on_zero = false

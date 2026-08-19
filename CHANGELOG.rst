@@ -4,6 +4,8 @@ Change history for XBlock SDK
 
 These are notable changes in XBlock.
 
+.. changelog-insertion-marker
+
 0.13.0 - 2025-04-08
 -------------------
 * upgraded to Ubuntu 24.04 and Python 3.12

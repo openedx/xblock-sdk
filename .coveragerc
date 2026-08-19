@@ -1,6 +1,0 @@
-[run]
-branch = True
-source = .
-omit =
-    workbench/test/*
-    sample_xblocks/*/test/*
