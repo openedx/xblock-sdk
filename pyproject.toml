@@ -107,11 +107,11 @@ test-base = [
 ]
 test = [
     { include-group = "test-base" },
-    "django>=5.2,<6.0",
+    "django<6.0,>=5.2",
 ]
 django42 = [
     { include-group = "test-base" },
-    "django>=4.2,<5.0",
+    "django>=4.2,<6.0",
 ]
 quality = [
     { include-group = "test" },
