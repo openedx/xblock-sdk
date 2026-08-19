@@ -6,28 +6,31 @@ on:
   pull_request:
     branches:
     - '**'
+  workflow_call:
 jobs:
   run_tests:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
       matrix:
         python-version: ['3.12']
         toxenv: [django42, django52, quality]
+    name: ${{ matrix.toxenv }}
     steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-    - name: Python setup
-      uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+    - name: Setup uv
+      uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
       with:
         python-version: ${{ matrix.python-version }}
+        enable-cache: true
 
-    - name: Install Requirements
-      run: |
-        pip install -r requirements/pip.txt
-        pip install -r requirements/ci.txt
+    - name: Install CI dependencies
+      run: uv sync --group ci
 
     - name: Run Tests
-      run:  tox -e ${{ matrix.toxenv }}
+      run: uv run tox -e ${{ matrix.toxenv }}
 
     - name: Upload coverage to CodeCov
       if: matrix.python-version == '3.12' && matrix.toxenv == 'django42'
