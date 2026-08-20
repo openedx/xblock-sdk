@@ -158,14 +158,6 @@ uv_constraints = [
     "setuptools<82.0",
 ]
 
-[tool.semantic_release.changelog]
-mode = "update"
-insertion_flag = ".. changelog-insertion-marker"
-
-[tool.semantic_release.changelog.default_templates]
-changelog_file = "CHANGELOG.rst"
-output_format = "rst"
-
 [tool.semantic_release]
 build_command = "python -m pip install --upgrade build && SETUPTOOLS_SCM_PRETEND_VERSION=$NEW_VERSION python -m build"
 allow_zero_version = true
