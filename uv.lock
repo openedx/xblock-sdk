@@ -1,5 +1,5 @@
 version = 1
-revision = 5
+revision = 3
 requires-python = ">=3.12"
 resolution-markers = [
     "python_full_version >= '3.13'",
@@ -480,34 +480,12 @@ wheels = [
 
 [[package]]
 name = "django"
-version = "4.2.30"
-source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13'",
-    "python_full_version < '3.13'",
-]
-dependencies = [
-    { name = "asgiref", marker = "extra == 'group-10-xblock-sdk-django42'" },
-    { name = "sqlparse", marker = "extra == 'group-10-xblock-sdk-django42'" },
-    { name = "tzdata", marker = "(sys_platform == 'win32' and extra == 'group-10-xblock-sdk-django42') or (extra == 'group-10-xblock-sdk-dev' and extra == 'group-10-xblock-sdk-django42') or (extra == 'group-10-xblock-sdk-django42' and extra == 'group-10-xblock-sdk-doc') or (extra == 'group-10-xblock-sdk-django42' and extra == 'group-10-xblock-sdk-quality') or (extra == 'group-10-xblock-sdk-django42' and extra == 'group-10-xblock-sdk-test')" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/11/b5/f1a53dc68da6429d6e0345bb848161e2381a2e9f02700148911e8582c2b3/django-4.2.30.tar.gz", hash = "sha256:4ebc7a434e3819db6cf4b399fb5b3f536310a30e8486f08b66886840be84b37c", size = 10468707, upload-time = "2026-04-07T14:05:45.57Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/39/b7/a7c96f239cf91313a6589233fed55111c7063b26683b226802732c455dbc/django-4.2.30-py3-none-any.whl", hash = "sha256:4d07aaf1c62f9984842b67c2874ebbf7056a17be253860299b93ae1881faad65", size = 7997231, upload-time = "2026-04-07T14:05:38.241Z" },
-]
-
-[[package]]
-name = "django"
 version = "5.2.17"
 source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13'",
-    "python_full_version < '3.13'",
-]
 dependencies = [
     { name = "asgiref" },
     { name = "sqlparse" },
-    { name = "tzdata", marker = "(sys_platform == 'win32' and extra == 'group-10-xblock-sdk-dev') or (sys_platform == 'win32' and extra != 'group-10-xblock-sdk-django42') or (extra == 'group-10-xblock-sdk-dev' and extra == 'group-10-xblock-sdk-django42') or (extra == 'group-10-xblock-sdk-django42' and extra == 'group-10-xblock-sdk-doc') or (extra == 'group-10-xblock-sdk-django42' and extra == 'group-10-xblock-sdk-quality') or (extra == 'group-10-xblock-sdk-django42' and extra == 'group-10-xblock-sdk-test')" },
+    { name = "tzdata", marker = "sys_platform == 'win32' or (extra == 'group-10-xblock-sdk-dev' and extra == 'group-10-xblock-sdk-django42') or (extra == 'group-10-xblock-sdk-django42' and extra == 'group-10-xblock-sdk-doc') or (extra == 'group-10-xblock-sdk-django42' and extra == 'group-10-xblock-sdk-quality') or (extra == 'group-10-xblock-sdk-django42' and extra == 'group-10-xblock-sdk-test')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/d5/d8/43e9d000519adceb189620b6869ff88031e046df91c2e9da72f8f6918399/django-5.2.17.tar.gz", hash = "sha256:9d4d93be539a18ab80d058eb515900e10951e04c537c5a6b394fc49528d3251f", size = 10889740, upload-time = "2026-08-04T15:04:03.173Z" }
 wheels = [
@@ -995,8 +973,7 @@ name = "openedx-django-pyfs"
 version = "4.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "django", version = "4.2.30", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-10-xblock-sdk-django42'" },
-    { name = "django", version = "5.2.17", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-10-xblock-sdk-dev' or extra != 'group-10-xblock-sdk-django42' or (extra == 'group-10-xblock-sdk-django42' and extra == 'group-10-xblock-sdk-doc') or (extra == 'group-10-xblock-sdk-django42' and extra == 'group-10-xblock-sdk-quality') or (extra == 'group-10-xblock-sdk-django42' and extra == 'group-10-xblock-sdk-test')" },
+    { name = "django" },
     { name = "fs" },
     { name = "fs-s3fs" },
 ]
@@ -1819,11 +1796,9 @@ django = [
 [[package]]
 name = "xblock-sdk"
 source = { editable = "." }
-default-groups = []
 dependencies = [
     { name = "cookiecutter" },
-    { name = "django", version = "4.2.30", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-10-xblock-sdk-django42'" },
-    { name = "django", version = "5.2.17", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-10-xblock-sdk-dev' or extra != 'group-10-xblock-sdk-django42' or (extra == 'group-10-xblock-sdk-django42' and extra == 'group-10-xblock-sdk-doc') or (extra == 'group-10-xblock-sdk-django42' and extra == 'group-10-xblock-sdk-quality') or (extra == 'group-10-xblock-sdk-django42' and extra == 'group-10-xblock-sdk-test')" },
+    { name = "django" },
     { name = "fs-s3fs" },
     { name = "lxml" },
     { name = "pypng" },
@@ -1843,7 +1818,7 @@ dev = [
     { name = "acid-xblock" },
     { name = "coverage" },
     { name = "ddt" },
-    { name = "django", version = "5.2.17", source = { registry = "https://pypi.org/simple" } },
+    { name = "django" },
     { name = "edx-lint" },
     { name = "isort" },
     { name = "mock" },
@@ -1862,7 +1837,7 @@ django42 = [
     { name = "acid-xblock" },
     { name = "coverage" },
     { name = "ddt" },
-    { name = "django", version = "4.2.30", source = { registry = "https://pypi.org/simple" } },
+    { name = "django" },
     { name = "mock" },
     { name = "pytest" },
     { name = "pytest-cov" },
@@ -1873,7 +1848,7 @@ doc = [
     { name = "acid-xblock" },
     { name = "coverage" },
     { name = "ddt" },
-    { name = "django", version = "5.2.17", source = { registry = "https://pypi.org/simple" } },
+    { name = "django" },
     { name = "mock" },
     { name = "pytest" },
     { name = "pytest-cov" },
@@ -1886,7 +1861,7 @@ quality = [
     { name = "acid-xblock" },
     { name = "coverage" },
     { name = "ddt" },
-    { name = "django", version = "5.2.17", source = { registry = "https://pypi.org/simple" } },
+    { name = "django" },
     { name = "edx-lint" },
     { name = "isort" },
     { name = "mock" },
@@ -1901,7 +1876,7 @@ test = [
     { name = "acid-xblock" },
     { name = "coverage" },
     { name = "ddt" },
-    { name = "django", version = "5.2.17", source = { registry = "https://pypi.org/simple" } },
+    { name = "django" },
     { name = "mock" },
     { name = "pytest" },
     { name = "pytest-cov" },
@@ -1961,7 +1936,7 @@ django42 = [
     { name = "acid-xblock" },
     { name = "coverage" },
     { name = "ddt" },
-    { name = "django", specifier = ">=4.2,<5.0" },
+    { name = "django", specifier = ">=4.2,<6.0" },
     { name = "mock" },
     { name = "pytest" },
     { name = "pytest-cov" },
