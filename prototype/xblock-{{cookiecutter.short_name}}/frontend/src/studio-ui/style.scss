@@ -1,0 +1,11 @@
+/*
+* The base styles of cms set html { font-size: 62.5% } to get the base font size of 1rem = 10px.
+* But Paragon's CSS Variables define the text sizes in "rem" units with the expectation of 1rem = 16px.
+* To fix this, we set html { font-size: 100% } to make 1rem = 16px, matching the Paragons CSS Variables.
+*
+* Note that this only affects things within the shadow root created for the XBlock, so it won't affect
+* things outside of the XBlock editor.
+*/
+html {
+  font-size: 100%;
+}

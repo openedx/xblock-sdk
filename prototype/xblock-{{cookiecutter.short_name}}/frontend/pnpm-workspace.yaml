@@ -1,0 +1,12 @@
+allowBuilds:
+  "@bundled-es-modules/glob": true
+  "@parcel/watcher": true
+  core-js-pure: true
+  style-dictionary: true
+blockExoticSubdeps: true
+# Supply chain security configuration. See https://pnpm.io/supply-chain-security for more information.
+minimumReleaseAge: 10080 # 7 days
+minimumReleaseAgeExclude:
+  - "@opencraft/xblock-react-utils@0.1.1"
+trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 43200 # 30 days
