@@ -2,19 +2,15 @@ import { useContext } from "react";
 import { Button } from "@openedx/paragon";
 import { useHandlerUrl } from "@opencraft/xblock-react-utils";
 import { AppContext } from "../context.tsx";
+import { callServer } from "@/lib/utils"
 
 export const Counter = () => {
-  const incrementUrl = useHandlerUrl("increment");
+  const url = useHandlerUrl("increment");
   const { count, code, setCount } = useContext(AppContext);
 
-  const increment = () => {
-    $.post({
-      url: incrementUrl,
-      data: JSON.stringify({ code }),
-      contentType: "application/json",
-    }).done((result: { count: number }) => {
-      setCount(result.count);
-    });
+  const increment = async () => {
+    const data = await callServer<{count: number}>({ url, data: { code } });
+    setCount(data.count);
   };
 
   return (

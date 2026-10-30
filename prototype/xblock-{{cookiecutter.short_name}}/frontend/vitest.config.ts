@@ -39,8 +39,8 @@ export default defineConfig(({ mode }) => {
         provider: "v8",
         enabled: true,
         reporter: ["text", "html"],
-        reportsDirectory: "./coverage",
-        include: ["src/**/*.{ts,tsx}"],
+        reportsDirectory: "../coverage",
+        include: ["**/*.{ts,tsx}"],
       },
       sequence: {
         shuffle: true,
