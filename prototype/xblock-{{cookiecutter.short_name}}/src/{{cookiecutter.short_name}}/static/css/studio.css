@@ -1,0 +1,11 @@
+/*
+* The base styles of cms set html { font-size: 62.5% } to get the base font size of 1rem = 10px.
+* But Paragon's CSS Variables define the text sizes in "rem" units with the expectation of 1rem = 16px.
+* To fix this, we set html { font-size: 100% } to make 1rem = 16px, matching the Paragons CSS Variables.
+*
+* This file is placed in a different place in the document hierarchy than the bundled styles of the block,
+* allowing it to have the right priority level.
+*/
+html {
+    font-size: 100%;
+}
