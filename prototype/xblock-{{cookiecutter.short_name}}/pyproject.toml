@@ -1,0 +1,43 @@
+[project]
+name = "{{cookiecutter.short_name}}-xblock"
+version = "0.0.1"
+description = "{{cookiecutter.short_name}} XBlock"  # TODO: write a better description.
+readme = "README.md"
+# license = "UNKNOWN"  # TODO: choose a license: 'AGPL-3.0-or-later' and 'Apache-2.0' are popular.
+# Version used by the platform as of Verawood. Lower this if you need to support older versions,
+# or raise it if you only plan to support newer ones.
+requires-python = ">=3.12.13"
+dependencies = [
+    "xblock",
+    "django",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-django",
+    "pytest-cov",
+    "ruff",
+]
+
+# Related XBlocks can be grouped into one repository. Each one should have its own package in the src subdirectory,
+# and should be added to the list of entry points here. You will also need to update the 'module-name' list below
+# under [tool.uv.build-backend].
+[project.entry-points."xblock.v1"]
+{{cookiecutter.short_name}} = "{{cookiecutter.short_name}}:{{cookiecutter.class_name}}"
+
+[build-system]
+requires = ["uv_build>=0.10.3,<0.11.0"]
+build-backend = "uv_build"
+
+[tool.uv]
+package = true
+
+[tool.uv.build-backend]
+module-name = [
+    "{{cookiecutter.short_name}}",
+]
+
+[tool.pytest.ini_options]
+django_find_project = false
+DJANGO_SETTINGS_MODULE = "{{cookiecutter.short_name}}.test.settings"
