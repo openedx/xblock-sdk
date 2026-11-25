@@ -5,6 +5,7 @@ Code in this file is a mix of Runtime layer and Workbench layer.
 """
 
 
+import hashlib
 import importlib
 import itertools
 import logging
@@ -12,9 +13,13 @@ from collections import defaultdict
 from datetime import datetime, timedelta
 from unittest.mock import Mock
 
+from opaque_keys.edx.asides import AsideDefinitionKeyV2, AsideUsageKeyV2
+from opaque_keys.edx.keys import DefinitionKey, UsageKey
+from opaque_keys.edx.locator import BlockUsageLocator, CourseLocator, DefinitionLocator
 from web_fragments.fragment import Fragment
 from xblock.core import XBlockAside
 from xblock.exceptions import NoSuchDefinition, NoSuchUsage
+from xblock.fields import Scope
 from xblock.reference.user_service import UserService, XBlockUser
 from xblock.runtime import IdGenerator, IdReader, KeyValueStore, KvsFieldData, NoSuchViewError, NullI18nService, Runtime
 
@@ -40,12 +45,10 @@ User = get_user_model()
 class WorkbenchDjangoKeyValueStore(KeyValueStore):
     """A Django model backed `KeyValueStore` for the Workbench to use.
 
-    If you use this key-value store, you *must* use `ScenarioIdManager` or
-    another ID Manager that uses the scope_id convention:
-
-      {scenario-slug}.{block_type}.d{def #}(.u{usage #})
-
-    So an example: a-little-html.html.d0.u0
+    If you use this key-value store, you *must* use `ScenarioIdManager` (or
+    another ID Manager that follows its conventions): definition ids are
+    `DefinitionKey` instances, and usage ids are `UsageKey` instances whose
+    course is the scenario slug.
 
     We store all fields for a given (scope, scope_id, user_id) in one JSON blob,
     rather than having a single row for each field name. This is why there's
@@ -61,30 +64,64 @@ class WorkbenchDjangoKeyValueStore(KeyValueStore):
         XBlockState.prep_for_scenario_loading()
 
     @staticmethod
+    def _serialize_value(key, value):
+        """
+        Convert the usage keys stored in children/parent fields to strings so they can be JSON-encoded.
+        """
+        if key.scope == Scope.children:
+            return [str(child) for child in value]
+        if key.scope == Scope.parent and value is not None:
+            return str(value)
+        return value
+
+    @staticmethod
+    def _deserialize_value(key, value):
+        """
+        Convert the strings stored in children/parent fields back into usage keys.
+        """
+        if key.scope == Scope.children:
+            return [UsageKey.from_string(child) for child in value]
+        if key.scope == Scope.parent and value is not None:
+            return UsageKey.from_string(value)
+        return value
+
+    @staticmethod
     def _to_json_str(data):
         """
         Serialize data as a JSON string
         """
         return json.dumps(data, indent=2, sort_keys=True)
 
+    @staticmethod
+    def _get_record(key):
+        """
+        Get or create the `XBlockState` row for `key`.
+
+        Definition keys don't carry the scenario they belong to, so we look it up in the ID manager.
+        """
+        scenario = None
+        if isinstance(key.block_scope_id, DefinitionKey):
+            scenario = ID_MANAGER.get_scenario(key.block_scope_id)
+        return XBlockState.get_for_key(key, scenario=scenario)
+
     # KeyValueStore methods.
     def get(self, key):
         """Get state for a given `KeyValueStore.Key`."""
-        record = XBlockState.get_for_key(key)
-        return json.loads(record.state)[key.field_name]
+        record = self._get_record(key)
+        return self._deserialize_value(key, json.loads(record.state)[key.field_name])
 
     def set(self, key, value):
         """Set state for a given `KeyValueStore.Key` to `value`."""
-        record = XBlockState.get_for_key(key)
+        record = self._get_record(key)
         state_dict = json.loads(record.state)
-        state_dict[key.field_name] = value
+        state_dict[key.field_name] = self._serialize_value(key, value)
 
         record.state = self._to_json_str(state_dict)
         record.save()
 
     def delete(self, key):
         """Delete state for a given `KeyValueStore.Key`."""
-        record = XBlockState.get_for_key(key)
+        record = self._get_record(key)
         state_dict = json.loads(record.state)
         del state_dict[key.field_name]
         record.state = self._to_json_str(state_dict)
@@ -92,7 +129,7 @@ class WorkbenchDjangoKeyValueStore(KeyValueStore):
 
     def has(self, key):
         """Check if an entry exists for `KeyValueStore.Key`."""
-        record = XBlockState.get_for_key(key)
+        record = self._get_record(key)
         state_dict = json.loads(record.state)
         return key.field_name in state_dict
 
@@ -100,22 +137,36 @@ class WorkbenchDjangoKeyValueStore(KeyValueStore):
 class ScenarioIdManager(IdReader, IdGenerator):
     """A scenario-aware ID manager.
 
-    This will create IDs in the form of::
+    Definition ids are `DefinitionLocator` keys. Their ObjectId is derived from a
+    name in the form of ``{scenario-slug}.{block_type}(.{slug}).d{def #}``, so the
+    same definition gets the same id each time the scenarios are loaded::
 
-      {scenario-slug}.{block_type}.d{def #}(.u{usage #})(.{aside_type})
+      def-v1:{24 hex digits}+type@{block_type}
 
-    So an example: a-little-html.html.d0.u0
+    Usage ids are `BlockUsageLocator` keys in a fake course named after the scenario::
+
+      block-v1:workbench+{scenario-slug}+run+type@{block_type}+block@({slug}.)d{def #}.u{usage #}
+
+    So an example: block-v1:workbench+a-little-html+run+type@html+block@d0.u0
+
+    Aside ids are `AsideDefinitionKeyV2` and `AsideUsageKeyV2` keys wrapping the
+    ids of the block they decorate.
 
     The definition numbering is local to the scenario + block_type, and usage
     numbering is local to the definition_id. This is to help ensure that IDs
     shift around as little as possible when you add new content/scenarios.
 
     """
+    ORG = "workbench"
+    RUN = "run"
+    DEFAULT_SCENARIO = "default"
+
     def __init__(self):
         self._block_types_to_id_seq = defaultdict(itertools.count)
         self._def_ids_to_id_seq = defaultdict(itertools.count)
         self._usages = {}
         self._definitions = {}
+        self._definition_locations = {}
         self._aside_defs = {}
         self._aside_usages = {}
         self.scenario = ""
@@ -127,14 +178,23 @@ class ScenarioIdManager(IdReader, IdGenerator):
         self._def_ids_to_id_seq.clear()
         self._usages.clear()
         self._definitions.clear()
+        self._definition_locations.clear()
         self._aside_defs.clear()
         self._aside_usages.clear()
         self.scenario = ""
 
     def create_usage(self, def_id):
         """Make a usage, storing its definition id."""
+        try:
+            scenario, block_type, def_local_id = self._definition_locations[def_id]
+        except KeyError as ex:
+            raise NoSuchDefinition(repr(def_id)) from ex
         id_seq = self._def_ids_to_id_seq[def_id]
-        usage_id = f"{def_id}.u{next(id_seq)}"
+        usage_id = BlockUsageLocator(
+            CourseLocator(self.ORG, scenario, self.RUN),
+            block_type=block_type,
+            block_id=f"{def_local_id}.u{next(id_seq)}",
+        )
         self._usages[usage_id] = def_id
 
         return usage_id
@@ -148,15 +208,32 @@ class ScenarioIdManager(IdReader, IdGenerator):
 
     def create_definition(self, block_type, slug=None):
         """Make a definition_id, storing its block type."""
-        prefix = f"{self.scenario}.{block_type}"
+        scenario = self.scenario or self.DEFAULT_SCENARIO
+        prefix = f"{scenario}.{block_type}"
         if slug:
             prefix += "." + slug
 
         id_seq = self._block_types_to_id_seq[prefix]
-        def_id = f"{prefix}.d{next(id_seq)}"
+        def_num = f"d{next(id_seq)}"
+        def_id = DefinitionLocator(block_type, self._object_id_for(f"{prefix}.{def_num}"))
         self._definitions[def_id] = block_type
+        # Remember what we need to build usage keys for this definition.
+        def_local_id = f"{slug}.{def_num}" if slug else def_num
+        self._definition_locations[def_id] = (scenario, block_type, def_local_id)
 
         return def_id
+
+    @staticmethod
+    def _object_id_for(name):
+        """Derive a stable ObjectId (24 hex digits) from a definition name."""
+        return hashlib.blake2b(name.encode("utf-8"), digest_size=12).hexdigest()
+
+    def get_scenario(self, def_id):
+        """Get the scenario slug of a (block or aside) definition id, or None if it's unknown."""
+        if def_id in self._aside_defs:
+            def_id = self._aside_defs[def_id][0]
+        location = self._definition_locations.get(def_id)
+        return location[0] if location else None
 
     def get_block_type(self, def_id):
         """Get a block_type by its definition id."""
@@ -167,8 +244,8 @@ class ScenarioIdManager(IdReader, IdGenerator):
 
     def create_aside(self, definition_id, usage_id, aside_type):
         """Create asides"""
-        aside_def_id = f"{definition_id}.{aside_type}"
-        aside_usage_id = f"{usage_id}.{aside_type}"
+        aside_def_id = AsideDefinitionKeyV2(definition_id, aside_type)
+        aside_usage_id = AsideUsageKeyV2(usage_id, aside_type)
         self._aside_defs[aside_def_id] = (definition_id, aside_type)
         self._aside_usages[aside_usage_id] = (usage_id, aside_type)
         return aside_def_id, aside_usage_id

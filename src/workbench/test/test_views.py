@@ -158,6 +158,20 @@ def test_xblock_invalid_handler_url():
     assert result.status_code == 404
 
 
+@pytest.mark.parametrize("handler_url", [
+    # A valid usage key that doesn't belong to any scenario
+    "/handler/block-v1:workbench+no-such-scenario+run+type@html+block@d0.u0/send_it_back/",
+    # A malformed aside usage key
+    "/aside_handler/not-a-usage-key/send_it_back/",
+    # A valid aside usage key that doesn't belong to any scenario
+    "/aside_handler/aside-usage-v2:block-v1$:workbench+no-such-scenario+run+type@html+block@d0.u0::aside/x/",
+])
+def test_unknown_usage_handler_url(handler_url):
+    client = Client()
+    result = client.post(handler_url, '{}', 'text/json')
+    assert result.status_code == 404
+
+
 class XBlockWithHandlers(XBlock):
     """A XBlock with one json handler."""
 

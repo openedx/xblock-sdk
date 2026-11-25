@@ -2,8 +2,8 @@
 
 
 
-from unittest.mock import Mock
-
+from opaque_keys.edx.locator import BlockUsageLocator, CourseLocator, DefinitionLocator
+from xblock.fields import ScopeIds
 from xblock.runtime import DictKeyValueStore, KvsFieldData
 from xblock.test.tools import TestRuntime as Runtime  # Workaround for pytest trying to collect "TestRuntime" as a test
 
@@ -14,7 +14,10 @@ def test_view_counter_state():
     key_store = DictKeyValueStore()
     field_data = KvsFieldData(key_store)
     runtime = Runtime(services={'field-data': field_data})
-    tester = ViewCounter(runtime, scope_ids=Mock())
+    usage_id = BlockUsageLocator(CourseLocator("workbench", "view-counter", "run"), "view_counter_demo", "d0.u0")
+    def_id = DefinitionLocator("view_counter_demo", "0" * 24)
+    scope_ids = ScopeIds("student_1", "view_counter_demo", def_id, usage_id)
+    tester = ViewCounter(runtime, scope_ids=scope_ids)
 
     assert tester.views == 0
 

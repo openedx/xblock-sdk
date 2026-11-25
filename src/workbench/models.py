@@ -9,6 +9,7 @@ Admin gives us a lot of basic search/filtering for free.
 """
 
 
+from opaque_keys.edx.keys import DefinitionKey, UsageKey
 from xblock.fields import BlockScope, Scope
 
 from django.db import models
@@ -27,7 +28,8 @@ class XBlockState(models.Model):
     """State storage for XBlock.
 
     This class assumes your IDs were generated using `ScenarioIdManager`, and
-    will break otherwise.
+    will break otherwise. Definition and usage ids (which are `DefinitionKey`
+    and `UsageKey` instances) are stored as their string serialization.
     """
     class Meta:
         """Class metadata"""
@@ -87,9 +89,12 @@ class XBlockState(models.Model):
             "tag={xb_state.tag}>".format(xb_state=self)
 
     @classmethod
-    def get_for_key(cls, key):
+    def get_for_key(cls, key, scenario=None):
         """
         Get or create the model row for a given `KeyValueStore.Key` `key`.
+
+        Definition keys don't say which scenario they belong to, so callers
+        should pass `scenario` for definition-scoped keys.
         """
         if key.scope in [Scope.parent, Scope.children]:
             block_scope_full_name = key.scope.attr_name
@@ -108,11 +113,19 @@ class XBlockState(models.Model):
         # specific to a user, but crosses all scenarios and blocks (e.g.
         # user timezone, language). In this case, we also set our scenario to
         # be None.
+        #
+        # Usage ids are UsageKeys whose course is the scenario slug. Aside keys
+        # report the course and block type of the block that the aside decorates.
         if block_scope_name in ["type", "all"]:
             scenario = None
             tag = scope_id
+        elif isinstance(scope_id, UsageKey):
+            scenario = scope_id.course_key.course
+            tag = scope_id.block_type
+        elif isinstance(scope_id, DefinitionKey):
+            tag = scope_id.block_type
         else:
-            scenario, tag, _ = scope_id.split(".", 2)
+            raise TypeError(f"Expected a UsageKey or DefinitionKey scope id, got {scope_id!r}")
 
         record, _ = cls.objects.get_or_create(
             scope=block_scope_name,
