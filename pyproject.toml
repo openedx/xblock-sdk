@@ -23,6 +23,7 @@ requires-python = ">=3.12"
 dependencies = [
     "cookiecutter",
     "django>=4.2",
+    "edx-opaque-keys",
     "fs-s3fs",
     "lxml",
     "requests",

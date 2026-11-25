@@ -9,6 +9,8 @@ This code is in the Workbench layer.
 import logging
 import mimetypes
 
+from opaque_keys import InvalidKeyError
+from opaque_keys.edx.keys import UsageKey
 from xblock.core import XBlock, XBlockAside
 from xblock.django.request import django_to_webob_request, webob_to_django_response
 from xblock.exceptions import NoSuchUsage
@@ -135,8 +137,8 @@ def handler(request, usage_id, handler_slug, suffix='', authenticated=True):
     runtime = WorkbenchRuntime(student_id)
 
     try:
-        block = runtime.get_block(usage_id)
-    except NoSuchUsage as ex:
+        block = runtime.get_block(UsageKey.from_string(usage_id))
+    except (InvalidKeyError, NoSuchUsage) as ex:
         raise Http404 from ex
 
     request = django_to_webob_request(request)
@@ -159,8 +161,8 @@ def aside_handler(request, aside_id, handler_slug, suffix='', authenticated=True
     runtime = WorkbenchRuntime(student_id)
 
     try:
-        block = runtime.get_aside(aside_id)
-    except NoSuchUsage as ex:
+        block = runtime.get_aside(UsageKey.from_string(aside_id))
+    except (InvalidKeyError, NoSuchUsage) as ex:
         raise Http404 from ex
 
     request = django_to_webob_request(request)
